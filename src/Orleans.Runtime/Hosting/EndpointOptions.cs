@@ -33,7 +33,7 @@ namespace Orleans.Configuration
         public IPEndPoint SiloListeningEndpoint { get; set; }
 
         /// <summary>
-        /// The endpoint used to listen for silo to silo communication. 
+        /// The endpoint used to listen for silo to client communication. 
         /// If not set will default to <see cref="AdvertisedIPAddress"/> + <see cref="GatewayPort"/>
         /// </summary>
         public IPEndPoint GatewayListeningEndpoint { get; set; }
