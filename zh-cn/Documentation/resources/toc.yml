@@ -1,12 +1,12 @@
-- name: Resources Overview
+- name: 资源概述
   href: index.zh.md
-- name: Frequently Asked Questions
+- name: 常问问题
   href: frequently_asked_questions.zh.md
-- name: Documentation Guidelines
+- name: 文档指南
   href: documentation_guidelines.zh.md
-- name: Links
+- name: 链接
   href: links.zh.md
-- name: Presentations
+- name: PPT
   href: presentations/index.zh.md
-- name: Blog
+- name: 博客
   href: ../../blog/index.zh.md
