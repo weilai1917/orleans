@@ -1,5 +1,5 @@
 - name: Tutorials
-  href: index.md
+  href: index.zh.md
   items:
     - name: Declarative Persistence
-      href: Declarative-Persistence.md
+      href: Declarative-Persistence.zh.md
