@@ -5,7 +5,7 @@ title: Runtime Monitoring
 
 # 运行时监视
 
-Orleans通过`ITelemetryConsumer公司`接口。应用程序可以向一个或多个遥测用户注册它们的silos和客户机，以接收Orleans Runtime Periotic发布的统计信息和度量。它们可以是流行的遥测分析解决方案的消费者，也可以是任何其他目的地和用途的自定义解决方案的消费者。三个遥测用户目前包含在Orleans代码库中。
+Orleans通过`ITelemetryConsumer公司`接口。应用程序可以向一个或多个遥测用户注册它们的silos和客户端，以接收Orleans Runtime Periotic发布的统计信息和度量。它们可以是流行的遥测分析解决方案的消费者，也可以是任何其他目的地和用途的自定义解决方案的消费者。三个遥测用户目前包含在Orleans代码库中。
 
 它们作为单独的nuget包发布：
 

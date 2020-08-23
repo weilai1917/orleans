@@ -4,7 +4,7 @@
 
 ## 概述
 
-在给定的集群上，silos可以支持不同版本的Grains类型。![Cluster with different versions of a grain](version.png)在本例中，客户机和silos{1,2,3}是用grain接口编译的`A`版本1。silos4是用`A`版本2。
+在给定的集群上，silos可以支持不同版本的Grains类型。![Cluster with different versions of a grain](version.png)在本例中，客户端和silos{1,2,3}是用grain接口编译的`A`版本1。silos4是用`A`版本2。
 
 ## 限制：
 

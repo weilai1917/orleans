@@ -62,7 +62,7 @@ await subscriptionHandle.UnsubscribeAsync()
 
 一条Orleans河可能有多个生产者和多个消费者。生产者发布的消息将被传递给在消息发布之前订阅流的所有使用者。
 
-此外，消费者可以多次订阅同一个流。每次订阅它都会返回一个唯一的`StreamSubscriptionHandle<T>`. 如果一个grain（或客户机）订阅同一个流X次，它将接收相同的事件X次，每次订阅一次。消费者还可以从单个订阅中取消订阅。它可以通过调用以下命令来查找其当前的所有订阅：
+此外，消费者可以多次订阅同一个流。每次订阅它都会返回一个唯一的`StreamSubscriptionHandle<T>`. 如果一个grain（或客户端）订阅同一个流X次，它将接收相同的事件X次，每次订阅一次。消费者还可以从单个订阅中取消订阅。它可以通过调用以下命令来查找其当前的所有订阅：
 
 ```csharp
 IList<StreamSubscriptionHandle<T>> allMyHandles = await IAsyncStream<T>.GetAllSubscriptionHandles()
@@ -92,7 +92,7 @@ IList<StreamSubscriptionHandle<T>> allMyHandles = await IAsyncStream<T>.GetAllSu
 
 ### 显式和隐式订阅<a name="Explicit-and-Implicit-Subscriptions"></a>
 
-默认情况下，流使用者必须显式订阅流。此订阅通常由grain（或客户机）收到的指示其订阅的外部消息触发。例如，在聊天服务中，当用户加入聊天室时，他的Grains收到`加入聊天组`带有聊天名称的消息，这将导致用户grain订阅此聊天流。
+默认情况下，流使用者必须显式订阅流。此订阅通常由grain（或客户端）收到的指示其订阅的外部消息触发。例如，在聊天服务中，当用户加入聊天室时，他的Grains收到`加入聊天组`带有聊天名称的消息，这将导致用户grain订阅此聊天流。
 
 此外，OrleansStreams也支持**“隐式订阅”**. 在这个模型中，grains并没有显式地订阅流。这个grain是自动的，隐式的，仅仅基于它的grain标识和`隐式itstreamsubscription`属性。隐式订阅的主要价值是允许流活动自动触发粒度激活（从而触发订阅）。例如，使用SMS流，如果一个grain要生成一个流，而另一个grain要处理这个流，则生产者需要知道消费Grains的身份，并对其进行grain调用，告诉它订阅流。只有在那之后，它才能开始发送事件。相反，使用隐式订阅，生产者只需开始为流生成事件，消费粒度将自动激活并订阅流。在这种情况下，制作人根本不在乎谁在看事件
 
@@ -168,7 +168,7 @@ Azure队列流不保证FIFO顺序，因为底层的Azure队列不保证故障情
 
 ### Grains和Orleans客户<a name="Grains-and-Orleans-Clients"></a>
 
-OrleansStreams**在Grains和Orleans的客户中都是一致的**. 也就是说，可以在grain内部和Orleans客户机中使用完全相同的api来生成和消费事件。这大大简化了应用程序逻辑，使得特殊的客户端api（如Grain observer）变得多余。
+OrleansStreams**在Grains和Orleans的客户中都是一致的**. 也就是说，可以在grain内部和Orleans客户端中使用完全相同的api来生成和消费事件。这大大简化了应用程序逻辑，使得特殊的客户端api（如Grain observer）变得多余。
 
 ### 全面管理和可靠的流媒体酒吧<a name="Fully-Managed-and-Reliable-Streaming-Pub-Sub"></a>
 
@@ -187,7 +187,7 @@ hostBuilder.AddAzureTableGrainStorage("PubSubStore",
 
 ### 配置<a name="Configuration"></a>
 
-为了使用流，您需要通过思洛主机或群集客户机构建器启用流提供程序。您可以阅读有关流提供程序的更多信息[在这里](stream_providers.zh.md). 示例流提供程序设置：
+为了使用流，您需要通过思洛主机或群集客户端构建器启用流提供程序。您可以阅读有关流提供程序的更多信息[在这里](stream_providers.zh.md). 示例流提供程序设置：
 
 ```csharp
 hostBuilder.AddSimpleMessageStreamProvider("SMSProvider")

@@ -75,7 +75,7 @@ public class Program
 
 ### 配置和连接客户端（使用新的ClientBuilder API和旧的ClientConfiguration对象）
 
-orleans2.0中有许多新的选项类，它们为配置客户机提供了一种新的方法。为了便于迁移到新的API，有一个可选的向后兼容包，`Microsoft.Orleans.Core.遗产`，它提供了从旧的1.x配置API到新的配置API的桥。
+orleans2.0中有许多新的选项类，它们为配置客户端提供了一种新的方法。为了便于迁移到新的API，有一个可选的向后兼容包，`Microsoft.Orleans.Core.遗产`，它提供了从旧的1.x配置API到新的配置API的桥。
 
 如果你添加了`Microsoft.Orleans.Core.遗产`包，客户端仍然可以通过旧版本以编程方式配置`客户端配置`对象，然后可以传递给`客户端生成器`来构建和连接客户端。
 

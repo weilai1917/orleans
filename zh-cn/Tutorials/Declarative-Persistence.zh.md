@@ -5,7 +5,7 @@ title: Declarative Persistence
 
 # 声明性持久性
 
-在第二个教程中，我们看到了grain state是如何在客户机被关闭的情况下幸存下来的，这为许多类似缓存的场景打开了大门，在这种场景中，Orleans被视为一种“带有行为的缓存”，一种面向对象的缓存，如果你愿意的话。这已经是非常有价值的了，并且通过一个简单、熟悉的编程模型和内置的单线程执行保证来实现服务器端的可伸缩性。
+在第二个教程中，我们看到了grain state是如何在客户端被关闭的情况下幸存下来的，这为许多类似缓存的场景打开了大门，在这种场景中，Orleans被视为一种“带有行为的缓存”，一种面向对象的缓存，如果你愿意的话。这已经是非常有价值的了，并且通过一个简单、熟悉的编程模型和内置的单线程执行保证来实现服务器端的可伸缩性。
 
 但是，有时，您正在累积的某些状态属于某种形式的永久存储，因此它可以在silos关闭或从一个silos迁移到另一个silos以实现负载平衡或服务完全重新启动/关机后继续存在。我们迄今所看到的情况将不支持这种情况。
 
@@ -47,7 +47,7 @@ private static async Task DoClientWork(IClusterClient client)
 }
 ```
 
-> 注意：如果您从Orleans1.5过渡，您会注意到客户机不再是静态的。请参考[从Orleans迁移到0.5](../Documentation/resources/Migration/Migration1.5.zh.md)第页。
+> 注意：如果您从Orleans1.5过渡，您会注意到客户端不再是静态的。请参考[从Orleans迁移到0.5](../Documentation/resources/Migration/Migration1.5.zh.md)第页。
 
 下一步，我们将进行一些silos配置，以便配置将允许我们访问持久存储的存储提供程序。SiloHost项目包括一个文件*程序.cs*我们可以在这里找到以下部分：
 

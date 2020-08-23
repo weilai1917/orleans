@@ -19,7 +19,7 @@ Docker集群包括将多个主机组合成一个资源池，使用*容器编排�
 
 同样的grain接口和实现在Orleans的任何地方都已经得到支持，也将在docker容器上运行，因此不需要特别考虑就可以在docker容器中运行您的应用程序。
 
-这个[Orleans码头工人](https://github.com/dotnet/orleans/tree/master/Samples/Orleans-Docker)示例提供了如何运行两个控制台应用程序的工作示例。一个作为Orleans客户机，另一个作为silos，详细信息如下所述。
+这个[Orleans码头工人](https://github.com/dotnet/orleans/tree/master/Samples/Orleans-Docker)示例提供了如何运行两个控制台应用程序的工作示例。一个作为Orleans客户端，另一个作为silos，详细信息如下所述。
 
 这里讨论的概念既可以用于.NET Core，也可以用于.NET 4.6.1版本的Orleans，但是为了说明Docker和.NET Core的跨平台特性，考虑到您正在使用.NET Core，我们将重点讨论这个示例。本文将提供特定于平台（windows/linux/osx）的详细信息。
 
@@ -351,7 +351,7 @@ COPY . /app
 
 这个`docker-compose.yml文件`文件，本质上定义（在项目内）一组服务及其在服务级别上的依赖关系。每个服务包含给定容器的一个或多个实例，该实例基于您在DockerFile上选择的图像。更多关于`Docker合成`可以在上找到[Docker编写文档](https://docs.docker.com/compose/)是的。
 
-对于Orleans部署，一个常见的用例是`docker-compose.yml文件`其中包含两个服务。一个给Orleanssilos，另一个给Orleans客户。客户机将依赖于silos，这意味着，它只能在silos服务启动后启动。另一种情况是添加一个存储/数据库服务/容器，例如sql server，它应该首先在客户机和silos之前启动，因此两个服务都应该依赖于它。
+对于Orleans部署，一个常见的用例是`docker-compose.yml文件`其中包含两个服务。一个给Orleanssilos，另一个给Orleans客户。客户端将依赖于silos，这意味着，它只能在silos服务启动后启动。另一种情况是添加一个存储/数据库服务/容器，例如sql server，它应该首先在客户端和silos之前启动，因此两个服务都应该依赖于它。
 
 > **注意**：在你进一步阅读（并最终疯狂阅读）之前，请注意*凹痕* **事项**在里面`Docker合成`文件夹。所以如果你有什么问题就要注意了。
 

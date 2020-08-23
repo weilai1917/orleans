@@ -5,7 +5,7 @@ title: Request Context
 
 # 请求上下文
 
-RequestContext是一个Orleans特性，它允许应用程序元数据（如跟踪ID）与请求一起流动。应用程序元数据可以添加到客户机上；它将与Orleans请求一起流向接收粒度。
+RequestContext是一个Orleans特性，它允许应用程序元数据（如跟踪ID）与请求一起流动。应用程序元数据可以添加到客户端上；它将与Orleans请求一起流向接收粒度。
 
 该特性由Orleans名称空间中的一个公共静态类RequestContext实现。此类公开了两个简单方法：
 

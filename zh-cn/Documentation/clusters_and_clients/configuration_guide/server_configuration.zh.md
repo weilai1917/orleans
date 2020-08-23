@@ -3,7 +3,7 @@ layout: page
 title: Server Configuration
 ---
 
-> [啊！注意!]如果要启动本地silos和本地客户机进行开发，请查看[本地开发配置页](local_development_configuration.zh.md)
+> [啊！注意!]如果要启动本地silos和本地客户端进行开发，请查看[本地开发配置页](local_development_configuration.zh.md)
 
 # 服务器配置
 
@@ -53,7 +53,7 @@ var silo = new SiloHostBuilder()
 
 这里我们做两件事：
 
--   设置`棒状的`到`“我的第一个群集”`：这是Orleans集群的唯一ID。使用此ID的所有客户机和silos都可以直接相互通信。你可以选择使用不同的`棒状的`不过，对于不同的部署。
+-   设置`棒状的`到`“我的第一个群集”`：这是Orleans集群的唯一ID。使用此ID的所有客户端和silos都可以直接相互通信。你可以选择使用不同的`棒状的`不过，对于不同的部署。
 -   设置`服务ID`到`“aspnetsampleap”`：这是应用程序的唯一ID，某些提供程序（如持久性提供程序）将使用它。**此ID应保持稳定，并且在部署期间不会更改**是的。
 
 ## 群集提供程序

@@ -15,7 +15,7 @@ Orleans采用了熟悉的概念，如对象、接口、异步/等待和try/catch
 
 ![A grain is composed of a stable identity, behavior, and state](../Images/grain_formulation.svg)
 
-任何Orleans应用程序的基本构建块都是*grain*. grains是由用户定义的身份、行为和状态组成的实体。grains标识是用户定义的键，使grains始终可供调用。Grains可以通过强类型通信接口（contract）被其他Grains或Web前端等外部客户机调用。每个grains都是实现一个或多个这些接口的类的一个实例。
+任何Orleans应用程序的基本构建块都是*grain*. grains是由用户定义的身份、行为和状态组成的实体。grains标识是用户定义的键，使grains始终可供调用。Grains可以通过强类型通信接口（contract）被其他Grains或Web前端等外部客户端调用。每个grains都是实现一个或多个这些接口的类的一个实例。
 
 Grains可以具有挥发性和/或持久性状态，可以存储在任何存储系统中。因此，grains隐式地划分应用程序状态，从而实现自动可伸缩性并简化故障恢复。当Grain处于活动状态时，Grain状态被保存在内存中，从而降低了延迟和数据存储的负载。
 
@@ -92,7 +92,7 @@ Orleans运行时为应用程序运行时的主要组件是*silos*，负责寄存
 
 除了核心编程模型之外，silos还为grains提供了一组运行时服务，例如计时器、提醒（persistent timers）、持久性、事务、流等。见[特色部分](#features)下面是更多细节。
 
-Web前端和其他外部客户端使用客户端库调用集群中的grains，该库自动管理网络通信。为了简单起见，客户机也可以与silos在同一进程中共同托管。
+Web前端和其他外部客户端使用客户端库调用集群中的grains，该库自动管理网络通信。为了简单起见，客户端也可以与silos在同一进程中共同托管。
 
 Orleans与.NET Standard 2.0及更高版本兼容，运行在Windows、Linux和macOS上，采用完整的.NET Framework或.NET核心。
 

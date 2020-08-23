@@ -58,4 +58,4 @@ await client.Connect();
 
 ### 生产配置
 
-我们在这里使用的配置示例用于测试与`本地服务器`是的。在生产环境中，silos和客户机通常运行在不同的服务器上，并使用可靠的群集配置选项之一进行配置。您可以在《配置指南》]（../clusters\\u and\\u clients/configuration\\u guide/index.md）和[群集管理](../implementation/cluster_management.zh.md)是的。
+我们在这里使用的配置示例用于测试与`本地服务器`是的。在生产环境中，silos和客户端通常运行在不同的服务器上，并使用可靠的群集配置选项之一进行配置。您可以在《配置指南》]（../clusters\\u and\\u clients/configuration\\u guide/index.md）和[群集管理](../implementation/cluster_management.zh.md)是的。

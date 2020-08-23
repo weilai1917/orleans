@@ -11,7 +11,7 @@ Orleanssilos使用可观察的生命周期（参见[Orleans生命周期](../impl
 
 ## 阶段
 
-Orleanssilos和集群客户机使用一组公共的服务生命周期阶段。
+Orleanssilos和集群客户端使用一组公共的服务生命周期阶段。
 
 ```csharp
 public static class ServiceLifecycleStage

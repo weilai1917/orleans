@@ -67,7 +67,7 @@ PS> Import-Module OrleansPSUtils
 
 -   **`启动GrainClient`**
 
-    -   与Call相同`grainclient.initialize（）`它将查找已知的Orleans客户机配置文件名
+    -   与Call相同`grainclient.initialize（）`它将查找已知的Orleans客户端配置文件名
 
 -   **`启动grainclient[-configfilepath]<string>[[-timeout]<timespan>]`**
 

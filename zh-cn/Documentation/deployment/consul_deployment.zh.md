@@ -149,7 +149,7 @@ public void Start(ClusterConfiguration config)
 "2016-01-29T16:35:58.9193803Z"
 ```
 
-当客户机连接时，他们通过使用uri在一个http get中读取集群中所有silos的kvs`http://192.168.1.26:8500/v1/kv/orleans/myorleansdeployment/？递归`是的。
+当客户端连接时，他们通过使用uri在一个http get中读取集群中所有silos的kvs`http://192.168.1.26:8500/v1/kv/orleans/myorleansdeployment/？递归`是的。
 
 ## 限制
 

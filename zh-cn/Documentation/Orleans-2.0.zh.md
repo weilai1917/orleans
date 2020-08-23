@@ -27,7 +27,7 @@ orleans仍然会在指定的程序集中自动查找相关类型，如grain接�
 
 -   创建了`Microsoft.Orleans.core.abstractions公司`nuget包并将几个类型移动/重构到其中。
 
-grain代码很可能只需要引用这些抽象，而silo主机和客户机将引用更多的orleans包。我们计划不经常更新这个包。
+grain代码很可能只需要引用这些抽象，而silo主机和客户端将引用更多的orleans包。我们计划不经常更新这个包。
 
 -   添加对作用域服务的支持。
 
