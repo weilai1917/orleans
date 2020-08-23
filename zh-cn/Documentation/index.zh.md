@@ -130,7 +130,7 @@ Orleans的设计是弹性伸缩的。当silos加入集群时，它能够接受�
 
 Orleans运行任何支持.NETCore或.NETFramework的地方。这包括在Linux、Windows和macOS上托管，并部署到Kubernetes、虚拟机或物理机、本地或云中，以及PaaS服务（如Azure云服务）。
 
-### 无国籍工人
+### 无状态 Worker
 
 无状态工作者是特殊标记的grains，没有任何关联状态，可以同时在多个silos上激活。这样就可以提高无状态函数的并行性。有关详细信息，请参见[无状态工人Grains](grains/stateless_worker_grains.md)文档。
 

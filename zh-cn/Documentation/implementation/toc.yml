@@ -1,15 +1,15 @@
-- name: Orleans Lifecycle
+- name: Orleans 生命周期
   href: orleans_lifecycle.zh.md
   homepage: index.zh.md
-- name: Messaging Delivery Guarantees
+- name: 消息传递保证
   href: messaging_delivery_guarantees.zh.md
-- name: Scheduler
+- name: 调度
   href: scheduler.zh.md
-- name: Cluster Management
+- name: 集群管理
   href: cluster_management.zh.md
-- name: Streams Implementation
+- name: Streams 实现
   href: streams_implementation.zh.md
-- name: Load Balancing
+- name: 负载均衡
   href: load_balancing.zh.md
 - name: 单元测试
   href: testing.zh.md

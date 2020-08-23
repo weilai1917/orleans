@@ -1,20 +1,20 @@
-- name: Developing a Grain
+- name: 部署一个 Grain
   href: index.zh.md
-- name: Grain Identity
+- name: Grain 身份
   href: grain_identity.zh.md
-- name: Timers and Reminders
+- name: 计时器和提醒
   href: timers_and_reminders.zh.md
-- name: Observers
+- name: 观察者
   href: observers.zh.md
-- name: Reentrancy
+- name: 可重入
   href: reentrancy.zh.md
-- name: Request Context
+- name: 请求上下文
   href: request_context.zh.md
-- name: Code Generation
+- name: 代码生成
   href: code_generation.zh.md
-- name: Persistence
+- name: 持久化
   href: grain_persistence/toc.yml
-- name: Event Sourcing
+- name: 事件溯源
   href: event_sourcing/toc.yml
-- name: Advanced Features
+- name: 高级特性
   href: advanced/toc.yml

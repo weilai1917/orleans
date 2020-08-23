@@ -1,10 +1,10 @@
 - name: 概述
   href: grain_versioning.zh.md
-- name: Backward Compatibility Guidelines
+- name: 向后兼容准则
   href: backward_compatibility_guidelines.zh.md
-- name: Compatible grains
+- name: 兼容 grains
   href: compatible_grains.zh.md
-- name: Version selector strategy
+- name: 版本选择策略
   href: version_selector_strategy.zh.md
-- name: Deploying New Versions of Grains
+- name: 部署新版本 Grains
   href: deploying_new_versions_of_grains.zh.md

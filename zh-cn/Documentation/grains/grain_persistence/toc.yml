@@ -1,6 +1,6 @@
-- name: Grain Persistence
+- name: Grain 持久化
   href: index.zh.md
-- name: Relational Storage (ADO.NET)
+- name: 关系存储 (ADO.NET)
   href: relational_storage.zh.md
 - name: Azure Storage
   href: azure_storage.zh.md

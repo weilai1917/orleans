@@ -1,5 +1,5 @@
-- name: Tutorials
+- name: 教程
   href: index.zh.md
   items:
-    - name: Declarative Persistence
+    - name: 持久化声明
       href: Declarative-Persistence.zh.md
