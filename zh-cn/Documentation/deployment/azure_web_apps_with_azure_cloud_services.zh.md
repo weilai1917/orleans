@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Using Azure Web Apps with Azure Cloud Services
+title: 使用Azure Web Apps和Azure Cloud Services
 ---
 
 # 将azure web应用与azure云服务一起使用

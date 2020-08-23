@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Multi-Cluster Support
+title: 多集群支持
 ---
 
 # 多集群支持

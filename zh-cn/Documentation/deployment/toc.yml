@@ -1,15 +1,15 @@
-- name: Running the Application
+- name: 运行应用
   href: index.zh.md
-- name: Handling Failures
+- name: 错误处理
   href: handling_failures.zh.md
-- name: Using Azure Web Apps with Azure Cloud Services
+- name: 使用Azure Web Apps和Azure Cloud Services
   href: azure_web_apps_with_azure_cloud_services.zh.md
-- name: Troubleshooting Azure Cloud Services Deployments
+- name: 对Azure云服务部署进行故障排除
   href: troubleshooting_azure_cloud_services_deployments.zh.md
-- name: Consul Deployments
+- name: Consul 部署
   href: consul_deployment.zh.md
-- name: Troubleshooting Deployments
+- name: 排除部署故障
   href: troubleshooting_deployments.zh.md
-- name: Multi-Cluster Support
+- name: 多集群支持
   href: multi-cluster_support/toc.yml
   

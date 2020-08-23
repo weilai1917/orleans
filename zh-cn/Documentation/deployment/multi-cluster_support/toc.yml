@@ -1,4 +1,4 @@
-- name: Overview
+- name: 概述
   href: Overview.zh.md
 - name: Multi-Cluster Configuration
   href: MultiClusterConfiguration.zh.md

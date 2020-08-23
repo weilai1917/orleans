@@ -1,4 +1,4 @@
-- name: Overview
+- name: 概述
   href: grain_versioning.zh.md
 - name: Backward Compatibility Guidelines
   href: backward_compatibility_guidelines.zh.md

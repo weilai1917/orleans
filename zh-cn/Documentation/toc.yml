@@ -1,25 +1,25 @@
-- name: Overview
+- name: 概述
   href: index.zh.md
   homepage: index.zh.md
 - name: Grains
   href: grains/toc.yml
-- name: Streaming
+- name: 流
   href: streaming/toc.yml
-- name: Hosting
+- name: 托管
   href: clusters_and_clients/toc.yml
   items:
-  - name: Configuration Guide
+  - name: 配置指南
     href: index.zh.md
-  - name: Monitoring
+  - name: 监控
     href: index.zh.md
-  - name: Deployment
+  - name: 部署
     href: deployment/toc.yml
   items:
-  - name: Multi-Cluster Support
+  - name: 多集群至此
     href: index.zh.md
-- name: Tutorials and Samples
+- name: 教程及示例
   href: tutorials_and_samples/toc.yml
-- name: Implementation Details
+- name: 实现细节
   href: implementation/toc.yml
-- name: Resources
+- name: 资源
   href: resources/toc.yml
