@@ -3,7 +3,7 @@ layout: page
 title: Adventure
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Adventure
 

@@ -3,7 +3,7 @@ layout: page
 title: Code Generation
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Code Generation
 

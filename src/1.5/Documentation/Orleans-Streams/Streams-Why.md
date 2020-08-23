@@ -3,7 +3,7 @@ layout: page
 title: Why Orleans Streams?
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Why Orleans Streams?
 

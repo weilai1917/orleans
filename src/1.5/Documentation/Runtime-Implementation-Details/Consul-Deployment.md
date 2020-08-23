@@ -3,7 +3,7 @@ layout: page
 title: Using Consul as a Membership Provider
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Using Consul as a Membership Provider
 

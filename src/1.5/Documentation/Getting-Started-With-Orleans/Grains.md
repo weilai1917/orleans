@@ -3,7 +3,7 @@ layout: page
 title: Grains
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 
 ### Grains

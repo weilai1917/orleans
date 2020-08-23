@@ -3,7 +3,7 @@ layout: page
 title: Stateless Worker Grains
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Stateless Worker Grains
 

@@ -3,7 +3,7 @@ layout: page
 title: Activation Garbage Collection
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Activation Garbage Collection
 As described in [Grains](../Getting-Started-With-Orleans/Grains.md), a *grain activation* is an in-memory instance of a grain class that gets automatically created by the Orleans runtime on an as-needed basis as a temporary physical embodiment of a grain.

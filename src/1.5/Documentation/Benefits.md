@@ -3,7 +3,7 @@ layout: page
 title: Main Benefits
 ---
 
-[!include[](../warning-banner.md)]
+[!include[](../warning-banner.zh.md)]
 
 # Benefits
 

@@ -3,7 +3,7 @@ layout: page
 title: External Tasks and Grains
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # External Tasks and Grains
 

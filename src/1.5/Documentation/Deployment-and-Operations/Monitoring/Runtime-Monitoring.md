@@ -3,7 +3,7 @@ layout: page
 title: Runtime Monitoring
 ---
 
-[!include[](../../../warning-banner.md)]
+[!include[](../../../warning-banner.zh.md)]
 
 # Runtime Monitoring
 

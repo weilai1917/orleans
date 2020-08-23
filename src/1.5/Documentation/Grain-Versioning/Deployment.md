@@ -1,5 +1,5 @@
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 # Deploy new version of grains
 
 ### Rolling upgrade

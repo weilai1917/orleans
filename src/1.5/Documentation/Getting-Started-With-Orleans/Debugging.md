@@ -3,7 +3,7 @@ layout: page
 title: Debugging and Symbols
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 ### Debugging
 

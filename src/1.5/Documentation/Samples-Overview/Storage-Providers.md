@@ -3,7 +3,7 @@ layout: page
 title: Storage Providers
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Storage Providers
 

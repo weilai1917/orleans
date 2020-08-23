@@ -3,7 +3,7 @@ layout: page
 title: Grain cancellation tokens
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Grain cancellation tokens
 

@@ -3,7 +3,7 @@ layout: page
 title: Docker Deployment
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Docker Deployment
 

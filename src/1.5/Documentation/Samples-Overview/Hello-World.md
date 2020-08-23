@@ -3,7 +3,7 @@ layout: page
 title: Hello World
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Hello World
 

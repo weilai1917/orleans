@@ -3,7 +3,7 @@ layout: page
 title: Immediate vs. Delayed Confirmation
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Immediate Confirmation
 

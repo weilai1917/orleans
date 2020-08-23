@@ -3,7 +3,7 @@ layout: page
 title: Prerequisites
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Prerequisites
 

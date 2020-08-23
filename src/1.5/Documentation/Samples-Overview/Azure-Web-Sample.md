@@ -3,7 +3,7 @@ layout: page
 title: Azure Web Sample
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Azure Web Sample
 

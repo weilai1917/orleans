@@ -3,7 +3,7 @@ layout: page
 title: Multi-Cluster Communication
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 ## Multi-Cluster Communication
 

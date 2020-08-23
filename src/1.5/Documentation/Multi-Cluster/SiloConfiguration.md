@@ -3,7 +3,7 @@ layout: page
 title: Multi-Cluster Silo Configuration
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 ## Orleans Silo Configuration
 

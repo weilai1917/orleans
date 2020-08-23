@@ -3,7 +3,7 @@ layout: page
 title: Request Context
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Request Context
 

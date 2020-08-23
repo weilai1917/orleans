@@ -3,7 +3,7 @@ layout: page
 title: Developing a Grain
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 Please read about [Grains](Grains.md) before reading this article.
 

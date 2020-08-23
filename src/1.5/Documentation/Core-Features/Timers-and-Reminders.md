@@ -3,7 +3,7 @@ layout: page
 title: Timers and Reminders
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Timers and Reminders
 

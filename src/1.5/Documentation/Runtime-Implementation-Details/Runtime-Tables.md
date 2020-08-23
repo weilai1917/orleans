@@ -3,7 +3,7 @@ layout: page
 title: Azure Runtime Tables
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Azure Runtime Tables
 

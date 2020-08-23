@@ -3,7 +3,7 @@ layout: page
 title: Cluster Management in Orleans
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Cluster Management in Orleans
 

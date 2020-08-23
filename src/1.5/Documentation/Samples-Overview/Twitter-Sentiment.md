@@ -3,7 +3,7 @@ layout: page
 title: Twitter Sentiment
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Twitter Sentiment
 

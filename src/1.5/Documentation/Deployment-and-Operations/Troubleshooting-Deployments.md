@@ -3,7 +3,7 @@ layout: page
 title: Troubleshooting Deployments
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Troubleshooting Deployments
 

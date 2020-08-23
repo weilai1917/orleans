@@ -3,7 +3,7 @@ layout: page
 title: Samples Overview
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Samples Overview
 

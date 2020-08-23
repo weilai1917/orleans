@@ -3,7 +3,7 @@ layout: page
 title: Global-Single-Instance Grains
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 ### Grain Coordination Attributes
 

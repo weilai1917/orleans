@@ -189,6 +189,6 @@ TExpected queryResult = SpecificQuery12InOrleans<TExpected>(query, Param1, Param
 
 ## 添加新的指南ADO.NET公司供应商
 
-1.  根据[目标的实现](#realization-of-the-goals)以上章节。
+1.  根据[目标的实现](#目标的实现)以上章节。
 2.  将供应商ADO不变名称添加到[ADO变量](https://github.com/dotnet/orleans/blob/master/src/AdoNet/Shared/Storage/AdoNetInvariants.cs#L34)以及ADO.NET公司提供程序特定数据[DbConstantStore](https://github.com/dotnet/orleans/blob/master/src/AdoNet/Shared/Storage/DbConstantsStore.cs). 它们（可能）用于某些查询操作。e、 g.选择正确的统计插入模式（即`全部联合`有或没有`从双重`).
 3.  Orleans对所有系统商店都有全面的测试：会员资格、提醒和统计数据。为新数据库脚本添加测试是通过复制粘贴现有测试类和更改ADO不变名来完成的。同样，从[关系存储测试](https://github.com/dotnet/orleans/blob/master/test/Extensions/TesterAdoNet/RelationalUtilities/RelationalStorageForTesting.cs)以定义ADO不变量的测试功能。

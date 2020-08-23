@@ -3,7 +3,7 @@ layout: page
 title: Presence Service
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Presence Service
 

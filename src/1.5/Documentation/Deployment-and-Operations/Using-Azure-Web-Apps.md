@@ -3,7 +3,7 @@ layout: page
 title: Getting Started using Azure Web Apps
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Getting Started using Azure Web Apps
 

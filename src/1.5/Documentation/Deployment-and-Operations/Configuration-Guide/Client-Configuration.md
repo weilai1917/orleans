@@ -3,7 +3,7 @@ layout: page
 title: Client Configuration
 ---
 
-[!include[](../../../warning-banner.md)]
+[!include[](../../../warning-banner.zh.md)]
 
 # Client Configuration
 

@@ -3,7 +3,7 @@ layout: page
 title: Convert Orleans v0.9 csproj to use V1.0 NuGet
 ---
 
-[!include[](../warning-banner.md)]
+[!include[](../warning-banner.zh.md)]
 
 # How To Convert a .csproj File To Use Orleans NuGet Packages
 

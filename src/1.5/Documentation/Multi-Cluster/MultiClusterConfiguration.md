@@ -3,7 +3,7 @@ layout: page
 title: Multi-Cluster Configuration
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 ## Multi-Cluster Configuration
 

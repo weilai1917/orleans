@@ -3,7 +3,7 @@ layout: page
 title: Orleans Streams Implementation Details
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Orleans Streams Implementation Details
 

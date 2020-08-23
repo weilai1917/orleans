@@ -3,7 +3,7 @@ layout: page
 title: Configuring .NET Garbage Collection
 ---
 
-[!include[](../../../warning-banner.md)]
+[!include[](../../../warning-banner.zh.md)]
 
 # Configuring .NET Garbage Collection
 

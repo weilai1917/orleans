@@ -1,4 +1,4 @@
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Backward compatibility guidelines
 

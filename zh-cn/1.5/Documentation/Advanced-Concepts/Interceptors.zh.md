@@ -3,7 +3,7 @@ layout: page
 title: Interceptors
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Interceptors
 

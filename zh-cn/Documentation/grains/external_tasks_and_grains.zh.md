@@ -110,7 +110,7 @@ title: External Tasks and Grains
 | ------ | --- |
 | 在.NET线程池线程上运行后台工作。不允许使用任何Grains代码或Grains调用。 | `任务运行` |
 | grains界面调用 | 方法返回类型=`任务`要么`任务<T>` |
-| 使用基于Orleans回合的并发保证（[往上看](#taskfactorystartnew-and-async-delegates)）。 | `Task.Factory.StartNew（WorkerAsync）.Unwrap（）` |
+| 使用基于Orleans回合的并发保证（[往上看](#Task.Factory.StartNew和异步委托)）。 | `Task.Factory.StartNew（WorkerAsync）.Unwrap（）` |
 | 使用基于Orleans回合的并发保证，可以从Grains代码运行同步工作者任务。 | `Task.Factory.StartNew（WorkerSync）` |
 | 执行工作项的超时 | `任务延迟`+`Task.WhenAny` |
 | 用于`异步的`/`等待` | 普通的.NET Task-Async编程模型。支持和推荐 |

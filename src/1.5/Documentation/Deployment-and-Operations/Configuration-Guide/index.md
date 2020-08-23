@@ -3,7 +3,7 @@ layout: page
 title: Orleans Configuration Guide
 ---
 
-[!include[](../../../warning-banner.md)]
+[!include[](../../../warning-banner.zh.md)]
 
 # Orleans Configuration Guide
 

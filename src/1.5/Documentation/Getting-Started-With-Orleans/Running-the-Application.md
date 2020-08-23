@@ -3,7 +3,7 @@ layout: page
 title: Running the Application
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 ### Orleans Application
 

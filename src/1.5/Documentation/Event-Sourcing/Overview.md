@@ -3,7 +3,7 @@ layout: page
 title: Event Sourcing
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Event Sourcing
 

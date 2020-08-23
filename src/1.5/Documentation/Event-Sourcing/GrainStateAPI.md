@@ -3,7 +3,7 @@ layout: page
 title: JournaledGrain API
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # JournaledGrain Basics
 

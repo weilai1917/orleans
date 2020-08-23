@@ -3,7 +3,7 @@ layout: page
 title: Grain Persistence
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 ## Grain Persistence Goals
 

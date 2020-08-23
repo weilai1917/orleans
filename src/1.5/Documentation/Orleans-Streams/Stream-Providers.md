@@ -3,7 +3,7 @@ layout: page
 title: Orleans Stream Providers
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 
 # Stream Providers

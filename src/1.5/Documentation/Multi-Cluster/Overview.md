@@ -3,7 +3,7 @@ layout: page
 title: Multi-Cluster Support
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Multi-Cluster Support
 

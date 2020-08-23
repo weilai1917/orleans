@@ -3,7 +3,7 @@ layout: page
 title: Developing a Client
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 ### What Is Grain Client?
 

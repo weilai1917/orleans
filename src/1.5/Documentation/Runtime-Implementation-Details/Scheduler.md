@@ -3,7 +3,7 @@ layout: page
 title: Scheduler
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Scheduler
 

@@ -3,7 +3,7 @@ layout: page
 title: Orleans Streams Extensibility
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Orleans Streams Extensibility
 

@@ -3,7 +3,7 @@ layout: page
 title: Dependency Injection
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # What is Dependency Injection
 

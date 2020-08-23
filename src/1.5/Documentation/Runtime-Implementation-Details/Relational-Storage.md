@@ -3,7 +3,7 @@ layout: page
 title: Relational Storage
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Relational Storage
 
