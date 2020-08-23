@@ -1,0 +1,11 @@
+- name: What is a Grain Client
+  href: index.zh.md
+  homepage: index.zh.md
+- name: Silo Lifecycle
+  href: silo_lifecycle.zh.md
+- name: Heterogeneous Silos
+  href: heterogeneous_silos.zh.md
+- name: Configuration Guide
+  href: configuration_guide/toc.yml
+- name: Monitoring
+  href: monitoring/toc.yml

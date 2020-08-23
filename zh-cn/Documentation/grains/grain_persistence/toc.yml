@@ -1,0 +1,8 @@
+- name: Grain Persistence
+  href: index.zh.md
+- name: Relational Storage (ADO.NET)
+  href: relational_storage.zh.md
+- name: Azure Storage
+  href: azure_storage.zh.md
+- name: Amazon DynamoDB Storage
+  href: dynamodb_storage.zh.md

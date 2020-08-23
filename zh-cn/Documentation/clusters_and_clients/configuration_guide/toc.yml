@@ -1,0 +1,25 @@
+- name: Configuration Guide
+  href: index.zh.md
+  homepage: index.zh.md
+- name: Local Development Configuration
+  href: local_development_configuration.zh.md
+- name: Client Configuration
+  href: client_configuration.zh.md
+- name: Server Configuration
+  href: server_configuration.zh.md
+- name: Typical Configurations
+  href: typical_configurations.zh.md
+- name: Options Classes
+  href: list_of_options_classes.zh.md
+- name: Activation Garbage Collection
+  href: activation_garbage_collection.zh.md
+- name: Configuring .NET Garbage Collection
+  href: configuring_.NET_garbage_collection.zh.md
+- name: Configuring ADO.NET Providers
+  href: configuring_ADO.NET_providers.zh.md
+- name: Serialization
+  href: serialization.zh.md  
+- name: Startup Tasks
+  href: startup_tasks.zh.md
+- name: Shutting Down Orleans
+  href: shutting_down_orleans.zh.md   

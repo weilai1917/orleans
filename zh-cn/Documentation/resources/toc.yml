@@ -1,0 +1,12 @@
+- name: Resources Overview
+  href: index.zh.md
+- name: Frequently Asked Questions
+  href: frequently_asked_questions.zh.md
+- name: Documentation Guidelines
+  href: documentation_guidelines.zh.md
+- name: Links
+  href: links.zh.md
+- name: Presentations
+  href: presentations/index.zh.md
+- name: Blog
+  href: ../../blog/index.zh.md

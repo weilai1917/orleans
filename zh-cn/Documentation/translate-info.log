@@ -1,0 +1,3 @@
+{"level":"error","message":"API_SERVER_ERROR ,api:\u001b[36mgoogle\u001b[39m\n","timestamp":"2020-08-23T06:53:47.992Z"}
+{"level":"error","message":"API_SERVER_ERROR ,api:\u001b[36mbaidu\u001b[39m\n","timestamp":"2020-08-23T06:53:57.071Z"}
+{"level":"error","message":"API_SERVER_ERROR ,api:\u001b[36myoudao\u001b[39m\n","timestamp":"2020-08-23T06:54:00.297Z"}
