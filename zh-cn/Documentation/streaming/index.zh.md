@@ -9,7 +9,7 @@ Orleans v.1.0.0增加了对编程模型的流扩展的支持。流扩展提供�
 
 ## 我为什么要在乎？
 
-如果您已经知道所有[流处理](https://confluentinc.wordpress.com/2015/01/29/making-sense-of-stream-processing/)并且熟悉诸如[活动中心](http://azure.microsoft.com/en-us/services/event-hubs/)，[卡夫卡](http://kafka.apache.org/)，[Azure流分析](http://azure.microsoft.com/en-us/services/stream-analytics/)，[阿帕奇风暴](https://storm.apache.org/)，[Apache Spark流](https://spark.apache.org/streaming/)和[.NET中的反应性扩展（Rx）](https://msdn.microsoft.com/en-us/data/gg577609.aspx)，您可能会问为什么要关心。**为什么我们还需要另一个流处理系统，以及Actor与流之间的关系？** [“为什么OrleansStreams？”](streams_why.md)是要回答这个问题。
+如果您已经知道所有[流处理](https://confluentinc.wordpress.com/2015/01/29/making-sense-of-stream-processing/)并且熟悉诸如[活动中心](http://azure.microsoft.com/en-us/services/event-hubs/)，[卡夫卡](http://kafka.apache.org/)，[Azure流分析](http://azure.microsoft.com/en-us/services/stream-analytics/)，[阿帕奇风暴](https://storm.apache.org/)，[Apache Spark流](https://spark.apache.org/streaming/)和[.NET中的反应性扩展（Rx）](https://msdn.microsoft.com/en-us/data/gg577609.aspx)，您可能会问为什么要关心。**为什么我们还需要另一个流处理系统，以及Actor与流之间的关系？** [“为什么OrleansStreams？”](streams_why.zh.md)是要回答这个问题。
 
 ## 程式设计模型
 
@@ -58,19 +58,19 @@ public class ChatUser: Grain
 
 ## 快速入门样本
 
-的[快速入门样本](streams_quick_start.md)是对在应用程序中使用流的总体工作流程的快速概述。阅读后，您应该阅读[流编程API](streams_programming_APIs.md)对概念有更深入的了解。
+的[快速入门样本](streams_quick_start.zh.md)是对在应用程序中使用流的总体工作流程的快速概述。阅读后，您应该阅读[流编程API](streams_programming_APIs.zh.md)对概念有更深入的了解。
 
 ## 流编程API
 
-一个[流编程API](streams_programming_APIs.md)提供了有关编程API的详细说明。
+一个[流编程API](streams_programming_APIs.zh.md)提供了有关编程API的详细说明。
 
 ## 流提供者
 
-流可以通过各种形状和形式的物理通道出现，并且可以具有不同的语义。Orleans Streaming旨在通过以下概念支持这种多样性**流提供者**，这是系统中的可扩展点。Orleans目前有两个流提供程序的实现：基于TCP**简单消息流提供者**和基于Azure队列**Azure队列流提供程序**。有关Steam Providers的更多详细信息，请访问：[流提供者](stream_providers.md)。
+流可以通过各种形状和形式的物理通道出现，并且可以具有不同的语义。Orleans Streaming旨在通过以下概念支持这种多样性**流提供者**，这是系统中的可扩展点。Orleans目前有两个流提供程序的实现：基于TCP**简单消息流提供者**和基于Azure队列**Azure队列流提供程序**。有关Steam Providers的更多详细信息，请访问：[流提供者](stream_providers.zh.md)。
 
 ## 流语义
 
-**流订阅语义**：Orleans Streams保证Stream Subscription操作的顺序一致性。具体来说，当消费者订阅流时，一旦`任务`如果代表订阅操作已成功解决，则使用者将看到订阅后生成的所有事件。此外，可倒带流允许通过使用以下内容从过去的任意时间点进行订阅`StreamSequenceToken`（可以找到更多详细信息[这里](stream_providers.md)）。
+**流订阅语义**：Orleans Streams保证Stream Subscription操作的顺序一致性。具体来说，当消费者订阅流时，一旦`任务`如果代表订阅操作已成功解决，则使用者将看到订阅后生成的所有事件。此外，可倒带流允许通过使用以下内容从过去的任意时间点进行订阅`StreamSequenceToken`（可以找到更多详细信息[这里](stream_providers.zh.md)）。
 
 **个人流事件交付保证**：单个事件传递的保证取决于单个流提供者。一些提供仅尽最大可能的一次传送（例如简单消息流（SMS）），而其他一些提供至少一次的传送（例如Azure队列流）。甚至可以构建一个将保证一次交付的流提供程序（我们还没有这样的提供程序，但是可以构建一个）。
 
@@ -78,7 +78,7 @@ public class ChatUser: Grain
 
 ## 流实施
 
-的[Orleans流实施](../implementation/streams_implementation.md)提供了内部实现的高级概述。
+的[Orleans流实施](../implementation/streams_implementation.zh.md)提供了内部实现的高级概述。
 
 ## 代码样本
 

@@ -13,10 +13,10 @@ orleans可以用于各种适合不同使用场景的配置，例如用于开发�
 
 通过`silohostbuilder软件`和`客户端生成器`以及一些补充期权类别。Orleans的选项类遵循[ASP.NET选项](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options/)模式，可通过文件、环境变量等加载。请参阅[选项模式文档](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options/)更多信息。
 
-如果要为本地开发配置silos和客户端，请查看[本地开发配置](local_development_configuration.md)页：1茶[服务器配置](server_configuration.md)和[客户端配置](client_configuration.md)导游盖部分配置谷仓和顾客，各自。
+如果要为本地开发配置silos和客户端，请查看[本地开发配置](local_development_configuration.zh.md)页：1茶[服务器配置](server_configuration.zh.md)和[客户端配置](client_configuration.zh.md)导游盖部分配置谷仓和顾客，各自。
 
-第二节[典型配置](typical_configurations.md)提供一个少量共同配置的概要。
+第二节[典型配置](typical_configurations.zh.md)提供一个少量共同配置的概要。
 
-一份可配置的重要核心选项清单可在上面找到。[本节](list_of_options_classes.md)页：1
+一份可配置的重要核心选项清单可在上面找到。[本节](list_of_options_classes.zh.md)页：1
 
-**重要的**确保你预先配置净垃圾邮件收藏[配置网收藏](configuring_.NET_garbage_collection.md)页：1
+**重要的**确保你预先配置净垃圾邮件收藏[配置网收藏](configuring_.NET_garbage_collection.zh.md)页：1

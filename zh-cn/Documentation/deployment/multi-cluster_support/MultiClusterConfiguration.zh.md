@@ -14,7 +14,7 @@ title: Multi-Cluster Configuration
 
 活动/非活动与连接/非连接是独立的：所有四种组合都是可能的。
 
-特定服务的所有集群都通过[八卦网](GossipChannels.md)是的。八卦网传播配置和状态信息。
+特定服务的所有集群都通过[八卦网](GossipChannels.zh.md)是的。八卦网传播配置和状态信息。
 
 ### 注入配置
 

@@ -9,7 +9,7 @@ title: Orleans Streams Programming APIs
 
 ### 异步流<a name="Async-Stream"></a>
 
-应用程序通过使用*流提供程序*获取流的句柄。您可以阅读有关流提供程序的更多信息[在这里](stream_providers.md)，但现在您可以将其视为允许实现者自定义流行为和语义的流工厂：
+应用程序通过使用*流提供程序*获取流的句柄。您可以阅读有关流提供程序的更多信息[在这里](stream_providers.zh.md)，但现在您可以将其视为允许实现者自定义流行为和语义的流工厂：
 
 ```csharp
 IStreamProvider streamProvider = base.GetStreamProvider("SimpleStreamProvider");
@@ -187,7 +187,7 @@ hostBuilder.AddAzureTableGrainStorage("PubSubStore",
 
 ### 配置<a name="Configuration"></a>
 
-为了使用流，您需要通过思洛主机或群集客户机构建器启用流提供程序。您可以阅读有关流提供程序的更多信息[在这里](stream_providers.md). 示例流提供程序设置：
+为了使用流，您需要通过思洛主机或群集客户机构建器启用流提供程序。您可以阅读有关流提供程序的更多信息[在这里](stream_providers.zh.md). 示例流提供程序设置：
 
 ```csharp
 hostBuilder.AddSimpleMessageStreamProvider("SMSProvider")
@@ -200,4 +200,4 @@ hostBuilder.AddSimpleMessageStreamProvider("SMSProvider")
 
 ## 下一个
 
-[Orleans河流供应商](stream_providers.md)
+[Orleans河流供应商](stream_providers.zh.md)

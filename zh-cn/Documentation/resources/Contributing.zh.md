@@ -17,11 +17,11 @@ title: Contributing to Orleans
 
 拉请求总是受欢迎的！
 
--   **[实习生和学生项目](student_projects.md)**
+-   **[实习生和学生项目](student_projects.zh.md)**
 
 对可能的实习生/学生项目的一些建议。
 
--   **[文件编制指南](documentation_guidelines.md)** 
+-   **[文件编制指南](documentation_guidelines.zh.md)** 
 
 用于编写此网站文档的样式指南。
 
@@ -45,9 +45,9 @@ GitHub上DotNet项目的贡献许可协议。
 
 对于编码风格的战争，我们尽量不要过于拘泥于强迫症，但在发生争议时，我们确实会回到GitHub上其他DotNet OSS项目使用的两本“.NET编码标准”书籍中的核心原则：
 
--   [编码风格指南](https://github.com/dotnet/corefx/blob/master/Documentation/coding-guidelines/coding-style.md)
+-   [编码风格指南](https://github.com/dotnet/corefx/blob/master/Documentation/coding-guidelines/coding-style.zh.md)
 
--   [.NET框架设计指南](https://github.com/dotnet/corefx/blob/master/Documentation/coding-guidelines/framework-design-guidelines-digest.md)
+-   [.NET框架设计指南](https://github.com/dotnet/corefx/blob/master/Documentation/coding-guidelines/framework-design-guidelines-digest.zh.md)
 
 还有很多其他有用的文档[.NET核心清除器](https://github.com/dotnet/coreclr/tree/master/Documentation)和[.NET核心框架](https://github.com/dotnet/corefx/tree/master/Documentation)值得一读的文档站点，尽管大多数有经验的C开发人员可能已经通过渗透获得了许多这样的最佳实践，特别是在性能和内存管理方面。
 

@@ -13,17 +13,17 @@ title: Orleans 2.0
 
 -   完全转移到利用fluid builder模式api的依赖注入的编程配置。
 
-基于配置对象和xml文件的旧api是为了向后兼容而保留的，但不会向前移动，将来会被弃用。有关详细信息，请参见[配置](clusters_and_clients/configuration_guide/index.md)章节。
+基于配置对象和xml文件的旧api是为了向后兼容而保留的，但不会向前移动，将来会被弃用。有关详细信息，请参见[配置](clusters_and_clients/configuration_guide/index.zh.md)章节。
 
 -   应用程序程序集的显式编程规范，它取代了Orleans运行时在silos或客户端初始化时自动扫描文件夹的功能。
 
 orleans仍然会在指定的程序集中自动查找相关类型，如grain接口和类、序列化程序等，但它不再尝试加载在文件夹中可以找到的每个程序集。为了向后兼容，提供了用于加载文件夹中所有程序集的可选助手方法：`iapplicationpartmanager.addfromapplicationbasedirectory（）`是的。
 
-见[配置](clusters_and_clients/configuration_guide/index.md)和[迁移](resources/Migration/Migration1.5.md)部分了解更多详细信息。
+见[配置](clusters_and_clients/configuration_guide/index.zh.md)和[迁移](resources/Migration/Migration1.5.zh.md)部分了解更多详细信息。
 
 -   代码生成的彻底检查。
 
-虽然代码生成对开发人员来说基本上是不可见的，但是在处理各种可能类型的序列化时，代码生成变得更加健壮。F组件需要特殊处理。见[代码生成](resources/Migration/Codegen.md)部分了解更多详细信息。
+虽然代码生成对开发人员来说基本上是不可见的，但是在处理各种可能类型的序列化时，代码生成变得更加健壮。F组件需要特殊处理。见[代码生成](resources/Migration/Codegen.zh.md)部分了解更多详细信息。
 
 -   创建了`Microsoft.Orleans.core.abstractions公司`nuget包并将几个类型移动/重构到其中。
 
@@ -37,4 +37,4 @@ grain代码很可能只需要引用这些抽象，而silo主机和客户机将�
 
 -   2.0包含了对acid分布式跨粒度事务的测试版支持。
 
-该功能将为原型设计和开发做好准备，并将在2.0版本发布后的某个时间毕业用于生产。见[交易](grains/transactions.md)更多细节。
+该功能将为原型设计和开发做好准备，并将在2.0版本发布后的某个时间毕业用于生产。见[交易](grains/transactions.zh.md)更多细节。

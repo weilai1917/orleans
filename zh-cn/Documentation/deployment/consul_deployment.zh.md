@@ -15,7 +15,7 @@ consul有一个非常详细的概述，包括与类似解决方案的比较[在�
 
 ## 为什么选择领事？
 
-作为[Orleans会员服务商](../implementation/cluster_management.md)，当您需要提供**内部解决方案**这并不要求潜在客户拥有现有的基础设施。**和**一家合作的it提供商。consul是一个非常轻量级的单一可执行文件，没有依赖关系，因此可以很容易地构建到您自己的中间件解决方案中。当consul已经是您发现、检查和维护微服务的解决方案时，完全集成orleans成员关系以简化操作是有意义的。因此，我们在consul（也称为“orleans custom system store”）中实现了一个成员表，它与orleans的[群集管理](../implementation/cluster_management.md)是的。
+作为[Orleans会员服务商](../implementation/cluster_management.zh.md)，当您需要提供**内部解决方案**这并不要求潜在客户拥有现有的基础设施。**和**一家合作的it提供商。consul是一个非常轻量级的单一可执行文件，没有依赖关系，因此可以很容易地构建到您自己的中间件解决方案中。当consul已经是您发现、检查和维护微服务的解决方案时，完全集成orleans成员关系以简化操作是有意义的。因此，我们在consul（也称为“orleans custom system store”）中实现了一个成员表，它与orleans的[群集管理](../implementation/cluster_management.zh.md)是的。
 
 ## 设立领事
 
@@ -105,7 +105,7 @@ public void Start(ClusterConfiguration config)
 
 ## 实施细节
 
-成员资格表提供程序使用[领事钥匙/价值商店](https://www.consul.io/intro/getting-started/kv.html)cas的功能。当每个silos启动时，它会注册两个KV条目，一个包含silos的详细信息，另一个保存silos上次报告它处于活动状态时的信息（后者是指诊断“I am alive”条目，而不是指直接在silos之间发送且未写入表中的故障检测Hearbeats）。根据orleans的需要，对表的所有写操作都由cas执行，以提供并发控制。[群集管理协议](../implementation/cluster_management.md)是的。silos运行后，您可以在Web浏览器中查看这些条目[在这里](http://localhost:8500/v1/kv/?keys)，将显示如下内容：
+成员资格表提供程序使用[领事钥匙/价值商店](https://www.consul.io/intro/getting-started/kv.html)cas的功能。当每个silos启动时，它会注册两个KV条目，一个包含silos的详细信息，另一个保存silos上次报告它处于活动状态时的信息（后者是指诊断“I am alive”条目，而不是指直接在silos之间发送且未写入表中的故障检测Hearbeats）。根据orleans的需要，对表的所有写操作都由cas执行，以提供并发控制。[群集管理协议](../implementation/cluster_management.zh.md)是的。silos运行后，您可以在Web浏览器中查看这些条目[在这里](http://localhost:8500/v1/kv/?keys)，将显示如下内容：
 
 ```js
 [
@@ -155,7 +155,7 @@ public void Start(ClusterConfiguration config)
 
 ### Orleans扩展成员协议（表版本和ETag）
 
-consul kv currently目前不支持原子更新。因此，orleans consul成员资格提供者只实现了orleans基本成员资格协议，如前所述[在这里](../implementation/cluster_management.md)不支持扩展成员身份协议。这个扩展的协议被引入作为一个额外的，但不是必需的，silos连通性验证和作为尚未实现的功能的基础。如果您的基础设施配置正确，您将不会因缺乏支持而受到任何不利影响。
+consul kv currently目前不支持原子更新。因此，orleans consul成员资格提供者只实现了orleans基本成员资格协议，如前所述[在这里](../implementation/cluster_management.zh.md)不支持扩展成员身份协议。这个扩展的协议被引入作为一个额外的，但不是必需的，silos连通性验证和作为尚未实现的功能的基础。如果您的基础设施配置正确，您将不会因缺乏支持而受到任何不利影响。
 
 ### 多个数据中心
 

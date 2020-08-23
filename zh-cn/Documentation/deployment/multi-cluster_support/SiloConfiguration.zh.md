@@ -57,13 +57,13 @@ var silo = new SiloHostBuilder()
 
 这个`多集群网络`节是可选的-如果不存在，则禁用此silos的所有多群集支持。
 
-这个**所需参数** `棒状的`和`八卦频道`在[多集群通信](GossipChannels.md)是的。
+这个**所需参数** `棒状的`和`八卦频道`在[多集群通信](GossipChannels.zh.md)是的。
 
-可选参数`MaxMultiClusterGateways系列`和`背景消息间隔`在[多集群通信](GossipChannels.md)是的。
+可选参数`MaxMultiClusterGateways系列`和`背景消息间隔`在[多集群通信](GossipChannels.zh.md)是的。
 
-可选参数`默认多群集`在[多群集配置](MultiClusterConfiguration.md)是的。
+可选参数`默认多群集`在[多群集配置](MultiClusterConfiguration.zh.md)是的。
 
-可选参数`默认为UseGlobalSingleInstances`，请`GlobalSingleInstanceRetryInterval`和`GlobalSingleInstanceNumberEntries全局`在[全局单实例粒度](GlobalSingleInstance.md)是的。
+可选参数`默认为UseGlobalSingleInstances`，请`GlobalSingleInstanceRetryInterval`和`GlobalSingleInstanceNumberEntries全局`在[全局单实例粒度](GlobalSingleInstance.zh.md)是的。
 
 ## Orleans客户端配置
 

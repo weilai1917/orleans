@@ -22,9 +22,9 @@ Grains可以具有多个与之关联的命名持久数据对象。在激活Grain
 
 可以在以下位置找到OrleansGrains存储提供商[NuGet](https://www.nuget.org/packages?q=Orleans+Persistence)。官方维护的软件包包括：
 
--   [Microsoft.Orleans.Persistence.AdoNet](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AdoNet)适用于ADO.NET支持的SQL数据库和其他存储系统。有关更多信息，请参见[ADO.NET粒度持久性](relational_storage.md)。
--   [Microsoft.Orleans.Persistence.AzureStorage](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AzureStorage)通过Azure Table Storage API访问Azure存储，包括Azure Blob存储，Azure表存储和Azure CosmosDB。有关更多信息，请参见[Azure存储粒度持久性](azure_storage.md)。
--   [Microsoft.Orleans.Persistence.DynamoDB](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.DynamoDB)适用于Amazon DynamoDB。有关更多信息，请参见[Amazon DynamoDB粒度持久性](dynamodb_storage.md)。
+-   [Microsoft.Orleans.Persistence.AdoNet](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AdoNet)适用于ADO.NET支持的SQL数据库和其他存储系统。有关更多信息，请参见[ADO.NET粒度持久性](relational_storage.zh.md)。
+-   [Microsoft.Orleans.Persistence.AzureStorage](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AzureStorage)通过Azure Table Storage API访问Azure存储，包括Azure Blob存储，Azure表存储和Azure CosmosDB。有关更多信息，请参见[Azure存储粒度持久性](azure_storage.zh.md)。
+-   [Microsoft.Orleans.Persistence.DynamoDB](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.DynamoDB)适用于Amazon DynamoDB。有关更多信息，请参见[Amazon DynamoDB粒度持久性](dynamodb_storage.zh.md)。
 
 ## API
 

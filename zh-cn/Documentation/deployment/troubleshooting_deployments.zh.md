@@ -65,7 +65,7 @@ Wadlogstable是查看日志的良好起点。
 
 在`诊断.wadcfgx`文件中的web和worker角色，请确保设置`scheduledTransferLogLevelFilter`中的属性`原木`元素到`问询处`，因为这是跟踪筛选的附加层，它定义将哪些跟踪发送到`瓦德洛斯泰布尔`在azure存储中。
 
-你可以在[配置指南](../clusters_and_clients/configuration_guide/index.md)是的。
+你可以在[配置指南](../clusters_and_clients/configuration_guide/index.zh.md)是的。
 
 ## 与asp.net的兼容性
 

@@ -3,7 +3,7 @@ layout: page
 title: Server Configuration
 ---
 
-> [啊！注意!]如果要启动本地silos和本地客户机进行开发，请查看[本地开发配置页](local_development_configuration.md)
+> [啊！注意!]如果要启动本地silos和本地客户机进行开发，请查看[本地开发配置页](local_development_configuration.zh.md)
 
 # 服务器配置
 
@@ -135,4 +135,4 @@ Orleanssilos有两种典型的端点配置：
 -   `引用（）`从添加的零件添加所有引用的部件。这将立即加载任何可传递引用的程序集。忽略程序集加载错误。
 -   `使用代码生成（）`为添加的部件生成支持代码并将其添加到部件管理器中。注意，这需要`Microsoft.Orleans.Orleanscodegenerator公司`要安装的包，通常称为运行时代码生成。
 
-类型发现要求提供的应用程序部分包含特定属性。添加生成时代码生成包（`Microsoft.Orleans.CodeGenerator.MSBuild`或`Microsoft.Orleans.OrleansCodeGenerator.Build公司`）对于包含粒度、粒度接口或序列化程序的每个项目，建议使用确保这些属性存在的方法。生成生成时代码只支持C。对于F、Visual Basic和其他.NET语言，可以在配置期间通过`使用代码生成（）`上述方法。有关代码生成的更多信息，请参见[相应部分](../../grains/code_generation.md)是的。
+类型发现要求提供的应用程序部分包含特定属性。添加生成时代码生成包（`Microsoft.Orleans.CodeGenerator.MSBuild`或`Microsoft.Orleans.OrleansCodeGenerator.Build公司`）对于包含粒度、粒度接口或序列化程序的每个项目，建议使用确保这些属性存在的方法。生成生成时代码只支持C。对于F、Visual Basic和其他.NET语言，可以在配置期间通过`使用代码生成（）`上述方法。有关代码生成的更多信息，请参见[相应部分](../../grains/code_generation.zh.md)是的。

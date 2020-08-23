@@ -84,7 +84,7 @@ public class ThermostatGrain : Grain, IThermostat, IThermostatControl
 }
 ```
 
-上面的Grains类不会保持其状态。[文档](grains/grain_persistence/index.md)中提供了演示状态持久性的更彻底的示例。
+上面的Grains类不会保持其状态。[文档](grains/grain_persistence/index.zh.md)中提供了演示状态持久性的更彻底的示例。
 
 ## Orleans运行时
 
@@ -100,11 +100,11 @@ Orleans与.NET Standard 2.0及更高版本兼容，运行在Windows、Linux和ma
 
 ### 坚持不懈
 
-Orleans提供了一个简单的持久性模型，确保在处理请求之前，状态对grain是可用的，并且保持一致性。Grains可以有多个命名的持久性数据对象，例如，一个名为“profile”的用户概要文件，一个名为“inventory”的存储。此状态可以存储在任何存储系统中。例如，配置文件数据可以存储在一个数据库中，而库存存储在另一个数据库中。当一个grain正在运行时，这个状态被保存在内存中，这样就可以在不访问存储器的情况下处理读请求。当grains更新其状态时`state.WriteStateAsync()`call确保备份存储的持久性和一致性得到更新。有关详细信息，请参见[Grains持久性](grains/grain_persistence/index.md)文档。
+Orleans提供了一个简单的持久性模型，确保在处理请求之前，状态对grain是可用的，并且保持一致性。Grains可以有多个命名的持久性数据对象，例如，一个名为“profile”的用户概要文件，一个名为“inventory”的存储。此状态可以存储在任何存储系统中。例如，配置文件数据可以存储在一个数据库中，而库存存储在另一个数据库中。当一个grain正在运行时，这个状态被保存在内存中，这样就可以在不访问存储器的情况下处理读请求。当grains更新其状态时`state.WriteStateAsync()`call确保备份存储的持久性和一致性得到更新。有关详细信息，请参见[Grains持久性](grains/grain_persistence/index.zh.md)文档。
 
 ### 分布式ACID事务
 
-除了上面描述的简单持久性模型之外，grains还可以*事务状态*. 多个grains可以参与[酸性](https://en.wikipedia.org/wiki/ACID)不管事务的状态最终存储在何处。Orleans的事务是分布式和分散的（没有中央事务管理器或事务协调器），并且[可串行隔离](https://en.wikipedia.org/wiki/Isolation_(database_systems)#Isolation_levels). 有关Orleans交易的更多信息，请参阅[文档](grains/transactions.md)以及[微软研究院技术报告](https://www.microsoft.com/en-us/research/publication/transactions-distributed-actors-cloud-2/).
+除了上面描述的简单持久性模型之外，grains还可以*事务状态*. 多个grains可以参与[酸性](https://en.wikipedia.org/wiki/ACID)不管事务的状态最终存储在何处。Orleans的事务是分布式和分散的（没有中央事务管理器或事务协调器），并且[可串行隔离](https://en.wikipedia.org/wiki/Isolation_(database_systems)#Isolation_levels). 有关Orleans交易的更多信息，请参阅[文档](grains/transactions.zh.md)以及[微软研究院技术报告](https://www.microsoft.com/en-us/research/publication/transactions-distributed-actors-cloud-2/).
 
 ### Streams
 
@@ -112,7 +112,7 @@ Orleans提供了一个简单的持久性模型，确保在处理请求之前，�
 
 ### 计时器&提醒
 
-提醒是一种持久的Grains调度机制。它们可用于确保在将来某个时间点完成某些操作，即使此时grains当前未激活。计时器是非持久性的提醒物，可用于不需要可靠性的高频事件。有关详细信息，请参见[计时器和提醒](grains/timers_and_reminders.md)文档。
+提醒是一种持久的Grains调度机制。它们可用于确保在将来某个时间点完成某些操作，即使此时grains当前未激活。计时器是非持久性的提醒物，可用于不需要可靠性的高频事件。有关详细信息，请参见[计时器和提醒](grains/timers_and_reminders.zh.md)文档。
 
 ### 灵活的Grains存储
 
@@ -120,7 +120,7 @@ Orleans提供了一个简单的持久性模型，确保在处理请求之前，�
 
 ### Grains版本化&异构集群
 
-应用程序代码会随着时间的推移而发展，以安全地解释这些更改的方式升级实时生产系统可能是一项挑战，尤其是在有状态的系统中。Orleans的Grains界面可以选择性地进行版本控制。集群维护了一个映射，映射出集群中的哪些竖井上有哪些grain实现以及这些实现的版本。运行时将此版本信息与存储策略结合使用，以便在将调用路由到grains时做出存储决策。除了安全地更新版本化的grains之外，这还支持异构集群，其中不同的silo具有不同的grain实现集。有关详细信息，请参见[Grains版本化](grains/grain_versioning/grain_versioning.md)文档。
+应用程序代码会随着时间的推移而发展，以安全地解释这些更改的方式升级实时生产系统可能是一项挑战，尤其是在有状态的系统中。Orleans的Grains界面可以选择性地进行版本控制。集群维护了一个映射，映射出集群中的哪些竖井上有哪些grain实现以及这些实现的版本。运行时将此版本信息与存储策略结合使用，以便在将调用路由到grains时做出存储决策。除了安全地更新版本化的grains之外，这还支持异构集群，其中不同的silo具有不同的grain实现集。有关详细信息，请参见[Grains版本化](grains/grain_versioning/grain_versioning.zh.md)文档。
 
 ### 弹性伸缩性&容错
 
@@ -132,19 +132,19 @@ Orleans运行任何支持.NETCore或.NETFramework的地方。这包括在Linux�
 
 ### 无状态 Worker
 
-无状态工作者是特殊标记的grains，没有任何关联状态，可以同时在多个silos上激活。这样就可以提高无状态函数的并行性。有关详细信息，请参见[无状态工人Grains](grains/stateless_worker_grains.md)文档。
+无状态工作者是特殊标记的grains，没有任何关联状态，可以同时在多个silos上激活。这样就可以提高无状态函数的并行性。有关详细信息，请参见[无状态工人Grains](grains/stateless_worker_grains.zh.md)文档。
 
 ### Grains拦截器
 
-许多Grains的共同逻辑可以表示为[Grains拦截器](grains/interceptors.md). Orleans支持呼入和呼出的过滤器。过滤器的一些常见用例有：授权、日志记录和遥测以及错误处理。
+许多Grains的共同逻辑可以表示为[Grains拦截器](grains/interceptors.zh.md). Orleans支持呼入和呼出的过滤器。过滤器的一些常见用例有：授权、日志记录和遥测以及错误处理。
 
 ### 请求上下文
 
-元数据和其他信息可以通过使用[请求上下文](grains/request_context.md). 请求上下文可用于打孔分布式跟踪信息或任何其他用户定义的值。
+元数据和其他信息可以通过使用[请求上下文](grains/request_context.zh.md). 请求上下文可用于打孔分布式跟踪信息或任何其他用户定义的值。
 
 ## 入门
 
-请看[入门教程](tutorials_and_samples/tutorial_1.md).
+请看[入门教程](tutorials_and_samples/tutorial_1.zh.md).
 
 ### 建筑
 

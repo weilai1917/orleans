@@ -9,7 +9,7 @@ title: Typical Configurations
 
 ## 地方发展
 
-见[本地开发配置](local_development_configuration.md)
+见[本地开发配置](local_development_configuration.zh.md)
 
 ## 使用azure的可靠生产部署
 

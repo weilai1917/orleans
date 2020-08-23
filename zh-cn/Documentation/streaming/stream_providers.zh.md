@@ -21,4 +21,4 @@ Azure队列（AQ）流提供程序通过Azure队列传递事件。在生产者�
 
 ## 下一个
 
-[Orleans流实施细节](../implementation/streams_implementation.md)
+[Orleans流实施细节](../implementation/streams_implementation.zh.md)

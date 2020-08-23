@@ -7,7 +7,7 @@ title: Silo Lifecycle
 
 # 概述
 
-Orleanssilos使用可观察的生命周期（参见[Orleans生命周期](../implementation/orleans_lifecycle.md)）用于Orleans系统和应用层组件的有序启动和关闭。
+Orleanssilos使用可观察的生命周期（参见[Orleans生命周期](../implementation/orleans_lifecycle.zh.md)）用于Orleans系统和应用层组件的有序启动和关闭。
 
 ## 阶段
 

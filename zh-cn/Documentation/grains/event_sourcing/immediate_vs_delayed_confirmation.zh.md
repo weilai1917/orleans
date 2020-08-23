@@ -55,4 +55,4 @@ StateType TentativeState { get; }
 
 -   但这种变化只能在等待的时候发生。
 
-这些保证假定用户代码保持在[推荐做法](../external_tasks_and_grains.md)关于任务和异步/等待（特别是，不使用线程池任务，或者只将它们用于不调用grain功能且等待正确的代码）。
+这些保证假定用户代码保持在[推荐做法](../external_tasks_and_grains.zh.md)关于任务和异步/等待（特别是，不使用线程池任务，或者只将它们用于不调用grain功能且等待正确的代码）。

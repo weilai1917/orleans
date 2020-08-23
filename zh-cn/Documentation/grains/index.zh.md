@@ -7,7 +7,7 @@ title: Developing a Grain
 
 在编写代码以实现Grains类之前，请创建一个针对.NET Standard（首选）或.NET Framework 4.6.1或更高版本的新类库项目（如果由于依赖性而无法使用.NET Standard）。可以在同一个“类库”项目中或在两个不同的项目中定义grains接口和grains类，以更好地将接口与实现分开。无论哪种情况，项目都需要参考`微软Orleans核心抽象`和`Microsoft.Orleans.CodeGenerator.MSBuild`NuGet软件包。
 
-有关更详尽的说明，请参见[项目设置](../tutorials_and_samples/tutorial_1.md#project-setup)的部分[教程一–Orleans基础](../tutorials_and_samples/tutorial_1.md)。
+有关更详尽的说明，请参见[项目设置](../tutorials_and_samples/tutorial_1.md#project-setup)的部分[教程一–Orleans基础](../tutorials_and_samples/tutorial_1.zh.md)。
 
 # grains界面和类
 

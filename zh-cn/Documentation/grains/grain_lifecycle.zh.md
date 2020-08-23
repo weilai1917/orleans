@@ -7,7 +7,7 @@ title: Grain Lifecycle
 
 ## 总览
 
-OrleansGrains使用可观察到的生命周期（请参见[Orleans生命周期](../implementation/orleans_lifecycle.md)）进行有序的激活和停用。这允许在Grains激活和收集期间以有序的方式启动和停止Grains逻辑，系统组件和应用程序逻辑。
+OrleansGrains使用可观察到的生命周期（请参见[Orleans生命周期](../implementation/orleans_lifecycle.zh.md)）进行有序的激活和停用。这允许在Grains激活和收集期间以有序的方式启动和停止Grains逻辑，系统组件和应用程序逻辑。
 
 ### 阶段
 

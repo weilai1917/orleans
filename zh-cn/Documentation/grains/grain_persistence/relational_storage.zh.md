@@ -5,13 +5,13 @@ title: ADO.NET Grain Persistence
 
 # ADO.NET公司Grains持久性
 
-Orleans的关系存储后端代码是基于泛型ADO.NET公司功能，因此与数据库供应商无关。Orleans数据存储布局已经在运行时表中解释过了。按照中的说明设置连接字符串[Orleans配置指南](../../clusters_and_clients/configuration_guide/index.md).
+Orleans的关系存储后端代码是基于泛型ADO.NET公司功能，因此与数据库供应商无关。Orleans数据存储布局已经在运行时表中解释过了。按照中的说明设置连接字符串[Orleans配置指南](../../clusters_and_clients/configuration_guide/index.zh.md).
 
 要使Orleans代码在给定的关系数据库后端运行，需要执行以下操作：
 
 1.  适当的ADO.NET公司库必须加载到进程中。这应该像往常一样定义，例如via[数据库供应商工厂](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/obtaining-a-dbproviderfactory)应用程序配置中的元素。
 2.  配置ADO.NET公司不变通孔`不变量`属性。
-3.  数据库需要存在并与代码兼容。这是通过运行特定于供应商的数据库创建脚本来完成的。有关详细信息，请参阅[ADO.NET公司配置](../../clusters_and_clients/configuration_guide/adonet_configuration.md).
+3.  数据库需要存在并与代码兼容。这是通过运行特定于供应商的数据库创建脚本来完成的。有关详细信息，请参阅[ADO.NET公司配置](../../clusters_and_clients/configuration_guide/adonet_configuration.zh.md).
 
 NET粒度存储提供程序允许您在关系数据库中存储粒度状态。当前支持以下数据库：
 
@@ -26,7 +26,7 @@ NET粒度存储提供程序允许您在关系数据库中存储粒度状态。�
 Install-Package Microsoft.Orleans.Persistence.AdoNet
 ```
 
-阅读[ADO.NET公司配置](../../clusters_and_clients/configuration_guide/adonet_configuration.md)文章获取有关配置数据库的信息，包括相应的ADO.NET公司不变和设置脚本。
+阅读[ADO.NET公司配置](../../clusters_and_clients/configuration_guide/adonet_configuration.zh.md)文章获取有关配置数据库的信息，包括相应的ADO.NET公司不变和设置脚本。
 
 下面是如何配置ADO.NET公司存储提供商via`ISiloHostBuilder`:
 
@@ -40,7 +40,7 @@ var siloHostBuilder = new SiloHostBuilder()
     });
 ```
 
-实际上，您只需要设置特定于数据库供应商的连接字符串和`不变量`（参见[ADO.NET公司配置](../../clusters_and_clients/configuration_guide/adonet_configuration.md))标识供应商。您还可以选择保存数据的格式，可以是二进制（默认）、JSON或XML。虽然二进制是最紧凑的选项，但它是不透明的，您将无法读取或处理数据。JSON是推荐的选项。
+实际上，您只需要设置特定于数据库供应商的连接字符串和`不变量`（参见[ADO.NET公司配置](../../clusters_and_clients/configuration_guide/adonet_configuration.zh.md))标识供应商。您还可以选择保存数据的格式，可以是二进制（默认）、JSON或XML。虽然二进制是最紧凑的选项，但它是不透明的，您将无法读取或处理数据。JSON是推荐的选项。
 
 您可以通过设置以下属性`粒状灰岩地质体`:
 

@@ -1,6 +1,6 @@
 # 版本选择器策略
 
-当集群中存在相同grains接口的多个版本，并且必须创建新的激活时，[兼容版本](compatible_grains.md)将根据中定义的策略进行选择`GrainVersioningOptions.DefaultVersionSelectorStrategy`。
+当集群中存在相同grains接口的多个版本，并且必须创建新的激活时，[兼容版本](compatible_grains.zh.md)将根据中定义的策略进行选择`GrainVersioningOptions.DefaultVersionSelectorStrategy`。
 
 开箱即用的Orleans支持以下策略：
 

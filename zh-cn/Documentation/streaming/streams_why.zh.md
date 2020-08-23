@@ -60,12 +60,12 @@ Orleans Streams的一个典型场景是当您有每个用户的流并且您希�
 4.  *效率*-有效利用底层资源
 5.  *响应性*-启用近实时场景。
 
-这些都是我们在考虑建造的要求[**Orleans流媒体**](index.md).
+这些都是我们在考虑建造的要求[**Orleans流媒体**](index.zh.md).
 
 * * *
 
-*澄清*：Orleans当前不支持像上面的示例那样直接编写声明性数据流表达式。如前所述，当前的Orleans流媒体api是更低级的构建块[在这里](streams_programming_APIs.md). 提供声明性的数据流表达式是我们未来的目标。
+*澄清*：Orleans当前不支持像上面的示例那样直接编写声明性数据流表达式。如前所述，当前的Orleans流媒体api是更低级的构建块[在这里](streams_programming_APIs.zh.md). 提供声明性的数据流表达式是我们未来的目标。
 
 ## 下一个
 
-[Orleans流编程API](streams_programming_APIs.md)
+[Orleans流编程API](streams_programming_APIs.zh.md)

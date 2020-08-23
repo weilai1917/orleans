@@ -9,7 +9,7 @@ title: Orleans Lifecycle
 
 Orleans的某些行为非常复杂，因此需要有序地启动和关闭。具有此类行为的某些组件包括Grains，silos和客户。为了解决这个问题，引入了通用组件生命周期模式。此模式包括一个可观察的生命周期，该生命周期负责在组件启动和关闭的各个阶段发出信号，而生命周期观察器则负责在特定阶段执行启动或关闭操作。
 
-也可以看看[Grains生命周期](../grains/grain_lifecycle.md)和[silos生命周期](../clusters_and_clients/silo_lifecycle.md)。
+也可以看看[Grains生命周期](../grains/grain_lifecycle.zh.md)和[silos生命周期](../clusters_and_clients/silo_lifecycle.zh.md)。
 
 ## 可观察的生命周期
 

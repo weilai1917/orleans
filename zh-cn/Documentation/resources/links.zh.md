@@ -7,11 +7,11 @@ title: Links
 
 ## 由Orleans队
 
-[Orleans建筑：原理与方法I](orleans_architecture_principles_and_approach_I.md)
+[Orleans建筑：原理与方法I](orleans_architecture_principles_and_approach_I.zh.md)
 
 [第142集：Microsoft研究项目Orleans简化了可伸缩云服务的开发](http://channel9.msdn.com/Shows/Cloud+Cover/Episode-142-Microsoft-Research-project-Orleans-simplify-development-of-scalable-cloud-services)
 
-[Orleans：大大小小的思考](orleans_thinking_big_and_small.md)
+[Orleans：大大小小的思考](orleans_thinking_big_and_small.zh.md)
 
 [现在可用：“Orleans”项目的预览–大规模的云服务](http://blogs.msdn.com/b/dotnet/archive/2014/04/02/available-now-preview-of-project-orleans-cloud-services-at-scale.aspx)
 

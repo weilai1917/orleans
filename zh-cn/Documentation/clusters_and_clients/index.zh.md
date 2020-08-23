@@ -24,7 +24,7 @@ title: What is a grain client
 
 配置通过`客户端生成器`以及许多补充选项类，其中包含用于以编程方式配置客户端的配置属性层次结构。
 
-更多信息可以在[客户端配置指南](configuration_guide/client_configuration.md)是的。
+更多信息可以在[客户端配置指南](configuration_guide/client_configuration.zh.md)是的。
 
 客户端配置示例：
 
@@ -51,7 +51,7 @@ await client.Connect();
 
 ### 打电话给Grains
 
-从客户那里打电话给grain和[在grain代码中进行这样的调用](../grains/index.md)是的。相同的`getgrain<t>（键）`方法，其中`T`是目标grains界面，在两种情况下都使用[获取Grains参考](../grains/index.md#grain-reference)是的。细微的区别在于我们调用的工厂对象`获取grains`是的。在客户机代码中，我们通过连接的客户机对象来实现这一点。
+从客户那里打电话给grain和[在grain代码中进行这样的调用](../grains/index.zh.md)是的。相同的`getgrain<t>（键）`方法，其中`T`是目标grains界面，在两种情况下都使用[获取Grains参考](../grains/index.md#grain-reference)是的。细微的区别在于我们调用的工厂对象`获取grains`是的。在客户机代码中，我们通过连接的客户机对象来实现这一点。
 
 ```csharp
 IPlayerGrain player = client.GetGrain<IPlayerGrain>(playerId);
@@ -59,7 +59,7 @@ Task t = player.JoinGame(game)
 await t;
 ```
 
-对grain方法的调用返回`任务`或者`任务<t>`根据[grains界面规则](../grains/index.md)是的。客户可以使用`等待`关键字异步等待返回的`任务`没有阻塞线程，或者在某些情况下`等待（）`方法来阻止当前执行线程。
+对grain方法的调用返回`任务`或者`任务<t>`根据[grains界面规则](../grains/index.zh.md)是的。客户可以使用`等待`关键字异步等待返回的`任务`没有阻塞线程，或者在某些情况下`等待（）`方法来阻止当前执行线程。
 
 从客户机代码和从另一个粒度内部调用grains的主要区别在于grains的单线程执行模型。Grains被orleans运行时限制为单线程，而客户机可能是多线程的。Orleans没有在客户端提供任何这样的保证，因此客户端需要使用适合其环境的任何同步构造来管理自己的并发性—锁、事件，`任务`等等。
 
@@ -67,9 +67,9 @@ await t;
 
 在某些情况下，简单的请求-响应模式是不够的，客户端需要接收异步通知。例如，当某个用户发布了她正在跟踪的新消息时，该用户可能希望收到通知。
 
-[观察员](../grains/observers.md)是一种这样的机制，它允许将客户端对象公开为类似于grains的目标，以供grains调用。对观察者的呼叫并没有提供任何成功或失败的迹象，因为它们是作为单向尽力信息发送的。因此，应用程序代码有责任在必要时在观察者之上构建更高级别的可靠性机制。
+[观察员](../grains/observers.zh.md)是一种这样的机制，它允许将客户端对象公开为类似于grains的目标，以供grains调用。对观察者的呼叫并没有提供任何成功或失败的迹象，因为它们是作为单向尽力信息发送的。因此，应用程序代码有责任在必要时在观察者之上构建更高级别的可靠性机制。
 
-另一种可用于向客户端传递异步消息的机制是[Streams](../streaming/index.md)是的。流暴露了单个消息传递成功或失败的迹象，因此能够与客户端进行可靠的通信。
+另一种可用于向客户端传递异步消息的机制是[Streams](../streaming/index.zh.md)是的。流暴露了单个消息传递成功或失败的迹象，因此能够与客户端进行可靠的通信。
 
 ### 例子
 

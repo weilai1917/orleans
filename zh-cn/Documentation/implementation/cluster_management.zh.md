@@ -101,7 +101,7 @@ Orleans通过一个内置的成员协议提供集群管理，我们有时将其�
 
 3.  [阿帕奇动物园管理员](https://ZooKeeper.apache.org/)-在这个实现中，我们使用配置的部署ID作为根节点和silos标识(`ip:端口@epoch`)作为其子节点。它们共同保证了每个silos的唯一路径。对于并发控制，我们使用基于[节点版本](http://zookeeper.apache.org/doc/r3.4.6/zookeeperOver.html#Nodes+and+ephemeral+nodes). 每次从部署根节点读取时，都会存储每个读取子思洛节点的版本，并在尝试回写时使用该版本。每当一个节点的数据发生变化时，ZooKeeper服务就会自动地增加版本号。对于多行事务，我们使用[多方法](http://zookeeper.apache.org/doc/r3.4.6/api/org/apache/zookeeper/ZooKeeper.html#multi(java.lang.Iterable))，它保证在具有相同父部署ID节点的silos节点上可序列化事务。
 
-4.  [IO领事](https://www.consul.io)-我们用过[执政官的钥匙/价值商店](https://www.consul.io/intro/getting-started/kv.html)推动membershop表。参考[执政官部署](../deployment/consul_deployment.md)更多细节。
+4.  [IO领事](https://www.consul.io)-我们用过[执政官的钥匙/价值商店](https://www.consul.io/intro/getting-started/kv.html)推动membershop表。参考[执政官部署](../deployment/consul_deployment.zh.md)更多细节。
 
 5.  [AWS发电机B](https://aws.amazon.com/dynamodb/)-在这个实现中，我们使用集群部署ID作为分区键和silos标识(`ip端口生成`)作为使记录统一的RangeKey。乐观并发由`ETag公司`属性通过在DynamoDB上进行条件写入来实现。实现逻辑与Azure表存储非常相似。我们只实现了基本成员协议（而不是扩展协议）。
 
@@ -127,7 +127,7 @@ Orleans通过一个内置的成员协议提供集群管理，我们有时将其�
 
 4.  `动物园管理员`-成员表存储在ZooKeeper中[合奏](http://zookeeper.apache.org/doc/r3.4.6/zookeeperAdmin.html#sc_zkMulitServerSetup).
 
-5.  `执政官`-配置为自定义系统存储`MembershipTableAssembly=“orleansConsultils”`.  参考[执政官部署](../deployment/consul_deployment.md)更多细节。
+5.  `执政官`-配置为自定义系统存储`MembershipTableAssembly=“orleansConsultils”`.  参考[执政官部署](../deployment/consul_deployment.zh.md)更多细节。
 
 6.  `发电机B`-配置为自定义系统存储`MembershipTableAssembly=“OrleansAWSUtils”`.
 

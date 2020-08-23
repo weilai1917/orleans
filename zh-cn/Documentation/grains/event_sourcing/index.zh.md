@@ -9,18 +9,18 @@ title: Event Sourcing Overview
 
 文件结构如下：
 
--   [日志训练基础](journaledgrain_basics.md)解释如何通过从`日志记录`，如何访问当前状态，以及如何引发更新状态的事件。
+-   [日志训练基础](journaledgrain_basics.zh.md)解释如何通过从`日志记录`，如何访问当前状态，以及如何引发更新状态的事件。
 
--   [复制实例](replicated_instances.md)解释事件源机制如何处理复制的grain实例并确保一致性。它讨论了比赛事件和冲突的可能性，以及如何解决它们。
+-   [复制实例](replicated_instances.zh.md)解释事件源机制如何处理复制的grain实例并确保一致性。它讨论了比赛事件和冲突的可能性，以及如何解决它们。
 
--   [立即/延迟确认](immediate_vs_delayed_confirmation.md)解释延迟的事件确认和重新进入如何提高可用性和吞吐量。
+-   [立即/延迟确认](immediate_vs_delayed_confirmation.zh.md)解释延迟的事件确认和重新进入如何提高可用性和吞吐量。
 
--   [通知](notifications.md)解释如何订阅通知，允许Grains对新事件作出反应。
+-   [通知](notifications.zh.md)解释如何订阅通知，允许Grains对新事件作出反应。
 
--   [事件源配置](event_sourcing_configuration.md)说明如何配置项目、群集和日志一致性提供程序。
+-   [事件源配置](event_sourcing_configuration.zh.md)说明如何配置项目、群集和日志一致性提供程序。
 
--   [内置日志一致性提供程序](log_consistency_providers.md)解释当前包含的三个日志一致性提供程序的工作方式。
+-   [内置日志一致性提供程序](log_consistency_providers.zh.md)解释当前包含的三个日志一致性提供程序的工作方式。
 
--   [日志Grain诊断](journaledgrain_diagnostics.md)解释如何监视连接错误，并获取简单的统计信息。
+-   [日志Grain诊断](journaledgrain_diagnostics.zh.md)解释如何监视连接错误，并获取简单的统计信息。
 
 就journaledgrain api而言，上面记录的行为是相当稳定的。但是，我们希望很快扩展或更改日志一致性提供程序列表，以便更容易地允许开发人员插入标准事件存储系统。
