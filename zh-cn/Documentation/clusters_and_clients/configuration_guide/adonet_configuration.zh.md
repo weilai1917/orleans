@@ -11,7 +11,7 @@
 | 后格雷斯克尔 | [PostgreSQL-Clustering.sql](https://github.com/dotnet/orleans/blob/master/src/AdoNet/Orleans.Clustering.AdoNet/PostgreSQL-Clustering.sql) | [中华人民共和国](https://www.nuget.org/packages/Npgsql/) | 中华人民共和国 |
 | 神谕 | [神谕集群](https://github.com/dotnet/orleans/blob/master/src/AdoNet/Orleans.Clustering.AdoNet/Oracle-Clustering.sql) | [ODP.net](https://www.nuget.org/packages/Oracle.ManagedDataAccess/) | oracle.dataaccess.client文件 |
 
-## 坚持不懈
+## 持久化
 
 | 数据库 | 脚本 | NuGET包 | ADO.NET不变量 |
 | --- | --- | ------ | ---------- |

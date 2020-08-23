@@ -1,31 +1,31 @@
 - name: Step-by-step guide
-  href: index.md
+  href: index.zh.md
   items:
     - name: My first Orleans Application
-      href: My-First-Orleans-Application.md
+      href: My-First-Orleans-Application.zh.md
     - name: Minimal Orleans Application
-      href: Minimal-Orleans-Application.md
+      href: Minimal-Orleans-Application.zh.md
     - name: Running in a Stand-Alone Silo
-      href: Running-in-a-Stand-alone-Silo.md
+      href: Running-in-a-Stand-alone-Silo.zh.md
     - name: Actor Identity
-      href: Actor-Identity.md
+      href: Actor-Identity.zh.md
     - name: A Service is a Collection of Communicating Actors
-      href: A-Service-is-a-Collection-of-Communicating-Actors.md
+      href: A-Service-is-a-Collection-of-Communicating-Actors.zh.md
     - name: Concurrency
-      href: Concurrency.md
+      href: Concurrency.zh.md
     - name: Interaction with Libraries and Services
-      href: Interaction-with-Libraries-and-Services.md
+      href: Interaction-with-Libraries-and-Services.zh.md
     - name: Declarative Persistence
-      href: Declarative-Persistence.md
+      href: Declarative-Persistence.zh.md
     - name: Handling Failures
-      href: Failure-Handling.md
+      href: Failure-Handling.zh.md
     - name: Front Ends for Orleans Services
-      href: Front-Ends-for-Orleans-Services.md
+      href: Front-Ends-for-Orleans-Services.zh.md
     - name: Cloud Deployment
-      href: Cloud-Deployment.md
+      href: Cloud-Deployment.zh.md
     - name: On-Premise Deployment
-      href: On-Premise-Deployment.md
+      href: On-Premise-Deployment.zh.md
     - name: Custom Storage Providers
-      href: Custom-Storage-Providers.md
+      href: Custom-Storage-Providers.zh.md
     - name: Unit Testing Grains
-      href: Unit-Testing-Grains.md
+      href: Unit-Testing-Grains.zh.md

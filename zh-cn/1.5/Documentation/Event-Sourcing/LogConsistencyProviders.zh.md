@@ -3,7 +3,7 @@ layout: page
 title: Included Log-Consistency Providers
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Built-In Log-Consistency Providers
 

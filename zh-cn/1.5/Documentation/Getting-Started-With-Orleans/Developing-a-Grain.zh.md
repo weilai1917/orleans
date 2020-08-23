@@ -3,9 +3,9 @@ layout: page
 title: Developing a Grain
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
-Please read about [Grains](Grains.md) before reading this article.
+Please read about [Grains](Grains.zh.md) before reading this article.
 
 ### Setup
 
@@ -21,7 +21,7 @@ Grains interact with each other and get called from outside by invoking methods 
 A grain class implements one or more previously declared grain interfaces.
 All methods of a grain interface must return a `Task` (for `void` methods) or a `Task<T>` (for methods returning values of type `T`).
 
-The following is an excerpt from the [Presence Service](../Samples-Overview/Presence-Service.md) sample:
+The following is an excerpt from the [Presence Service](../Samples-Overview/Presence-Service.zh.md) sample:
 
 ```csharp
 //an example of a Grain Interface
@@ -150,7 +150,7 @@ From inside a grain class:
     IPlayerGrain player = GrainFactory.GetGrain<IPlayerGrain>(playerId);
 ```
 
-From [Orleans Client](Developing-a-Client.md) code.
+From [Orleans Client](Developing-a-Client.zh.md) code.
 
 Prior to 1.5.0:
 ```csharp
@@ -211,4 +211,4 @@ Because of that, applications should not rely on OnDeactivateAsync for performin
 
 ### Next
 
-[Developing a Client](Developing-a-Client.md)
+[Developing a Client](Developing-a-Client.zh.md)

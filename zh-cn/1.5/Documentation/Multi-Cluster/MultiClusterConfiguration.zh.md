@@ -3,7 +3,7 @@ layout: page
 title: Multi-Cluster Configuration
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 ## Multi-Cluster Configuration
 
@@ -15,7 +15,7 @@ We use the following terminology for the clusters in a service:
 
 Being active/inactive is independent from being joined/non-joined: all four combinations are possible. 
 
-All the clusters for a particular service are connected by a [gossip network](GossipChannels.md). The gossip network propagates configuration and status information.  
+All the clusters for a particular service are connected by a [gossip network](GossipChannels.zh.md). The gossip network propagates configuration and status information.  
 
 ### Injecting a configuration
 

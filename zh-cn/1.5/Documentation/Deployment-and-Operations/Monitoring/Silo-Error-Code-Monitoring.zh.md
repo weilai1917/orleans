@@ -3,7 +3,7 @@ layout: page
 title: Silo Error Code Monitoring
 ---
 
-[!include[](../../../warning-banner.md)]
+[!include[](../../../warning-banner.zh.md)]
 
 # Silo Error Code Monitoring
 

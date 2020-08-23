@@ -3,11 +3,11 @@ layout: page
 title: Prerequisites
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Prerequisites
 
-Orleans is a set of .NET libraries delivered via [NuGet packages](NuGets.md).
+Orleans is a set of .NET libraries delivered via [NuGet packages](NuGets.zh.md).
 In order to use Orleans, you need [.NET Framework](http://dot.net) 4.6.1 (since 1.5.0, 4.5.1 for prior versions) or higher and a copy of [Visual Studio](https://www.visualstudio.com) 2015 or higher.
 Note that the Express versions of Visual Studio do not support extension packages, but you can use Orleans by adding references to the NuGet packages directly.
 

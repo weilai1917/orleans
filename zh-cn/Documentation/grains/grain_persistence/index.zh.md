@@ -3,7 +3,7 @@ layout: page
 title: Persistence
 ---
 
-# 坚持不懈
+# 持久化
 
 Grains可以具有多个与之关联的命名持久数据对象。在激活Grains期间会从存储中加载此状态，以便在请求期间可以使用它们。粒度持久性使用可扩展的插件模型，因此可以使用任何数据库的存储提供程序。此持久性模型仅出于简化目的而设计，并不旨在涵盖所有数据访问模式。Grains还可以直接访问数据库，而无需使用Grains持久性模型。
 
@@ -262,7 +262,7 @@ public interface IGrainStorage
 }
 ```
 
-通过实现此接口来创建自定义存储提供程序，并[注册](#registering-a-storage-provider)该实施。有关现有存储提供程序实现的示例，请参见[`AzureBlobGrainStorage`](https://github.com/dotnet/orleans/blob/af974d37864f85bfde5dc02f2f60bba997f2162d/src/Azure/Orleans.Persistence.AzureStorage/Providers/Storage/AzureBlobStorage.cs)。
+通过实现此接口来创建自定义存储提供程序，并[注册](#注册存储提供商)该实施。有关现有存储提供程序实现的示例，请参见[`AzureBlobGrainStorage`](https://github.com/dotnet/orleans/blob/af974d37864f85bfde5dc02f2f60bba997f2162d/src/Azure/Orleans.Persistence.AzureStorage/Providers/Storage/AzureBlobStorage.cs)。
 
 ### 存储提供程序语义
 

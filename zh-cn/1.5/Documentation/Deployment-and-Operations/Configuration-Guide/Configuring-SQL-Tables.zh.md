@@ -3,7 +3,7 @@ layout: page
 title: SQL Tables
 ---
 
-[!include[](../../../warning-banner.md)]
+[!include[](../../../warning-banner.zh.md)]
 
 # SQL System Storage
 

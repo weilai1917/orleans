@@ -5,7 +5,7 @@ title: Running in a Stand-Alone Silo
 
 # Running in a Stand-Alone Silo
 
-In the [first tutorial](My-First-Orleans-Application.md), we got a very simple "Hello World!" Orleans application running in the simplest possible environment, a dev/test host where everything is running in one process, which makes starting and stopping it really easy.
+In the [first tutorial](My-First-Orleans-Application.zh.md), we got a very simple "Hello World!" Orleans application running in the simplest possible environment, a dev/test host where everything is running in one process, which makes starting and stopping it really easy.
 For most of your initial development of grain-based applications and services, that environment will be ideal.
 
 However, one thing that is hard to test in such an environment is what happens when the client and server do not get started and stopped at the same time.
@@ -39,7 +39,7 @@ static void Main(string[] args)
 
 Now you should add reference to Microsoft.Orleans.Server NuGet package to your collection project and then in its project properties in Debug tab set the bin/Debug/OrleansHost.exe or bin/Release/OrleansHost.exe file as startup program for your collections class library. Try to not mix NuGet package versions, make sure all Orlean packages (client, graininterface and grain projects) are aligned in the solution.
 
-You also need to add a OrleansConfiguration.xml file, you can create it using the instruction in [Minimal Orleans Application tutorial](Minimal-Orleans-Application.md). Then, in this file, make sure that the `ProxyingGateway` element inside its Defaults section matches this value:
+You also need to add a OrleansConfiguration.xml file, you can create it using the instruction in [Minimal Orleans Application tutorial](Minimal-Orleans-Application.zh.md). Then, in this file, make sure that the `ProxyingGateway` element inside its Defaults section matches this value:
 
 ```xml
 <ProxyingGateway Address="localhost" Port="30000" />
@@ -114,4 +114,4 @@ So far, we've only seen one single grain type and a single instance of that type
 It has served to keep things simple for the purpose of explaining how the environment works, but it is not typical of Orleans code.
 In the next tutorial, we will see something more realistic.
 
-[Actor Identity](Actor-Identity.md)
+[Actor Identity](Actor-Identity.zh.md)

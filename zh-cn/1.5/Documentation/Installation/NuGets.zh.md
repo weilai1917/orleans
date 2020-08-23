@@ -3,7 +3,7 @@ layout: page
 title: Orleans NuGet Packages
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Nuget Packages
 

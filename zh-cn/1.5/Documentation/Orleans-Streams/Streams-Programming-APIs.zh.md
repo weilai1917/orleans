@@ -3,7 +3,7 @@ layout: page
 title: Orleans Streams Programming APIs
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Orleans Streams Programming APIs
 
@@ -11,7 +11,7 @@ Applications interact with streams via APIs that are very similar to the well kn
 
 ### Async Stream<a name="Async-Stream"></a>
 
-An application starts by using a *stream provider* to get a handle to a stream. You can read more about stream providers [here](Stream-Providers.md), but for now you can think of it as stream factory that allows implementers to customize streams behavior and semantics:
+An application starts by using a *stream provider* to get a handle to a stream. You can read more about stream providers [here](Stream-Providers.zh.md), but for now you can think of it as stream factory that allows implementers to customize streams behavior and semantics:
 
 ``` csharp
 IStreamProvider streamProvider = base.GetStreamProvider("SimpleStreamProvider");
@@ -209,7 +209,7 @@ In addition to the Pub-Sub, Orleans Streaming Runtime delivers events from produ
 
 ### Configuration<a name="Configuration"></a>
 
-In order to use streams you need to enable stream providers via configuration. You can read more about stream providers [here](Stream-Providers.md). Sample stream providers configuration:
+In order to use streams you need to enable stream providers via configuration. You can read more about stream providers [here](Stream-Providers.zh.md). Sample stream providers configuration:
 
 ``` xml
 <OrleansConfiguration xmlns="urn:orleans">
@@ -232,4 +232,4 @@ public void RegisterStreamProvider<T>(string providerName, IDictionary<string, s
 
 ## Next
 
-[Orleans Stream Providers](Stream-Providers.md)
+[Orleans Stream Providers](Stream-Providers.zh.md)

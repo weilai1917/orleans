@@ -3,7 +3,7 @@ layout: page
 title: Server Configuration
 ---
 
-[!include[](../../../warning-banner.md)]
+[!include[](../../../warning-banner.zh.md)]
 
 # Server Configuration
 

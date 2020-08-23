@@ -3,12 +3,12 @@
 - name: Monitoring
   href: Monitoring/toc.yml
 - name: Troubleshooting Deployments
-  href: Troubleshooting-Deployments.md
+  href: Troubleshooting-Deployments.zh.md
 - name: Heterogeneous silos
-  href: Heterogeneous-Silos.md
+  href: Heterogeneous-Silos.zh.md
 - name: Using Azure Web Apps
-  href: Using-Azure-Web-Apps.md
+  href: Using-Azure-Web-Apps.zh.md
 - name: Docker Deployment
-  href: Docker-Deployment.md
+  href: Docker-Deployment.zh.md
 - name: Service Fabric
-  href: Service-Fabric.md
+  href: Service-Fabric.zh.md

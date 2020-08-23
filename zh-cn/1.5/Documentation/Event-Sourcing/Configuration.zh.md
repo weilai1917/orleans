@@ -3,7 +3,7 @@ layout: page
 title: Configuration
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Configuration
 
@@ -19,7 +19,7 @@ JournaledGrains need to derive from `JournaledGrain<S,E>` or `JournaledGrain<S>`
 
 ### Log-Consistency Providers
 
-We currently include three log-consistency providers (for state storage, log storage, and custom storage). All three are contained in the `Microsoft.Orleans.EventSourcing` package as well. Therefore, all Journaled Grains already have access to those. For a description of what these providers do and how they differ, see [Included Log-Consistency Providers](LogConsistencyProviders.md).
+We currently include three log-consistency providers (for state storage, log storage, and custom storage). All three are contained in the `Microsoft.Orleans.EventSourcing` package as well. Therefore, all Journaled Grains already have access to those. For a description of what these providers do and how they differ, see [Included Log-Consistency Providers](LogConsistencyProviders.zh.md).
 
 ## Cluster Configuration
 

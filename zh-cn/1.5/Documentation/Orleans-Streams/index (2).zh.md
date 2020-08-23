@@ -3,7 +3,7 @@ layout: page
 title: Orleans Streams
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Orleans Streams
 
@@ -11,14 +11,14 @@ Orleans v.1.0.0 added support for streaming extensions to the programing model. 
 
 ## Why should I care?
 
-If you already know all about [Stream Processing](http://blog.confluent.io/2015/01/29/making-sense-of-stream-processing/) and are familiar with technologies like [Event Hubs](http://azure.microsoft.com/en-us/services/event-hubs/), [Kafka](http://kafka.apache.org/), [Azure Stream Analytics](http://azure.microsoft.com/en-us/services/stream-analytics/), [Apache Storm](https://storm.apache.org/), [Apache Spark Streaming](https://spark.apache.org/streaming/), and [Reactive Extensions (Rx) in .NET](https://msdn.microsoft.com/en-us/data/gg577609.aspx), you may be asking why should you care. **Why do we need yet another Stream Processing System and how Actors are related to Streams?** ["Why Orleans Streams?"](Streams-Why.md) is meant to answer that question.
+If you already know all about [Stream Processing](http://blog.confluent.io/2015/01/29/making-sense-of-stream-processing/) and are familiar with technologies like [Event Hubs](http://azure.microsoft.com/en-us/services/event-hubs/), [Kafka](http://kafka.apache.org/), [Azure Stream Analytics](http://azure.microsoft.com/en-us/services/stream-analytics/), [Apache Storm](https://storm.apache.org/), [Apache Spark Streaming](https://spark.apache.org/streaming/), and [Reactive Extensions (Rx) in .NET](https://msdn.microsoft.com/en-us/data/gg577609.aspx), you may be asking why should you care. **Why do we need yet another Stream Processing System and how Actors are related to Streams?** ["Why Orleans Streams?"](Streams-Why.zh.md) is meant to answer that question.
 
 
 ## Programming Model
 
 There is a number of principles behind Orleans Streams Programming Model.
 
-1. Following the philosophy of [Orleans virtual actors](../Getting-Started-With-Orleans/Grains.md), Orleans streams are *virtual*. That is, a stream always exists. It is not explicitly created or destroyed, and it can never fail.
+1. Following the philosophy of [Orleans virtual actors](../Getting-Started-With-Orleans/Grains.zh.md), Orleans streams are *virtual*. That is, a stream always exists. It is not explicitly created or destroyed, and it can never fail.
 2. Streams are *identified by* stream IDs, which are just *logical names* comprised of GUIDs and strings.
 3. Orleans Streams allow to *decouple generation of data from its processing both in time and space*. That means that stream producer and stream consumer may be on different servers, in different times and will withstand failures.
 3. Orleans streams are *lightweight and dynamic*. Orleans Streaming Runtime is designed to handle a large number of streams that come and go at a high rate.
@@ -63,37 +63,37 @@ public class ChatUser: Grain
 
 ## Quick Start Sample
 
-The [Quick Start Sample](Streams-Quick-Start.md) is a good quick overview of the overall workflow of using streams in the application.
-After reading it you should read the [Streams Programming APIs](Streams-Programming-APIs.md) to get a deeper understanding of the concepts.
+The [Quick Start Sample](Streams-Quick-Start.zh.md) is a good quick overview of the overall workflow of using streams in the application.
+After reading it you should read the [Streams Programming APIs](Streams-Programming-APIs.zh.md) to get a deeper understanding of the concepts.
 
 ## Streams Programming APIs
 
-A [Streams Programming APIs](Streams-Programming-APIs.md) provides detailed description of the programming APIs.
+A [Streams Programming APIs](Streams-Programming-APIs.zh.md) provides detailed description of the programming APIs.
 
 ## Stream Providers
 
 Streams can come via physical channels of various shapes and forms and can have different semantics. Orleans Streaming is designed to support this diversity via the concept of **Stream Providers**, which is an extensibility point in the system. Orleans currently has implementation of two stream providers: TCP based **Simple Message Stream Provider** and Azure Queue based **Azure Queue Stream Provider**.
-More details on Steam Providers can be found at [Stream Providers](Stream-Providers.md).
+More details on Steam Providers can be found at [Stream Providers](Stream-Providers.zh.md).
 
 
 ## Stream Semantics
 
 **Stream Subsription Semantics**:
-Orleans Streams guarantee Sequential Consistency for Stream Subsription operations. Specificaly, when consumer subscribes to a stream, once the `Task` representing the subsription operation was successfuly resolved, the consumer will see all events that were generated after it has subscribed. In addition, Rewindable streams allow to subscribe from an arbitrary point in time in the past by using `StreamSequenceToken` (more details can be found [here](Stream-Providers.md)).
+Orleans Streams guarantee Sequential Consistency for Stream Subsription operations. Specificaly, when consumer subscribes to a stream, once the `Task` representing the subsription operation was successfuly resolved, the consumer will see all events that were generated after it has subscribed. In addition, Rewindable streams allow to subscribe from an arbitrary point in time in the past by using `StreamSequenceToken` (more details can be found [here](Stream-Providers.zh.md)).
 
 **Individual Stream Events Delivery Guarantees**:
-Individual event delivery guarantees depend on individual stream providers. Some provide only best-effort at-most-once delivery (such as Simple Message Streams), while others provide at-least-once delivery (such as Azure Queue Streams). It is even possible to build a stream provider that will guarantee exactly-once delivery (we don't have such a provider yet, but it is possible to build one with the [extensability model](Streams-Extensibility.md)).
+Individual event delivery guarantees depend on individual stream providers. Some provide only best-effort at-most-once delivery (such as Simple Message Streams), while others provide at-least-once delivery (such as Azure Queue Streams). It is even possible to build a stream provider that will guarantee exactly-once delivery (we don't have such a provider yet, but it is possible to build one with the [extensability model](Streams-Extensibility.zh.md)).
 
 **Events Delivery Order**:
 Event order also depends on a particular stream provider. In SMS streams, the producer explicitelly controls the order of events seen by the consumer by controlling the way it publishes them. Azure Queue streams do not guarantee FIFO order, since the underlaying Azure Queues do not guarantee order in failure cases. Applications can also control their own stream delivery ordering, by using `StreamSequenceToken`.
 
 ## Streams Implementation
 
-The [Orleans Streams Implementation](Streams-Implementation.md) provides a high level overview of the internal implementation.
+The [Orleans Streams Implementation](Streams-Implementation.zh.md) provides a high level overview of the internal implementation.
 
 ## Streams Extensibility
 
-The [Orleans Streams Extensibility](Streams-Extensibility.md) describes how to extend streams with new functionality.
+The [Orleans Streams Extensibility](Streams-Extensibility.zh.md) describes how to extend streams with new functionality.
 
 ## Code Samples
 

@@ -244,4 +244,4 @@ Deactivation is the cleanest way of resetting a grain to its last know good stat
 
 Next, we'll see how we can call our grains from an MVC web application.
 
-[Handling Failure](Failure-Handling.md)
+[Handling Failure](Failure-Handling.zh.md)

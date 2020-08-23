@@ -3,7 +3,7 @@ layout: page
 title: GPS Tracker
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # GPS Tracker
 

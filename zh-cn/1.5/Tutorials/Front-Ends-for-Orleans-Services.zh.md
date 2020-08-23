@@ -9,7 +9,7 @@ Exposing silo gateway ports as public endpoints of an Orleans cluster is not rec
 Instead, Orleans is intended to be fronted by your own API.
 
 Creating an HTTP API, or web application is a common scenario.
-Let's extend the Employee/Manager scenario from the  [Declarative-Persistence](Declarative-Persistence.md) walk-through to see what steps are required to publish grain data over HTTP.
+Let's extend the Employee/Manager scenario from the  [Declarative-Persistence](Declarative-Persistence.zh.md) walk-through to see what steps are required to publish grain data over HTTP.
 
 ## Creating the ASP.NET application
 First, you should add a new ASP.NET Web Application to your solution. Then, select the Web API template, although you could use MVC or Web Forms.
@@ -109,4 +109,4 @@ That's the basics in place, the rest of the API can be completed by adding the r
 
 We'll look at how you can deploy Orleans in the Azure Cloud
 
-[Cloud Deployment](Cloud-Deployment.md)
+[Cloud Deployment](Cloud-Deployment.zh.md)

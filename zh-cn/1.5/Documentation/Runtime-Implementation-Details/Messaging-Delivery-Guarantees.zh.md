@@ -3,7 +3,7 @@ layout: page
 title: Messaging Delivery Guarantees
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Messaging Delivery Guarantees
 

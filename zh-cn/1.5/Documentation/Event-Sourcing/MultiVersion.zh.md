@@ -3,7 +3,7 @@ layout: page
 title: Immediate vs. Delayed Confirmation
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Immediate Confirmation
 
@@ -58,4 +58,4 @@ In particular, note that:
 
 - But such changes can only happen while stuck at an await.
 
-These guarantees assume that the user code stays within the [recommended practice](../Advanced-Concepts/External-Tasks-and-Grains.md) with respect to tasks and async/await (in particular, does not use thread pool tasks, or only uses them for code that does not call grain functionality and that are properly awaited).  
+These guarantees assume that the user code stays within the [recommended practice](../Advanced-Concepts/External-Tasks-and-Grains.zh.md) with respect to tasks and async/await (in particular, does not use thread pool tasks, or only uses them for code that does not call grain functionality and that are properly awaited).  

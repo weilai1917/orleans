@@ -1,20 +1,20 @@
 - name: Overview
-  href: index.md
+  href: index.zh.md
 - name: Hello World
-  href: Hello-World.md
+  href: Hello-World.zh.md
 - name: Azure Web Sample
-  href: Azure-Web-Sample.md
+  href: Azure-Web-Sample.zh.md
 - name: Adventure
-  href: Adventure.md
+  href: Adventure.zh.md
 - name: Presence Service
-  href: Presence-Service.md
+  href: Presence-Service.zh.md
 - name: Tic-Tac-Toe
-  href: Tic-Tac-Toe.md
+  href: Tic-Tac-Toe.zh.md
 - name: Chirper
-  href: Chirper.md
+  href: Chirper.zh.md
 - name: Twitter Sentiment
-  href: Twitter-Sentiment.md
+  href: Twitter-Sentiment.zh.md
 - name: GPS Tracker
-  href: GPS-Tracker.md
+  href: GPS-Tracker.zh.md
 - name: Storage Providers
-  href: Storage-Providers.md
+  href: Storage-Providers.zh.md

@@ -3,7 +3,7 @@ layout: page
 title: Grains
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 
 ### Grains
@@ -53,7 +53,7 @@ Silos form a cluster that combines resources of multiple physical or virtual mac
 When there is work (request) for a grain, Orleans ensures there is an instance of the grain on one of the Silos in the cluster.
 If there is no instance of the grain on any silo, the Orleans runtime creates one. 
 This process is called Activation.
-In case a grain is using [Grain Persistence](../Core-Features/Grain-Persistence.md), the runtime automatically reads the state from the backing store upon activation.
+In case a grain is using [Grain Persistence](../Core-Features/Grain-Persistence.zh.md), the runtime automatically reads the state from the backing store upon activation.
 
 Once activated on a silo, a grain processes incoming requests (method calls) from other grains or from outside of the cluster (usually from frontend web servers).
 In the course of processing a request a grain may call other grains or some external services.
@@ -70,8 +70,8 @@ The sequence of key events in grain lifecycle looks like this.
 
 - Another grain or a client makes a call to a method of the grain (via a grain reference)
 - The grain gets activated (if it is not already activated somewhere in the cluster) and an instance of the grain class, called a grain activation, is created
-  - Constructor of the grain is executed leveraging [Dependency Injection](../Core-Features/Dependency-Injection.md) if applicable
-  - If [Declarative Persistence](../Core-Features/Grain-Persistence.md) is used, the grain state is read from storage
+  - Constructor of the grain is executed leveraging [Dependency Injection](../Core-Features/Dependency-Injection.zh.md) if applicable
+  - If [Declarative Persistence](../Core-Features/Grain-Persistence.zh.md) is used, the grain state is read from storage
   - If overridden, `OnActivateAsync` is called
 - The grain processes incoming requests
 - The grain remains idle for some time
@@ -96,4 +96,4 @@ This means that there is no need to use locks or other synchronization methods t
 ### Next
 Next we look at how to implement a grain class.
 
-[Developing a Grain](Developing-a-Grain.md)
+[Developing a Grain](Developing-a-Grain.zh.md)

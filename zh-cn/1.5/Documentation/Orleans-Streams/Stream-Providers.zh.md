@@ -3,7 +3,7 @@ layout: page
 title: Orleans Stream Providers
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 
 # Stream Providers
@@ -24,4 +24,4 @@ Different stream providers that deliver events over durable queues exhibit simil
 
 ## Next
 
-[Orleans Streams Implementation Details](Streams-Implementation.md)
+[Orleans Streams Implementation Details](Streams-Implementation.zh.md)

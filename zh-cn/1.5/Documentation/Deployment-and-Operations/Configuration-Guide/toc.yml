@@ -1,12 +1,12 @@
 - name: Overview
-  href: index.md
+  href: index.zh.md
 - name: Client Configuration
-  href: Client-Configuration.md
+  href: Client-Configuration.zh.md
 - name: Server Configuration
-  href: Server-Configuration.md
+  href: Server-Configuration.zh.md
 - name: Typical Configurations
-  href: Typical-Configurations.md
+  href: Typical-Configurations.zh.md
 - name: Configuring .NET Garbage Collection
-  href: Configuring-.NET-Garbage-Collection.md
+  href: Configuring-.NET-Garbage-Collection.zh.md
 - name: Configuring SQL Tables
-  href: Configuring-SQL-Tables.md
+  href: Configuring-SQL-Tables.zh.md

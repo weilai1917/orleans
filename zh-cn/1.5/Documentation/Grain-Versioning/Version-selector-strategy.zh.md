@@ -1,10 +1,10 @@
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Version selector strategy
 
 When several versions of the same grain interface exist in the cluster, and a new
-activation has to be created, a [compatible version](Compatible-grains.md) will be chosen according
+activation has to be created, a [compatible version](Compatible-grains.zh.md) will be chosen according
 to the strategy defined in `GlobalConfiguration.DefaultVersionSelectorStrategy`.
 
 Orleans out of the box supports the following strategies:

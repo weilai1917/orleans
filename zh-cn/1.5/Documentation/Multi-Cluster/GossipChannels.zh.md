@@ -3,7 +3,7 @@ layout: page
 title: Multi-Cluster Communication
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 ## Multi-Cluster Communication
 
@@ -31,7 +31,7 @@ Communication between silos in different clusters does *not* always pass through
 Gossip is a mechanism for clusters to share configuration and status information. As the name suggests, gossip is decentralized and bidirectional: each silo communicates directly with other silos, both in the same cluster and in other clusters, to exchange information in both directions. 
 
 **Content**. Gossip contains some or all of the following information:
-- The current time-stamped [multi-cluster configuration](MultiClusterConfiguration.md).
+- The current time-stamped [multi-cluster configuration](MultiClusterConfiguration.zh.md).
 - A dictionary that contains information about cluster gateways. The key is the silo address, and the value contains (1) a timestamp, (2) the cluster id, and (3) a status, which is either active or inactive. 
 
 **Fast & Slow Propagation**. When a gateway changes its status, or when an operator injects a new configuration, this gossip information is immediately sent  to all silos, clusters, and gossip channels. This happens fast, but is not reliable. Should the message be lost due to any reasons (e.g. races, broken sockets, silo failures), our periodic background gossip ensures that the information eventually spreads, albeit more slowly.  All information is eventually propagated everywhere, and is highly resilient to occasional message loss and failures. 
@@ -40,7 +40,7 @@ All gossip data is timestamped, which ensures that newer information replaces ol
 
 ### Gossip Channels
 
-When a silo is first started, or when it is restarted after a failure, it needs to have a way to **bootstrap the gossip**. This is the role of the *gossip channel*, which can be configured in the [Silo Configuration](SiloConfiguration.md). On startup, a silo fetches all the information from the gossip channels. After startup, a silo keeps gossiping periodically, every 30 seconds or whatever is configured as `BackgroundGossipInterval`. Each time it synchronizes its gossip information with a partner randomly selected from all cluster gateways and gossip channels. 
+When a silo is first started, or when it is restarted after a failure, it needs to have a way to **bootstrap the gossip**. This is the role of the *gossip channel*, which can be configured in the [Silo Configuration](SiloConfiguration.zh.md). On startup, a silo fetches all the information from the gossip channels. After startup, a silo keeps gossiping periodically, every 30 seconds or whatever is configured as `BackgroundGossipInterval`. Each time it synchronizes its gossip information with a partner randomly selected from all cluster gateways and gossip channels. 
 
 Notes: 
 - Though not strictly required, we recommend to always configure at least two gossip channels, in distinct regions, for better availability.  

@@ -51,7 +51,7 @@ This is because .NET property setters and getters aren't meant to do I/O.
 
 It is often possible to use traditional object-oriented design methodology with Orleans, but sometimes there are reasons for not doing so.
 In this case, we're choosing to not rely on inheritance when defining the `Manager` class, even though a `Manager` is clearly also an `Employee`.
-The reason for this will be explained when we discuss Orleans' support for [Declarative Persistence](Declarative-Persistence.md).
+The reason for this will be explained when we discuss Orleans' support for [Declarative Persistence](Declarative-Persistence.zh.md).
 With these two interfaces as our starting point, the implementation classes are straightforward to implement, as the interfaces are simple.
 
 Here's what it looks like:
@@ -246,4 +246,4 @@ There is also an `OnDeactivateAsync()` method, used more infrequently.
 
 ## Next
 
-Next up is a look at  [Concurrency](Concurrency.md) in Orleans.
+Next up is a look at  [Concurrency](Concurrency.zh.md) in Orleans.

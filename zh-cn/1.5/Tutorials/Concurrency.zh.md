@@ -5,7 +5,7 @@ title: Concurrency
 
 # Concurrency
 
-Please read about [Grains](../Documentation/Getting-Started-With-Orleans/Grains.md) before following this tutorial.
+Please read about [Grains](../Documentation/Getting-Started-With-Orleans/Grains.zh.md) before following this tutorial.
 
 Let's go back to the code that was established in the tutorial on collections of actors and modify it to demonstrate how things can go bad by creating a trivial cycle in the messaging graph: when an employee receives a greeting, he sends another greeting back to the sender and waits for the acknowledgment.
 This will send a back-and-forth series of messages, until we get to 3.
@@ -151,4 +151,4 @@ No other code change is required, this is just a signal to give to Orleans to te
 
 Next, we'll see how we can interact with external services from inside our grain.
 
-[Interaction with Libraries and Services](Interaction-with-Libraries-and-Services.md)
+[Interaction with Libraries and Services](Interaction-with-Libraries-and-Services.zh.md)

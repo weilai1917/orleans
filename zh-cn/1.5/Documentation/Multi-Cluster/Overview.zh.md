@@ -3,7 +3,7 @@ layout: page
 title: Multi-Cluster Support
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Multi-Cluster Support
 
@@ -17,17 +17,17 @@ All mechanisms are designed with particular attention to (1) minimize communicat
 
 Below we document how to configure and operate a multi-cluster. 
 
-[**Communication**](GossipChannels.md). Clusters communicate via the same silo-to-silo connections that are used within a cluster. To exchange status and configuration information, Clusters use a gossip mechanism and gossip channel implementations.
+[**Communication**](GossipChannels.zh.md). Clusters communicate via the same silo-to-silo connections that are used within a cluster. To exchange status and configuration information, Clusters use a gossip mechanism and gossip channel implementations.
 
-[**Silo Configuration**](SiloConfiguration.md). Silos need to be configured so they know which cluster they belong to (each cluster is identified by a unique string). Also, each silo needs to be configured with connection strings that allow them to connect to one or more [gossip channels](GossipChannels.md) on startup. 
+[**Silo Configuration**](SiloConfiguration.zh.md). Silos need to be configured so they know which cluster they belong to (each cluster is identified by a unique string). Also, each silo needs to be configured with connection strings that allow them to connect to one or more [gossip channels](GossipChannels.zh.md) on startup. 
 
-[**Multi-Cluster Configuration Injection**](MultiClusterConfiguration.md). At runtime, the service operator can specify and/or change the *multi-cluster configuration*, which contains a list of cluster ids, to specify which clusters are part of the current multi-cluster. This is done by calling the management grain in any one of the clusters.
+[**Multi-Cluster Configuration Injection**](MultiClusterConfiguration.zh.md). At runtime, the service operator can specify and/or change the *multi-cluster configuration*, which contains a list of cluster ids, to specify which clusters are part of the current multi-cluster. This is done by calling the management grain in any one of the clusters.
 
 ## Multi-Cluster Grains
 
 Below we document how to use multi-cluster functionality at the application level.
 
-[**Global-Single-Instance Grains**](GlobalSingleInstance.md). Developers can indicate when and how clusters should coordinate their grain directories with respect to a particular grain class. The  ``[GlobalSingleInstance]`` attribute means we want the same behavior as as when running Orleans in a single global cluster: that is, route all calls to a single activation of the grain. Conversely, the ``[OneInstancePerCluster]`` attribute indicates that each cluster can have its own independent activation. This is appropriate if communication between clusters is undesired.
+[**Global-Single-Instance Grains**](GlobalSingleInstance.zh.md). Developers can indicate when and how clusters should coordinate their grain directories with respect to a particular grain class. The  ``[GlobalSingleInstance]`` attribute means we want the same behavior as as when running Orleans in a single global cluster: that is, route all calls to a single activation of the grain. Conversely, the ``[OneInstancePerCluster]`` attribute indicates that each cluster can have its own independent activation. This is appropriate if communication between clusters is undesired.
 
 **Log-View Grains**  _(not in v.1.3.0)_. A special type of grain that uses a new API, similar to event sourcing, for synchronizing or persisting grain state. It can be used to automatically and efficiently synchronize the state of  a grain between clusters and with storage. Because its synchronization algorithms are safe to use with reentrant grains, and are optimized to use batching and replication, it can perform better than standard grains when a grain is frequently accessed in multiple clusters, and/or when it is written to storage frequently. Support for log-view grains is not part of the master branch yet. We have a prerelease including samples and a bit of documentation in the [geo-orleans branch](https://github.com/sebastianburckhardt/orleans/tree/geo-samples). It is currently being evaluated in production by an early adopter. 
 

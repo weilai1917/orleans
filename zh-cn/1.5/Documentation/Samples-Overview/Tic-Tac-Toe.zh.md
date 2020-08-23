@@ -3,7 +3,7 @@ layout: page
 title:  Tic Tac Toe
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Tic Tac Toe
 

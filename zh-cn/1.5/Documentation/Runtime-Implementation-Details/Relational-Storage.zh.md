@@ -3,11 +3,11 @@ layout: page
 title: Relational Storage
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Relational Storage
 
-Relational storage backend code in Orleans is built on generic ADO.NET functionality and is consequently database vendor agnostic. The Orleans data storage layout has been explained already in [Runtime Tables](Runtime-Tables.md). Setting up the connection strings are done as explained in [Orleans Configuration Guide ](http://dotnet.github.io/orleans/Documentation/Orleans-Configuration-Guide/) and [SQL Tables](http://dotnet.github.io/orleans/Documentation/Advanced-Concepts/Configuring-SQL-Tables).
+Relational storage backend code in Orleans is built on generic ADO.NET functionality and is consequently database vendor agnostic. The Orleans data storage layout has been explained already in [Runtime Tables](Runtime-Tables.zh.md). Setting up the connection strings are done as explained in [Orleans Configuration Guide ](http://dotnet.github.io/orleans/Documentation/Orleans-Configuration-Guide/) and [SQL Tables](http://dotnet.github.io/orleans/Documentation/Advanced-Concepts/Configuring-SQL-Tables).
 
 To make Orleans code function with a given relational database backend, the following is required:
 
@@ -73,7 +73,7 @@ parameters, check if a given database is installed and then run the tests agains
 ## Realization of the goals
 
 Orleans framework does not have knowledge of deployment specific hardware (which may change during active deployment), the change of data during the deployment life-cycle and some vendor specific features are usable in only some situations. For this reason, the interface between relational database and Orleans should adhere a minimum set of abstractions and rules to meet the goals but to make it also robust against misuse and easy to test if needed.
-[Runtime Tables](Runtime-Tables.md), [Cluster Management](Cluster-Management.md) and the concrete [membership protocol implementation](https://github.com/dotnet/orleans/blob/master/src/Orleans/SystemTargetInterfaces/IMembershipTable.cs). Also, the SQL Server implementation contains SQL Server edition specific tuning.
+[Runtime Tables](Runtime-Tables.zh.md), [Cluster Management](Cluster-Management.zh.md) and the concrete [membership protocol implementation](https://github.com/dotnet/orleans/blob/master/src/Orleans/SystemTargetInterfaces/IMembershipTable.cs). Also, the SQL Server implementation contains SQL Server edition specific tuning.
 The interface contract between the database and Orleans is defined as follows:
 
 1. The general idea is that data is read and written through Orleans specific queries.
@@ -103,7 +103,7 @@ These principles are also [included in the database scripts](https://github.com/
 
 ## Some ideas on applying customized scripts
 
-1. Alter scripts in `OrleansQuery` for [grain persistence](../Core-Features/Grain-Persistence.md) with `IF ELSE`
+1. Alter scripts in `OrleansQuery` for [grain persistence](../Core-Features/Grain-Persistence.zh.md) with `IF ELSE`
    so that some state is saved using the default `INSERT` while some grain state uses, for instance, [memory optimized tables](https://docs.microsoft.com/en-us/sql/relational-databases/in-memory-oltp/memory-optimized-tables).
    The `SELECT` queries need to be altered accordingly.
 2. The idea in `1.` can be used to take advantage of other deployment or vendor specific aspects. Such as splitting data between `SSD` or `HDD`, putting some data on encrypted tables,

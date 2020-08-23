@@ -3,7 +3,7 @@ layout: page
 title: Global-Single-Instance Grains
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 ### Grain Coordination Attributes
 
@@ -28,7 +28,7 @@ If a grain class does not specify either one of those attributes, it defaults to
 
 #### Protocol for Global-Single-Instance Grains
 
-When a global-single-instance (GSI) grain is accessed, and no activation is known to exist, a special GSI activation protocol is executed before activating a new instance. Specifically, a request is sent to all other clusters in the current [multi-cluster configuration](MultiClusterConfiguration.md) to check if they already have an activation for this grain. If all responses are negative, a new activation is created in this cluster. Otherwise, the remote activation is used (and a reference to it is cached in the local directory).
+When a global-single-instance (GSI) grain is accessed, and no activation is known to exist, a special GSI activation protocol is executed before activating a new instance. Specifically, a request is sent to all other clusters in the current [multi-cluster configuration](MultiClusterConfiguration.zh.md) to check if they already have an activation for this grain. If all responses are negative, a new activation is created in this cluster. Otherwise, the remote activation is used (and a reference to it is cached in the local directory).
 
 #### Protocol for One-Instance-Per-Cluster Grains
 

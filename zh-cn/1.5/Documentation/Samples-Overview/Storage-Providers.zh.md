@@ -3,7 +3,7 @@ layout: page
 title: Storage Providers
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Storage Providers
 
@@ -14,7 +14,7 @@ Custom storage providers allow you to extend the capabilities of Orleans to stor
 While binary formatting is almost always better to use for persistent storage, this sample chooses to use JSON as the external format for one reason: it's easier to read and verify, which is a good thing in a sample. As you adopt the sample code for more realistic use, you will probably want to switch to something else than JSON as the external format.
 
 ### Running the sample
-The sample solution consists of four projects -- the storage provider library, and three test libraries, with the same client+server structure that the [Hello World](Hello-World.md) sample has.
+The sample solution consists of four projects -- the storage provider library, and three test libraries, with the same client+server structure that the [Hello World](Hello-World.zh.md) sample has.
 
 ![](ProvidersSample.png)
 

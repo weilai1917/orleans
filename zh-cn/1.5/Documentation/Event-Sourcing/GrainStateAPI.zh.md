@@ -3,7 +3,7 @@ layout: page
 title: JournaledGrain API
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # JournaledGrain Basics
 
@@ -44,7 +44,7 @@ RaiseEvent(new DepositTransaction() { DepositAmount = amount, Description = desc
 await ConfirmEvents();
 ```
 
-Note that even if you don't explicitly call `ConfirmEvents`, the events will eventually be confirmed - it happens automatically in the background. For more discussion on this topic, see [Immediate vs. Delayed Confirmation](MultiVersion.md).
+Note that even if you don't explicitly call `ConfirmEvents`, the events will eventually be confirmed - it happens automatically in the background. For more discussion on this topic, see [Immediate vs. Delayed Confirmation](MultiVersion.zh.md).
 
 ## State Transition Methods
 
@@ -116,7 +116,7 @@ await RetrieveConfirmedEvents(0, Version);
 
 Only confirmed events can be retrieved: an exception is thrown if `toVersion` is larger than the current value of the property `Version`.
 
-Since confirmed events never change, there are no races to worry about, even in the presence of [multiple instances](MultiInstance.md) or [delayed confirmation](MultiVersion.md). However, in such situations, it is possible that the value of the property `Version` is larger by the time the `await` resumes than at the time `RetrieveConfirmedEvents` is called, so it may be advisable to save its value in a variable. See also the section on [Concurrency Guarantees](MultiVersion.md).
+Since confirmed events never change, there are no races to worry about, even in the presence of [multiple instances](MultiInstance.zh.md) or [delayed confirmation](MultiVersion.zh.md). However, in such situations, it is possible that the value of the property `Version` is larger by the time the `await` resumes than at the time `RetrieveConfirmedEvents` is called, so it may be advisable to save its value in a variable. See also the section on [Concurrency Guarantees](MultiVersion.zh.md).
  
 
 

@@ -3,7 +3,7 @@ layout: page
 title: Runtime Monitoring
 ---
 
-[!include[](../../../warning-banner.md)]
+[!include[](../../../warning-banner.zh.md)]
 
 # Runtime Monitoring
 
@@ -11,7 +11,7 @@ title: Runtime Monitoring
 
 There are five ways Orleans deployment can be monitored by an external operator by utilizing the data that Orleans writes automatically to Azure storage.
 
-The tables mentioned below are desribed in more detail [here](../../Runtime-Implementation-Details/Runtime-Tables.md).
+The tables mentioned below are desribed in more detail [here](../../Runtime-Implementation-Details/Runtime-Tables.zh.md).
 
 **OrleansSilosTable for cluster membership** - this table lists all silos in the deployment (partition key DeploymentID, row key silo id). The operator can use this table to check cluster health, watch the current set of live silos, or learn why and when a certain silo went down. Orleans' cluster membership protocol uses this table internally and updates it with significant membership events (silos goes up and down).
 
@@ -21,8 +21,8 @@ The tables mentioned below are desribed in more detail [here](../../Runtime-Impl
 
 **Watching error codes in MDS** - Orleans automatically writes different error messages into logger. This logger can be configured to output its data to various destinations. For example, the Halo team redirects all logs in production to MDS. They have written custom alerts in MDS to watch for specific error codes and count their occurrences, and alert them when those reach a certain threshold. The list of important error codes to watch is specified here:
 
-* [Silo Error Code Monitoring](Silo-Error-Code-Monitoring.md)
+* [Silo Error Code Monitoring](Silo-Error-Code-Monitoring.zh.md)
 
-* [Client Error Code Monitoring](Client-Error-Code-Monitoring.md)
+* [Client Error Code Monitoring](Client-Error-Code-Monitoring.zh.md)
 
 **Windows performance counters** - The Orleans runtime continually updates a number of them. CounterControl.exe helps register the counters, and needs to run with elevated privileges. Obviously, the performance counters can be monitored using any of the standard monitoring tools.

@@ -3,7 +3,7 @@ layout: page
 title: Client Error Code Monitoring
 ---
 
-[!include[](../../../warning-banner.md)]
+[!include[](../../../warning-banner.zh.md)]
 
 # Client Error Code Monitoring
 

@@ -3,7 +3,7 @@ layout: page
 title: Azure Runtime Tables
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Azure Runtime Tables
 
@@ -21,7 +21,7 @@ Runtime tables:
 
 ## Orleans Silo Instances table
 
-Orleans Silo Instances table, also commonly referred to as Membership table, lists the set of silos that make an Orleans deployment. More details can be found in the description of the [Cluster Management Protocol](Cluster-Management.md) that maintains this table.
+Orleans Silo Instances table, also commonly referred to as Membership table, lists the set of silos that make an Orleans deployment. More details can be found in the description of the [Cluster Management Protocol](Cluster-Management.zh.md) that maintains this table.
 
 All rows in this table consist of the following columns ([`SiloInstanceTableEntry`](https://github.com/dotnet/orleans/blob/master/src/OrleansAzureUtils/Storage/OrleansSiloInstanceManager.cs#L16)):
 
@@ -53,7 +53,7 @@ There is also a special row in this table, called membership version row, with t
 
 ### Naming:
 The silo instance row has 3 names: hostname, rolename and instance name. What is the difference?
-First, it is important to note that [Orleans cluster protocol](Cluster-Management.md) does not use any of these names for distinguishing between silos. Instead it uses `IP:port:epoch` as a unique identity of a silo instance. Therefore, setting of those 3 names has no impact on runtime correctness. It is in the table merely to help diagnostics and operational troubleshooting.
+First, it is important to note that [Orleans cluster protocol](Cluster-Management.zh.md) does not use any of these names for distinguishing between silos. Instead it uses `IP:port:epoch` as a unique identity of a silo instance. Therefore, setting of those 3 names has no impact on runtime correctness. It is in the table merely to help diagnostics and operational troubleshooting.
 
 Hostname is always set to the name of this host, as returned by `Dns.GetHostName()`.
 Role name is a logical name of the whole service and instance name is the name of this specific silo instance within this service.

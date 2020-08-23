@@ -3,7 +3,7 @@ layout: page
 title: Why Orleans Streams?
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Why Orleans Streams?
 
@@ -64,11 +64,11 @@ And of course, our system should have all the properties of a **"good distribute
 4. _Efficiency_ - use the underlying resources efficiently
 5. _Responsiveness_ - enable near real time scenarios.
 
-These were the requirements we had in mind for building [**Orleans Streaming**](index.md).
+These were the requirements we had in mind for building [**Orleans Streaming**](index.zh.md).
 
 ---
 
-_Clarificaton_: Orleans currently does not directly support writing declarative dataflow expressions like in the example above. The current Orleans Streaming APIs are more low level building blocks, as described [here](Streams-Programming-APIs.md). Providing declarative dataflow expressions is our future goal.
+_Clarificaton_: Orleans currently does not directly support writing declarative dataflow expressions like in the example above. The current Orleans Streaming APIs are more low level building blocks, as described [here](Streams-Programming-APIs.zh.md). Providing declarative dataflow expressions is our future goal.
 
 ## Next
-[Orleans Streams Programming APIs](Streams-Programming-APIs.md)
+[Orleans Streams Programming APIs](Streams-Programming-APIs.zh.md)

@@ -1,5 +1,5 @@
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Grain versioning
 
@@ -30,9 +30,9 @@ Where `X` is the version number of the grain interface, which is typically monot
 When a call from a versioned grain arrive in a cluster:
 - If no activation exists, a compatible activation will be created
 - If an activation exists:
-  - If the current one is not compatible, it will be deactivated and new compatible will be created (see [version selector strategy](Version-selector-strategy.md))
-  - If the current one is compatible (see [compatible grains](Compatible-grains.md)), the call will be handled normally.
+  - If the current one is not compatible, it will be deactivated and new compatible will be created (see [version selector strategy](Version-selector-strategy.zh.md))
+  - If the current one is compatible (see [compatible grains](Compatible-grains.zh.md)), the call will be handled normally.
 
 By default:
-- All versioned grains are supposed to be backward-compatible only (see [backward compatibility guidelines](Backward-compatibility-guidelines.md) and [compatible grains](Compatible-grains.md)). That means that a v1 grain can make calls to a v2 grain, but a v2 grain cannot call a v1. This default behavior can be changed with `GlobalConfiguration.DefaultCompatibilityStrategy`
+- All versioned grains are supposed to be backward-compatible only (see [backward compatibility guidelines](Backward-compatibility-guidelines.zh.md) and [compatible grains](Compatible-grains.zh.md)). That means that a v1 grain can make calls to a v2 grain, but a v2 grain cannot call a v1. This default behavior can be changed with `GlobalConfiguration.DefaultCompatibilityStrategy`
 - When multiple versions exist in the cluster, the new activation will be randomly placed on a compatible silo. This default behavior can be changed with `GlobalConfiguration.DefaultVersionSelectorStrategy`

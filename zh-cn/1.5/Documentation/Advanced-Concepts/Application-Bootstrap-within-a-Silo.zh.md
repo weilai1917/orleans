@@ -3,7 +3,7 @@ layout: page
 title: Application Bootstrapping within a Silo
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Application Bootstrapping within a Silo
 

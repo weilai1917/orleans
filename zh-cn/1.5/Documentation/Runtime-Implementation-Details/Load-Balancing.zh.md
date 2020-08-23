@@ -3,7 +3,7 @@ layout: page
 title: Load Balancing
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Load Balancing
 

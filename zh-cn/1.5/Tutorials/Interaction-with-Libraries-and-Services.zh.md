@@ -248,4 +248,4 @@ You should avoid using `Task.Run`, which always uses the .NET thread pool, and t
 
 Let's look at how Orleans can persist grain state for us:
 
-[Declarative Persistence](Declarative-Persistence.md)
+[Declarative Persistence](Declarative-Persistence.zh.md)

@@ -1,10 +1,10 @@
 - name: Grains
-  href: Grains.md
+  href: Grains.zh.md
 - name: Developing a Grain
-  href: Developing-a-Grain.md
+  href: Developing-a-Grain.zh.md
 - name: Developing a Client
-  href: Developing-a-Client.md
+  href: Developing-a-Client.zh.md
 - name: Running the Application
-  href: Running-the-Application.md
+  href: Running-the-Application.zh.md
 - name: Debugging
-  href: Debugging.md
+  href: Debugging.zh.md

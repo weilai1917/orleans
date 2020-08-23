@@ -3,13 +3,13 @@ layout: page
 title: Azure Web Sample
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Azure Web Sample
 
 **Important note**: Worker and web role instances are not automatically removed or disabled, even when they go unused for a long time. To avoid a nasty surprise when your Azure bill comes, make sure to delete the instances after you have finished testing the application!
 
-This sample is essentially the same as the [Hello World](Hello-World.md) sample, except that it hosts the grains in an Azure Worker Role instead of in the client process itself.
+This sample is essentially the same as the [Hello World](Hello-World.zh.md) sample, except that it hosts the grains in an Azure Worker Role instead of in the client process itself.
 
 While the communication interface and grain implementation are identical, three projects replace the client:
 

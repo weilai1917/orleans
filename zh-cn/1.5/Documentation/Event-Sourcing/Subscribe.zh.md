@@ -1,11 +1,11 @@
 
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Notifications
 
 It is often convenient to have the ability to react to state changes. 
-All callbacks are subject to Orleans' turn-based guarantees; see also the section on [Concurrency Guarantees](MultiInstance.md).
+All callbacks are subject to Orleans' turn-based guarantees; see also the section on [Concurrency Guarantees](MultiInstance.zh.md).
 
 ## Tracking Confirmed State
 

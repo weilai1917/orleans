@@ -7,10 +7,10 @@ title: Interceptors
 
 # Interceptors
 
-Grain call filters provide a means for intercepting grain calls. Filters can execute code both before and after a grain call. Multiple filters can be installed simultaneously. Filters are asynchronous and can modify [`RequestContext`](Request-Context.md), arguments, and the return value of the method being invoked. Filters can also inspect the `MethodInfo` of the method being invoked on the grain class and can be used to throw or handle exceptions.
+Grain call filters provide a means for intercepting grain calls. Filters can execute code both before and after a grain call. Multiple filters can be installed simultaneously. Filters are asynchronous and can modify [`RequestContext`](Request-Context.zh.md), arguments, and the return value of the method being invoked. Filters can also inspect the `MethodInfo` of the method being invoked on the grain class and can be used to throw or handle exceptions.
 
 Some example usages of grain call filters are:
-* Authorization: a filter can inspect the method being invoked and the arguments or some authorization information in the [`RequestContext`](Request-Context.md) to determine whether or not to allow the call to proceed.
+* Authorization: a filter can inspect the method being invoked and the arguments or some authorization information in the [`RequestContext`](Request-Context.zh.md) to determine whether or not to allow the call to proceed.
 * Logging/Telemetry: a filter can log information and capture timing data and other statistics about method invocation.
 * Error Handling: a filter can intercept exceptions thrown by a method invocation and transform it into another exception or handle the exception as it passes through the filter.
 
@@ -52,15 +52,15 @@ public interface IGrainCallContext
 }
 ```
 
-The `IGrainCallFilter.Invoke()` method must await or return the result of `IGrainCallContext.Invoke()` to execute the next configured filter and eventually the grain method itself. The `IGrainCallContext.Result` property can be modified after awaiting the `Invoke()` method. The `IGrainCallContext.Method` property returns the `MethodInfo` of the implementation class, not the interface. The `MethodInfo` of the interface method can be accessed using reflection. Grain call filters are called for all method calls to a grain and this includes calls to grain extensions (implementations of `IGrainExtension`) which are installed in the grain. For example, grain extensions are used to implement [Streams](../Orleans-Streams/index.md) and [Cancellation Tokens](Cancellation-Tokens.md). Therefore, it should be expected that the value of `IGrainCallContext.Method` is not always a method in the grain class itself.
+The `IGrainCallFilter.Invoke()` method must await or return the result of `IGrainCallContext.Invoke()` to execute the next configured filter and eventually the grain method itself. The `IGrainCallContext.Result` property can be modified after awaiting the `Invoke()` method. The `IGrainCallContext.Method` property returns the `MethodInfo` of the implementation class, not the interface. The `MethodInfo` of the interface method can be accessed using reflection. Grain call filters are called for all method calls to a grain and this includes calls to grain extensions (implementations of `IGrainExtension`) which are installed in the grain. For example, grain extensions are used to implement [Streams](../Orleans-Streams/index.zh.md) and [Cancellation Tokens](Cancellation-Tokens.zh.md). Therefore, it should be expected that the value of `IGrainCallContext.Method` is not always a method in the grain class itself.
 
 ## Configuring Grain Call Filters
 
-Implementations of `IGrainCallFilter` can either be registered as silo-wide filters via [Dependency Injection](../Core-Features/Dependency-Injection.md) or they can be registered as grain-level filters via a grain implementing `IGrainCallFilter` directly.
+Implementations of `IGrainCallFilter` can either be registered as silo-wide filters via [Dependency Injection](../Core-Features/Dependency-Injection.zh.md) or they can be registered as grain-level filters via a grain implementing `IGrainCallFilter` directly.
 
 ### Silo-wide Grain Call Filters
 
-A delegate can be registered as a silo-wide grain call filters using [Dependency Injection](../Core-Features/Dependency-Injection.md) like so:
+A delegate can be registered as a silo-wide grain call filters using [Dependency Injection](../Core-Features/Dependency-Injection.zh.md) like so:
 ``` csharp
 services.AddGrainCallFilter(async context =>
 {
@@ -177,7 +177,7 @@ public class MyAccessControlledGrain : Grain, IMyFilteredGrain, IGrainCallFilter
 }
 ```
 
-In the above example, the `SpecialAdminOnlyOperation` method can only be called if `"isAdmin"` is set to `true` in the [`RequestContext`](Request-Context.md). In this way, grain call filters can be used for authorization. In this example, it is the responsibility of the caller to ensure that the `"isAdmin"` value is set correctly and that authentication is performed correctly. Note that the `[AdminOnly]` attribute is specified on the grain class method. This is because the `IGrainCallContext.Method` property returns the `MethodInfo` of the implementation, not the interface. The interface method can be accessed using reflection.
+In the above example, the `SpecialAdminOnlyOperation` method can only be called if `"isAdmin"` is set to `true` in the [`RequestContext`](Request-Context.zh.md). In this way, grain call filters can be used for authorization. In this example, it is the responsibility of the caller to ensure that the `"isAdmin"` value is set correctly and that authentication is performed correctly. Note that the `[AdminOnly]` attribute is specified on the grain class method. This is because the `IGrainCallContext.Method` property returns the `MethodInfo` of the implementation, not the interface. The interface method can be accessed using reflection.
 
 ## Ordering of Grain Call Filters
 
@@ -192,11 +192,11 @@ Each call to `IGrainCallContext.Invoke()` encapsulates the next defined filter s
 
 # Client-side interceptors
 
-If a client side interceptor is defined, any grain call made from an Orleans client will invoke this interceptor before the call is dispatched remotely. The interceptor is invoked synchronously in the same thread where the call is made after call arguments are deep copied. Since the interceptor is invoked synchronously it should return promptly and do minimal work, to avoid blocking the calling thread or impacting throughput. The interceptor is allowed to mutate the call arguments and also mutate the [`Orleans.RequestContext`](Request-Context.md). Any changes made by the interceptor to `Orleans.RequestContext` will be picked up as part of the call dispatch logic that occurs after the interceptor. If the interceptor logic throws an exception, the remote call will not be made and the client calling code will throw promptly.
+If a client side interceptor is defined, any grain call made from an Orleans client will invoke this interceptor before the call is dispatched remotely. The interceptor is invoked synchronously in the same thread where the call is made after call arguments are deep copied. Since the interceptor is invoked synchronously it should return promptly and do minimal work, to avoid blocking the calling thread or impacting throughput. The interceptor is allowed to mutate the call arguments and also mutate the [`Orleans.RequestContext`](Request-Context.zh.md). Any changes made by the interceptor to `Orleans.RequestContext` will be picked up as part of the call dispatch logic that occurs after the interceptor. If the interceptor logic throws an exception, the remote call will not be made and the client calling code will throw promptly.
 
 The interceptor can be set by setting `GrainClient.ClientInvokeCallback`, which is a property of type `Action<InvokeMethodRequest, IGrain>`. The first argument is the invocation request that includes various details about the invoked call, such as InterfaceId and MethodId, as well as deep-copied arguments. The second argument is the target grain reference to which this call is made.
 
-Currently, the main scenario that we know of that uses client side pre-call inteceptors is to add some extra information to [`Orleans.RequestContext`](Request-Context.md), such as any special call context or token.
+Currently, the main scenario that we know of that uses client side pre-call inteceptors is to add some extra information to [`Orleans.RequestContext`](Request-Context.zh.md), such as any special call context or token.
 
 ## Use Cases
 
@@ -325,7 +325,7 @@ public async Task Invoke(IGrainCallContext context)
 The following sections describe functionality which has been superseded by the above features and may be removed in a future release.
 
 ## Silo-level Interceptors
-Silo-level interceptors are called for all grain calls within a silo. They can be installed using `IProviderRuntime.SetInvokeInterceptor(interceptor)`, typically from within a [Bootstrap Provider](Application-Bootstrap-within-a-Silo.md)'s `Init` method, like so:
+Silo-level interceptors are called for all grain calls within a silo. They can be installed using `IProviderRuntime.SetInvokeInterceptor(interceptor)`, typically from within a [Bootstrap Provider](Application-Bootstrap-within-a-Silo.zh.md)'s `Init` method, like so:
 ``` csharp
 providerRuntime.SetInvokeInterceptor(async (method, request, grain, invoker) =>
 {

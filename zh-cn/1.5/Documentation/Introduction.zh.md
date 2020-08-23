@@ -3,7 +3,7 @@ layout: page
 title: Introduction
 ---
 
-[!include[](../warning-banner.md)]
+[!include[](../warning-banner.zh.md)]
 
 # Introduction
 
@@ -55,7 +55,7 @@ In addition, the virtual nature of grains allows Orleans to handle server failur
 
 ## Virtual Actors
 
-Implementation of Orleans is based on the Actor Model that's been around since 1970s. However, unlike actors in more traditional actor systems such as Erlang or Akka, [Orleans Grains](Getting-Started-With-Orleans/Grains.md) are virtual actors.
+Implementation of Orleans is based on the Actor Model that's been around since 1970s. However, unlike actors in more traditional actor systems such as Erlang or Akka, [Orleans Grains](Getting-Started-With-Orleans/Grains.zh.md) are virtual actors.
 The biggest difference is that physical instantiations of grains are completely abstracted away and are automatically managed by the Orleans runtime.
 The Virtual Actor Model is much more suitable for high-scale dynamic workloads like cloud services and is the major innovation of Orleans.
 You can read more details in the [Technical Report on Orleans.](https://www.microsoft.com/en-us/research/publication/orleans-distributed-virtual-actors-for-programmability-and-scalability)

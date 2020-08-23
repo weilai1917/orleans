@@ -158,4 +158,4 @@ However, that is just about making different configuration choices - the code in
 
 Next we'll see how we can run a minimal Orleans application.
 
-[Minimal Orleans Application](Minimal-Orleans-Application.md)
+[Minimal Orleans Application](Minimal-Orleans-Application.zh.md)

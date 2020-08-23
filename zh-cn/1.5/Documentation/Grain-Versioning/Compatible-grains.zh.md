@@ -1,5 +1,5 @@
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Compatible grains
 
@@ -30,7 +30,7 @@ with V1:
   - If the current activation is a V2 and the requested version is V1, the current activation will
     be able to process the request normally
   - If the current activation is a V1 and the requested version is V2, the current activation will be
-    deactivated and a new activation compatible with V2 will be created (see [version selector strategy](Version-selector-strategy.md)).
+    deactivated and a new activation compatible with V2 will be created (see [version selector strategy](Version-selector-strategy.zh.md)).
 
 ## Fully compatible
 

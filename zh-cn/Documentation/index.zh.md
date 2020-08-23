@@ -98,7 +98,7 @@ Orleans与.NET Standard 2.0及更高版本兼容，运行在Windows、Linux和ma
 
 ## 特征
 
-### 坚持不懈
+### 持久化
 
 Orleans提供了一个简单的持久性模型，确保在处理请求之前，状态对grain是可用的，并且保持一致性。Grains可以有多个命名的持久性数据对象，例如，一个名为“profile”的用户概要文件，一个名为“inventory”的存储。此状态可以存储在任何存储系统中。例如，配置文件数据可以存储在一个数据库中，而库存存储在另一个数据库中。当一个grain正在运行时，这个状态被保存在内存中，这样就可以在不访问存储器的情况下处理读请求。当grains更新其状态时`state.WriteStateAsync()`call确保备份存储的持久性和一致性得到更新。有关详细信息，请参见[Grains持久性](grains/grain_persistence/index.zh.md)文档。
 
@@ -126,7 +126,7 @@ Orleans提供了一个简单的持久性模型，确保在处理请求之前，�
 
 Orleans的设计是弹性伸缩的。当silos加入集群时，它能够接受新的激活，当silos离开集群时（由于规模缩小或机器故障），在该silos上激活的Grains将根据需要在其余silos上重新激活。一个Orleans集群可以缩小到一个silos。支持弹性伸缩性的相同属性也支持容错：集群自动检测并从故障中快速恢复。
 
-### 到处跑
+### 运行在任何地方
 
 Orleans运行任何支持.NETCore或.NETFramework的地方。这包括在Linux、Windows和macOS上托管，并部署到Kubernetes、虚拟机或物理机、本地或云中，以及PaaS服务（如Azure云服务）。
 
@@ -146,13 +146,13 @@ Orleans运行任何支持.NETCore或.NETFramework的地方。这包括在Linux�
 
 请看[入门教程](tutorials_and_samples/tutorial_1.zh.md).
 
-### 建筑
+### 构建
 
-在Windows上，运行`生成.cmd`脚本在本地构建NuGet包，然后从中引用所需的NuGet包`/工件/发布/*`. 你可以跑了`测试命令`运行所有BVT测试，以及`测试命令`同时运行功能测试。
+在Windows上，运行`build.cmd`脚本在本地构建NuGet包，然后从中引用所需的NuGet包`/Artifacts/Release/*`. 你可以跑了`Test.cmd`运行所有BVT测试，以及`TestAll.cmd`同时运行功能测试。
 
-在Linux和macOS上，运行`建筑.sh`脚本或`dotnet构建/Orleans科技平台.sln`建造Orleans。
+在Linux和macOS上，运行`build.sh`脚本或`dotnet build ./OrleansCrossPlatform.sln`构建Orleans。
 
-## 官方建筑
+## 官方构建
 
 最新的稳定，生产质量发布[在这里](https://github.com/dotnet/orleans/releases/latest).
 
@@ -194,11 +194,11 @@ Orleans运行任何支持.NETCore或.NETFramework的地方。这包括在Linux�
 -   跟随[@Orleans小姐](https://twitter.com/msftorleans)Orleans公告的Twitter帐户。
 -   [OrleansContrib-面向Orleans社区附加组件的GitHub组织](https://github.com/OrleansContrib/)各种社区项目，包括监视、设计模式、存储提供程序等。
 -   开发人员希望[为Orleans贡献代码更改](http://dotnet.github.io/orleans/Community/Contributing.html).
--   我们还鼓励您报告错误或通过启动新的[线](https://github.com/dotnet/orleans/issues)在GitHub上。
+-   我们还鼓励您报告错误或通过启动新的[会话](https://github.com/dotnet/orleans/issues)在GitHub上。
 
 ## 许可证
 
-本项目根据[麻省理工学院执照](https://github.com/dotnet/orleans/blob/master/LICENSE).
+本项目根据[MIT license](https://github.com/dotnet/orleans/blob/master/LICENSE).
 
 ## 快速链接
 

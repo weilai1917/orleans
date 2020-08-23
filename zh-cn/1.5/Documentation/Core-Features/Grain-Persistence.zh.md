@@ -3,7 +3,7 @@ layout: page
 title: Grain Persistence
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 ## Grain Persistence Goals
 
@@ -428,7 +428,7 @@ The principles for ADO.NET backed persistence storage are:
 1. Keep business critical data safe an accessible while data, the format of data and code evolve.
 2. Take advantenge of vendor and storage specific functionality.
 
-In practice this means adhering to [ADO.NET implementation goals](../Runtime-Implementation-Details/Relational-Storage.md)
+In practice this means adhering to [ADO.NET implementation goals](../Runtime-Implementation-Details/Relational-Storage.zh.md)
 and some added implementation logic in ADO.NET specific storage provider that allow evolving the shape of the data in the storage.
 
 In addition to the usual storage provider capabilities, the ADO.NET provider has built-in capability to

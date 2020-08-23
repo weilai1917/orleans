@@ -3,7 +3,7 @@ layout: page
 title: PowerShell Client Module
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # PowerShell Client Module
 

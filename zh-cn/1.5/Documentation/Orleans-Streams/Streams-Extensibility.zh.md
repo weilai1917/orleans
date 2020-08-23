@@ -3,7 +3,7 @@ layout: page
 title: Orleans Streams Extensibility
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Orleans Streams Extensibility
 
@@ -13,7 +13,7 @@ There are three ways developers can extend the currently implemented behaviour o
 2. Write a Custom Queue Adapter.
 3. Writ a New Stream Provider
 
-We will describe those below. Please read the [Orleans Streams Implementation](Streams-Implementation.md) before reading this section to have a high level view of the internal implementation.
+We will describe those below. Please read the [Orleans Streams Implementation](Streams-Implementation.zh.md) before reading this section to have a high level view of the internal implementation.
 
 ## Stream Provider Configuration
 

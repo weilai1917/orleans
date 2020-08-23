@@ -3,7 +3,7 @@ layout: page
 title: Chirper
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Chirper
 

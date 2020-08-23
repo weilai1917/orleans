@@ -3,7 +3,7 @@ layout: page
 title: Service Fabric Hosting
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Service Fabric Hosting
 

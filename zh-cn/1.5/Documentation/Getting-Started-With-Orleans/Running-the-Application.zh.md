@@ -3,11 +3,11 @@ layout: page
 title: Running the Application
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 ### Orleans Application
 
-As was illustrated in the [previous topic](Developing-a-Client.md), a typical Orleans application consists of a cluster of server processes (silos) where grains live, and a set of client processes, usually web servers, that receive external requests, turn them into grain method calls, and return results back.
+As was illustrated in the [previous topic](Developing-a-Client.zh.md), a typical Orleans application consists of a cluster of server processes (silos) where grains live, and a set of client processes, usually web servers, that receive external requests, turn them into grain method calls, and return results back.
 Hence, the first thing one needs to do to run an Orleans application is to start a cluster of silos.
 For testing purposes, a cluster can consist of a single silo.
 For a reliable production deployment, we obviously want more than one silos in a cluster for fault tolerance and scale.
@@ -78,8 +78,8 @@ await client.Connect();
 
 The configuration examples we used here are for testing silos and clients running on the same machine as `localhost`.
 In production, silos and clients usually run on different servers and are configured with one of the reliable cluster configuration options.
-You can find more about that in the [Configuration Guide](../Deployment-and-Operations/Configuration-Guide/index.md) and in the description of [Cluster Management](../Runtime-Implementation-Details/Cluster-Management.md).
+You can find more about that in the [Configuration Guide](../Deployment-and-Operations/Configuration-Guide/index.zh.md) and in the description of [Cluster Management](../Runtime-Implementation-Details/Cluster-Management.zh.md).
 
 ### Next
 
-[Debugging](Debugging.md)
+[Debugging](Debugging.zh.md)

@@ -1,4 +1,4 @@
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Backward compatibility guidelines
 
@@ -82,7 +82,7 @@ This is due to how the internal Orleans serializer works.
 
 It can seems obvious, but you should be very careful when changing the body of an existing method.
 Unless you are fixing a bug, it is better to just add a new method if you need to modify the code.
-(see [compatible grains](Compatible-grains.md))
+(see [compatible grains](Compatible-grains.zh.md))
 
 Example:
 ``` cs

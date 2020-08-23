@@ -3,7 +3,7 @@ layout: page
 title: Orleans Streams Quick Start
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Orleans Streams Quick Start
 
@@ -85,4 +85,4 @@ Reactive programming can be a very powerful approach to solve many problems. You
 
 
 ## Next
-[Orleans Streams Programming APIs](Streams-Programming-APIs.md)
+[Orleans Streams Programming APIs](Streams-Programming-APIs.zh.md)

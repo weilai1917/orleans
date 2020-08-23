@@ -3,7 +3,7 @@ layout: page
 title: Typical Configurations
 ---
 
-[!include[](../../../warning-banner.md)]
+[!include[](../../../warning-banner.zh.md)]
 
 # Typical Configurations
 

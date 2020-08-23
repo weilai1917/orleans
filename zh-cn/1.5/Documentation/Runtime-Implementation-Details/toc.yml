@@ -1,14 +1,14 @@
 - name: Messaging Delivery Guarantees
-  href: Messaging-Delivery-Guarantees.md
+  href: Messaging-Delivery-Guarantees.zh.md
 - name: Relational Storage
-  href: Relational-Storage.md
+  href: Relational-Storage.zh.md
 - name: Runtime Tables
-  href: Runtime-Tables.md
+  href: Runtime-Tables.zh.md
 - name: Cluster Management
-  href: Cluster-Management.md
+  href: Cluster-Management.zh.md
 - name: Consul Deployment
-  href: Consul-Deployment.md
+  href: Consul-Deployment.zh.md
 - name: Load Balancing
-  href: Load-Balancing.md
+  href: Load-Balancing.zh.md
 - name: Scheduler
-  href: Scheduler.md
+  href: Scheduler.zh.md

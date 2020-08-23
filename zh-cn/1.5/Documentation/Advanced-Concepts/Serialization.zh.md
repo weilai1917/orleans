@@ -3,7 +3,7 @@ layout: page
 title: Serialization and Writing Custom Serializers
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Serialization and Writing Custom Serializers
 

@@ -3,7 +3,7 @@ layout: page
 title: Troubleshooting Deployments
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Troubleshooting Deployments
 
@@ -60,7 +60,7 @@ Declarative configuration:
 
 In the `diagnostics.wadcfgx` file for the web and worker roles, make sure to set the `scheduledTransferLogLevelFilter` attribute in the `Logs` element to `Information`, as this is an additional layer of trace filtering that defines which traces are sent to the `WADLogsTable` in Azure Storage.
 
-You can find more information about this in the [Configuration Guide] (Configuration-Guide/index.md).
+You can find more information about this in the [Configuration Guide] (Configuration-Guide/index.zh.md).
 
 ## Compatibility with ASP.NET
 

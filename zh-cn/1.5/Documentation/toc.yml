@@ -1,11 +1,11 @@
 - name: Introduction
-  href: Introduction.md
-  homepage: Introduction.md
+  href: Introduction.zh.md
+  homepage: Introduction.zh.md
   items:
   - name: Benefits
-    href: Benefits.md
+    href: Benefits.zh.md
   - name: What's new in Orleans
-    href: ../../Documentation/whats_new_in_orleans.md
+    href: ../../Documentation/whats_new_in_orleans.zh.md
 - name: Installation
   href: Installation/toc.yml
 - name: Getting Started

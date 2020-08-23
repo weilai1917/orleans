@@ -1,14 +1,14 @@
 - name: Overview
-  href: index.md
+  href: index.zh.md
 - name: Streams-Quick-Start
-  href: Streams-Quick-Start.md
+  href: Streams-Quick-Start.zh.md
 - name: Streams Why
-  href: Streams-Why.md
+  href: Streams-Why.zh.md
 - name: Streams Programming APIs
-  href: Streams-Programming-APIs.md
+  href: Streams-Programming-APIs.zh.md
 - name: Stream Providers
-  href: Stream-Providers.md
+  href: Stream-Providers.zh.md
 - name: Streams Implementation
-  href: Streams-Implementation.md
+  href: Streams-Implementation.zh.md
 - name: Streams Extensibility
-  href: Streams-Extensibility.md
+  href: Streams-Extensibility.zh.md

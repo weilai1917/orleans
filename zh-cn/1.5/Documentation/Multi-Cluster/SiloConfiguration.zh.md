@@ -3,7 +3,7 @@ layout: page
 title: Multi-Cluster Silo Configuration
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 ## Orleans Silo Configuration
 
@@ -36,13 +36,13 @@ The `Service Id` is an arbitrary Guid for identifying this service. It must be t
 
 The `MultiClusterNetwork` section is optional - if not present, all multi-cluster support is disabled for this silo.
 
-The **required parameters** `ClusterId` and `GossipChannel` are explained in the section on [Multi-Cluster Communication](GossipChannels.md).
+The **required parameters** `ClusterId` and `GossipChannel` are explained in the section on [Multi-Cluster Communication](GossipChannels.zh.md).
 
-The  optional parameters `MaxMultiClusterGateways` and `BackgroundGossipInterval`  are explained in the section on [Multi-Cluster Communication](GossipChannels.md).
+The  optional parameters `MaxMultiClusterGateways` and `BackgroundGossipInterval`  are explained in the section on [Multi-Cluster Communication](GossipChannels.zh.md).
 
-The optional parameter `DefaultMultiCluster` is explained in the section on [Multi-Cluster Configuration](MultiClusterConfiguration.md).
+The optional parameter `DefaultMultiCluster` is explained in the section on [Multi-Cluster Configuration](MultiClusterConfiguration.zh.md).
 
-The optional parameters `UseGlobalSingleInstanceByDefault`,  `GlobalSingleInstanceRetryInterval` and `GlobalSingleInstanceNumberRetries` are explained in the section on [Global-Single-Instance Grains](GlobalSingleInstance.md).
+The optional parameters `UseGlobalSingleInstanceByDefault`,  `GlobalSingleInstanceRetryInterval` and `GlobalSingleInstanceNumberRetries` are explained in the section on [Global-Single-Instance Grains](GlobalSingleInstance.zh.md).
 
 
 ## Orleans Client Configuration

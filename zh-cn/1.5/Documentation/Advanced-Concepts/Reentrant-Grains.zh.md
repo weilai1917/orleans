@@ -3,7 +3,7 @@ layout: page
 title: Reentrant Grains
 ---
 
-[!include[](../../warning-banner.md)]
+[!include[](../../warning-banner.zh.md)]
 
 # Reentrant Grains
 
