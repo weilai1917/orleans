@@ -1,25 +1,25 @@
-- name: Configuration Guide
+- name: 配置指南
   href: index.zh.md
   homepage: index.zh.md
-- name: Local Development Configuration
+- name: 本地开发配置
   href: local_development_configuration.zh.md
-- name: Client Configuration
+- name: 客户端配置
   href: client_configuration.zh.md
-- name: Server Configuration
+- name: 服务端配置
   href: server_configuration.zh.md
-- name: Typical Configurations
+- name: 典型配置
   href: typical_configurations.zh.md
-- name: Options Classes
+- name: 配置项
   href: list_of_options_classes.zh.md
-- name: Activation Garbage Collection
+- name: 触发垃圾回收
   href: activation_garbage_collection.zh.md
-- name: Configuring .NET Garbage Collection
+- name: 配置 .NET 垃圾回收
   href: configuring_.NET_garbage_collection.zh.md
-- name: Configuring ADO.NET Providers
+- name: 配置 ADO.NET 提供程序
   href: configuring_ADO.NET_providers.zh.md
-- name: Serialization
+- name: 序列化
   href: serialization.zh.md  
-- name: Startup Tasks
+- name: 启动任务
   href: startup_tasks.zh.md
-- name: Shutting Down Orleans
+- name: 关闭 Orleans
   href: shutting_down_orleans.zh.md   

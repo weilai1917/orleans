@@ -1,11 +1,11 @@
-- name: What is a Grain Client
+- name: 什么是 Grain 客户端
   href: index.zh.md
   homepage: index.zh.md
-- name: Silo Lifecycle
+- name: Silo 生命周期
   href: silo_lifecycle.zh.md
-- name: Heterogeneous Silos
+- name: 异构 Silos
   href: heterogeneous_silos.zh.md
-- name: Configuration Guide
+- name: 配置指南
   href: configuration_guide/toc.yml
-- name: Monitoring
+- name: 监控
   href: monitoring/toc.yml
