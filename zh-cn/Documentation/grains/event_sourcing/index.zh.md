@@ -5,7 +5,7 @@ title: Event Sourcing Overview
 
 # 活动来源
 
-事件采购提供了一种灵活的方式来管理和坚持粮食州。与标准谷物相比，事件源谷物具有许多潜在优势。首先，它可以与许多不同的存储提供程序配置一起使用，并支持跨多个群集的地理复制。此外，它还将grain类与grain状态（由grain状态对象表示）和grain更新（由事件对象表示）的定义完全分离。
+事件采购提供了一种灵活的方式来管理和坚持grain州。与标准Grains相比，事件源Grains具有许多潜在优势。首先，它可以与许多不同的存储提供程序配置一起使用，并支持跨多个群集的地理复制。此外，它还将grain类与grain状态（由grain状态对象表示）和grain更新（由事件对象表示）的定义完全分离。
 
 文件结构如下：
 
@@ -15,7 +15,7 @@ title: Event Sourcing Overview
 
 -   [立即/延迟确认](immediate_vs_delayed_confirmation.md)解释延迟的事件确认和重新进入如何提高可用性和吞吐量。
 
--   [通知](notifications.md)解释如何订阅通知，允许谷物对新事件作出反应。
+-   [通知](notifications.md)解释如何订阅通知，允许Grains对新事件作出反应。
 
 -   [事件源配置](event_sourcing_configuration.md)说明如何配置项目、群集和日志一致性提供程序。
 

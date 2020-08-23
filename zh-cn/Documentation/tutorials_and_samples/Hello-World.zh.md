@@ -13,27 +13,27 @@ title: Hello World
 
 生成项目。
 
-使用以下命令在一个窗口中启动筒仓：
+使用以下命令在一个窗口中启动silos：
 
 ```
 dotnet run --project src\SiloHost
 ```
 
-筒仓运行后，使用以下命令在另一个窗口中启动客户端：
+silos运行后，使用以下命令在另一个窗口中启动客户端：
 
 ```
 dotnet run --project src\OrleansClient
 ```
 
-筒仓窗口和客户端窗口将相互显示问候。
+silos窗口和客户端窗口将相互显示问候。
 
-## 奥尔良怎么说
+## Orleans怎么说
 
-在此示例中，客户端与谷物连接，向其发送问候并接收回问候。客户然后打印该问候，仅此而已。理论上很简单，但是由于涉及分布，因此还有更多内容。
+在此示例中，客户端与Grains连接，向其发送问候并接收回问候。客户然后打印该问候，仅此而已。理论上很简单，但是由于涉及分布，因此还有更多内容。
 
-涉及四个项目-一个用于声明Grain接口，一个用于Grain实现，一个用于客户端，一个用于筒仓主机。
+涉及四个项目-一个用于声明Grain接口，一个用于Grain实现，一个用于客户端，一个用于silos主机。
 
-IHello.cs中有一个谷物接口：
+IHello.cs中有一个Grains接口：
 
 ```csharp
 public interface IHello : Orleans.IGrainWithIntegerKey
@@ -54,9 +54,9 @@ public class HelloGrain : Orleans.Grain, HelloWorldInterfaces.IHello
 }
 ```
 
-该类从基类继承`粮食`，并实现之前定义的通信接口。由于没有什么需要等待的谷物，因此不会声明该方法`异步的`而是使用返回值`Task.FromResult（）`。
+该类从基类继承`grain`，并实现之前定义的通信接口。由于没有什么需要等待的Grains，因此不会声明该方法`异步的`而是使用返回值`Task.FromResult（）`。
 
-编排谷物代码并在OrleansClient项目中找到的客户端如下所示：
+编排Grains代码并在OrleansClient项目中找到的客户端如下所示：
 
 ```csharp
 //configure the client with proper cluster options, logging and clustering
@@ -79,7 +79,7 @@ var response = await friend.SayHello("Good morning, my friend!");
 Console.WriteLine("\n\n{0}\n\n", response);
 ```
 
-SiloHost项目中的筒仓主机（用于配置和启动筒仓）如下所示：
+SiloHost项目中的silos主机（用于配置和启动silos）如下所示：
 
 ```csharp
  //define the cluster configuration

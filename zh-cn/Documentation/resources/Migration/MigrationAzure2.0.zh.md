@@ -5,9 +5,9 @@ title: Migration from Orleans 1.5 to 2.0 when using Azure
 
 # 使用Azure从Orleans 1.5迁移到2.0
 
-在奥尔良2.0中，筒仓和客户端的配置已更改。在奥尔良1.5中，我们曾经有一个用于处理所有配置项的整体对象，而且提供程序也已添加到该配置对象中。在奥尔良2.0中，配置过程围绕`SiloHostBuilder`，类似于在ASP.NET Core中使用`WebHostBuilder`。
+在Orleans2.0中，silos和客户端的配置已更改。在Orleans1.5中，我们曾经有一个用于处理所有配置项的整体对象，而且提供程序也已添加到该配置对象中。在Orleans2.0中，配置过程围绕`SiloHostBuilder`，类似于在ASP.NET Core中使用`WebHostBuilder`。
 
-在奥尔良1.5中，Azure的配置如下所示：
+在Orleans1.5中，Azure的配置如下所示：
 
 ```csharp
     var config = AzureSilo.DefaultConfiguration();
@@ -15,9 +15,9 @@ title: Migration from Orleans 1.5 to 2.0 when using Azure
     config.AddAzureTableStorageProvider("AzureStore", RoleEnvironment.GetConfigurationSettingValue("DataConnectionString"));
 ```
 
-的`AzureSilo`类公开了一个名为DefaultConfiguration（）的静态方法，该方法用于加载配置XML文件。不建议使用这种配置筒仓的方式，但仍通过[旧版支持包](https://www.nuget.org/packages/Microsoft.Orleans.Core.Legacy/)。
+的`AzureSilo`类公开了一个名为DefaultConfiguration（）的静态方法，该方法用于加载配置XML文件。不建议使用这种配置silos的方式，但仍通过[旧版支持包](https://www.nuget.org/packages/Microsoft.Orleans.Core.Legacy/)。
 
-在奥尔良2.0中，配置完全是编程的。新的配置API如下所示：
+在Orleans2.0中，配置完全是编程的。新的配置API如下所示：
 
 ```csharp
     //Load the different settings from the services configuration
@@ -55,7 +55,7 @@ title: Migration from Orleans 1.5 to 2.0 when using Azure
 
 # AzureSilo到ISiloHost
 
-在奥尔良1.5，`AzureSilo`类是在Azure Worker角色中托管筒仓的推荐方法。仍然可以通过[`Microsoft.Orleans.Hosting.AzureCloudServices`NuGet包](https://www.nuget.org/packages/Microsoft.Orleans.Hosting.AzureCloudServices/)。
+在Orleans1.5，`AzureSilo`类是在Azure Worker角色中托管silos的推荐方法。仍然可以通过[`Microsoft.Orleans.Hosting.AzureCloudServices`NuGet包](https://www.nuget.org/packages/Microsoft.Orleans.Hosting.AzureCloudServices/)。
 
 ```csharp
 public class WorkerRole : RoleEntryPoint
@@ -89,7 +89,7 @@ public class WorkerRole : RoleEntryPoint
 }
 ```
 
-奥尔良2.0提供了更灵活的模块化API，用于通过以下方式配置和托管筒仓`SiloHostBuilder`和`ISiloHost`。
+Orleans2.0提供了更灵活的模块化API，用于通过以下方式配置和托管silos`SiloHostBuilder`和`ISiloHost`。
 
 ```csharp
     public class WorkerRole : RoleEntryPoint

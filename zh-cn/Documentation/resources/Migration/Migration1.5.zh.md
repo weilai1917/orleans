@@ -3,27 +3,27 @@ layout: page
 title: Migration from Orleans 1.5 to 2.0
 ---
 
-# 从奥尔良迁移到0.5
+# 从Orleans迁移到0.5
 
 Orleans的大部分API在2.0中保持不变，或者这些API的实现留在遗留类中以实现向后兼容性。同时，新引入的api提供了一些新的功能或更好的方法来完成这些任务。当涉及到.NETSDK工具和VisualStudio支持时，还有更细微的区别，这有助于我们意识到这一点。本文档为将应用程序代码从迁移到Orleans 2.0提供了指导。
 
 ## Visual Studio和工具要求
 
-奥尔良2.0.0建立在.NET标准2.0之上。因此，您需要升级开发工具，以确保您获得愉快的开发体验。我们建议使用Visual Studio 2017或更高版本来开发Orleans 2.0.0应用程序。根据我们的经验，15.5.2及更高版本的效果最好。NET Standard 2.0.0与.NET 4.6.1及更高版本、.NET Core 2.0和其他框架列表兼容。奥尔良2.0.0继承了这种兼容性。有关与其他.NET标准的兼容性信息，请参阅.NET[.NET标准文档](https://docs.microsoft.com/en-us/dotnet/standard/net-standard)：如果您正在使用Orleans开发.NET Core或.NET应用程序，则需要按照某些步骤来设置环境，例如安装.NET Core SDK。更多信息，请参考[文档](https://dotnet.github.io/).
+Orleans2.0.0建立在.NET标准2.0之上。因此，您需要升级开发工具，以确保您获得愉快的开发体验。我们建议使用Visual Studio 2017或更高版本来开发Orleans 2.0.0应用程序。根据我们的经验，15.5.2及更高版本的效果最好。NET Standard 2.0.0与.NET 4.6.1及更高版本、.NET Core 2.0和其他框架列表兼容。Orleans2.0.0继承了这种兼容性。有关与其他.NET标准的兼容性信息，请参阅.NET[.NET标准文档](https://docs.microsoft.com/en-us/dotnet/standard/net-standard)：如果您正在使用Orleans开发.NET Core或.NET应用程序，则需要按照某些步骤来设置环境，例如安装.NET Core SDK。更多信息，请参考[文档](https://dotnet.github.io/).
 
 ## 配置代码的可用选项
 
 ## 群众或部队的集合
 
-### 配置和启动思洛存储器（使用新的SiloBuilder API和旧的ClusterConfiguration对象）
+### 配置和启动silos（使用新的SiloBuilder API和旧的ClusterConfiguration对象）
 
-Orleans 2.0中有许多新的选项类，它们为配置思洛存储器提供了一种新的方法。为了便于迁移到新的API，有一个可选的向后兼容包，`Microsoft.Orleans.Runtime.遗产`，它提供了从旧的1.x配置API到新的配置API的桥。
+Orleans 2.0中有许多新的选项类，它们为配置silos提供了一种新的方法。为了便于迁移到新的API，有一个可选的向后兼容包，`Microsoft.Orleans.Runtime.遗产`，它提供了从旧的1.x配置API到新的配置API的桥。
 
-如果你加上`Microsoft.Orleans.Runtime.遗产`包，思洛存储器仍然可以通过传统的`群集配置`对象，然后可以传递给`SiloHostBuilder`建造和启动筒仓。
+如果你加上`Microsoft.Orleans.Runtime.遗产`包，silos仍然可以通过传统的`群集配置`对象，然后可以传递给`SiloHostBuilder`建造和启动silos。
 
 您仍然需要通过`配置应用程序部件`打电话。
 
-以下是如何以传统方式配置本地思洛存储器的示例：
+以下是如何以传统方式配置本地silos的示例：
 
 ```csharp
 public class Program
@@ -81,7 +81,7 @@ orleans2.0中有许多新的选项类，它们为配置客户机提供了一种�
 
 您仍然需要通过`配置应用程序部件`打电话。
 
-下面是一个示例，说明客户端如何使用传统配置连接到本地思洛存储器：
+下面是一个示例，说明客户端如何使用传统配置连接到本地silos：
 
 ```csharp
 // define the client configuration (temporarily required in the beta version,
@@ -99,7 +99,7 @@ await client.Connect();
 
 ## 登录中
 
-Orleans 2.0使用与ASP.NET核心2.0。您可以在中找到大多数奥尔良日志记录功能的替代品ASP.NET岩芯测井。奥尔良特定的日志记录功能，例如`ILogConsumer公司`和消息膨胀，仍然保持在`Microsoft.Orleans.Logging.遗产`包，这样你仍然可以选择使用它们。但是如何在2.0中使用Orleans配置日志记录发生了变化。让我来给你介绍一下迁移的过程。
+Orleans 2.0使用与ASP.NET核心2.0。您可以在中找到大多数Orleans日志记录功能的替代品ASP.NET岩芯测井。Orleans特定的日志记录功能，例如`ILogConsumer公司`和消息膨胀，仍然保持在`Microsoft.Orleans.Logging.遗产`包，这样你仍然可以选择使用它们。但是如何在2.0中使用Orleans配置日志记录发生了变化。让我来给你介绍一下迁移的过程。
 
 在1.5中，日志配置是通过`客户端配置`和`节点配置`. 您可以配置`默认跟踪级别`, `跟踪文件名`, `跟踪模式`, `TraceLevelOverrides公司`, `跟踪控制台`, `批量消息限制`, `木材消费者`等等。在2.0中，日志记录配置与ASP.NETcore2.0日志记录，这意味着大部分配置都是通过`Microsoft.Extensions.Logging.ILoggingBuilder`. 
 
@@ -142,11 +142,11 @@ siloBuilder.AddLogging(builder=>builder.SetMinimumLevel(LogLevel.Debug);
 
 如果您投资于的自定义实现，则可以使用此功能`ILogConsumer公司`无法将它们转换为`iLogger提供程序`短期内。
 
-`Logger GetLogger（字符串loggerName）`方法`谷物`基类和`IProviderRuntime`，和`记录器日志{get；}`在2.0中，IStorageProvider上的方法仍作为不推荐使用的功能进行维护。您仍然可以在迁移奥尔良遗留日志的过程中使用它。但我们建议你尽快离开它们。
+`Logger GetLogger（字符串loggerName）`方法`Grains`基类和`IProviderRuntime`，和`记录器日志{get；}`在2.0中，IStorageProvider上的方法仍作为不推荐使用的功能进行维护。您仍然可以在迁移Orleans遗留日志的过程中使用它。但我们建议你尽快离开它们。
 
 ## 提供程序配置
 
-在Orleans 2.0中，包含的提供者的配置已经标准化，可以从`俱乐部选项`为思洛存储器或客户端配置。
+在Orleans 2.0中，包含的提供者的配置已经标准化，可以从`俱乐部选项`为silos或客户端配置。
 
 服务ID是集群所代表的服务或应用程序的稳定标识符。随着时间的推移，在实施服务的群集的部署和升级之间，服务ID不会改变。
 

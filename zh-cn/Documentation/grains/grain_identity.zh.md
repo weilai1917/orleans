@@ -3,15 +3,15 @@ layout: page
 title: Grain Identity
 ---
 
-# 谷物身份
+# Grains身份
 
 在面向对象的环境中，很难将对象的标识与对其的引用区分开。因此，当使用new创建对象时，您获得的引用代表其身份的所有方面，除了那些将对象映射到其所代表的外部实体的方面。
 
-在分布式系统中，对象引用不能表示实例身份，因为引用通常限于单个地址空间。.NET引用肯定是这种情况。此外，无论谷物是否处于活动状态，它都必须具有身份，以便我们可以按需激活它。因此，谷物具有主键。主键可以是全局唯一标识符（GUID），长整数或字符串。
+在分布式系统中，对象引用不能表示实例身份，因为引用通常限于单个地址空间。.NET引用肯定是这种情况。此外，无论Grains是否处于活动状态，它都必须具有身份，以便我们可以按需激活它。因此，Grains具有主键。主键可以是全局唯一标识符（GUID），长整数或字符串。
 
-主键的作用域为谷物类型。因此，谷物的完全同一性是由谷物的类型及其密钥构成的。
+主键的作用域为Grains类型。因此，Grains的完全同一性是由Grains的类型及其密钥构成的。
 
-谷物的调用者决定应使用哪种方案。选项包括：
+Grains的调用者决定应使用哪种方案。选项包括：
 
 -   长
 -   图形用户界面
@@ -21,19 +21,19 @@ title: Grain Identity
 
 因为基础数据是相同的，所以这些方案可以互换使用。当使用长整数时，实际上会创建一个GUID并用零填充。
 
-需要使用单例谷物实例的情况（例如字典或注册表）可从使用中受益`引导空`作为其关键。这仅仅是一个约定，但是通过坚持，正如我们在第一个教程中所看到的，在调用站点处，事情已经很清楚了。
+需要使用单例Grains实例的情况（例如字典或注册表）可从使用中受益`引导空`作为其关键。这仅仅是一个约定，但是通过坚持，正如我们在第一个教程中所看到的，在调用站点处，事情已经很清楚了。
 
 ## 使用GUID
 
-当有多个进程可能需要请求粮食时，例如Web场中的许多Web服务器，GUID很有用。您不需要协调密钥的分配，这可能会导致系统出现单点故障，也可能不需要对资源进行系统侧锁定就可能造成瓶颈。GUID发生碰撞的可能性很小，因此在构建奥尔良系统时，它们可能是默认选择。
+当有多个进程可能需要请求grain时，例如Web场中的许多Web服务器，GUID很有用。您不需要协调密钥的分配，这可能会导致系统出现单点故障，也可能不需要对资源进行系统侧锁定就可能造成瓶颈。GUID发生碰撞的可能性很小，因此在构建Orleans系统时，它们可能是默认选择。
 
-在客户端代码中通过GUID引用谷物：
+在客户端代码中通过GUID引用Grains：
 
 ```csharp
 var grain = grainFactory.GetGrain<IExample>(Guid.NewGuid());
 ```
 
-从谷物代码中检索主键：
+从Grains代码中检索主键：
 
 ```csharp
 public override Task OnActivateAsync()
@@ -45,9 +45,9 @@ public override Task OnActivateAsync()
 
 ## 使用多头
 
-也可以使用一个长整数，如果将谷物持久保存到关系数据库中（在该数据库中数字索引优先于GUID），这将是有意义的。
+也可以使用一个长整数，如果将Grains持久保存到关系数据库中（在该数据库中数字索引优先于GUID），这将是有意义的。
 
-在客户端代码中通过长整数引用谷物：
+在客户端代码中通过长整数引用Grains：
 
 ```csharp
 var grain = grainFactory.GetGrain<IExample>(1);
@@ -67,7 +67,7 @@ public override Task OnActivateAsync()
 
 字符串也是可用的。
 
-在客户端代码中按字符串引用谷物：
+在客户端代码中按字符串引用Grains：
 
 ```csharp
 var grain = grainFactory.GetGrain<IExample>("myGrainKey");
@@ -85,7 +85,7 @@ public override Task OnActivateAsync()
 
 ## 使用复合主键
 
-如果您的系统与GUID或long均不合适，则可以选择复合主键，该主键允许您使用GUID或long与字符串的组合来引用谷物。
+如果您的系统与GUID或long均不合适，则可以选择复合主键，该主键允许您使用GUID或long与字符串的组合来引用Grains。
 
 您可以从“ IGrainWithGuidCompoundKey”或“ IGrainWithIntegerCompoundKey”接口继承接口，如下所示：
 
@@ -102,7 +102,7 @@ public interface IExampleGrain : Orleans.IGrainWithIntegerCompoundKey
 var grain = grainFactory.GetGrain<IExample>(0, "a string!", null);
 ```
 
-要访问谷物中的复合键，我们可以在`GetPrimaryKey`方法：
+要访问Grains中的复合键，我们可以在`GetPrimaryKey`方法：
 
 ```csharp
 public class ExampleGrain : Orleans.Grain, IExampleGrain

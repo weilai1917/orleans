@@ -17,7 +17,7 @@ title: Typical Configurations
 
 数据连接字符串的格式为`“DefaultEndpointsProtocol=https；帐户名=<azure存储帐户>；帐户密钥=<azure表存储帐户密钥>”`
 
-思洛存储器配置：
+silos配置：
 
 ```csharp
 // TODO replace with your connection string
@@ -54,7 +54,7 @@ var client = new ClientBuilder()
 
 为了使用SQL Server进行可靠的生产部署，需要提供SQL Server连接字符串。
 
-思洛存储器配置：
+silos配置：
 
 ```csharp
 // TODO replace with your connection string
@@ -99,7 +99,7 @@ var client = new ClientBuilder()
 
 对于在不考虑可靠性的情况下在专用服务器集群上进行测试，可以利用MembershipTableGrain并避免对azure表的依赖。您只需要将其中一个节点指定为主节点。
 
-在筒仓上：
+在silos上：
 
 ```csharp
 var primarySiloEndpoint = new IPEndpoint(PRIMARY_SILO_IP_ADDRESS, 11111);

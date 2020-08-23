@@ -3,15 +3,15 @@ layout: page
 title: Orleans Streams Quick Start
 ---
 
-# 奥尔良溪流快速入门
+# OrleansStreams快速入门
 
 本指南将向您展示设置和使用Orleans Streams的快速方法。要了解有关流功能的详细信息，请阅读本文档的其他部分。
 
 ## 所需配置
 
-在本指南中，我们将使用基于简单消息的流，该流使用谷物消息传递将流数据发送给订阅者。我们将使用内存中的存储提供程序来存储订阅列表，因此对于实际的生产应用程序来说，这不是明智的选择。
+在本指南中，我们将使用基于简单消息的流，该流使用Grains消息传递将流数据发送给订阅者。我们将使用内存中的存储提供程序来存储订阅列表，因此对于实际的生产应用程序来说，这不是明智的选择。
 
-在筒仓上，其中hostBuilder是ISiloHostBuilder
+在silos上，其中hostBuilder是ISiloHostBuilder
 
 ```csharp
 hostBuilder.AddSimpleMessageStreamProvider("SMSProvider")
@@ -52,7 +52,7 @@ RegisterTimer(s =>
 
 ## 订阅和接收流数据
 
-为了接收数据，我们可以使用隐式/显式订阅，这在手册的其他页面中有完整介绍。在这里，我们使用隐式订阅，这更容易。当谷物类型想要隐式订阅流时，它使用属性`ImplicitStreamSubscription（命名空间）]`。
+为了接收数据，我们可以使用隐式/显式订阅，这在手册的其他页面中有完整介绍。在这里，我们使用隐式订阅，这更容易。当Grains类型想要隐式订阅流时，它使用属性`ImplicitStreamSubscription（命名空间）]`。
 
 对于我们的情况，我们将定义如下的ReceiverGrain：
 
@@ -61,9 +61,9 @@ RegisterTimer(s =>
 public class ReceiverGrain : Grain, IRandomReceiver
 ```
 
-现在，每当像计时器中一样将某些数据推送到名称空间RANDOMDATA的流中时，`接收器粮食`具有相同GUID的流将接收到该消息。即使当前不存在任何激活的谷物，运行时也会自动创建一个新的谷物并将消息发送给它。
+现在，每当像计时器中一样将某些数据推送到名称空间RANDOMDATA的流中时，`接收器grain`具有相同GUID的流将接收到该消息。即使当前不存在任何激活的Grains，运行时也会自动创建一个新的Grains并将消息发送给它。
 
-为了使其正常工作，我们需要通过设置我们的订阅来完成订阅过程`OnNext`接收数据的方法。所以我们`接收器粮食`应该打电话给它`OnActivateAsync`像这样的东西
+为了使其正常工作，我们需要通过设置我们的订阅来完成订阅过程`OnNext`接收数据的方法。所以我们`接收器grain`应该打电话给它`OnActivateAsync`像这样的东西
 
 ```csharp
 //Create a GUID based on our GUID as a grain
@@ -76,7 +76,7 @@ var stream = streamProvider.GetStream<int>(guid, "RANDOMDATA");
 await stream.SubscribeAsync<int>(async (data, token) => Console.WriteLine(data));
 ```
 
-我们都准备好了。唯一的要求是，某些事情会触发我们的生产者谷物的创建，然后它将注册计时器并开始向所有感兴趣的方发送随机整数。
+我们都准备好了。唯一的要求是，某些事情会触发我们的生产者Grains的创建，然后它将注册计时器并开始向所有感兴趣的方发送随机整数。
 
 同样，本指南跳过了许多细节，仅适合于展示大图。阅读本手册的其他部分以及有关RX的其他资源，以更好地了解可用的内容和方法。
 
@@ -84,4 +84,4 @@ await stream.SubscribeAsync<int>(async (data, token) => Console.WriteLine(data))
 
 ## 下一个
 
-[奥尔良流编程API](streams_programming_APIs.md)
+[Orleans流编程API](streams_programming_APIs.md)

@@ -3,7 +3,7 @@ layout: page
 title: What's new in Orleans
 ---
 
-# 奥尔良有什么新鲜事？
+# Orleans有什么新鲜事？
 
 ## [v2.3.2版](https://github.com/dotnet/orleans/releases/tag/v2.3.2)2019年5月9日
 
@@ -19,7 +19,7 @@ title: What's new in Orleans
     -   支持ASP.NET核心托管API(Microsoft.Extensions.Hosting). 感谢@galvesribeiro！
     -   将命名选项的自定义实现替换为Microsoft.Extensions.Options.
     -   EventHub流提供程序已升级到EvenHub 2.2.1，并与3.0.0兼容。
-    -   集群成员关系表中的旧死条目现在会自动清理，这对于托管使用新IP端点来重新启动思洛存储器的环境很有帮助。
+    -   集群成员关系表中的旧死条目现在会自动清理，这对于托管使用新IP端点来重新启动silos的环境很有帮助。
     -   默认情况下，允许在思洛进程中有效托管前端代码的托管客户端。
     -   支持`IHostEnvironmentStatistics公司`在Linux上，它支持CPU和内存指标以及负载削减。感谢@martinothamar！
 
@@ -33,7 +33,7 @@ title: What's new in Orleans
     -   支持ASP.NET核心托管API(Microsoft.Extensions.Hosting).
     -   将命名选项的自定义实现替换为Microsoft.Extensions.Options.
     -   EventHub流提供程序已升级到EvenHub 2.2.1，并与3.0.0兼容。
-    -   集群成员关系表中的旧死条目现在会自动清理，这对于托管使用新IP端点来重新启动思洛存储器的环境很有帮助。
+    -   集群成员关系表中的旧死条目现在会自动清理，这对于托管使用新IP端点来重新启动silos的环境很有帮助。
     -   默认情况下，允许在思洛进程中有效托管前端代码的托管客户端。
 
 ## [1.5.7版](https://github.com/dotnet/orleans/releases/tag/v1.5.7)2019年2月28日
@@ -118,11 +118,11 @@ title: What's new in Orleans
     -   Microsoft.Orleans.OrleansServiceBus
     -   Microsoft.Orleans.Runtime.Legacy
     -   Microsoft.Orleans.OrleansCodeGenerator.Build
-    -   微软奥尔良核心遗产
-    -   微软奥尔良交易
+    -   微软Orleans核心遗产
+    -   微软Orleans交易
     -   Microsoft.Orleans.OrleansCodeGenerator
-    -   微软奥尔良核心
-    -   微软奥尔良测试主机
+    -   微软Orleans核心
+    -   微软Orleans测试主机
 
 其余软件包均保持在2.0.0不变，除了`Microsoft.Orleans.ServiceFabric`元软件包，版本为2.0.2。
 
@@ -147,7 +147,7 @@ title: What's new in Orleans
 
 ## 社区虚拟聚会＃15
 
-[奥尔良2.0与核心团队](https://youtu.be/d3ufDsZcW4k)2017年12月13日[介绍](https://github.com/dotnet/orleans/blob/gh-pages/Presentations/VM-15%20-%20Orleans%202.0.pdf)
+[Orleans2.0与核心团队](https://youtu.be/d3ufDsZcW4k)2017年12月13日[介绍](https://github.com/dotnet/orleans/blob/gh-pages/Presentations/VM-15%20-%20Orleans%202.0.pdf)
 
 ## [v2.0.0-beta2](https://github.com/dotnet/orleans/releases/tag/v2.0.0-beta2)2017年12月12日
 
@@ -165,10 +165,10 @@ title: What's new in Orleans
 ## [v1.5.0](https://github.com/dotnet/orleans/releases/tag/v1.5.0)2017年7月6日
 
 -   主要新功能
-    -   通过ClientBuilder的非静态谷物客户端可以从同一应用程序域连接到多个Orleans群集，并从一个筒仓中连接到其他群集。
+    -   通过ClientBuilder的非静态Grains客户端可以从同一应用程序域连接到多个Orleans群集，并从一个silos中连接到其他群集。
     -   支持用于非停机升级的grain接口的版本控制。
-    -   支持自定义谷物放置策略和导演。
-    -   支持基于散列的谷物放置。
+    -   支持自定义Grains存储策略和导演。
+    -   支持基于散列的Grains存储。
 
 ## [v1.4.2](https://github.com/dotnet/orleans/releases/tag/v1.4.2)2017年6月9日
 
@@ -176,31 +176,31 @@ title: What's new in Orleans
 
 ## 社区虚拟聚会＃14
 
-[奥尔良FSM](https://youtu.be/XmsVYLfNHjI)与[约翰·阿扎里亚（John Azariah）](https://github.com/johnazariah)2017年3月22日
+[OrleansFSM](https://youtu.be/XmsVYLfNHjI)与[约翰·阿扎里亚（John Azariah）](https://github.com/johnazariah)2017年3月22日
 
 ## [v1.4.0](https://github.com/dotnet/orleans/releases/tag/v1.4.0)2017年2月21日
 
 -   主要新功能
     -   改进了JournaledGrain，用于事件源，并支持基于地理分布的基于日志的一致性提供程序。
-    -   具有固定放置的每仓库应用程序组件的Grain Services的抽象，其工作负载通过集群一致性环进行分区。
-    -   支持不均匀分布的可用粮仓的异构筒仓。
+    -   具有固定存储的每仓库应用程序组件的Grain Services的抽象，其工作负载通过集群一致性环进行分区。
+    -   支持不均匀分布的可用粮仓的异构silos。
     -   Service Fabric的群集成员资格提供程序。
 
 ## 社区虚拟聚会＃13
 
-[升级奥尔良应用程序](https://youtu.be/_5hWNVccKeQ)与[谢尔盖·拜科夫（Sergey Bykov）](https://github.com/sergeybykov)和团队2017年2月8日[介绍](https://github.com/dotnet/orleans/raw/gh-pages/Presentations/VM-13%20-%20Orleans%20%26%20versioning.pptx)
+[升级Orleans应用程序](https://youtu.be/_5hWNVccKeQ)与[谢尔盖·拜科夫（Sergey Bykov）](https://github.com/sergeybykov)和团队2017年2月8日[介绍](https://github.com/dotnet/orleans/raw/gh-pages/Presentations/VM-13%20-%20Orleans%20%26%20versioning.pptx)
 
 ## [v1.4.0-beta](https://github.com/dotnet/orleans/releases/tag/v1.4.0-beta)2017年2月1日
 
 -   主要新功能
     -   改进了JournaledGrain，用于事件源，并支持基于地理分布的基于日志的一致性提供程序。
-    -   具有固定放置的每仓库应用程序组件的Grain Services的抽象，其工作负载通过集群一致性环进行分区。
-    -   支持不均匀分布的可用粮仓的异构筒仓。
+    -   具有固定存储的每仓库应用程序组件的Grain Services的抽象，其工作负载通过集群一致性环进行分区。
+    -   支持不均匀分布的可用粮仓的异构silos。
     -   Service Fabric的群集成员资格提供程序。
 
 ## 社区虚拟聚会＃12
 
-[部署奥尔良](https://youtu.be/JrmHfbZH11M)与[雅库布·科内基（Jakub Konecki）](https://github.com/jkonecki)2016年12月8日[介绍](https://github.com/dotnet/orleans/raw/gh-pages/Presentations/VM-12%20Orleans-YAMS.pdf)
+[部署Orleans](https://youtu.be/JrmHfbZH11M)与[雅库布·科内基（Jakub Konecki）](https://github.com/jkonecki)2016年12月8日[介绍](https://github.com/dotnet/orleans/raw/gh-pages/Presentations/VM-12%20Orleans-YAMS.pdf)
 
 ## [v1.3.1](https://github.com/dotnet/orleans/releases/tag/v1.3.1)2016年11月15日
 
@@ -221,7 +221,7 @@ title: What's new in Orleans
 
 ## 社区虚拟聚会＃10
 
-[核心团队与奥尔良2.0的路线图](https://youtu.be/_SbIbYkY88o)2016年8月25日
+[核心团队与Orleans2.0的路线图](https://youtu.be/_SbIbYkY88o)2016年8月25日
 
 ## [v1.2.3](https://github.com/dotnet/orleans/releases/tag/v1.2.3)2016年7月11日
 
@@ -237,7 +237,7 @@ title: What's new in Orleans
     -   根据Halo 5中使用的相同代码添加了EventHub流提供程序。
     -   [根据情况，吞吐量提高了5％至26％。](https://github.com/dotnet/orleans/pull/1586)
     -   将30个功能测试以外的所有功能迁移到GitHub。
-    -   谷物状态不必扩展`谷物状态`不再（标记为`[过时]`），并且可以是简单的POCO类。
+    -   Grains状态不必扩展`Grains状态`不再（标记为`[过时]`），并且可以是简单的POCO类。
     -   [增加了对每类的支持](https://github.com/dotnet/orleans/pull/963)和[全局服务器端拦截器。](https://github.com/dotnet/orleans/pull/965)
     -   [添加了对将Consul 0.6.0用作成员资格提供程序的支持。](https://github.com/dotnet/orleans/pull/1267)
     -   [支持C＃6。](https://github.com/dotnet/orleans/pull/1479)
@@ -247,7 +247,7 @@ title: What's new in Orleans
 
 ## 社区虚拟聚会＃9
 
-[内姆·比拉（Nehme Bilal）](https://github.com/nehmebilal)和[鲁本·邦德](https://github.com/ReubenBond) [谈论部署奥尔良](https://youtu.be/w__D7gnqeZ0)与[山药](https://github.com/Microsoft/Yams)和[服务面料](https://azure.microsoft.com/en-gb/documentation/articles/service-fabric-overview/)2016年2月26日
+[内姆·比拉（Nehme Bilal）](https://github.com/nehmebilal)和[鲁本·邦德](https://github.com/ReubenBond) [谈论部署Orleans](https://youtu.be/w__D7gnqeZ0)与[山药](https://github.com/Microsoft/Yams)和[服务面料](https://azure.microsoft.com/en-gb/documentation/articles/service-fabric-overview/)2016年2月26日
 
 ## 社区虚拟聚会＃8.5
 
@@ -255,7 +255,7 @@ title: What's new in Orleans
 
 ## 社区虚拟聚会＃8
 
-[奥尔良核心团队介绍路线图](https://www.youtube.com/watch?v=4BiCyhvSOs4)2016年1月21日
+[Orleans核心团队介绍路线图](https://www.youtube.com/watch?v=4BiCyhvSOs4)2016年1月21日
 
 ## [v1.1.2](https://github.com/dotnet/orleans/releases/tag/v1.1.2)2016年1月20日
 
@@ -263,7 +263,7 @@ title: What's new in Orleans
 
 ## [社区虚拟聚会＃7](https://www.youtube.com/watch?v=FKL-PS8Q9ac)
 
-圣诞特辑-[叶文·鲍勃罗夫（Yevhen Bobrov）](https://github.com/yevhen)上[奥尔良卡](https://github.com/yevhen/Orleankka)2015年12月17日
+圣诞特辑-[叶文·鲍勃罗夫（Yevhen Bobrov）](https://github.com/yevhen)上[Orleans卡](https://github.com/yevhen/Orleankka)2015年12月17日
 
 ## [v1.1.0](https://github.com/dotnet/orleans/releases/tag/v1.1.0)2015年12月14日
 
@@ -279,13 +279,13 @@ title: What's new in Orleans
 
 ## [社区虚拟聚会＃5](https://www.youtube.com/watch?v=eSepBlfY554)
 
-[加布里埃尔·克利奥特（Gabriel Kliot）](https://github.com/gabikliot)于新奥尔良Streaming API上发表2015年5月22日
+[加布里埃尔·克利奥特（Gabriel Kliot）](https://github.com/gabikliot)于新OrleansStreaming API上发表2015年5月22日
 
 ## [v1.0.7](https://github.com/dotnet/orleans/releases/tag/v1.0.7)2015年5月15日
 
 ## [社区虚拟聚会＃4](https://www.youtube.com/watch?v=56Xz68lTB9c)
 
-[鲁本·邦德](https://github.com/ReubenBond)在FreeBay上使用奥尔良的机会2015年4月15日
+[鲁本·邦德](https://github.com/ReubenBond)在FreeBay上使用Orleans的机会2015年4月15日
 
 ## [v1.0.5](https://github.com/dotnet/orleans/releases/tag/v1.0.5)2015年3月30日
 
@@ -295,10 +295,10 @@ title: What's new in Orleans
 
 ## [社区虚拟聚会＃2](https://www.youtube.com/watch?v=D4kJKSFfNjI)
 
-奥尔良团队现场问答和路线图2015年1月12日
+Orleans团队现场问答和路线图2015年1月12日
 
-## 奥尔良开源v1.0更新（2015年1月）
+## Orleans开源v1.0更新（2015年1月）
 
 ## [社区虚拟聚会＃1](http://www.youtube.com/watch?v=6COQ8XzloPg)
 
-[雅库布·科内基（Jakub Konecki）](https://github.com/jkonecki)关于事件来源的谷物2014年12月18日
+[雅库布·科内基（Jakub Konecki）](https://github.com/jkonecki)关于事件来源的Grains2014年12月18日

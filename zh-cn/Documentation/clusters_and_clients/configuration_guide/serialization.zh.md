@@ -6,7 +6,7 @@ uid: serialization
 
 # 序列化和编写自定义序列化程序
 
-奥尔良有一个高级和可扩展的序列化框架。orleans序列化在grain请求和响应消息以及grain持久状态对象中传递的数据类型。作为这个框架的一部分，orleans自动为这些数据类型生成序列化代码。除了为已可.NET序列化的类型生成更有效的序列化/反序列化之外，Orleans还尝试为不可.NET序列化的Grain接口中使用的类型生成序列化程序。该框架还包括一组用于常用类型（列表、字典、字符串、原语、数组等）的高效内置序列化程序。
+Orleans有一个高级和可扩展的序列化框架。orleans序列化在grain请求和响应消息以及grain持久状态对象中传递的数据类型。作为这个框架的一部分，orleans自动为这些数据类型生成序列化代码。除了为已可.NET序列化的类型生成更有效的序列化/反序列化之外，Orleans还尝试为不可.NET序列化的Grain接口中使用的类型生成序列化程序。该框架还包括一组用于常用类型（列表、字典、字符串、原语、数组等）的高效内置序列化程序。
 
 Orleans的序列化程序有两个重要的特性，使它与许多其他第三方序列化框架不同：动态类型/任意多态性和对象标识。
 
@@ -14,11 +14,11 @@ Orleans的序列化程序有两个重要的特性，使它与许多其他第三�
 
 2.  **维护对象标识**-如果同一个对象在一个grain调用的参数中传递了多个类型，或者从参数中间接指向了多个类型，那么orleans将只序列化它一次。在接收端，orleans将正确地恢复所有引用，以便反序列化后指向同一对象的两个指针仍然指向同一对象。在如下场景中，对象标识是很重要的。假设actor a正在向actor b发送一个包含100个条目的字典，并且字典中的10个键指向a一侧的同一个对象obj。在不保留对象标识的情况下，b将收到一个包含100个条目的字典，其中10个键指向10个不同的obj克隆。在保留对象标识的情况下，B侧的字典与A侧的字典完全相同，10个键指向一个对象obj。
 
-以上两个行为是由标准的.NET二进制序列化程序提供的，因此，支持这一标准以及奥尔良常见的行为对我们来说也很重要。
+以上两个行为是由标准的.NET二进制序列化程序提供的，因此，支持这一标准以及Orleans常见的行为对我们来说也很重要。
 
 # 生成的序列化程序
 
-奥尔良使用以下规则来决定要生成哪些序列化程序。规则是：
+Orleans使用以下规则来决定要生成哪些序列化程序。规则是：
 
 1）扫描所有引用Core Orleans库的程序集中的所有类型。
 
@@ -32,13 +32,13 @@ Orleans支持使用提供程序模型与第三方序列化程序集成。这需�
 
 -   [协议缓冲区](https://developers.google.com/protocol-buffers/)以下内容：`Orleans.Serialization.ProtobufSerializer`从[Microsoft.Orleans.OrleansGoogle实用程序](https://www.nuget.org/packages/Microsoft.Orleans.OrleansGoogleUtils/)Nuget包。
 -   [债券](https://github.com/microsoft/bond/)以下内容：`orleans.serialization.bondsserializer`从[Microsoft.Orleans.Serialization.bond公司](https://www.nuget.org/packages/Microsoft.Orleans.Serialization.Bond/)Nuget包。
--   [newtonsoft.json又名json.net](http://www.newtonsoft.com/json)以下内容：`orleans.serialization.orleansjsson序列化程序`从奥尔良核心图书馆。
+-   [newtonsoft.json又名json.net](http://www.newtonsoft.com/json)以下内容：`orleans.serialization.orleansjsson序列化程序`从Orleans核心图书馆。
 
 自定义实现`IExternalSerializer公司`在下面的编写自定义序列化程序部分中进行了描述。
 
 ### 配置
 
-确保序列化配置在所有客户端和思洛存储器上都是相同的，这一点很重要。如果配置不一致，则可能发生序列化错误。
+确保序列化配置在所有客户端和silos上都是相同的，这一点很重要。如果配置不一致，则可能发生序列化错误。
 
 序列化提供程序，它实现`IExternalSerializer公司`，可以使用`序列化提供程序`财产`客户端配置`和`全球配置`代码中：
 
@@ -66,7 +66,7 @@ cfg.SerializationProviders.Add(typeof(FantasticSerializer).GetTypeInfo());
 
 # 编写自定义序列化程序
 
-除了自动序列化生成之外，应用程序代码还可以为其选择的类型提供自定义序列化。奥尔良建议对大多数应用程序类型使用自动序列化生成，只有在少数情况下，当您认为可以通过手动编写序列化程序来提高性能时，才编写自定义序列化程序。本说明描述了如何这样做，并确定了一些可能有用的特定情况。
+除了自动序列化生成之外，应用程序代码还可以为其选择的类型提供自定义序列化。Orleans建议对大多数应用程序类型使用自动序列化生成，只有在少数情况下，当您认为可以通过手动编写序列化程序来提高性能时，才编写自定义序列化程序。本说明描述了如何这样做，并确定了一些可能有用的特定情况。
 
 应用程序可以通过三种方式自定义序列化：
 
@@ -80,11 +80,11 @@ cfg.SerializationProviders.Add(typeof(FantasticSerializer).GetTypeInfo());
 
 ## 介绍
 
-奥尔良序列化分为三个阶段：对象立即被深度复制以确保隔离；在连接之前；对象被序列化为消息字节流；当传递到目标激活时，对象从接收的字节流重新创建（反序列化）。可以在消息中发送的数据类型（即可以作为方法参数或返回值传递的类型）必须具有执行这三个步骤的关联例程。我们将这些例程统称为数据类型的序列化程序。
+Orleans序列化分为三个阶段：对象立即被深度复制以确保隔离；在连接之前；对象被序列化为消息字节流；当传递到目标激活时，对象从接收的字节流重新创建（反序列化）。可以在消息中发送的数据类型（即可以作为方法参数或返回值传递的类型）必须具有执行这三个步骤的关联例程。我们将这些例程统称为数据类型的序列化程序。
 
 类型的复印机是独立的，而序列化器和反序列化器是一起工作的一对。您可以只提供一个自定义复印机，或者只提供一个自定义序列化器和一个自定义反序列化器，也可以提供这三个的自定义实现。
 
-序列化程序在思洛存储器启动时以及加载程序集时为每个受支持的数据类型注册。对于要使用的类型，自定义序列化程序例程需要注册。序列化程序选择基于要复制或序列化的对象的动态类型。因此，不需要为抽象类或接口创建序列化程序，因为它们永远不会被使用。
+序列化程序在silos启动时以及加载程序集时为每个受支持的数据类型注册。对于要使用的类型，自定义序列化程序例程需要注册。序列化程序选择基于要复制或序列化的对象的动态类型。因此，不需要为抽象类或接口创建序列化程序，因为它们永远不会被使用。
 
 ## 何时考虑编写自定义序列化程序
 
@@ -104,7 +104,7 @@ cfg.SerializationProviders.Add(typeof(FantasticSerializer).GetTypeInfo());
 
 ### 复印机
 
-复印机方法用`奥尔良复印机`属性：
+复印机方法用`Orleans复印机`属性：
 
 ```csharp
 [CopierMethod]
@@ -200,7 +200,7 @@ var foo = SerializationManager.DeserializeInner<FooType>(context);
 
 ## 方法2:编写序列化程序提供程序
 
-在这个方法中，您可以实现`奥尔良.serialization.iexternalserializer`并将其添加到`序列化提供程序`两者的属性`客户端配置`在客户和`全球配置`在筒仓里。配置在上面的序列化提供程序部分有详细说明。
+在这个方法中，您可以实现`Orleans.serialization.iexternalserializer`并将其添加到`序列化提供程序`两者的属性`客户端配置`在客户和`全球配置`在silos里。配置在上面的序列化提供程序部分有详细说明。
 
 实施`IExternalSerializer公司`遵循以下为序列化方法描述的模式`方法1`上面添加了`初始化`方法和`发布支持类型`Orleans用来确定序列化程序是否支持给定类型的方法。这是接口定义：
 
@@ -248,7 +248,7 @@ public interface IExternalSerializer
 
 ## 方法3:为单个类型编写序列化程序
 
-在这个方法中，您可以编写一个新的类，并用一个属性进行注释`[序列化属性（typeof（targettype））]`，其中`目标类型`正在序列化的类型，并实现3个序列化例程。如何编写这些例程的规则与方法1相同。奥尔良使用`[序列化属性（typeof（targettype））]`确定该类是`目标类型`如果这个属性能够序列化多个类型，那么可以在同一个类上多次指定它。下面是这样一个类的示例：
+在这个方法中，您可以编写一个新的类，并用一个属性进行注释`[序列化属性（typeof（targettype））]`，其中`目标类型`正在序列化的类型，并实现3个序列化例程。如何编写这些例程的规则与方法1相同。Orleans使用`[序列化属性（typeof（targettype））]`确定该类是`目标类型`如果这个属性能够序列化多个类型，那么可以在同一个类上多次指定它。下面是这样一个类的示例：
 
 ```csharp
 public class User
@@ -334,7 +334,7 @@ Orleans支持在运行时传输任意类型，因此内置代码生成器无法�
 -   `Orleans.Serialization.BinaryFormatterSerializer`使用.net的[二进制格式](https://msdn.microsoft.com/en-us/library/system.runtime.serialization.formatters.binary.binaryformatter)；和
 -   `Orleans.Serialization.ILBasedSerializer`发出[CIL公司](https://en.wikipedia.org/wiki/Common_Intermediate_Language)在运行时创建序列化程序的指令，该序列化程序利用Orleans的序列化框架对每个字段进行序列化。这意味着如果一个不可访问的类型`我的私掠型`包含字段`我的类型`它有一个自定义序列化程序，该自定义序列化程序将用于序列化它。
 
-可以使用`FallbackSerializationProvider`两者的属性`客户端配置`在客户和`全球配置`在筒仓里。
+可以使用`FallbackSerializationProvider`两者的属性`客户端配置`在客户和`全球配置`在silos里。
 
 ```csharp
 var cfg = new ClientConfiguration();
@@ -398,13 +398,13 @@ public class MyCustomException : Exception
 
 # 使用不可变类型优化复制
 
-奥尔良有一个特性，可以用来避免一些与序列化包含不可变类型的消息相关的开销。本节从上下文开始介绍特性及其应用程序。
+Orleans有一个特性，可以用来避免一些与序列化包含不可变类型的消息相关的开销。本节从上下文开始介绍特性及其应用程序。
 
-## 奥尔良的序列化
+## Orleans的序列化
 
 当一个grain方法被调用时，orleans运行时会对方法参数进行一个深度拷贝，并从拷贝中形成请求。这可以防止调用代码在数据传递给被调用的粒度之前修改参数对象。
 
-如果被调用的粒度在不同的思洛存储器上，那么拷贝最终被序列化为字节流，并通过网络发送到目标思洛存储器，在那里它们被反序列化为对象。如果被调用的grain位于同一个思洛存储器上，那么副本将直接传递给被调用的方法。
+如果被调用的粒度在不同的silos上，那么拷贝最终被序列化为字节流，并通过网络发送到目标silos，在那里它们被反序列化为对象。如果被调用的grain位于同一个silos上，那么副本将直接传递给被调用的方法。
 
 返回值的处理方式相同：首先复制，然后可能序列化和反序列化。
 
@@ -412,9 +412,9 @@ public class MyCustomException : Exception
 
 ## 优化拷贝
 
-在许多情况下，深度复制是不必要的。例如，一个可能的场景是一个web前端，它从客户端接收一个字节数组，并将该请求（包括字节数组）传递到一个grain进行处理。前端进程一旦将数组传递给grain，就不会对它做任何事情；特别是，它不会重用数组来接收将来的请求。在谷物内部，字节数组被解析以获取输入数据，但未被修改。grain返回它创建的另一个字节数组，并将其传递回web客户机；一旦返回该数组，它将立即丢弃该数组。web前端将结果字节数组传递回其客户端，而无需修改。
+在许多情况下，深度复制是不必要的。例如，一个可能的场景是一个web前端，它从客户端接收一个字节数组，并将该请求（包括字节数组）传递到一个grain进行处理。前端进程一旦将数组传递给grain，就不会对它做任何事情；特别是，它不会重用数组来接收将来的请求。在Grains内部，字节数组被解析以获取输入数据，但未被修改。grain返回它创建的另一个字节数组，并将其传递回web客户机；一旦返回该数组，它将立即丢弃该数组。web前端将结果字节数组传递回其客户端，而无需修改。
 
-在这种情况下，不需要复制请求或响应字节数组。不幸的是，orleans运行时无法自己解决这个问题，因为它无法判断数组是由web前端修改的还是由grain修改的。在最好的情况下，我们会有某种.NET机制来指示某个值不再被修改；如果没有这种机制，我们会为此添加特定于奥尔良的机制：`不可变<t>`包装类和`[不变]`属性。
+在这种情况下，不需要复制请求或响应字节数组。不幸的是，orleans运行时无法自己解决这个问题，因为它无法判断数组是由web前端修改的还是由grain修改的。在最好的情况下，我们会有某种.NET机制来指示某个值不再被修改；如果没有这种机制，我们会为此添加特定于Orleans的机制：`不可变<t>`包装类和`[不变]`属性。
 
 ### 使用`不可变<t>`
 
@@ -446,7 +446,7 @@ byte[] buffer = immutable.Value;
 
 ### 使用`[不变]`
 
-对于用户定义的类型，`[奥尔良.并发性.不可变]`属性可以添加到类型。这指示Orleans的序列化程序避免复制此类型的实例。下面的代码片段演示如何使用`[不变]`表示不可变类型。在传输过程中不会复制此类型。
+对于用户定义的类型，`[Orleans.并发性.不可变]`属性可以添加到类型。这指示Orleans的序列化程序避免复制此类型的实例。下面的代码片段演示如何使用`[不变]`表示不可变类型。在传输过程中不会复制此类型。
 
 ```csharp
 [Immutable]
@@ -461,7 +461,7 @@ public class MyImmutableType
 }
 ```
 
-## 奥尔良的不变性
+## Orleans的不变性
 
 对于orleans来说，不变性是一个相当严格的声明：数据项的内容不会以任何可能改变其语义的方式进行修改，也不会干扰另一个线程同时访问该项。确保这一点的最安全方法是根本不修改项：按位不变，而不是逻辑不变。
 
@@ -469,9 +469,9 @@ public class MyImmutableType
 
 # 序列化最佳实践
 
-序列化在奥尔良有两个主要目的：
+序列化在Orleans有两个主要目的：
 
-1.  作为在运行时在谷物和客户机之间传输数据的有线格式。
+1.  作为在运行时在Grains和客户机之间传输数据的有线格式。
 2.  作为一种存储格式，用于保存长期数据以供以后检索。
 
-奥尔良产生的串行器由于其灵活性、性能和通用性而适合于第一目的。它们不太适合用于第二个目的，因为它们没有显式的版本容忍。建议用户配置一个版本容忍序列化程序，如[协议缓冲区](https://developers.google.com/protocol-buffers/)对于持久数据。协议缓冲区通过`Orleans.Serialization.ProtobufSerializer`从[Microsoft.Orleans.OrleansGoogle实用程序](https://www.nuget.org/packages/Microsoft.Orleans.OrleansGoogleUtils/)Nuget包。应使用所选特定序列化程序的最佳实践，以确保版本公差。可以使用`序列化提供程序`如上所述的配置属性。
+Orleans产生的串行器由于其灵活性、性能和通用性而适合于第一目的。它们不太适合用于第二个目的，因为它们没有显式的版本容忍。建议用户配置一个版本容忍序列化程序，如[协议缓冲区](https://developers.google.com/protocol-buffers/)对于持久数据。协议缓冲区通过`Orleans.Serialization.ProtobufSerializer`从[Microsoft.Orleans.OrleansGoogle实用程序](https://www.nuget.org/packages/Microsoft.Orleans.OrleansGoogleUtils/)Nuget包。应使用所选特定序列化程序的最佳实践，以确保版本公差。可以使用`序列化提供程序`如上所述的配置属性。

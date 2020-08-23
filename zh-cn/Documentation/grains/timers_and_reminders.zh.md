@@ -5,13 +5,13 @@ title: Timers and Reminders
 
 # 计时器和提醒
 
-奥尔良运行时提供了两种机制，称为计时器和提醒，使开发人员可以指定谷物的周期性行为。
+Orleans运行时提供了两种机制，称为计时器和提醒，使开发人员可以指定Grains的周期性行为。
 
 # 计时器
 
 ## 计时器说明
 
-**计时器**用于创建不需要多次激活（谷物实例化）的周期性谷物行为。它与标准基本上相同。**NET System.Threading.Timer**类。另外，它在运行的谷物激活中要受单线程执行保证的约束。
+**计时器**用于创建不需要多次激活（Grains实例化）的周期性Grains行为。它与标准基本上相同。**NET System.Threading.Timer**类。另外，它在运行的Grains激活中要受单线程执行保证的约束。
 
 每次激活可能具有零个或多个与其关联的计时器。运行时在与之关联的激活的运行时上下文中执行每个计时器例程。
 
@@ -29,13 +29,13 @@ public IDisposable RegisterTimer(
 
 通过丢弃计时器来取消它。
 
-如果取消激活激活或发生故障并且其筒仓崩溃，计时器将停止触发。
+如果取消激活激活或发生故障并且其silos崩溃，计时器将停止触发。
 
 重要注意事项
 
 -   启用激活收集后，计时器回调的执行不会将激活状态从空闲更改为使用中。这意味着无法使用计时器来推迟其他情况下空闲激活的取消激活。
 -   期间过去了**Grain.RegisterTimer**是从任务返回的那一刻起经过的时间**asyncCallback**解决到下一次调用**asyncCallback**应该发生。这不仅使得无法连续调用**asyncCallback**重叠但也使时间长**asyncCallback**完成需要影响的频率**asyncCallback**被调用。这与**System.Threading.Timer**。
--   每次调用**asyncCallback**将在单独的回合上传递给激活，并且永远不会与同一激活中的其他回合同时运行。请注意，**asyncCallback**调用不作为消息传递，因此不受消息交织语义的约束。这意味着**asyncCallback**相对于传递给该谷物的其他消息，应被视为表现为在可重入谷物上运行。
+-   每次调用**asyncCallback**将在单独的回合上传递给激活，并且永远不会与同一激活中的其他回合同时运行。请注意，**asyncCallback**调用不作为消息传递，因此不受消息交织语义的约束。这意味着**asyncCallback**相对于传递给该Grains的其他消息，应被视为表现为在可重入Grains上运行。
 
 # 提醒事项
 
@@ -45,8 +45,8 @@ public IDisposable RegisterTimer(
 
 -   提醒是持久性的，除非明确取消，否则提醒将在几乎所有情况下（包括部分或完全重启群集）继续触发。
 -   提醒“定义”被写入存储。但是，不是每个特定的事件及其特定的时间。这样做的副作用是，如果在某个特定的提醒滴答声时群集完全崩溃，则它将丢失，并且仅会发生提醒的下一个滴答声。
--   提醒与谷物相关联，而不是任何特定的激活。
--   如果某个谷物没有与之关联的激活并且有提示音，则将创建一个。例如：如果激活闲置而被停用，则与同一谷物关联的提醒会在下次勾选时重新激活谷物。
+-   提醒与Grains相关联，而不是任何特定的激活。
+-   如果某个Grains没有与之关联的激活并且有提示音，则将创建一个。例如：如果激活闲置而被停用，则与同一Grains关联的提醒会在下次勾选时重新激活Grains。
 -   提醒是通过消息传递的，并且与其他所有grain方法都具有相同的交织语义。
 -   提醒事项不应用于高频计时器，其周期应以分钟，小时或天为单位。
 
@@ -92,7 +92,7 @@ var silo = new SiloHostBuilder()
 
 ## 提醒用法
 
-使用提醒的粮食必须实现**IRemindable.Receiveve提醒**方法。
+使用提醒的grain必须实现**IRemindable.Receiveve提醒**方法。
 
 ```csharp
 Task IRemindable.ReceiveReminder(string reminderName, TickStatus status)
@@ -102,7 +102,7 @@ Task IRemindable.ReceiveReminder(string reminderName, TickStatus status)
 }
 ```
 
-要启动提醒，请使用**Grain.RegisterOrUpdateReminder**方法，该方法返回一个**奥尔良提醒**目的：
+要启动提醒，请使用**Grain.RegisterOrUpdateReminder**方法，该方法返回一个**Orleans提醒**目的：
 
 ```csharp
 protected Task<IOrleansReminder> RegisterOrUpdateReminder(string reminderName, TimeSpan dueTime, TimeSpan period)
@@ -118,11 +118,11 @@ protected Task<IOrleansReminder> RegisterOrUpdateReminder(string reminderName, T
 protected Task UnregisterReminder(IOrleansReminder reminder)
 ```
 
-提醒是返回的句柄对象**谷物登记册**.
+提醒是返回的句柄对象**Grains登记册**.
 
 实例**IOrleansReminder公司**不能保证在激活的有效期之外有效。如果希望以持续的方式标识提醒，请使用包含提醒名称的字符串。
 
-如果您只有提醒的名称并需要相应的实例**IOrleansReminder公司**，呼叫**谷物.GetReminder**方法：
+如果您只有提醒的名称并需要相应的实例**IOrleansReminder公司**，呼叫**Grains.GetReminder**方法：
 
 ```csharp
 protected Task<IOrleansReminder> GetReminder(string reminderName)
@@ -143,4 +143,4 @@ protected Task<IOrleansReminder> GetReminder(string reminderName)
 
 ## 组合计时器和提醒
 
-你可以考虑结合使用提醒和计时器来完成你的目标。例如，如果您需要一个分辨率很小的计时器，而该计时器需要在激活期间继续存在，则可以使用每五分钟运行一次的提醒，该提醒的目的是唤醒一个颗粒，该颗粒将重新启动可能因停用而丢失的本地计时器。
+你可以考虑结合使用提醒和计时器来完成你的目标。例如，如果您需要一个分辨率很小的计时器，而该计时器需要在激活期间继续存在，则可以使用每五分钟运行一次的提醒，该提醒的目的是唤醒一个grains，该grains将重新启动可能因停用而丢失的本地计时器。

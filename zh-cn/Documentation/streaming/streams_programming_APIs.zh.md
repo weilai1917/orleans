@@ -3,9 +3,9 @@ layout: page
 title: Orleans Streams Programming APIs
 ---
 
-# 奥尔良流编程API
+# Orleans流编程API
 
-应用程序通过与众所周知的API非常相似的API与流交互[NET中的无功扩展（Rx）](https://msdn.microsoft.com/en-us/data/gg577609.aspx). 主要的区别是奥尔良河的延伸是**异步**，以使处理在奥尔良的分布式和可扩展计算结构中更高效。
+应用程序通过与众所周知的API非常相似的API与流交互[NET中的无功扩展（Rx）](https://msdn.microsoft.com/en-us/data/gg577609.aspx). 主要的区别是Orleans河的延伸是**异步**，以使处理在Orleans的分布式和可扩展计算结构中更高效。
 
 ### 异步流<a name="Async-Stream"></a>
 
@@ -16,13 +16,13 @@ IStreamProvider streamProvider = base.GetStreamProvider("SimpleStreamProvider");
 IAsyncStream<T> stream = streamProvider.GetStream<T>(Guid, "MyStreamNamespace");
 ```
 
-应用程序可以通过调用`GetStreamProvider`方法`谷物`类，或者调用`GrainClient.GetStreamProvider()`方法。
+应用程序可以通过调用`GetStreamProvider`方法`Grains`类，或者调用`GrainClient.GetStreamProvider()`方法。
 
-[**`奥尔良.Streams.IAsyncStream<T>`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core.Abstractions/Streams/Core/IAsyncStream.cs)是一个**虚拟流的逻辑强类型句柄**. 它在精神上类似于奥尔良谷物参考。呼叫`GetStreamProvider`和`GetStream公司`完全是本地的。关于`GetStream公司`是一个GUID和一个额外的字符串，我们称之为流命名空间（可以为null）。GUID和名称空间字符串一起构成流标识（与`GrainFactory.GetGrain`). GUID和命名空间字符串的组合为确定流标识提供了额外的灵活性。就像谷物7可能存在于谷物类型中一样`播放器`而不同的晶粒7可能存在于该晶粒类型中`聊天室谷物`，流123可能与流命名空间一起存在`播放事件流`并且不同的流123可以存在于流命名空间中`聊天室消息流`.
+[**`Orleans.Streams.IAsyncStream<T>`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core.Abstractions/Streams/Core/IAsyncStream.cs)是一个**虚拟流的逻辑强类型句柄**. 它在精神上类似于OrleansGrains参考。呼叫`GetStreamProvider`和`GetStream公司`完全是本地的。关于`GetStream公司`是一个GUID和一个额外的字符串，我们称之为流命名空间（可以为null）。GUID和名称空间字符串一起构成流标识（与`GrainFactory.GetGrain`). GUID和命名空间字符串的组合为确定流标识提供了额外的灵活性。就像Grains7可能存在于Grains类型中一样`播放器`而不同的grains7可能存在于该grains类型中`聊天室Grains`，流123可能与流命名空间一起存在`播放事件流`并且不同的流123可以存在于流命名空间中`聊天室消息流`.
 
 ### 生产和消费<a name="Producing-and-Consuming"></a>
 
-`IAsyncStream<T>`同时实现[**`奥尔良.Streams.IAsyncObserver<T>`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core.Abstractions/Streams/Core/IAsyncObserver.cs)和[**`奥尔良.Streams.IAsyncObservable<T>`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core.Abstractions/Streams/Core/IAsyncObservable.cs)接口。这样，应用程序就可以使用流通过使用`奥尔良.Streams.IAsyncObserver<T>`或者使用`奥尔良.Streams.IAsyncObservable<T>`.
+`IAsyncStream<T>`同时实现[**`Orleans.Streams.IAsyncObserver<T>`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core.Abstractions/Streams/Core/IAsyncObserver.cs)和[**`Orleans.Streams.IAsyncObservable<T>`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core.Abstractions/Streams/Core/IAsyncObservable.cs)接口。这样，应用程序就可以使用流通过使用`Orleans.Streams.IAsyncObserver<T>`或者使用`Orleans.Streams.IAsyncObservable<T>`.
 
 ```csharp
 public interface IAsyncObserver<in T>
@@ -56,11 +56,11 @@ StreamSubscriptionHandle<T> subscriptionHandle = await stream.SubscribeAsync(IAs
 await subscriptionHandle.UnsubscribeAsync()
 ```
 
-需要注意的是**订阅是为了谷物，而不是为了激活**. 一旦grain代码被订阅到流中，这个订阅将超过这个激活的生命周期，并且永远保持持久，直到grain代码（可能在不同的激活中）显式取消订阅。这是一个**虚拟流抽象**：不仅所有流在逻辑上始终存在，而且流订阅也是持久的，并且在创建订阅的特定物理激活之后仍然有效。
+需要注意的是**订阅是为了Grains，而不是为了激活**. 一旦grain代码被订阅到流中，这个订阅将超过这个激活的生命周期，并且永远保持持久，直到grain代码（可能在不同的激活中）显式取消订阅。这是一个**虚拟流抽象**：不仅所有流在逻辑上始终存在，而且流订阅也是持久的，并且在创建订阅的特定物理激活之后仍然有效。
 
 ### 多重性<a name="Multiplicity"></a>
 
-一条奥尔良河可能有多个生产者和多个消费者。生产者发布的消息将被传递给在消息发布之前订阅流的所有使用者。
+一条Orleans河可能有多个生产者和多个消费者。生产者发布的消息将被传递给在消息发布之前订阅流的所有使用者。
 
 此外，消费者可以多次订阅同一个流。每次订阅它都会返回一个唯一的`StreamSubscriptionHandle<T>`. 如果一个grain（或客户机）订阅同一个流X次，它将接收相同的事件X次，每次订阅一次。消费者还可以从单个订阅中取消订阅。它可以通过调用以下命令来查找其当前的所有订阅：
 
@@ -70,9 +70,9 @@ IList<StreamSubscriptionHandle<T>> allMyHandles = await IAsyncStream<T>.GetAllSu
 
 ### 从故障中恢复<a name="Recovering-From-Failures"></a>
 
-如果流的生产者死了（或者它的颗粒被停用），它就不需要做什么了。下次这个grain想要生成更多事件时，它可以再次获得流句柄，并以相同的方式生成新的事件。
+如果流的生产者死了（或者它的grains被停用），它就不需要做什么了。下次这个grain想要生成更多事件时，它可以再次获得流句柄，并以相同的方式生成新的事件。
 
-消费者的逻辑更复杂一些。正如我们前面所说的，一旦消费者的谷物被订阅到一个流中，这个订阅在该谷物明确取消订阅之前是有效的。如果流的消费者死亡（或其粒度被停用）并且流上生成了一个新事件，消费粒度将被自动重新激活（就像任何普通的奥尔良谷物在向其发送消息时自动激活一样）。grain代码现在只需要提供一个`IAsyncObserver<T>`处理数据。使用者基本上需要重新附加处理逻辑作为`非激活异步`方法。为此，它可以调用：
+消费者的逻辑更复杂一些。正如我们前面所说的，一旦消费者的Grains被订阅到一个流中，这个订阅在该Grains明确取消订阅之前是有效的。如果流的消费者死亡（或其粒度被停用）并且流上生成了一个新事件，消费粒度将被自动重新激活（就像任何普通的OrleansGrains在向其发送消息时自动激活一样）。grain代码现在只需要提供一个`IAsyncObserver<T>`处理数据。使用者基本上需要重新附加处理逻辑作为`非激活异步`方法。为此，它可以调用：
 
 ```csharp
 StreamSubscriptionHandle<int> newHandle = await subscriptionHandle.ResumeAsync(IAsyncObserver)
@@ -88,17 +88,17 @@ IList<StreamSubscriptionHandle<T>> allMyHandles = await IAsyncStream<T>.GetAllSu
 
 消费者现在可以恢复所有这些服务，如果愿意，也可以取消订阅。
 
-**评论：**如果消费谷物实施`IAsyncObserver服务器`直接接口(`公共类MyGrain<T>：Grain，IAsyncObserver<T>`)，理论上不应要求重新附加`IAsyncObserver服务器`因此不需要打电话`恢复异步`. 流式运行时应该能够自动发现grain已经实现了`IAsyncObserver服务器`只会调用那些`IAsyncObserver服务器`方法。但是，流式运行时当前不支持此功能，并且grain代码仍然需要显式调用`恢复异步`即使谷物工具`IAsyncObserver服务器`直接。支持这一点是我们的待办事项。
+**评论：**如果消费Grains实施`IAsyncObserver服务器`直接接口(`公共类MyGrain<T>：Grain，IAsyncObserver<T>`)，理论上不应要求重新附加`IAsyncObserver服务器`因此不需要打电话`恢复异步`. 流式运行时应该能够自动发现grain已经实现了`IAsyncObserver服务器`只会调用那些`IAsyncObserver服务器`方法。但是，流式运行时当前不支持此功能，并且grain代码仍然需要显式调用`恢复异步`即使Grains工具`IAsyncObserver服务器`直接。支持这一点是我们的待办事项。
 
 ### 显式和隐式订阅<a name="Explicit-and-Implicit-Subscriptions"></a>
 
-默认情况下，流使用者必须显式订阅流。此订阅通常由grain（或客户机）收到的指示其订阅的外部消息触发。例如，在聊天服务中，当用户加入聊天室时，他的谷物收到`加入聊天组`带有聊天名称的消息，这将导致用户grain订阅此聊天流。
+默认情况下，流使用者必须显式订阅流。此订阅通常由grain（或客户机）收到的指示其订阅的外部消息触发。例如，在聊天服务中，当用户加入聊天室时，他的Grains收到`加入聊天组`带有聊天名称的消息，这将导致用户grain订阅此聊天流。
 
-此外，奥尔良溪流也支持**“隐式订阅”**. 在这个模型中，颗粒并没有显式地订阅流。这个grain是自动的，隐式的，仅仅基于它的grain标识和`隐式itstreamsubscription`属性。隐式订阅的主要价值是允许流活动自动触发粒度激活（从而触发订阅）。例如，使用SMS流，如果一个grain要生成一个流，而另一个grain要处理这个流，则生产者需要知道消费谷物的身份，并对其进行grain调用，告诉它订阅流。只有在那之后，它才能开始发送事件。相反，使用隐式订阅，生产者只需开始为流生成事件，消费粒度将自动激活并订阅流。在这种情况下，制作人根本不在乎谁在看事件
+此外，OrleansStreams也支持**“隐式订阅”**. 在这个模型中，grains并没有显式地订阅流。这个grain是自动的，隐式的，仅仅基于它的grain标识和`隐式itstreamsubscription`属性。隐式订阅的主要价值是允许流活动自动触发粒度激活（从而触发订阅）。例如，使用SMS流，如果一个grain要生成一个流，而另一个grain要处理这个流，则生产者需要知道消费Grains的身份，并对其进行grain调用，告诉它订阅流。只有在那之后，它才能开始发送事件。相反，使用隐式订阅，生产者只需开始为流生成事件，消费粒度将自动激活并订阅流。在这种情况下，制作人根本不在乎谁在看事件
 
-类型的谷物实现类`我的颗粒类型`可以声明属性`[隐式itstreamsubscription（“MyStreamNamespace”）]`. 这将告诉流式运行时，当在标识为GUID XXX和`“MyStreamNamespace”`命名空间，则应将其传递到标识为XXX类型的颗粒`我的颗粒类型`. 也就是说，运行时映射流`<XXX，MyStreamNamespace>`消费粮食`<XXX，我的颗粒类型>`.
+类型的Grains实现类`我的grains类型`可以声明属性`[隐式itstreamsubscription（“MyStreamNamespace”）]`. 这将告诉流式运行时，当在标识为GUID XXX和`“MyStreamNamespace”`命名空间，则应将其传递到标识为XXX类型的grains`我的grains类型`. 也就是说，运行时映射流`<XXX，MyStreamNamespace>`消费grain`<XXX，我的grains类型>`.
 
-存在`隐式itstreamsubscription`使流式处理执行阶段自动将此颗粒订阅到流，并将流事件传递给它。但是，grain代码仍然需要告诉运行时它希望如何处理事件。本质上，它需要附加`IAsyncObserver服务器`. 因此，当谷物被激活时，里面的谷物代码`非激活异步`需要打电话：
+存在`隐式itstreamsubscription`使流式处理执行阶段自动将此grains订阅到流，并将流事件传递给它。但是，grain代码仍然需要告诉运行时它希望如何处理事件。本质上，它需要附加`IAsyncObserver服务器`. 因此，当Grains被激活时，里面的Grains代码`非激活异步`需要打电话：
 
 ```csharp
 IStreamProvider streamProvider = base.GetStreamProvider("SimpleStreamProvider");
@@ -112,7 +112,7 @@ StreamSubscriptionHandle<T> subscription = await stream.SubscribeAsync(IAsyncObs
 
 **隐式订阅：**
 
-对于隐式订阅，grain需要订阅以附加处理逻辑。这应该在谷仓里做`非激活异步`方法。谷物应该简单地执行`等待流式订阅同步（下一页…）`在它的`非激活异步`方法。这将导致此特定激活附加`OnNext公司`函数来处理该流。颗粒可以选择指定`StreamSequenceToken`作为`订阅同步`，这将导致此隐式订阅从该令牌开始使用。永远不需要隐式订阅来调用`恢复异步`.
+对于隐式订阅，grain需要订阅以附加处理逻辑。这应该在谷仓里做`非激活异步`方法。Grains应该简单地执行`等待流式订阅同步（下一页…）`在它的`非激活异步`方法。这将导致此特定激活附加`OnNext公司`函数来处理该流。grains可以选择指定`StreamSequenceToken`作为`订阅同步`，这将导致此隐式订阅从该令牌开始使用。永远不需要隐式订阅来调用`恢复异步`.
 
 ```csharp
 public async override Task OnActivateAsync()
@@ -125,7 +125,7 @@ public async override Task OnActivateAsync()
 
 **显式订阅：**
 
-对于显式订阅，grain必须调用`订阅同步`订阅流。这将创建一个订阅，并附加处理逻辑。显式订阅将一直存在，直到取消订阅该粒度，因此，如果某个粒度被停用并重新激活，则该粒度仍然显式订阅，但不会附加任何处理逻辑。在这种情况下，谷物需要重新附加处理逻辑。为了做到这一点`非激活异步`，grain首先需要通过调用`stream.GetAllSubscriptionHandles()`. 谷物必须执行`恢复异步`对于每个句柄，它希望继续处理或取消订阅已处理的任何句柄的异步。颗粒也可以选择指定`StreamSequenceToken`作为`恢复异步`调用，这将导致此显式订阅从该令牌开始使用。
+对于显式订阅，grain必须调用`订阅同步`订阅流。这将创建一个订阅，并附加处理逻辑。显式订阅将一直存在，直到取消订阅该粒度，因此，如果某个粒度被停用并重新激活，则该粒度仍然显式订阅，但不会附加任何处理逻辑。在这种情况下，Grains需要重新附加处理逻辑。为了做到这一点`非激活异步`，grain首先需要通过调用`stream.GetAllSubscriptionHandles()`. Grains必须执行`恢复异步`对于每个句柄，它希望继续处理或取消订阅已处理的任何句柄的异步。grains也可以选择指定`StreamSequenceToken`作为`恢复异步`调用，这将导致此显式订阅从该令牌开始使用。
 
 ```csharp
 public async override Task OnActivateAsync()
@@ -160,21 +160,21 @@ Azure队列流不保证FIFO顺序，因为底层的Azure队列不保证故障情
 
 ### 无状态自动扩展处理<a name="Stateless-Automatically-Scaled-Out-Processing"></a>
 
-默认情况下，Orleans流的目标是支持大量相对较小的流，每个流由一个或多个有状态粒度处理。总的来说，所有流的处理在大量规则的（有状态的）颗粒之间被切分。应用程序代码通过分配流ID和粒度ID以及显式订阅来控制这种分片。**目标是分片状态处理**.
+默认情况下，Orleans流的目标是支持大量相对较小的流，每个流由一个或多个有状态粒度处理。总的来说，所有流的处理在大量规则的（有状态的）grains之间被切分。应用程序代码通过分配流ID和粒度ID以及显式订阅来控制这种分片。**目标是分片状态处理**.
 
-然而，还有一个有趣的场景**自动扩展无状态处理**. 在这个场景中，应用程序有少量的流（甚至一个大的流），目标是无状态处理。例如，事件的全局流，其中的处理涉及对每个事件进行解码，并可能将其转发到其他流以进行进一步的有状态处理。在奥尔良，可以通过`无国籍工人`谷物。
+然而，还有一个有趣的场景**自动扩展无状态处理**. 在这个场景中，应用程序有少量的流（甚至一个大的流），目标是无状态处理。例如，事件的全局流，其中的处理涉及对每个事件进行解码，并可能将其转发到其他流以进行进一步的有状态处理。在Orleans，可以通过`无国籍工人`Grains。
 
-**无状态自动扩展处理的当前状态：**这还没有实施。从订阅流的尝试`无国籍工人`颗粒将导致未定义的行为。[我们正在考虑支持这一选择](https://github.com/dotnet/orleans/issues/433).
+**无状态自动扩展处理的当前状态：**这还没有实施。从订阅流的尝试`无国籍工人`grains将导致未定义的行为。[我们正在考虑支持这一选择](https://github.com/dotnet/orleans/issues/433).
 
-### 谷物和奥尔良客户<a name="Grains-and-Orleans-Clients"></a>
+### Grains和Orleans客户<a name="Grains-and-Orleans-Clients"></a>
 
-奥尔良溪流**在谷物和奥尔良的客户中都是一致的**. 也就是说，可以在grain内部和Orleans客户机中使用完全相同的api来生成和消费事件。这大大简化了应用程序逻辑，使得特殊的客户端api（如Grain observer）变得多余。
+OrleansStreams**在Grains和Orleans的客户中都是一致的**. 也就是说，可以在grain内部和Orleans客户机中使用完全相同的api来生成和消费事件。这大大简化了应用程序逻辑，使得特殊的客户端api（如Grain observer）变得多余。
 
 ### 全面管理和可靠的流媒体酒吧<a name="Fully-Managed-and-Reliable-Streaming-Pub-Sub"></a>
 
 为了跟踪流订阅，Orleans使用一个名为**流媒体酒吧**作为流消费者和流生产者的交汇点。Pub-Sub跟踪所有流订阅，持久化它们，并将流消费者与流生产者匹配。
 
-应用程序可以选择发布订阅数据的存储位置和存储方式。Pub-Sub组件本身被实现为grains（称为`公共地下室`)，它使用奥尔良声明性持久性。`公共地下室`使用名为的存储提供程序`PubSubStore酒店`. 与任何粒度一样，您可以为存储提供程序指定实现。对于流式发布订阅，您可以更改`PubSubStore酒店`在思洛存储器构建时，使用思洛主机生成器：
+应用程序可以选择发布订阅数据的存储位置和存储方式。Pub-Sub组件本身被实现为grains（称为`公共地下室`)，它使用Orleans声明性持久性。`公共地下室`使用名为的存储提供程序`PubSubStore酒店`. 与任何粒度一样，您可以为存储提供程序指定实现。对于流式发布订阅，您可以更改`PubSubStore酒店`在silos构建时，使用思洛主机生成器：
 
 下面将Pub-Sub配置为将其状态存储在Azure表中。
 
@@ -200,4 +200,4 @@ hostBuilder.AddSimpleMessageStreamProvider("SMSProvider")
 
 ## 下一个
 
-[奥尔良河流供应商](stream_providers.md)
+[Orleans河流供应商](stream_providers.md)

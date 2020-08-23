@@ -3,9 +3,9 @@ layout: page
 title: Orleans 2.0
 ---
 
-# 奥尔良2.0
+# Orleans2.0
 
-2.0是Orleans的一个主要版本，其主要目标是使其与.NET标准2.0兼容并跨平台（通过.NET Core）。作为这项工作的一部分，奥尔良API进行了几次现代化，以使其更符合像ASP.NET这样的技术在当今的配置和托管方式。
+2.0是Orleans的一个主要版本，其主要目标是使其与.NET标准2.0兼容并跨平台（通过.NET Core）。作为这项工作的一部分，OrleansAPI进行了几次现代化，以使其更符合像ASP.NET这样的技术在当今的配置和托管方式。
 
 因为它与.NET标准2.0兼容，所以Orleans 2.0可以被针对.NET核心或完整.NET框架的应用程序使用。核心团队对这个版本进行测试的重点是在.NETFramework框架上，以确保现有的应用程序可以轻松地从1.5迁移到2，并具有完全向后兼容性。
 
@@ -15,7 +15,7 @@ title: Orleans 2.0
 
 基于配置对象和xml文件的旧api是为了向后兼容而保留的，但不会向前移动，将来会被弃用。有关详细信息，请参见[配置](clusters_and_clients/configuration_guide/index.md)章节。
 
--   应用程序程序集的显式编程规范，它取代了Orleans运行时在思洛存储器或客户端初始化时自动扫描文件夹的功能。
+-   应用程序程序集的显式编程规范，它取代了Orleans运行时在silos或客户端初始化时自动扫描文件夹的功能。
 
 orleans仍然会在指定的程序集中自动查找相关类型，如grain接口和类、序列化程序等，但它不再尝试加载在文件夹中可以找到的每个程序集。为了向后兼容，提供了用于加载文件夹中所有程序集的可选助手方法：`iapplicationpartmanager.addfromapplicationbasedirectory（）`是的。
 
@@ -31,7 +31,7 @@ grain代码很可能只需要引用这些抽象，而silo主机和客户机将�
 
 -   添加对作用域服务的支持。
 
-这意味着每个grain激活都有自己的作用域服务提供者，而orleans注册了一个上下文`IGrainActivationContext`可以注入*瞬变的*或*范围*获取激活特定信息和谷物激活生命周期事件访问权限的服务。这与asp.net core 2.0为每个请求创建作用域上下文的方式类似，但对于orleans，它适用于grain激活的整个生命周期。见[使用寿命和注册选项](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection#service-lifetimes-and-registration-options)在ASP.NET核心文档中获取有关服务生命周期的详细信息。
+这意味着每个grain激活都有自己的作用域服务提供者，而orleans注册了一个上下文`IGrainActivationContext`可以注入*瞬变的*或*范围*获取激活特定信息和Grains激活生命周期事件访问权限的服务。这与asp.net core 2.0为每个请求创建作用域上下文的方式类似，但对于orleans，它适用于grain激活的整个生命周期。见[使用寿命和注册选项](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection#service-lifetimes-and-registration-options)在ASP.NET核心文档中获取有关服务生命周期的详细信息。
 
 -   迁移了要使用的日志基础结构`Microsoft.Extensions.Logging`（与ASP.NET Core 2.0相同的摘要）。
 

@@ -3,9 +3,9 @@ layout: page
 title: GrainServices
 ---
 
-# 粮食服务
+# grain服务
 
-GrainService是一种特殊的谷物。一个没有身份的，并且从启动到关闭都在每个筒仓中运行的程序。
+GrainService是一种特殊的Grains。一个没有身份的，并且从启动到关闭都在每个silos中运行的程序。
 
 ## 创建一个GrainService
 
@@ -17,9 +17,9 @@ public interface IDataService : IGrainService {
 }
 ```
 
-**第2步。**创建DataService本身。如果可能，使GrainService可重入以获得更好的性能。注意必要的基本构造函数调用。很高兴知道您也可以注入`IGrain工厂`因此您可以从GrainService进行谷物调用。
+**第2步。**创建DataService本身。如果可能，使GrainService可重入以获得更好的性能。注意必要的基本构造函数调用。很高兴知道您也可以注入`IGrain工厂`因此您可以从GrainService进行Grains调用。
 
-关于流的说明：GrainService无法在Orleans流中写入，因为它在Grain Task Scheduler中不起作用。如果您需要GrainService为您写入流，则必须将对象发送到另一种谷物以写入流。
+关于流的说明：GrainService无法在Orleans流中写入，因为它在Grain Task Scheduler中不起作用。如果您需要GrainService为您写入流，则必须将对象发送到另一种Grains以写入流。
 
 ```csharp
 [Reentrant]
@@ -49,14 +49,14 @@ public class LightstreamerDataService : GrainService, IDataService {
 }
 ```
 
-**第三步**为GrainServiceClient创建一个接口，供其他谷物使用以连接到GrainService。
+**第三步**为GrainServiceClient创建一个接口，供其他Grains使用以连接到GrainService。
 
 ```csharp
 public interface IDataServiceClient : IGrainServiceClient<IDataService>, IDataService {
 }
 ```
 
-**第4步。**创建实际的谷物服务客户端。它几乎只是充当数据服务的代理。不幸的是，您必须手动输入所有方法映射，它们只是简单的一列式。
+**第4步。**创建实际的Grains服务客户端。它几乎只是充当数据服务的代理。不幸的是，您必须手动输入所有方法映射，它们只是简单的一列式。
 
 ```csharp
 public class DataServiceClient : GrainServiceClient<IDataService>, IDataServiceClient {
@@ -68,7 +68,7 @@ public class DataServiceClient : GrainServiceClient<IDataService>, IDataServiceC
 }
 ```
 
-**第五步**将谷物服务客户端注入需要它的其他谷物中。注意，GrainServiceClient不保证访问本地筒仓上的GrainService。您的命令可能会发送到集群中任何筒仓上的GrainService。
+**第五步**将Grains服务客户端注入需要它的其他Grains中。注意，GrainServiceClient不保证访问本地silos上的GrainService。您的命令可能会发送到集群中任何silos上的GrainService。
 
 ```csharp
 public class MyNormalGrain: Grain<NormalGrainState>, INormalGrain {
@@ -81,7 +81,7 @@ public class MyNormalGrain: Grain<NormalGrainState>, INormalGrain {
 }
 ```
 
-**第六步**将粮食服务注入料仓本身。您需要执行此操作，以便筒仓将启动GrainService。
+**第六步**将grain服务注入料仓本身。您需要执行此操作，以便silos将启动GrainService。
 
 ```csharp
 (ISiloHostBuilder builder) => builder .ConfigureServices(services => { services.AddSingleton<IDataService, DataService>(); });
@@ -95,7 +95,7 @@ public class MyNormalGrain: Grain<NormalGrainState>, INormalGrain {
 
  `返回服务。AddSingleton <IGrainService>（sp => GrainServiceFactory（grainServiceType，sp））;`
 
-基本上，筒仓取`IGrain服务`启动时来自服务提供商的类型：**orleans / src / Orleans.Runtime / Silo / Silo.cs**
+基本上，silos取`IGrain服务`启动时来自服务提供商的类型：**orleans / src / Orleans.Runtime / Silo / Silo.cs**
  `var grainServices = this.Services.GetServices <IGrainService>（）;`
 
 的`Microsoft.Orleans.OrleansRuntime`Nuget软件包应由Grainservice项目引用。

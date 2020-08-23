@@ -15,11 +15,11 @@ consul有一个非常详细的概述，包括与类似解决方案的比较[在�
 
 ## 为什么选择领事？
 
-作为[奥尔良会员服务商](../implementation/cluster_management.md)，当您需要提供**内部解决方案**这并不要求潜在客户拥有现有的基础设施。**和**一家合作的it提供商。consul是一个非常轻量级的单一可执行文件，没有依赖关系，因此可以很容易地构建到您自己的中间件解决方案中。当consul已经是您发现、检查和维护微服务的解决方案时，完全集成orleans成员关系以简化操作是有意义的。因此，我们在consul（也称为“orleans custom system store”）中实现了一个成员表，它与orleans的[群集管理](../implementation/cluster_management.md)是的。
+作为[Orleans会员服务商](../implementation/cluster_management.md)，当您需要提供**内部解决方案**这并不要求潜在客户拥有现有的基础设施。**和**一家合作的it提供商。consul是一个非常轻量级的单一可执行文件，没有依赖关系，因此可以很容易地构建到您自己的中间件解决方案中。当consul已经是您发现、检查和维护微服务的解决方案时，完全集成orleans成员关系以简化操作是有意义的。因此，我们在consul（也称为“orleans custom system store”）中实现了一个成员表，它与orleans的[群集管理](../implementation/cluster_management.md)是的。
 
 ## 设立领事
 
-有很多关于[IO领事](https://www.consul.io)关于建立一个稳定的领事集群，在这里重复是没有意义的；但是为了您的方便，我们提供了这个指南，这样您可以很快让奥尔良运行一个独立的领事代理。
+有很多关于[IO领事](https://www.consul.io)关于建立一个稳定的领事集群，在这里重复是没有意义的；但是为了您的方便，我们提供了这个指南，这样您可以很快让Orleans运行一个独立的领事代理。
 
 1）创建一个文件夹以将consul安装到其中，例如c:\\ consul
 
@@ -45,11 +45,11 @@ consul有一个非常详细的概述，包括与类似解决方案的比较[在�
 
 6）通过打开[服务](http://localhost:8500/v1/catalog/services)浏览器中的终结点。
 
-## 奥尔良的结构
+## Orleans的结构
 
 ### 服务器
 
-“自定义”成员资格提供程序orleansconfiguration.xml配置文件当前存在一个已知问题，无法正确解析该文件。因此，在启动思洛存储器之前，必须在XML中提供一个占位符SystemStore，然后在代码中配置提供程序。
+“自定义”成员资格提供程序orleansconfiguration.xml配置文件当前存在一个已知问题，无法正确解析该文件。因此，在启动silos之前，必须在XML中提供一个占位符SystemStore，然后在代码中配置提供程序。
 
 **orleansconfiguration.xml文件**
 
@@ -85,7 +85,7 @@ public void Start(ClusterConfiguration config)
 }
 ```
 
-或者，您可以完全用代码配置思洛存储器。
+或者，您可以完全用代码配置silos。
 
 ### 顾客
 
@@ -105,7 +105,7 @@ public void Start(ClusterConfiguration config)
 
 ## 实施细节
 
-成员资格表提供程序使用[领事钥匙/价值商店](https://www.consul.io/intro/getting-started/kv.html)cas的功能。当每个思洛存储器启动时，它会注册两个KV条目，一个包含思洛存储器的详细信息，另一个保存思洛存储器上次报告它处于活动状态时的信息（后者是指诊断“I am alive”条目，而不是指直接在思洛存储器之间发送且未写入表中的故障检测Hearbeats）。根据orleans的需要，对表的所有写操作都由cas执行，以提供并发控制。[群集管理协议](../implementation/cluster_management.md)是的。思洛存储器运行后，您可以在Web浏览器中查看这些条目[在这里](http://localhost:8500/v1/kv/?keys)，将显示如下内容：
+成员资格表提供程序使用[领事钥匙/价值商店](https://www.consul.io/intro/getting-started/kv.html)cas的功能。当每个silos启动时，它会注册两个KV条目，一个包含silos的详细信息，另一个保存silos上次报告它处于活动状态时的信息（后者是指诊断“I am alive”条目，而不是指直接在silos之间发送且未写入表中的故障检测Hearbeats）。根据orleans的需要，对表的所有写操作都由cas执行，以提供并发控制。[群集管理协议](../implementation/cluster_management.md)是的。silos运行后，您可以在Web浏览器中查看这些条目[在这里](http://localhost:8500/v1/kv/?keys)，将显示如下内容：
 
 ```js
 [
@@ -114,7 +114,7 @@ public void Start(ClusterConfiguration config)
 ]
 ```
 
-您会注意到这些键的前缀是*“奥尔良/”*这是在提供者中硬编码的，旨在避免与consul的其他用户发生密钥空间冲突。每个键都可以通过附加它们的键名来读取*（当然没有引用）*致[领事KV根](http://localhost:8500/v1/kv/)是的。这样做将为您提供以下信息：
+您会注意到这些键的前缀是*“Orleans/”*这是在提供者中硬编码的，旨在避免与consul的其他用户发生密钥空间冲突。每个键都可以通过附加它们的键名来读取*（当然没有引用）*致[领事KV根](http://localhost:8500/v1/kv/)是的。这样做将为您提供以下信息：
 
 ```js
 [
@@ -129,7 +129,7 @@ public void Start(ClusterConfiguration config)
 ]
 ```
 
-解码字符串将提供实际的奥尔良成员资格数据：
+解码字符串将提供实际的Orleans成员资格数据：
 
 **<http://localhost:8500/v1/KV/orleans/MyOrleansDeployment/[SiloAddress>]**
 
@@ -149,17 +149,17 @@ public void Start(ClusterConfiguration config)
 "2016-01-29T16:35:58.9193803Z"
 ```
 
-当客户机连接时，他们通过使用uri在一个http get中读取集群中所有筒仓的kvs`http://192.168.1.26:8500/v1/kv/orleans/myorleansdeployment/？递归`是的。
+当客户机连接时，他们通过使用uri在一个http get中读取集群中所有silos的kvs`http://192.168.1.26:8500/v1/kv/orleans/myorleansdeployment/？递归`是的。
 
 ## 限制
 
-### 奥尔良扩展成员协议（表版本和ETag）
+### Orleans扩展成员协议（表版本和ETag）
 
-consul kv currently目前不支持原子更新。因此，orleans consul成员资格提供者只实现了orleans基本成员资格协议，如前所述[在这里](../implementation/cluster_management.md)不支持扩展成员身份协议。这个扩展的协议被引入作为一个额外的，但不是必需的，筒仓连通性验证和作为尚未实现的功能的基础。如果您的基础设施配置正确，您将不会因缺乏支持而受到任何不利影响。
+consul kv currently目前不支持原子更新。因此，orleans consul成员资格提供者只实现了orleans基本成员资格协议，如前所述[在这里](../implementation/cluster_management.md)不支持扩展成员身份协议。这个扩展的协议被引入作为一个额外的，但不是必需的，silos连通性验证和作为尚未实现的功能的基础。如果您的基础设施配置正确，您将不会因缺乏支持而受到任何不利影响。
 
 ### 多个数据中心
 
-consun中的键值对当前未在consun数据中心之间复制。有一个[单独项目](https://github.com/hashicorp/consul-replicate)为了解决这个问题，但它还没有被证明支持奥尔良。
+consun中的键值对当前未在consun数据中心之间复制。有一个[单独项目](https://github.com/hashicorp/consul-replicate)为了解决这个问题，但它还没有被证明支持Orleans。
 
 ### 在Windows上运行时
 

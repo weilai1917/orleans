@@ -5,7 +5,7 @@ title: Samples Overview
 
 # 讲解
 
-## [教程1：奥尔良基础知识](tutorial_1.md)
+## [教程1：Orleans基础知识](tutorial_1.md)
 
 教程1指导您完成创建结构并设置第一个Orleans应用程序的包和参考的步骤。
 
@@ -19,7 +19,7 @@ title: Samples Overview
 
 ## [你好，世界](overview_helloworld.md)
 
-经典的Hello World应用程序的奥尔良版本。这表明在处理分布式计算时，虽然没有“琐碎”的事情，但奥尔良使它变得直截了当。
+经典的Hello World应用程序的Orleans版本。这表明在处理分布式计算时，虽然没有“琐碎”的事情，但Orleans使它变得直截了当。
 
 ## [MathGrains](MathGrains.md)
 

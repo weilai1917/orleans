@@ -3,20 +3,20 @@ layout: page
 title: Server Configuration
 ---
 
-> [啊！注意!]如果要启动本地思洛存储器和本地客户机进行开发，请查看[本地开发配置页](local_development_configuration.md)
+> [啊！注意!]如果要启动本地silos和本地客户机进行开发，请查看[本地开发配置页](local_development_configuration.md)
 
 # 服务器配置
 
-思洛存储器通过编程方式配置`silohostbuilder软件`以及一些补充选项类。奥尔良的选项类遵循[ASP.NET选项](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options)模式，可以通过文件、环境变量等加载。
+silos通过编程方式配置`silohostbuilder软件`以及一些补充选项类。Orleans的选项类遵循[ASP.NET选项](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options)模式，可以通过文件、环境变量等加载。
 
-筒仓配置有几个关键方面：
+silos配置有几个关键方面：
 
--   奥尔良聚类信息
+-   Orleans聚类信息
 -   群集提供程序
--   用于思洛存储器到思洛存储器和客户端到思洛存储器通信的终结点
+-   用于silos到silos和客户端到silos通信的终结点
 -   应用程序部件
 
-这是一个思洛存储器配置的示例，它定义群集信息、使用azure群集并配置应用程序部分：
+这是一个silos配置的示例，它定义群集信息、使用azure群集并配置应用程序部分：
 
 ```csharp
 var silo = new SiloHostBuilder()
@@ -38,7 +38,7 @@ var silo = new SiloHostBuilder()
 
 让我们分解此示例中使用的步骤：
 
-## 奥尔良聚类信息
+## Orleans聚类信息
 
 ```csharp
     [...]
@@ -53,7 +53,7 @@ var silo = new SiloHostBuilder()
 
 这里我们做两件事：
 
--   设置`棒状的`到`“我的第一个群集”`：这是Orleans集群的唯一ID。使用此ID的所有客户机和思洛存储器都可以直接相互通信。你可以选择使用不同的`棒状的`不过，对于不同的部署。
+-   设置`棒状的`到`“我的第一个群集”`：这是Orleans集群的唯一ID。使用此ID的所有客户机和silos都可以直接相互通信。你可以选择使用不同的`棒状的`不过，对于不同的部署。
 -   设置`服务ID`到`“aspnetsampleap”`：这是应用程序的唯一ID，某些提供程序（如持久性提供程序）将使用它。**此ID应保持稳定，并且在部署期间不会更改**是的。
 
 ## 群集提供程序
@@ -81,12 +81,12 @@ var silo = new SiloHostBuilder()
     [...]
 ```
 
-奥尔良筒仓有两种典型的端点配置：
+Orleanssilos有两种典型的端点配置：
 
--   思洛存储器到思洛存储器端点，用于同一集群中思洛存储器之间的通信
--   客户端到思洛存储器端点（或网关），用于在同一集群中的客户端和思洛存储器之间进行通信
+-   silos到silos端点，用于同一集群中silos之间的通信
+-   客户端到silos端点（或网关），用于在同一集群中的客户端和silos之间进行通信
 
-在示例中，我们使用helper方法`.配置终结点（siloport:11111，gatewayport:30000）`它将用于思洛存储器到思洛存储器通信的端口设置为`11111个`和网关的端口`30000个`是的。此方法将检测要侦听的接口。
+在示例中，我们使用helper方法`.配置终结点（siloport:11111，gatewayport:30000）`它将用于silos到silos通信的端口设置为`11111个`和网关的端口`30000个`是的。此方法将检测要侦听的接口。
 
 这种方法在大多数情况下应该足够了，但是如果需要的话，可以进一步自定义它。下面是如何将外部IP地址与某些端口转发一起使用的示例：
 
@@ -109,7 +109,7 @@ var silo = new SiloHostBuilder()
 [...]
 ```
 
-在内部，筒仓会监听`0.0.0.0:40000个`和`0.0.0.0:50000`，但在成员资格提供程序中发布的值将是`172.16.0.42:11111`和`172.16.0.42:30000`是的。
+在内部，silos会监听`0.0.0.0:40000个`和`0.0.0.0:50000`，但在成员资格提供程序中发布的值将是`172.16.0.42:11111`和`172.16.0.42:30000`是的。
 
 ## 应用程序部件
 

@@ -7,11 +7,11 @@ title: Scheduler
 
 Orleans Scheduler是Orleans运行时中的一个组件，负责执行应用程序代码和部分运行时代码，以确保**单线程执行语义**。它实现了自定义的TPL任务计划程序。
 
-奥尔良任务计划程序是一个2级层次的计划程序。在第一层是全球**OrleansTaskScheduler**负责执行系统活动。在第二级，每个谷物活化都有自己的**ActivationTaskScheduler**，它提供了单线程执行语义。
+Orleans任务计划程序是一个2级层次的计划程序。在第一层是全球**OrleansTaskScheduler**负责执行系统活动。在第二级，每个Grains活化都有自己的**ActivationTaskScheduler**，它提供了单线程执行语义。
 
 ### 从高层次上讲，执行路径如下：
 
-1.  请求到达正确的筒仓，并找到目标激活。
+1.  请求到达正确的silos，并找到目标激活。
 2.  请求在其ActivationTaskScheduler上转换为一个任务，排队等待该激活执行。
 3.  通过标准TaskScheduler机制，作为谷类方法执行的一部分而创建的任何后续Task都会自然地排队到同一ActivationTaskScheduler中。
 4.  每个ActivationTaskScheduler都有一个排队等待执行的任务队列。
@@ -21,7 +21,7 @@ Orleans Scheduler是Orleans运行时中的一个组件，负责执行应用程�
 
 ### 工作项目：
 
-奥尔良使用工作项的概念来指定调度程序的入口点。最初，每个新请求都作为工作项入队，该工作项仅包装该请求的第一个任务的执行。工作项只是提供有关调度活动的更多上下文信息（调用方，活动的名称，日志记录），有时还需要代表该调度活动进行一些额外的工作（Invoke工作项中的调用后活动）。当前有以下工作项类型：1.调用工作项–这是最常用的工作项类型。它表示应用程序请求的执行。2.请求/响应工作项–执行系统请求（对SystemTarget的请求）。3. TaskWorkItem –代表排队到最高OrleansTaskScheduler的任务。只是为了方便数据结构而使用它而不是直接任务（下面有更多详细信息）。4. WorkItemGroup –共享同一调度程序的工作项组。用于为每个ActivationTaskScheduler包装任务队列。5. ClosureWorkItem –封装在排队到系统上下文的闭包（任意lambda）周围的包装器。
+Orleans使用工作项的概念来指定调度程序的入口点。最初，每个新请求都作为工作项入队，该工作项仅包装该请求的第一个任务的执行。工作项只是提供有关调度活动的更多上下文信息（调用方，活动的名称，日志记录），有时还需要代表该调度活动进行一些额外的工作（Invoke工作项中的调用后活动）。当前有以下工作项类型：1.调用工作项–这是最常用的工作项类型。它表示应用程序请求的执行。2.请求/响应工作项–执行系统请求（对SystemTarget的请求）。3. TaskWorkItem –代表排队到最高OrleansTaskScheduler的任务。只是为了方便数据结构而使用它而不是直接任务（下面有更多详细信息）。4. WorkItemGroup –共享同一调度程序的工作项组。用于为每个ActivationTaskScheduler包装任务队列。5. ClosureWorkItem –封装在排队到系统上下文的闭包（任意lambda）周围的包装器。
 
 ### 调度上下文：
 

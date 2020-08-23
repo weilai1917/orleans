@@ -75,7 +75,7 @@ builder.ConfigureApplicationParts(
 
 这个`知识装配`属性指示代码生成器检查指定的程序集并为其中的类型生成代码。该属性可以在项目中多次使用。
 
-然后，必须在初始化期间将生成的程序集添加到客户端/思洛存储器：
+然后，必须在初始化期间将生成的程序集添加到客户端/silos：
 
 ```csharp
 builder.ConfigureApplicationParts(

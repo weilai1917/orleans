@@ -5,18 +5,18 @@ title: JournaledGrain API
 
 # 日志训练基础
 
-日记颗粒来源于`<journaledgrain<statetype，事件类型>`，具有以下类型参数：
+日记grains来源于`<journaledgrain<statetype，事件类型>`，具有以下类型参数：
 
--   这个`状态类型`表示谷物的状态。它必须是具有公共默认构造函数的类。
+-   这个`状态类型`表示Grains的状态。它必须是具有公共默认构造函数的类。
 -   `事件类型`是可为此粒度引发的所有事件的通用父类型，可以是任何类或接口。
 
 所有状态和事件对象都应该是可序列化的（因为日志一致性提供程序可能需要持久化它们，和/或在通知消息中发送它们）。
 
-对于事件是pocos（普通的旧c对象）的谷物，`日志记录<statetype>`可用作`journaledgrain<statetype，对象>`是的。
+对于事件是pocos（普通的旧c对象）的Grains，`日志记录<statetype>`可用作`journaledgrain<statetype，对象>`是的。
 
-## 解读粮食状况
+## 解读grain状况
 
-要读取当前颗粒状态并确定其版本号，journaledgrain具有属性
+要读取当前grains状态并确定其版本号，journaledgrain具有属性
 
 ```csharp
 GrainState State { get; }
@@ -29,7 +29,7 @@ int Version { get; }
 
 ## 引发事件
 
-通过调用`葡萄干`功能。例如，一个代表聊天的谷物可以引发`后遗症`要指示用户提交了帖子，请执行以下操作：
+通过调用`葡萄干`功能。例如，一个代表聊天的Grains可以引发`后遗症`要指示用户提交了帖子，请执行以下操作：
 
 ```csharp
 RaiseEvent(new PostedEvent() { Guid = guid, User = user, Text = text, Timestamp = DateTime.UtcNow });
@@ -46,7 +46,7 @@ await ConfirmEvents();
 
 ## 状态转换方法
 
-运行时更新谷物状态*自动*每当事件发生时。应用程序不需要在引发事件后显式更新状态。但是，应用程序仍然必须提供指定*怎样*更新状态以响应事件。这可以通过两种方式来实现。
+运行时更新Grains状态*自动*每当事件发生时。应用程序不需要在引发事件后显式更新状态。但是，应用程序仍然必须提供指定*怎样*更新状态以响应事件。这可以通过两种方式来实现。
 
 **（一）**grainstate类可以实现一个或多个`应用`方法论`状态类型`是的。通常，会创建多个重载，并为事件的运行时类型选择最接近的匹配：
 
@@ -64,7 +64,7 @@ class GrainState {
 }
 ```
 
-**（二）**颗粒可以覆盖transitionState函数：
+**（二）**grains可以覆盖transitionState函数：
 
 ```csharp
 protected override void TransitionState(State state, EventType @event)
@@ -89,7 +89,7 @@ RaiseEvent(e2);
 await ConfirmEvents();
 ```
 
-但是，这可能会导致两次连续的存储访问，并且只在写入第一个事件之后，谷物可能会失败。因此，通常最好使用
+但是，这可能会导致两次连续的存储访问，并且只在写入第一个事件之后，Grains可能会失败。因此，通常最好使用
 
 ```csharp
 RaiseEvents(IEnumerable<EventType> events)

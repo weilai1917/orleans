@@ -3,17 +3,17 @@ layout: page
 title: Custom Grain Storage
 ---
 
-# 自定义谷物存储
+# 自定义Grains存储
 
-## 编写自定义谷物存储
+## 编写自定义Grains存储
 
-在有关声明性参与者存储的教程中，我们研究了允许谷物使用内置存储提供程序之一将其状态存储在Azure表中。尽管Azure是松散数据的好地方，但还有许多替代方法。实际上，有太多的人无法支持所有人。取而代之的是，Orleans旨在让您通过编写谷物存储来轻松添加对您自己的存储形式的支持。
+在有关声明性参与者存储的教程中，我们研究了允许Grains使用内置存储提供程序之一将其状态存储在Azure表中。尽管Azure是松散数据的好地方，但还有许多替代方法。实际上，有太多的人无法支持所有人。取而代之的是，Orleans旨在让您通过编写Grains存储来轻松添加对您自己的存储形式的支持。
 
-在本教程中，我们将逐步介绍如何编写基于文件的简单谷物存储。文件系统不是存储谷物状态的最佳位置，因为它是本地的，文件锁可能存在问题，并且最后更新日期不足以防止不一致。但这是一个简单的示例，可以帮助我们说明`谷物储存`。
+在本教程中，我们将逐步介绍如何编写基于文件的简单Grains存储。文件系统不是存储Grains状态的最佳位置，因为它是本地的，文件锁可能存在问题，并且最后更新日期不足以防止不一致。但这是一个简单的示例，可以帮助我们说明`Grains储存`。
 
 ## 入门
 
-奥尔良谷物仓库是实现`IGrain存储`包含在其中[Microsoft.Orleans.Core NuGet程序包](https://www.nuget.org/packages/Microsoft.Orleans.Core/)。
+OrleansGrains仓库是实现`IGrain存储`包含在其中[Microsoft.Orleans.Core NuGet程序包](https://www.nuget.org/packages/Microsoft.Orleans.Core/)。
 
 我们也从`ILifecycleParticipant <ISiloLifecycle>`这将使我们能够订阅孤岛生命周期中的特定事件。
 
@@ -74,7 +74,7 @@ namespace GrainStorage
 }
 ```
 
-在开始实施之前，我们创建一个包含根目录的选项类，谷物状态文件将存储在该目录下。为此，我们将创建一个选项文件`FileGrainStorageOptions`：
+在开始实施之前，我们创建一个包含根目录的选项类，Grains状态文件将存储在该目录下。为此，我们将创建一个选项文件`FileGrainStorageOptions`：
 
 ```csharp
 public class FileGrainStorageOptions
@@ -83,7 +83,7 @@ public class FileGrainStorageOptions
 }
 ```
 
-创建一个包含两个字段的构造函数，`storageName`指定使用此存储应该写入哪些纹理`[StorageProvider（ProviderName =“文件”）]`和`目录`这将是保存晶粒状态的目录。
+创建一个包含两个字段的构造函数，`storageName`指定使用此存储应该写入哪些纹理`[StorageProvider（ProviderName =“文件”）]`和`目录`这将是保存grains状态的目录。
 
 `IGrain工厂`，`ITypeResolver`将在下一部分中使用，我们将在其中初始化存储。
 
@@ -104,7 +104,7 @@ public void Participate(ISiloLifecycle lifecycle)
 }
 ```
 
-的`在里面`功能用于设置`_jsonSettings`将用于配置`杰森`序列化器。同时，我们创建文件夹来存储颗粒状态（如果尚不存在）。
+的`在里面`功能用于设置`_jsonSettings`将用于配置`杰森`序列化器。同时，我们创建文件夹来存储grains状态（如果尚不存在）。
 
 ```csharp
 private Task Init(CancellationToken ct)
@@ -131,7 +131,7 @@ private string GetKeyString(string grainType, GrainReference grainReference)
 
 ## 阅读状态
 
-要读取颗粒状态，我们使用先前定义的函数获取文件名，并将其组合到来自选项的根目录中。
+要读取grains状态，我们使用先前定义的函数获取文件名，并将其组合到来自选项的根目录中。
 
 ```csharp
 public async Task ReadStateAsync(string grainType, GrainReference grainReference, IGrainState grainState)
@@ -189,7 +189,7 @@ public async Task WriteStateAsync(string grainType, GrainReference grainReferenc
 }
 ```
 
-与阅读类似，我们使用`_jsonSettings`写状态。当前的ETag用于检查文件的UTC中的最后更新时间。如果日期不同，则意味着同一粒谷物的另一次激活会同时更改状态。在这种情况下，我们将`InconsistentStateException`这将导致当前激活被杀死，以防止覆盖先前由其他激活颗粒保存的状态。
+与阅读类似，我们使用`_jsonSettings`写状态。当前的ETag用于检查文件的UTC中的最后更新时间。如果日期不同，则意味着同一粒Grains的另一次激活会同时更改状态。在这种情况下，我们将`InconsistentStateException`这将导致当前激活被杀死，以防止覆盖先前由其他激活grains保存的状态。
 
 ## 清算国
 
@@ -235,7 +235,7 @@ public static class FileGrainStorageFactory
 }
 ```
 
-最后，要注册谷物储存库，我们在`ISiloHostBuilder`在内部使用以下方式将谷物存储注册为命名服务`.AddSingletonNamedService（...）`，由提供的扩展`奥尔良`。
+最后，要注册Grains储存库，我们在`ISiloHostBuilder`在内部使用以下方式将Grains存储注册为命名服务`.AddSingletonNamedService（...）`，由提供的扩展`Orleans`。
 
 ```csharp
 public static class FileSiloBuilderExtensions
@@ -275,4 +275,4 @@ var silo = new SiloHostBuilder()
     .Build();
 ```
 
-现在，我们将可以与供应商一起装饰谷物`[StorageProvider（ProviderName =“文件”）]`它将以谷粒状态存储在选项中设置的根目录中。
+现在，我们将可以与供应商一起装饰Grains`[StorageProvider（ProviderName =“文件”）]`它将以谷粒状态存储在选项中设置的根目录中。

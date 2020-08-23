@@ -3,19 +3,19 @@ layout: page
 title: Orleans NuGet Packages
 ---
 
-# 奥尔良NuGet软件包
+# OrleansNuGet软件包
 
 ## 关键套餐
 
 在大多数情况下，您需要使用5个关键的NuGet软件包：
 
-### [微软奥尔良核心抽象](https://www.nuget.org/packages/Microsoft.Orleans.Core.Abstractions/)
+### [微软Orleans核心抽象](https://www.nuget.org/packages/Microsoft.Orleans.Core.Abstractions/)
 
 ```powershell
 PM> Install-Package Microsoft.Orleans.Core.Abstractions
 ```
 
-包含Orleans.Core.Abstractions.dll，该文件定义开发应用程序代码（晶粒接口和类）所需的Orleans公共类型。任何Orleans项目都需要直接或间接引用此软件包。将其添加到定义grain接口和类的项目中。
+包含Orleans.Core.Abstractions.dll，该文件定义开发应用程序代码（grains接口和类）所需的Orleans公共类型。任何Orleans项目都需要直接或间接引用此软件包。将其添加到定义grain接口和类的项目中。
 
 ### Microsoft Orleans构建时代码生成
 
@@ -25,7 +25,7 @@ PM> Install-Package Microsoft.Orleans.Core.Abstractions
     PM> Install-Package Microsoft.Orleans.OrleansCodeGenerator.Build
     ```
 
-    出现在奥尔良1.2.0中。为谷物接口和实施项目提供时间支持。将其添加到您的grain接口和实现项目中，以启用grain引用和序列化器的代码生成。
+    出现在Orleans1.2.0中。为Grains接口和实施项目提供时间支持。将其添加到您的grain接口和实现项目中，以启用grain引用和序列化器的代码生成。
 
 -   [Microsoft.Orleans.CodeGenerator.MSBuild](https://www.nuget.org/packages/Microsoft.Orleans.CodeGenerator.MSBuild/)。
 
@@ -33,7 +33,7 @@ PM> Install-Package Microsoft.Orleans.Core.Abstractions
     PM> Install-Package Microsoft.Orleans.CodeGenerator.MSBuild
     ```
 
-    出现在[奥尔良2.1.0](https://blogs.msdn.microsoft.com/orleans/2018/10/01/announcing-orleans-2-1/)。替代`Microsoft.Orleans.OrleansCodeGenerator.Build`包。利用Roslyn进行代码分析，以避免加载应用程序二进制文件并改善对增量构建的支持，这将缩短构建时间。
+    出现在[Orleans2.1.0](https://blogs.msdn.microsoft.com/orleans/2018/10/01/announcing-orleans-2-1/)。替代`Microsoft.Orleans.OrleansCodeGenerator.Build`包。利用Roslyn进行代码分析，以避免加载应用程序二进制文件并改善对增量构建的支持，这将缩短构建时间。
 
 ### [Microsoft Orleans服务器库](https://www.nuget.org/packages/Microsoft.Orleans.Server/)
 
@@ -41,10 +41,10 @@ PM> Install-Package Microsoft.Orleans.Core.Abstractions
 PM> Install-Package Microsoft.Orleans.Server
 ```
 
-一个易于构建和启动筒仓的元软件包。包括以下软件包：
+一个易于构建和启动silos的元软件包。包括以下软件包：
 
--   微软奥尔良核心抽象
--   微软奥尔良核心
+-   微软Orleans核心抽象
+-   微软Orleans核心
 -   Microsoft.Orleans.OrleansRuntime
 -   Microsoft.Orleans.OrleansProviders
 
@@ -56,11 +56,11 @@ PM> Install-Package Microsoft.Orleans.Client
 
 一个用于轻松构建和启动Orleans客户（前端）的元软件包。包括以下软件包：
 
--   微软奥尔良核心抽象
--   微软奥尔良核心
+-   微软Orleans核心抽象
+-   微软Orleans核心
 -   Microsoft.Orleans.OrleansProviders
 
-### [微软奥尔良核心库](https://www.nuget.org/packages/Microsoft.Orleans.Core/)
+### [微软Orleans核心库](https://www.nuget.org/packages/Microsoft.Orleans.Core/)
 
 ```powershell
 PM> Install-Package Microsoft.Orleans.Core
@@ -70,13 +70,13 @@ PM> Install-Package Microsoft.Orleans.Core
 
 ## 代管
 
-### [微软奥尔良运行时](https://www.nuget.org/packages/Microsoft.Orleans.OrleansRuntime/)
+### [微软Orleans运行时](https://www.nuget.org/packages/Microsoft.Orleans.OrleansRuntime/)
 
 ```powershell
 PM> Install-Package Microsoft.Orleans.OrleansRuntime 
 ```
 
-用于配置和启动筒仓的库。在您的筒仓主机项目中引用它。包含在Microsoft.Orleans.Server元软件包中。
+用于配置和启动silos的库。在您的silos主机项目中引用它。包含在Microsoft.Orleans.Server元软件包中。
 
 ### [Microsoft Orleans运行时抽象](https://www.nuget.org/packages/Microsoft.Orleans.Runtime.Abstractions/)
 
@@ -92,7 +92,7 @@ PM> Install-Package Microsoft.Orleans.Runtime.Abstractions
 PM> Install-Package Microsoft.Orleans.Hosting.AzureCloudServices
 ```
 
-包含用于将筒仓和Orleans客户端托管为Azure云服务的帮助程序类（工作人员角色和Web角色）。
+包含用于将silos和Orleans客户端托管为Azure云服务的帮助程序类（工作人员角色和Web角色）。
 
 ### [Microsoft Orleans Service Fabric托管支持](https://www.nuget.org/packages/Microsoft.Orleans.Hosting.ServiceFabric/)
 
@@ -100,7 +100,7 @@ PM> Install-Package Microsoft.Orleans.Hosting.AzureCloudServices
 PM> Install-Package Microsoft.Orleans.Hosting.ServiceFabric 
 ```
 
-包含用于将筒仓作为无状态Service Fabric服务托管的帮助程序类。
+包含用于将silos作为无状态Service Fabric服务托管的帮助程序类。
 
 ## 集群提供商
 
@@ -174,9 +174,9 @@ PM> Install-Package Microsoft.Orleans.Reminders.DynamoDB
 
 包括用于使用AWS DynamoDB存储提醒的插件。
 
-## 粮食储存供应商
+## grain储存供应商
 
-以下软件包包括用于在各种存储技术中保持颗粒状态的插件。
+以下软件包包括用于在各种存储技术中保持grains状态的插件。
 
 ### [Microsoft Orleans Persistence Azure存储](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AzureStorage/)
 
@@ -192,9 +192,9 @@ PM> Install-Package Microsoft.Orleans.Persistence.AzureStorage
 PM> Install-Package Microsoft.Orleans.Persistence.AdoNet
 ```
 
-包括用于使用ADO.NET在支持的数据库之一中存储颗粒状态的插件。
+包括用于使用ADO.NET在支持的数据库之一中存储grains状态的插件。
 
-### [Microsoft奥尔良持久性DynamoDB](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.DynamoDB/)
+### [MicrosoftOrleans持久性DynamoDB](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.DynamoDB/)
 
 ```powershell
 PM> Install-Package Microsoft.Orleans.Persistence.DynamoDB
@@ -240,7 +240,7 @@ PM> Install-Package Microsoft.Orleans.OrleansGCPUtils
 
 ## 其他套餐
 
-### [微软奥尔良代码生成](https://www.nuget.org/packages/Microsoft.Orleans.OrleansCodeGenerator/)
+### [微软Orleans代码生成](https://www.nuget.org/packages/Microsoft.Orleans.OrleansCodeGenerator/)
 
 ```powershell
 PM> Install-Package Microsoft.Orleans.OrleansCodeGenerator
@@ -248,17 +248,17 @@ PM> Install-Package Microsoft.Orleans.OrleansCodeGenerator
 
 包括运行时代码生成器。
 
-### [微软奥尔良事件来源](https://www.nuget.org/packages/Microsoft.Orleans.EventSourcing/)
+### [微软Orleans事件来源](https://www.nuget.org/packages/Microsoft.Orleans.EventSourcing/)
 
 ```powershell
 PM> Install-Package Microsoft.Orleans.EventSourcing 
 ```
 
-包含一组用于创建具有事件源状态的谷物类的基本类型。
+包含一组用于创建具有事件源状态的Grains类的基本类型。
 
 ## 开发与测试
 
-### [微软奥尔良供应商](https://www.nuget.org/packages/Microsoft.Orleans.OrleansProviders/)
+### [微软Orleans供应商](https://www.nuget.org/packages/Microsoft.Orleans.OrleansProviders/)
 
 ```powershell
 PM> Install-Package Microsoft.Orleans.OrleansProviders
@@ -276,7 +276,7 @@ PM> Install-Package Microsoft.Orleans.TestingHost
 
 ## 序列化器
 
-### [微软奥尔良债券序列化器](https://www.nuget.org/packages/Microsoft.Orleans.Serialization.Bond/)
+### [微软Orleans债券序列化器](https://www.nuget.org/packages/Microsoft.Orleans.Serialization.Bond/)
 
 ```powershell
 PM> Install-Package Microsoft.Orleans.Serialization.Bond
@@ -302,7 +302,7 @@ PM> Install-Package Microsoft.Orleans.ProtobufNet
 
 ## 遥测
 
-### [Microsoft奥尔良遥测消费者-性能计数器](https://www.nuget.org/packages/Microsoft.Orleans.OrleansTelemetryConsumers.Counters/)
+### [MicrosoftOrleans遥测消费者-性能计数器](https://www.nuget.org/packages/Microsoft.Orleans.OrleansTelemetryConsumers.Counters/)
 
 ```powershell
 PM> Install-Package Microsoft.Orleans.OrleansTelemetryConsumers.Counters
@@ -318,7 +318,7 @@ PM> Install-Package Microsoft.Orleans.OrleansTelemetryConsumers.AI
 
 包括用于Azure Application Insights的遥测使用者。
 
-### [微软奥尔良遥测消费者-NewRelic](https://www.nuget.org/packages/Microsoft.Orleans.OrleansTelemetryConsumers.NewRelic/)
+### [微软Orleans遥测消费者-NewRelic](https://www.nuget.org/packages/Microsoft.Orleans.OrleansTelemetryConsumers.NewRelic/)
 
 ```powershell
 PM> Install-Package Microsoft.Orleans.OrleansTelemetryConsumers.NewRelic
@@ -344,9 +344,9 @@ PM> Install-Package Microsoft.Orleans.CounterControl
 PM> Install-Package Microsoft.Orleans.Transactions
 ```
 
-包括对跨谷物交易（测试版）的支持。
+包括对跨Grains交易（测试版）的支持。
 
-### [Microsoft在Azure上进行奥尔良交易](https://www.nuget.org/packages/Microsoft.Orleans.Transactions.AzureStorage/)
+### [Microsoft在Azure上进行Orleans交易](https://www.nuget.org/packages/Microsoft.Orleans.Transactions.AzureStorage/)
 
 ```powershell
 PM> Install-Package Microsoft.Orleans.Transactions.AzureStorage

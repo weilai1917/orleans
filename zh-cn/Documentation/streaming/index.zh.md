@@ -3,25 +3,25 @@ layout: page
 title: Orleans Streams
 ---
 
-# 奥尔良溪流
+# OrleansStreams
 
 Orleans v.1.0.0增加了对编程模型的流扩展的支持。流扩展提供了一组抽象和API，使对流的思考和使用变得更简单，更可靠。流扩展允许开发人员编写以结构化方式对一系列事件进行操作的响应式应用程序。流提供程序的可扩展性模型使编程模型可与多种现有排队技术兼容并可移植，例如[活动中心](http://azure.microsoft.com/en-us/services/event-hubs/)，[服务总线](http://azure.microsoft.com/en-us/services/service-bus/)，[Azure队列](http://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-how-to-use-queues/)和[阿帕奇·卡夫卡](http://kafka.apache.org/)。无需编写特殊代码或运行专用进程来与此类队列进行交互。
 
 ## 我为什么要在乎？
 
-如果您已经知道所有[流处理](https://confluentinc.wordpress.com/2015/01/29/making-sense-of-stream-processing/)并且熟悉诸如[活动中心](http://azure.microsoft.com/en-us/services/event-hubs/)，[卡夫卡](http://kafka.apache.org/)，[Azure流分析](http://azure.microsoft.com/en-us/services/stream-analytics/)，[阿帕奇风暴](https://storm.apache.org/)，[Apache Spark流](https://spark.apache.org/streaming/)和[.NET中的反应性扩展（Rx）](https://msdn.microsoft.com/en-us/data/gg577609.aspx)，您可能会问为什么要关心。**为什么我们还需要另一个流处理系统，以及Actor与流之间的关系？** [“为什么奥尔良溪流？”](streams_why.md)是要回答这个问题。
+如果您已经知道所有[流处理](https://confluentinc.wordpress.com/2015/01/29/making-sense-of-stream-processing/)并且熟悉诸如[活动中心](http://azure.microsoft.com/en-us/services/event-hubs/)，[卡夫卡](http://kafka.apache.org/)，[Azure流分析](http://azure.microsoft.com/en-us/services/stream-analytics/)，[阿帕奇风暴](https://storm.apache.org/)，[Apache Spark流](https://spark.apache.org/streaming/)和[.NET中的反应性扩展（Rx）](https://msdn.microsoft.com/en-us/data/gg577609.aspx)，您可能会问为什么要关心。**为什么我们还需要另一个流处理系统，以及Actor与流之间的关系？** [“为什么OrleansStreams？”](streams_why.md)是要回答这个问题。
 
 ## 程式设计模型
 
 Orleans Streams编程模型背后有许多原则。
 
-1.  奥尔良溪流是*虚拟*。即，流始终存在。它不是显式创建或销毁的，它永远不会失败。
+1.  OrleansStreams是*虚拟*。即，流始终存在。它不是显式创建或销毁的，它永远不会失败。
 2.  流是*由...确定*流ID，仅*逻辑名称*由GUID和字符串组成。
-3.  奥尔良溪流允许*在时间和空间上将数据生成与其处理脱钩*。这意味着流生产者和流使用者可能位于不同的服务器上，处于不同的时间，并且将承受故障。
-4.  奥尔良溪流是*轻巧而动态*。Orleans Streaming Runtime旨在处理大量高速率来来去去的流。
-5.  奥尔良流*绑定是动态的*。Orleans Streaming Runtime旨在处理谷物以高速率连接到流或从流中断开的情况。
-6.  奥尔良流媒体运行时*透明地管理流消耗的生命周期*。应用程序订阅流之后，从那时起，即使存在故障，它也将接收流的事件。
-7.  奥尔良溪流*跨谷物和奥尔良客户统一工作*。
+3.  OrleansStreams允许*在时间和空间上将数据生成与其处理脱钩*。这意味着流生产者和流使用者可能位于不同的服务器上，处于不同的时间，并且将承受故障。
+4.  OrleansStreams是*轻巧而动态*。Orleans Streaming Runtime旨在处理大量高速率来来去去的流。
+5.  Orleans流*绑定是动态的*。Orleans Streaming Runtime旨在处理Grains以高速率连接到流或从流中断开的情况。
+6.  Orleans流媒体运行时*透明地管理流消耗的生命周期*。应用程序订阅流之后，从那时起，即使存在故障，它也将接收流的事件。
+7.  OrleansStreams*跨Grains和Orleans客户统一工作*。
 
 ## 编程API
 
@@ -66,7 +66,7 @@ public class ChatUser: Grain
 
 ## 流提供者
 
-流可以通过各种形状和形式的物理通道出现，并且可以具有不同的语义。Orleans Streaming旨在通过以下概念支持这种多样性**流提供者**，这是系统中的可扩展点。奥尔良目前有两个流提供程序的实现：基于TCP**简单消息流提供者**和基于Azure队列**Azure队列流提供程序**。有关Steam Providers的更多详细信息，请访问：[流提供者](stream_providers.md)。
+流可以通过各种形状和形式的物理通道出现，并且可以具有不同的语义。Orleans Streaming旨在通过以下概念支持这种多样性**流提供者**，这是系统中的可扩展点。Orleans目前有两个流提供程序的实现：基于TCP**简单消息流提供者**和基于Azure队列**Azure队列流提供程序**。有关Steam Providers的更多详细信息，请访问：[流提供者](stream_providers.md)。
 
 ## 流语义
 
@@ -78,13 +78,13 @@ public class ChatUser: Grain
 
 ## 流实施
 
-的[奥尔良流实施](../implementation/streams_implementation.md)提供了内部实现的高级概述。
+的[Orleans流实施](../implementation/streams_implementation.md)提供了内部实现的高级概述。
 
 ## 代码样本
 
-可以找到有关如何在谷物中使用流式API的更多示例。[这里](https://github.com/dotnet/orleans/blob/master/test/Grains/TestGrains/SampleStreamingGrain.cs)。我们计划在将来创建更多样本。
+可以找到有关如何在Grains中使用流式API的更多示例。[这里](https://github.com/dotnet/orleans/blob/master/test/Grains/TestGrains/SampleStreamingGrain.cs)。我们计划在将来创建更多样本。
 
 ## 更多材料
 
--   [关于流的奥尔良虚拟聚会](https://www.youtube.com/watch?v=eSepBlfY554)
--   [虚拟聚会的奥尔良流媒体演示](http://dotnet.github.io/orleans/Presentations/Orleans%20Streaming%20-%20Virtual%20meetup%20-%205-22-2015.pptx)
+-   [关于流的Orleans虚拟聚会](https://www.youtube.com/watch?v=eSepBlfY554)
+-   [虚拟聚会的Orleans流媒体演示](http://dotnet.github.io/orleans/Presentations/Orleans%20Streaming%20-%20Virtual%20meetup%20-%205-22-2015.pptx)

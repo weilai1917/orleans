@@ -5,7 +5,7 @@ title: Documentation Guidelines
 
 # 文件编制指南
 
-奥尔良文档是内置的[降价](https://help.github.com/articles/markdown-basics/). 我们使用一些简单的约定来确保整个文档集中的样式一致。
+Orleans文档是内置的[降价](https://help.github.com/articles/markdown-basics/). 我们使用一些简单的约定来确保整个文档集中的样式一致。
 
 这些标准正在引入。如果您对这些指导原则有异议，请提出问题或请求。如果发现文档不符合指导原则，请进行修复并提交请求。另外，如果你使用的是Windows10，你可以去商店找到免费的降价编辑器，比如[这](https://www.microsoft.com/store/apps/9wzdncrdd2p3)
 
@@ -57,7 +57,7 @@ public class MyGrain<IMyGrainState> ...
 
 -   键入名称，例如。`任务<T>`
 -   变量名，例如。`游戏`
--   名称空间，例如。`奥尔良。存储。AzureTablesStorage`
+-   名称空间，例如。`Orleans。存储。AzureTablesStorage`
 
 如果显示输出的文本（例如文本文件内容或控制台输出），则可以使用后三勾号而不指定语言，也可以缩进内容。例如：
 
@@ -76,7 +76,7 @@ public class MyGrain<IMyGrainState> ...
 
 -   *奥尔勒ansRuntimeInterfaces.dll*
 -   *C： \\二进制文件*
--   *../src公司/谷物.cs*
+-   *../src公司/Grains.cs*
 
 ## 桌子
 
@@ -94,4 +94,4 @@ public class MyGrain<IMyGrainState> ...
 
 # 贡献
 
-奥尔良文档作为降价文件管理在托管在上的Git存储库中[gh pages分部的GitHub](https://github.com/dotnet/orleans/tree/gh-pages). 见[GitHub页面](https://pages.github.com/)有关如何使用`gh页面`“项目现场”文件的分支约定。
+Orleans文档作为降价文件管理在托管在上的Git存储库中[gh pages分部的GitHub](https://github.com/dotnet/orleans/tree/gh-pages). 见[GitHub页面](https://pages.github.com/)有关如何使用`gh页面`“项目现场”文件的分支约定。

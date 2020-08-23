@@ -2,15 +2,15 @@
 
 布局：页面
 
-## 标题：奥尔良2.0中的交易
+## 标题：Orleans2.0中的交易
 
-# 奥尔良交易
+# Orleans交易
 
-奥尔良支持针对持久谷物状态的分布式ACID交易。
+Orleans支持针对持久Grains状态的分布式ACID交易。
 
 ## 建立
 
-奥尔良选择加入交易。必须将筒仓配置为使用事务。如果不是，对谷物上的事务方法的任何调用都将收到一个`OrleansTransactionsDisabledException`。要在筒仓上启用交易，请致电`UseTransactions（）`在筒仓主机构建器上。
+Orleans选择加入交易。必须将silos配置为使用事务。如果不是，对Grains上的事务方法的任何调用都将收到一个`OrleansTransactionsDisabledException`。要在silos上启用交易，请致电`UseTransactions（）`在silos主机构建器上。
 
 ```csharp
 var builder = new SiloHostBuilder().UseTransactions();
@@ -18,7 +18,7 @@ var builder = new SiloHostBuilder().UseTransactions();
 
 ### 交易状态存储
 
-要使用事务，用户需要配置数据存储。为了支持带有事务的各种数据存储，存储抽象`ITransactionalStateStorage`已经介绍了。这种抽象是特定于交易需求的，与普通的谷物存储不同（`IGrain存储`）。要使用特定于事务的存储，用户可以使用以下任何实现来配置其筒仓`ITransactionalStateStorage`，例如Azure（`AddAzureTableTransactionalStateStorage`）。
+要使用事务，用户需要配置数据存储。为了支持带有事务的各种数据存储，存储抽象`ITransactionalStateStorage`已经介绍了。这种抽象是特定于交易需求的，与普通的Grains存储不同（`IGrain存储`）。要使用特定于事务的存储，用户可以使用以下任何实现来配置其silos`ITransactionalStateStorage`，例如Azure（`AddAzureTableTransactionalStateStorage`）。
 
 例：
 
@@ -31,13 +31,13 @@ var builder = new SiloHostBuilder()
     .UseTransactions();
 ```
 
-出于开发目的，如果特定事务的存储不适用于您需要的数据存储，则`IGrain存储`实现可以代替使用。对于任何未为其配置存储的事务状态，事务将尝试使用网桥故障转移到谷物存储。通过通往谷物存储的桥梁访问交易状态将效率较低，并且不是我们打算长期支持的模式，因此建议将其仅用于开发目的。
+出于开发目的，如果特定事务的存储不适用于您需要的数据存储，则`IGrain存储`实现可以代替使用。对于任何未为其配置存储的事务状态，事务将尝试使用网桥故障转移到Grains存储。通过通往Grains存储的桥梁访问交易状态将效率较低，并且不是我们打算长期支持的模式，因此建议将其仅用于开发目的。
 
 ## 程式设计模型
 
-### 颗粒界面
+### grains界面
 
-为了使谷物支持交易，必须使用“交易”属性将谷物接口上的交易方法标记为交易的一部分。该属性需求通过下面的事务选项指示在调用环境中grain调用的行为：
+为了使Grains支持交易，必须使用“交易”属性将Grains接口上的交易方法标记为交易的一部分。该属性需求通过下面的事务选项指示在调用环境中grain调用的行为：
 
 -   `TransactionOption.Create`-调用是事务性的，即使在现有事务上下文中被调用，也总是会创建一个新的事务上下文（即它将启动一个新事务）。
 -   `TransactionOption.Join`-调用是事务性的，但只能在现有事务的上下文中调用。
@@ -72,9 +72,9 @@ public interface IAccountGrain : IGrainWithGuidKey
 }
 ```
 
-### 粮食实施
+### grain实施
 
-粮食实施需要使用`ITransactionalState`facet（请参阅Facet System）以通过ACID事务管理晶粒状态。
+grain实施需要使用`ITransactionalState`facet（请参阅Facet System）以通过ACID事务管理grains状态。
 
 ```csharp
     public interface ITransactionalState<TState>  
@@ -85,7 +85,7 @@ public interface IAccountGrain : IGrainWithGuidKey
     }
 ```
 
-必须通过传递给事务状态方面的同步功能来执行对持久状态的所有读取或写入访问。这允许交易系统以交易方式执行或取消这些操作。要在谷物中使用事务状态，只需要定义一个可序列化的状态类即可保留，并在谷物的构造函数中使用`交易状态`属性。后者声明状态名称和（可选）使用哪个事务状态存储（请参阅安装程序）。
+必须通过传递给事务状态方面的同步功能来执行对持久状态的所有读取或写入访问。这允许交易系统以交易方式执行或取消这些操作。要在Grains中使用事务状态，只需要定义一个可序列化的状态类即可保留，并在Grains的构造函数中使用`交易状态`属性。后者声明状态名称和（可选）使用哪个事务状态存储（请参阅安装程序）。
 
 ```csharp
 [AttributeUsage(AttributeTargets.Parameter)]
@@ -129,11 +129,11 @@ public class AccountGrain : Grain, IAccountGrain
 }
 ```
 
-在上面的示例中，属性`交易状态`用于声明“ balance”构造函数参数应与名为“ balance”的交易状态相关联。通过此声明，奥尔良将注入`ITransactionalState`从名为“ TransactionStore”的事务状态存储中加载状态的实例（请参阅安装程序）。可以通过以下方式修改状态`执行更新`或通过阅读`PerformRead`。交易基础架构将确保作为交易一部分进行的任何此类更改，即使是在分布于奥尔良集群中的多个谷物之间，也将在创建交易的谷物调用完成后全部提交或全部撤消（`IATMGrain.Transfer`在上述示例中）。
+在上面的示例中，属性`交易状态`用于声明“ balance”构造函数参数应与名为“ balance”的交易状态相关联。通过此声明，Orleans将注入`ITransactionalState`从名为“ TransactionStore”的事务状态存储中加载状态的实例（请参阅安装程序）。可以通过以下方式修改状态`执行更新`或通过阅读`PerformRead`。交易基础架构将确保作为交易一部分进行的任何此类更改，即使是在分布于Orleans集群中的多个Grains之间，也将在创建交易的Grains调用完成后全部提交或全部撤消（`IATMGrain.Transfer`在上述示例中）。
 
 ### 呼叫交易
 
-如同其他任何谷物调用一样，调用谷物接口上的事务方法。
+如同其他任何Grains调用一样，调用Grains接口上的事务方法。
 
 ```csharp
     IATMGrain atm = client.GetGrain<IATMGrain>(0);
@@ -144,6 +144,6 @@ public class AccountGrain : Grain, IAccountGrain
     uint toBalance = await client.GetGrain<IAccountGrain>(to).GetBalance();
 ```
 
-在上述呼叫中，使用ATM谷物将100个单位的货币从一个帐户转移到另一个帐户。转帐完成后，将查询两个帐户以获取其当前余额。货币转帐以及两个帐户查询均作为ACID事务执行。
+在上述呼叫中，使用ATMGrains将100个单位的货币从一个帐户转移到另一个帐户。转帐完成后，将查询两个帐户以获取其当前余额。货币转帐以及两个帐户查询均作为ACID事务执行。
 
 如上例所示，事务可以像其他grain调用一样返回任务中的值，但是在调用失败时，它们不会引发应用程序异常，而是`OrleansTransactionException`要么`TimeoutException`。如果应用程序在事务期间引发异常，并且该异常导致事务失败（与其他系统故障导致的失败相反），则应用程序异常将是事务的内部异常。`OrleansTransactionException`。如果抛出类型的交易异常`OrleansTransactionAbortedException`，交易失败，可以重试。引发的任何其他异常都表示事务以未知状态终止。由于事务是分布式操作，因此处于未知状态的事务可能已经成功，失败或仍在进行中。因此，建议设置通话超时时间（`SiloMessagingOptions.ResponseTimeout`）传递，以避免级联中止，然后再验证状态或重试操作。

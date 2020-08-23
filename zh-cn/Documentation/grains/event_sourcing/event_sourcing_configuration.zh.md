@@ -7,21 +7,21 @@ title: Configuration
 
 ## 配置项目引用
 
-### 颗粒界面
+### grains界面
 
 和以前一样，接口只依赖于`微软.orleans.core`包，因为grain接口独立于实现。
 
-### 谷物实现
+### Grains实现
 
 日志需要从`行程<s，e>`或`日志记录<s>`，定义见`Microsoft.Orleans.EventSourcing公司`包裹。
 
 ### 日志一致性提供程序
 
-我们目前包括三个日志一致性提供程序（用于状态存储、日志存储和自定义存储）。这三个都包含在`Microsoft.Orleans.EventSourcing公司`包装也一样。因此，所有被记录的谷物都已经可以获得这些。有关这些提供程序的功能和区别的说明，请参见[包括日志一致性提供程序](log_consistency_providers.md).
+我们目前包括三个日志一致性提供程序（用于状态存储、日志存储和自定义存储）。这三个都包含在`Microsoft.Orleans.EventSourcing公司`包装也一样。因此，所有被记录的Grains都已经可以获得这些。有关这些提供程序的功能和区别的说明，请参见[包括日志一致性提供程序](log_consistency_providers.md).
 
 ## 群集配置
 
-日志一致性提供程序的配置与任何其他奥尔良提供程序一样。例如，要包含所有三个提供者（当然，您可能不需要全部三个提供者），请将此添加到`<Globals>`配置文件的元素：
+日志一致性提供程序的配置与任何其他Orleans提供程序一样。例如，要包含所有三个提供者（当然，您可能不需要全部三个提供者），请将此添加到`<Globals>`配置文件的元素：
 
 ```xml
 <LogConsistencyProviders>
@@ -37,9 +37,9 @@ title: Configuration
 builder.AddLogStorageBasedLogConsistencyProvider("LogStorage")
 ```
 
-## 谷物类属性
+## Grains类属性
 
-每个记录的谷物类必须有`日志一致性提供程序`属性指定日志一致性提供程序。一些提供商还要求`存储提供程序`属性。如：[存储提供程序（providername=“orleanslocalstorage”）][logconsistencyprovider(providername = "logstorage")]公共类事件源dbankAccountGrain:JournaledGrain<BankAccountState>，IEventSourceBankAccountGrain{}
+每个记录的Grains类必须有`日志一致性提供程序`属性指定日志一致性提供程序。一些提供商还要求`存储提供程序`属性。如：[存储提供程序（providername=“orleanslocalstorage”）][logconsistencyprovider(providername = "logstorage")]公共类事件源dbankAccountGrain:JournaledGrain<BankAccountState>，IEventSourceBankAccountGrain{}
 
 所以这里“orleanslocalstorage”被用来存储grain状态，其中“logstorage”是eventsourcing事件的内存存储提供程序。
 

@@ -3,9 +3,9 @@ layout: page
 title: Grain Call Filters
 ---
 
-# 谷物来电过滤器
+# Grains来电过滤器
 
-谷物调用过滤器提供了一种拦截谷物调用的方法。筛选器可以在谷物调用之前和之后执行代码。可以同时安装多个过滤器。过滤器是异步的，可以修改`RequestContext`，参数和被调用方法的返回值。过滤器还可以检查`方法信息`可以在Grain类上调用的方法，可用于引发或处理异常。
+Grains调用过滤器提供了一种拦截Grains调用的方法。筛选器可以在Grains调用之前和之后执行代码。可以同时安装多个过滤器。过滤器是异步的，可以修改`RequestContext`，参数和被调用方法的返回值。过滤器还可以检查`方法信息`可以在Grain类上调用的方法，可用于引发或处理异常。
 
 粒度调用过滤器的一些示例用法是：
 
@@ -68,15 +68,15 @@ public interface IIncomingGrainCallContext
 }
 ```
 
-的`IIncomingGrainCallFilter.Invoke（IIncomingGrainCallContext）`方法必须等待或返回的结果`IIncomingGrainCallContext.Invoke（）`执行下一个配置的过滤器，最终执行grain方法本身。的`结果`可以在等待`调用（）`方法。的`实现方法`属性返回`方法信息`实现类。的`方法信息`可以使用`接口方法`属性。对于所有对谷物的方法调用，都会调用谷物调用过滤器，其中包括对谷物扩展的调用（`IGrain扩展`）安装在谷物中。例如，晶粒扩展用于实现流和取消令牌。因此，应该期望`实现方法`在谷物类本身中并不总是一种方法。
+的`IIncomingGrainCallFilter.Invoke（IIncomingGrainCallContext）`方法必须等待或返回的结果`IIncomingGrainCallContext.Invoke（）`执行下一个配置的过滤器，最终执行grain方法本身。的`结果`可以在等待`调用（）`方法。的`实现方法`属性返回`方法信息`实现类。的`方法信息`可以使用`接口方法`属性。对于所有对Grains的方法调用，都会调用Grains调用过滤器，其中包括对Grains扩展的调用（`IGrain扩展`）安装在Grains中。例如，grains扩展用于实现流和取消令牌。因此，应该期望`实现方法`在Grains类本身中并不总是一种方法。
 
 ## 配置呼入呼叫过滤器
 
-的实现`IIncomingGrainCallFilter`可以通过Dependency Injection注册为筒仓级过滤器，也可以通过谷物实现将其注册为颗粒级过滤器`IIncomingGrainCallFilter`直。
+的实现`IIncomingGrainCallFilter`可以通过Dependency Injection注册为silos级过滤器，也可以通过Grains实现将其注册为grains级过滤器`IIncomingGrainCallFilter`直。
 
-### 筒仓范围内的所有来电过滤器
+### silos范围内的所有来电过滤器
 
-可以使用Dependency Injection将委托注册为筒仓级的粒度调用过滤器，如下所示：
+可以使用Dependency Injection将委托注册为silos级的粒度调用过滤器，如下所示：
 
 ```csharp
 siloHostBuilder.AddIncomingGrainCallFilter(async context =>
@@ -151,9 +151,9 @@ siloHostBuilder.ConfigureServices(
     services => services.AddSingleton<IIncomingGrainCallFilter, LoggingCallFilter>());
 ```
 
-### 每粒谷物电话过滤器
+### 每粒Grains电话过滤器
 
-谷物类可以将自己注册为谷物调用过滤器，并可以通过实现对它的所有调用进行过滤`IIncomingGrainCallFilter`像这样：
+Grains类可以将自己注册为Grains调用过滤器，并可以通过实现对它的所有调用进行过滤`IIncomingGrainCallFilter`像这样：
 
 ```csharp
 public class MyFilteredGrain : Grain, IMyFilteredGrain, IIncomingGrainCallFilter
@@ -200,21 +200,21 @@ public class MyAccessControlledGrain : Grain, IMyFilteredGrain, IIncomingGrainCa
 }
 ```
 
-在以上示例中，`SpecialAdminOnlyOperation`该方法只能在以下情况下调用`“ isAdmin”`设定为`真正`在里面`RequestContext`。这样，可以将谷物调用过滤器用于授权。在此示例中，呼叫者有责任确保`“ isAdmin”`值设置正确，并且验证正确执行。请注意`[仅管理员]`属性是在谷物类方法上指定的。这是因为`实现方法`属性返回`方法信息`的实现，而不是接口。过滤器还可以检查`接口方法`属性。
+在以上示例中，`SpecialAdminOnlyOperation`该方法只能在以下情况下调用`“ isAdmin”`设定为`真正`在里面`RequestContext`。这样，可以将Grains调用过滤器用于授权。在此示例中，呼叫者有责任确保`“ isAdmin”`值设置正确，并且验证正确执行。请注意`[仅管理员]`属性是在Grains类方法上指定的。这是因为`实现方法`属性返回`方法信息`的实现，而不是接口。过滤器还可以检查`接口方法`属性。
 
-## 颗粒呼叫过滤器的订购
+## grains呼叫过滤器的订购
 
-谷物调用过滤器遵循定义的顺序：
+Grains调用过滤器遵循定义的顺序：
 
 1.  `IIncomingGrainCallFilter`在依赖项注入容器中配置的实现（按注册顺序）。
-2.  谷物级过滤器（如果使用谷物）`IIncomingGrainCallFilter`。
-3.  粮食方法实施或粮食扩展方法实施。
+2.  Grains级过滤器（如果使用Grains）`IIncomingGrainCallFilter`。
+3.  grain方法实施或grain扩展方法实施。
 
 每次致电`IIncomingGrainCallContext.Invoke（）`封装下一个定义的过滤器，以便每个过滤器都有机会在链中下一个过滤器之前和之后执行代码，并最终执行grain方法本身。
 
 # 呼出电话过滤器
 
-传出谷物调用过滤器类似于传入谷物调用过滤器，主要区别在于它们是在调用者（客户端）而不是被调用者（颗粒）上调用的。
+传出Grains调用过滤器类似于传入Grains调用过滤器，主要区别在于它们是在调用者（客户端）而不是被调用者（grains）上调用的。
 
 传出呼叫过滤器实现了`IOutgoingGrainCallFilter`接口，它具有一种方法：
 
@@ -257,11 +257,11 @@ public interface IOutgoingGrainCallContext
 }
 ```
 
-的`IOutgoingGrainCallFilter.Invoke（IOutgoingGrainCallContext）`方法必须等待或返回的结果`IOutgoingGrainCallContext.Invoke（）`执行下一个配置的过滤器，最终执行grain方法本身。的`结果`可以在等待`调用（）`方法。的`方法信息`可以使用`接口方法`属性。传出的谷物调用过滤器会针对所有对谷物的方法调用进行调用，其中包括对Orleans进行的系统方法的调用。
+的`IOutgoingGrainCallFilter.Invoke（IOutgoingGrainCallContext）`方法必须等待或返回的结果`IOutgoingGrainCallContext.Invoke（）`执行下一个配置的过滤器，最终执行grain方法本身。的`结果`可以在等待`调用（）`方法。的`方法信息`可以使用`接口方法`属性。传出的Grains调用过滤器会针对所有对Grains的方法调用进行调用，其中包括对Orleans进行的系统方法的调用。
 
 ## 配置去电呼叫过滤器
 
-的实现`IOutgoingGrainCallFilter`可以使用依赖注入在筒仓和客户端上注册。
+的实现`IOutgoingGrainCallFilter`可以使用依赖注入在silos和客户端上注册。
 
 可以将委托注册为呼叫过滤器，如下所示：
 
@@ -348,7 +348,7 @@ builder.ConfigureServices(
 
 当从服务器引发的异常在客户端上反序列化时，有时可能会收到以下异常，而不是实际的异常：`TypeLoadException：找不到Whatever.dll。`
 
-如果包含异常的程序集对客户端不可用，则会发生这种情况。例如，假设您在粮食实现中使用实体框架；那么有可能`EntityException`被抛出。另一方面，客户端不（也不应该）引用`EntityFramework.dll`因为它不了解基础数据访问层。
+如果包含异常的程序集对客户端不可用，则会发生这种情况。例如，假设您在grain实现中使用实体框架；那么有可能`EntityException`被抛出。另一方面，客户端不（也不应该）引用`EntityFramework.dll`因为它不了解基础数据访问层。
 
 当客户端尝试反序列化`EntityException`，它将因缺少DLL而失败；结果是`TypeLoadException类型加载异常`把原来的东西藏起来了`实体异常`.
 
@@ -356,9 +356,9 @@ builder.ConfigureServices(
 
 但是如果客户机希望至少记录异常呢？问题是原来的错误消息丢失了。解决此问题的一种方法是截获服务器端异常并用类型的纯异常替换它们`例外`如果异常类型可能在客户端未知。
 
-然而，有一件重要的事我们必须牢记：我们只想替换一个例外**如果调用者是谷物客户**. 如果调用者是另一个grain（或者正在进行grain调用的奥尔良基础设施；例如`GrainBasedReminderTable`谷物）。
+然而，有一件重要的事我们必须牢记：我们只想替换一个例外**如果调用者是Grains客户**. 如果调用者是另一个grain（或者正在进行grain调用的Orleans基础设施；例如`GrainBasedReminderTable`Grains）。
 
-在服务器端，这可以通过思洛存储器级别的拦截器来实现：
+在服务器端，这可以通过silos级别的拦截器来实现：
 
 ```csharp
 public class ExceptionConversionFilter : IIncomingGrainCallFilter
@@ -425,7 +425,7 @@ public class ExceptionConversionFilter : IIncomingGrainCallFilter
 }
 ```
 
-然后可以在思洛存储器上注册此筛选器：
+然后可以在silos上注册此筛选器：
 
 ```csharp
 siloHostBuilder.AddIncomingGrainCallFilter<ExceptionConversionFilter>();
@@ -443,7 +443,7 @@ clientBuilder.AddOutgoingGrainCallFilter(context =>
 
 这样，客户机就告诉服务器它要使用异常转换。
 
-### 从拦截器呼叫谷物
+### 从拦截器呼叫Grains
 
 通过注入，可以从拦截器发出grain调用`IGR工厂`进入拦截器类：
 

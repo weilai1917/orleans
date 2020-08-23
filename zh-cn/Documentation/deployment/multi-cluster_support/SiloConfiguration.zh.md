@@ -3,7 +3,7 @@ layout: page
 title: Multi-Cluster Silo Configuration
 ---
 
-## 奥尔良筒仓配置
+## Orleanssilos配置
 
 为了快速了解，我们在下面的XML语法中显示了所有相关的配置参数（包括可选参数）：
 
@@ -53,9 +53,9 @@ var silo = new SiloHostBuilder()
 
 与往常一样，所有配置设置也可以通过`全球配置`上课。
 
-这个`服务ID`是用于标识此服务的任意ID。所有集群和所有筒仓必须相同。
+这个`服务ID`是用于标识此服务的任意ID。所有集群和所有silos必须相同。
 
-这个`多集群网络`节是可选的-如果不存在，则禁用此思洛存储器的所有多群集支持。
+这个`多集群网络`节是可选的-如果不存在，则禁用此silos的所有多群集支持。
 
 这个**所需参数** `棒状的`和`八卦频道`在[多集群通信](GossipChannels.md)是的。
 
@@ -65,6 +65,6 @@ var silo = new SiloHostBuilder()
 
 可选参数`默认为UseGlobalSingleInstances`，请`GlobalSingleInstanceRetryInterval`和`GlobalSingleInstanceNumberEntries全局`在[全局单实例粒度](GlobalSingleInstance.md)是的。
 
-## 奥尔良客户端配置
+## Orleans客户端配置
 
-Orleans客户端不需要额外配置。同一客户端可能无法连接到不同集群中的思洛存储器（思洛存储器在这种情况下拒绝连接）。
+Orleans客户端不需要额外配置。同一客户端可能无法连接到不同集群中的silos（silos在这种情况下拒绝连接）。

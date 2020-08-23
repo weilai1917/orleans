@@ -1,6 +1,6 @@
-# 兼容谷物
+# 兼容Grains
 
-当现有的谷物激活将要处理请求时，运行时将检查请求中的版本与谷物的实际版本是否兼容。**奥尔良不会在运行时推断要使用哪个策略**，确定两个版本是否兼容的默认行为由`GrainVersioningOptions.CompatibilityStrategy`
+当现有的Grains激活将要处理请求时，运行时将检查请求中的版本与Grains的实际版本是否兼容。**Orleans不会在运行时推断要使用哪个策略**，确定两个版本是否兼容的默认行为由`GrainVersioningOptions.CompatibilityStrategy`
 
 ## 向后兼容（默认）
 
@@ -24,7 +24,7 @@
 
 ### 定义
 
-如果满足以下条件，则谷物界面版本Vn可以与Vm完全兼容：
+如果满足以下条件，则Grains界面版本Vn可以与Vm完全兼容：
 
 -   Vn与Vm向后兼容
 -   在Vn版本中未添加任何公共方法

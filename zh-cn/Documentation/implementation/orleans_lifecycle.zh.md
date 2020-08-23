@@ -3,13 +3,13 @@ layout: page
 title: Orleans Lifecycle
 ---
 
-# 奥尔良生命周期
+# Orleans生命周期
 
 ## 总览
 
-奥尔良的某些行为非常复杂，因此需要有序地启动和关闭。具有此类行为的某些组件包括谷物，筒仓和客户。为了解决这个问题，引入了通用组件生命周期模式。此模式包括一个可观察的生命周期，该生命周期负责在组件启动和关闭的各个阶段发出信号，而生命周期观察器则负责在特定阶段执行启动或关闭操作。
+Orleans的某些行为非常复杂，因此需要有序地启动和关闭。具有此类行为的某些组件包括Grains，silos和客户。为了解决这个问题，引入了通用组件生命周期模式。此模式包括一个可观察的生命周期，该生命周期负责在组件启动和关闭的各个阶段发出信号，而生命周期观察器则负责在特定阶段执行启动或关闭操作。
 
-也可以看看[谷物生命周期](../grains/grain_lifecycle.md)和[筒仓生命周期](../clusters_and_clients/silo_lifecycle.md)。
+也可以看看[Grains生命周期](../grains/grain_lifecycle.md)和[silos生命周期](../clusters_and_clients/silo_lifecycle.md)。
 
 ## 可观察的生命周期
 
@@ -62,7 +62,7 @@ IDisposable Subscribe<TObserver>(this ILifecycleObservable observable, int stage
 
 ### 生命周期参与
 
-一些可扩展性点需要一种方法来识别哪些组件对参与生命周期感兴趣。为此，引入了生命周期参与者标记界面。探索筒仓和谷物的生命周期时，将详细介绍如何使用它。
+一些可扩展性点需要一种方法来识别哪些组件对参与生命周期感兴趣。为此，引入了生命周期参与者标记界面。探索silos和Grains的生命周期时，将详细介绍如何使用它。
 
 ```csharp
     public interface ILifecycleParticipant<TLifecycleObservable>

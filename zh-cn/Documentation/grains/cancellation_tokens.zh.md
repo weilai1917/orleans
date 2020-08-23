@@ -3,7 +3,7 @@ layout: page
 title: Grain cancellation tokens
 ---
 
-# 谷物取消代币
+# Grains取消代币
 
 orleans运行时提供了一种称为grain cancellation token的机制，使开发人员能够取消正在执行的grain操作。
 
@@ -27,7 +27,7 @@ orleans运行时提供了一种称为grain cancellation token的机制，使开�
         var waitTask = grain.LongIoWork(tcs.Token, TimeSpan.FromSeconds(10));
 ```
 
--   可取消的谷物操作需要处理底层**取消令牌**财产**GrainCancellationToken公司**就像在其他.NET代码中一样。
+-   可取消的Grains操作需要处理底层**取消令牌**财产**GrainCancellationToken公司**就像在其他.NET代码中一样。
 
 ```csharp
         public async Task LongIoWork(GrainCancellationToken tc, TimeSpan delay)

@@ -7,7 +7,7 @@
 11月15日，我们发布了我们的[最新版本-1.3.1](https://github.com/dotnet/orleans/releases/tag/v1.3.1)。此修补程序版本自1.3.0起已合并到master中，其中包含许多错误修复和改进。1.3.1有两个主要原因。
 
 -   343 Industries需要一个在流传输方面进行了一些改进的版本，以及EventHub流提供程序，以简化从Halo 5发布之前一直在运行的流发行堆栈的预发行版本的迁移。
--   [奥尔良卡](https://github.com/OrleansContrib/Orleankka)需要一个相当高级的功能，使他们可以在每个消息的基础上控制请求的交织。[@yevhen](https://github.com/yevhen)[提交了一份公关](https://github.com/dotnet/orleans/pull/2246)为此，经过几次设计和实现迭代。
+-   [Orleans卡](https://github.com/OrleansContrib/Orleankka)需要一个相当高级的功能，使他们可以在每个消息的基础上控制请求的交织。[@yevhen](https://github.com/yevhen)[提交了一份公关](https://github.com/dotnet/orleans/pull/2246)为此，经过几次设计和实现迭代。
 
 因此，1.3.1不是纯补丁程序发行版，因为它包含一项新功能。我们认为这里还可以，因为该功能实际上对其他人没有影响。
 
