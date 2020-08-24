@@ -1,4 +1,4 @@
 - name: Prerequisites
-  href: Prerequisites.zh.md
+  href: Prerequisites.md
 - name: NuGet Packages
-  href: NuGets.zh.md
+  href: NuGets.md

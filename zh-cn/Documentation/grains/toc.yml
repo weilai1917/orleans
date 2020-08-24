@@ -1,17 +1,17 @@
 - name: 部署一个 Grain
-  href: index.zh.md
+  href: index.md
 - name: Grain 身份
-  href: grain_identity.zh.md
+  href: grain_identity.md
 - name: 计时器和提醒
-  href: timers_and_reminders.zh.md
+  href: timers_and_reminders.md
 - name: 观察者
-  href: observers.zh.md
+  href: observers.md
 - name: 可重入
-  href: reentrancy.zh.md
+  href: reentrancy.md
 - name: 请求上下文
-  href: request_context.zh.md
+  href: request_context.md
 - name: 代码生成
-  href: code_generation.zh.md
+  href: code_generation.md
 - name: 持久化
   href: grain_persistence/toc.yml
 - name: 事件溯源

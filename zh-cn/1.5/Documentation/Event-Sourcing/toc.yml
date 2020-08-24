@@ -1,16 +1,16 @@
 - name: Overview
-  href: Overview.zh.md
+  href: Overview.md
 - name: JournaledGrain Basics
-  href: GrainStateAPI.zh.md
+  href: GrainStateAPI.md
 - name: Replicated Instances
-  href: MultiInstance.zh.md
+  href: MultiInstance.md
 - name: Immediate/Delayed Confirmation
-  href: MultiVersion.zh.md
+  href: MultiVersion.md
 - name: Notifications
-  href: Subscribe.zh.md
+  href: Subscribe.md
 - name: Configuration
-  href: Configuration.zh.md
+  href: Configuration.md
 - name: Built-In Log-Consistency Providers
-  href: LogConsistencyProviders.zh.md
+  href: LogConsistencyProviders.md
 - name: Diagnostics
-  href: Diagnostics.zh.md
+  href: Diagnostics.md

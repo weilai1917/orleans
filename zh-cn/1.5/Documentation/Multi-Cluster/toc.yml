@@ -1,10 +1,10 @@
 - name: Overview
-  href: Overview.zh.md
+  href: Overview.md
 - name: Multi-Cluster Configuration
-  href: MultiClusterConfiguration.zh.md
+  href: MultiClusterConfiguration.md
 - name: Gossip Channels
-  href: GossipChannels.zh.md
+  href: GossipChannels.md
 - name: Silo Configuration
-  href: SiloConfiguration.zh.md
+  href: SiloConfiguration.md
 - name: Global-Single-Instance Grains
-  href: GlobalSingleInstance.zh.md
+  href: GlobalSingleInstance.md

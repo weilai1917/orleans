@@ -1,8 +1,8 @@
 - name: Grain 持久化
-  href: index.zh.md
+  href: index.md
 - name: 关系存储 (ADO.NET)
-  href: relational_storage.zh.md
+  href: relational_storage.md
 - name: Azure Storage
-  href: azure_storage.zh.md
+  href: azure_storage.md
 - name: Amazon DynamoDB Storage
-  href: dynamodb_storage.zh.md
+  href: dynamodb_storage.md

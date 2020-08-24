@@ -1,10 +1,10 @@
 - name: 教程和示例概述
-  href: index.zh.md
+  href: index.md
 - name: 教程 1 - Orleans 基础
-  href: tutorial_1.zh.md
+  href: tutorial_1.md
 - name: 单元测试
-  href: testing.zh.md
+  href: testing.md
 - name: 示例 - Hello World 概述
-  href: overview_helloworld.zh.md
+  href: overview_helloworld.md
 - name: 示例 - 冒险
-  href: Adventure.zh.md
+  href: Adventure.md

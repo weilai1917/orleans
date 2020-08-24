@@ -1,10 +1,10 @@
 - name: Overview
-  href: Grain-Versioning.zh.md
+  href: Grain-Versioning.md
 - name: Backward Compatibility Guidelines
-  href: Backward-compatibility-guidelines.zh.md
+  href: Backward-compatibility-guidelines.md
 - name: Compatible grains
-  href: Compatible-grains.zh.md
+  href: Compatible-grains.md
 - name: Version selector strategy
-  href: Version-selector-strategy.zh.md
+  href: Version-selector-strategy.md
 - name: Deployment
-  href: Deployment.zh.md
+  href: Deployment.md

@@ -47,7 +47,7 @@ private static async Task DoClientWork(IClusterClient client)
 }
 ```
 
-> 注意：如果您从Orleans1.5过渡，您会注意到客户端不再是静态的。请参考[从Orleans迁移到0.5](../Documentation/resources/Migration/Migration1.5.zh.md)第页。
+> 注意：如果您从Orleans1.5过渡，您会注意到客户端不再是静态的。请参考[从Orleans迁移到0.5](../Documentation/resources/Migration/Migration1.5.md)第页。
 
 下一步，我们将进行一些silos配置，以便配置将允许我们访问持久存储的存储提供程序。SiloHost项目包括一个文件*程序.cs*我们可以在这里找到以下部分：
 
@@ -223,4 +223,4 @@ grains可能包含持久状态和瞬态状态的组合。任何瞬态都应该�
 
 接下来，我们将了解如何从mvcweb应用程序调用grains。
 
-[处理失败](../1.5/Tutorials/Failure-Handling.zh.md)
+[处理失败](../1.5/Tutorials/Failure-Handling.md)

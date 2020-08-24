@@ -1,6 +1,6 @@
 - name: 概述
-  href: index.zh.md
-  homepage: index.zh.md
+  href: index.md
+  homepage: index.md
 - name: Grains
   href: grains/toc.yml
 - name: 流
@@ -9,14 +9,14 @@
   href: clusters_and_clients/toc.yml
   items:
   - name: 配置指南
-    href: index.zh.md
+    href: index.md
   - name: 监控
-    href: index.zh.md
+    href: index.md
   - name: 部署
     href: deployment/toc.yml
   items:
   - name: 多集群至此
-    href: index.zh.md
+    href: index.md
 - name: 教程及示例
   href: tutorials_and_samples/toc.yml
 - name: 实现细节

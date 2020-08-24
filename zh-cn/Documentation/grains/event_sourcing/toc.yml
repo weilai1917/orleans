@@ -1,16 +1,16 @@
 - name: 事件溯源概述
-  href: index.zh.md
+  href: index.md
 - name: JournaledGrain 基础
-  href: journaledgrain_basics.zh.md
+  href: journaledgrain_basics.md
 - name: JournaledGrain 诊断
-  href: journaledgrain_diagnostics.zh.md
+  href: journaledgrain_diagnostics.md
 - name: 立即/延迟确认
-  href: immediate_vs_delayed_confirmation.zh.md
+  href: immediate_vs_delayed_confirmation.md
 - name: 通知
-  href: notifications.zh.md
+  href: notifications.md
 - name: 时间溯源配置
-  href: event_sourcing_configuration.zh.md
+  href: event_sourcing_configuration.md
 - name: 内置日志一致性提供程序
-  href: log_consistency_providers.zh.md
+  href: log_consistency_providers.md
 - name: 多副本实例
-  href: replicated_instances.zh.md
+  href: replicated_instances.md

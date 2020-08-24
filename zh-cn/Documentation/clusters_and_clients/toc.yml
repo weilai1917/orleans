@@ -1,10 +1,10 @@
 - name: 什么是 Grain 客户端
-  href: index.zh.md
-  homepage: index.zh.md
+  href: index.md
+  homepage: index.md
 - name: Silo 生命周期
-  href: silo_lifecycle.zh.md
+  href: silo_lifecycle.md
 - name: 异构 Silos
-  href: heterogeneous_silos.zh.md
+  href: heterogeneous_silos.md
 - name: 配置指南
   href: configuration_guide/toc.yml
 - name: 监控

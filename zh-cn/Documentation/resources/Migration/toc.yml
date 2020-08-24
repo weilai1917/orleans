@@ -1,6 +1,6 @@
 - name: 从 Orleans 1.5 迁移
-  href: migration1.5.zh.md
+  href: migration1.5.md
 - name: 从Azure云服务中的Orleans 1.5迁移
-  href: migrationAzure2.0.zh.md
+  href: migrationAzure2.0.md
 - name: 代码生成
-  href: codegen.zh.md
+  href: codegen.md

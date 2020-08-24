@@ -1,12 +1,12 @@
 - name: Grain Persistence
-  href: Grain-Persistence.zh.md
+  href: Grain-Persistence.md
 - name: Timers and Reminders
-  href: Timers-and-Reminders.zh.md
+  href: Timers-and-Reminders.md
 - name: Dependency Injection
-  href: Dependency-Injection.zh.md
+  href: Dependency-Injection.md
 - name: Observers
-  href: Observers.zh.md
+  href: Observers.md
 - name: Stateless Worker Grains
-  href: StatelessWorker.zh.md
+  href: StatelessWorker.md
 - name: Streams
   href: ../Orleans-Streams/toc.yml

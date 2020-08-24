@@ -1,9 +1,9 @@
 - name: 运行时监控
-  href: index.zh.md
-  homepage: index.zh.md
+  href: index.md
+  homepage: index.md
 - name: Silo 错误码监控
-  href: silo_error_code_monitoring.zh.md
+  href: silo_error_code_monitoring.md
 - name: 客户端错误码监控
-  href: client_error_code_monitoring.zh.md
+  href: client_error_code_monitoring.md
 
   

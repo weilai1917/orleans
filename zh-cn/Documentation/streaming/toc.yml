@@ -1,10 +1,10 @@
 - name: 概述
-  href: index.zh.md
+  href: index.md
 - name: Streams 快速开锁
-  href: streams_quick_start.zh.md
+  href: streams_quick_start.md
 - name: 为什么使用 Streams
-  href: streams_why.zh.md
+  href: streams_why.md
 - name: Streams 编程APIs
-  href: streams_programming_APIs.zh.md
+  href: streams_programming_APIs.md
 - name: Stream 提供程序
-  href: stream_providers.zh.md
+  href: stream_providers.md

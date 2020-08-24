@@ -1,17 +1,17 @@
 - name: 外部任务和Grains
-  href: ../external_tasks_and_grains.zh.md
+  href: ../external_tasks_and_grains.md
 - name: 拦截器
-  href: ../interceptors.zh.md
+  href: ../interceptors.md
 - name: Grain 服务
-  href: ../grainservices.zh.md
+  href: ../grainservices.md
 - name: 无状态 Worker Grains
-  href: ../stateless_worker_grains.zh.md
+  href: ../stateless_worker_grains.md
 - name: 取消令牌
-  href: ../cancellation_tokens.zh.md
+  href: ../cancellation_tokens.md
 - name: 事务
-  href: ../transactions.zh.md
+  href: ../transactions.md
 - name: Grain 生命周期
-  href: ../grain_lifecycle.zh.md
+  href: ../grain_lifecycle.md
 - name: 接口版本控制
   href: ../grain_versioning/toc.yml
 

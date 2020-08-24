@@ -1,10 +1,10 @@
 - name: 概述
-  href: Overview.zh.md
+  href: Overview.md
 - name: 多集群配置
-  href: MultiClusterConfiguration.zh.md
+  href: MultiClusterConfiguration.md
 - name: Gossip 通道
-  href: GossipChannels.zh.md
+  href: GossipChannels.md
 - name: Silo 配置
-  href: SiloConfiguration.zh.md
+  href: SiloConfiguration.md
 - name: 全局单例 Grains
-  href: GlobalSingleInstance.zh.md
+  href: GlobalSingleInstance.md
