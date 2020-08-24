@@ -200,7 +200,7 @@ public class SimpleGrainReference : GrainReference
 
 大约在同一时间，Niklas Gustafsson参与了这个项目[大师](https://channel9.msdn.com/shows/Going+Deep/Maestro-A-Managed-Domain-Specific-Language-For-Concurrent-Programming/)后来改名为[阿克苏姆](https://web.archive.org/web/20090511155406/http:/msdn.microsoft.com/en-us/devlabs/dd795202.aspx). 我们在Axum上有一个实习生原型（早期的Orleans应用程序之一）来比较编程体验和2009年春季基于promise的应用程序。我们得出的结论是，对于开发人员来说，promises模型更容易实现。与此同时，尼格拉斯提出了一个建议和一个原型，在他说服了安德斯·赫兹伯格和其他人之后，最终成为了`异步`/`等待`C中的关键字#. 到现在，它传播到了更多的语言。
 
-在发布了带有async和await的.net4.5之后，我们最终放弃了`异步完成`/`异步值<T>`赞成`任务`/`任务<T>`利用等待的力量。这是另一个折衷方案，它让我们重写了几次调度程序（不是一个小任务），并放弃了我们承诺中的一些好特性。例如，在我们可以轻松检测到grain代码是否试图通过调用`结果`或`等等（）`在一个未解决的承诺上`InvalidOperationException异常`表示在silos的协作多任务环境中不允许这样做。我们不能再这样了。但我们获得了今天更干净的编程模型：
+在发布了带有async和await的.net4.5之后，我们最终放弃了`异步完成`/`异步值<T>`赞成`任务`/`任务<T>`利用等待的力量。这是另一个折衷方案，它让我们重写了几次调度程序（不是一个小任务），并放弃了我们承诺中的一些好特性。例如，在我们可以轻松检测到grain代码是否试图通过调用`结果`或`等等()`在一个未解决的承诺上`InvalidOperationException异常`表示在silos的协作多任务环境中不允许这样做。我们不能再这样了。但我们获得了今天更干净的编程模型：
 
 ```csharp
 public interface ISimpleGrain : IGrainWithIntegerKey

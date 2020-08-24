@@ -21,7 +21,7 @@ title: External Tasks and Grains
 
 #### Task.Factory.StartNew和异步委托
 
-在任何C＃程序中调度任务的通常建议是使用`任务运行`有利于`Task.Factory.StartNew`。实际上，谷歌快速搜索使用`Task.Factory.StartNew（）`会建议[那是危险的](https://blog.stephencleary.com/2013/08/startnew-is-dangerous.html)和[那应该永远喜欢`任务运行`](https://devblogs.microsoft.com/pfxteam/task-run-vs-task-factory-startnew/)。但是，如果我们希望保留在Orleans单线程执行模型中，那么我们需要使用它，那么我们如何正确地执行它呢？使用时的“危险”`Task.Factory.StartNew（）`是它本身不支持异步委托。这意味着这可能是一个错误：`var notIntendedTask = Task.Factory.StartNew（SomeDelegateAsync）`。`notIntendedTask`是*不*在以下时间完成的任务`SomeDelegateAsync`做。相反，应该*总是*解开返回的任务：`var task = Task.Factory.StartNew（SomeDelegateAsync）.Unwrap（）`。
+在任何C＃程序中调度任务的通常建议是使用`任务运行`有利于`Task.Factory.StartNew`。实际上，谷歌快速搜索使用`Task.Factory.StartNew()`会建议[那是危险的](https://blog.stephencleary.com/2013/08/startnew-is-dangerous.html)和[那应该永远喜欢`任务运行`](https://devblogs.microsoft.com/pfxteam/task-run-vs-task-factory-startnew/)。但是，如果我们希望保留在Orleans单线程执行模型中，那么我们需要使用它，那么我们如何正确地执行它呢？使用时的“危险”`Task.Factory.StartNew()`是它本身不支持异步委托。这意味着这可能是一个错误：`var notIntendedTask = Task.Factory.StartNew（SomeDelegateAsync）`。`notIntendedTask`是*不*在以下时间完成的任务`SomeDelegateAsync`做。相反，应该*总是*解开返回的任务：`var task = Task.Factory.StartNew（SomeDelegateAsync）.Unwrap()`。
 
 ### 例：
 
@@ -102,7 +102,7 @@ title: External Tasks and Grains
 
 与图书馆打交道`您的代码正在使用的某些外部库可能正在使用`ConfigureAwait（false）内部。`实际上，在.NET中使用它是一种正确的好习惯` [ConfigureAwait（false）](https://msdn.microsoft.com/en-us/magazine/jj991977.aspx)在实现通用库时。在Orleans，这不是问题。`只要调用库方法的grain中的代码正在等待常规的库调用`等待，粒码正确。`结果将完全符合要求-库代码将在Default Scheduler上继续运行（碰巧是`ThreadPoolTask​​Scheduler
 
-但这不能保证继续操作一定会在ThreadPool线程上运行，因为继续操作通常在上一个线程中内联），而grain代码将在Orleans调度程序上运行。`另一个经常问到的问题是，是否需要使用`任务运行`-也就是说，是否需要将库代码显式卸载到ThreadPool（用于Grains代码）`Task.Run（（）=> myLibrary.FooAsync（）））。答案是否定的。除了库代码进行阻塞同步调用的情况外，无需将任何代码卸载到ThreadPool。通常，任何编写正确且正确的.NET异步库（返回的方法`任务`并以`异步`后缀）请勿拨打电话。因此，除非您怀疑异步库有故障或故意使用同步阻塞库，否则无需将任何内容卸载到ThreadPool。
+但这不能保证继续操作一定会在ThreadPool线程上运行，因为继续操作通常在上一个线程中内联），而grain代码将在Orleans调度程序上运行。`另一个经常问到的问题是，是否需要使用`任务运行`-也就是说，是否需要将库代码显式卸载到ThreadPool（用于Grains代码）`Task.Run（()=> myLibrary.FooAsync()））。答案是否定的。除了库代码进行阻塞同步调用的情况外，无需将任何代码卸载到ThreadPool。通常，任何编写正确且正确的.NET异步库（返回的方法`任务`并以`异步`后缀）请勿拨打电话。因此，除非您怀疑异步库有故障或故意使用同步阻塞库，否则无需将任何内容卸载到ThreadPool。
 
 ## 摘要
 
@@ -110,7 +110,7 @@ title: External Tasks and Grains
 | ------ | --- |
 | 在.NET线程池线程上运行后台工作。不允许使用任何Grains代码或Grains调用。 | `任务运行` |
 | grains界面调用 | 方法返回类型=`任务`要么`任务<T>` |
-| 使用基于Orleans回合的并发保证（[往上看](#Task.Factory.StartNew和异步委托)）。 | `Task.Factory.StartNew（WorkerAsync）.Unwrap（）` |
+| 使用基于Orleans回合的并发保证（[往上看](#Task.Factory.StartNew和异步委托)）。 | `Task.Factory.StartNew（WorkerAsync）.Unwrap()` |
 | 使用基于Orleans回合的并发保证，可以从Grains代码运行同步工作者任务。 | `Task.Factory.StartNew（WorkerSync）` |
 | 执行工作项的超时 | `任务延迟`+`Task.WhenAny` |
 | 用于`异步的`/`等待` | 普通的.NET Task-Async编程模型。支持和推荐 |

@@ -61,13 +61,13 @@ PS> Import-Module OrleansPSUtils
 
 #### 启动GrainClient
 
-这个模块是一个包装器`grainclient.initialize（）`以及它的超载。
+这个模块是一个包装器`grainclient.initialize()`以及它的超载。
 
 **用法**以下内容：
 
 -   **`启动GrainClient`**
 
-    -   与Call相同`grainclient.initialize（）`它将查找已知的Orleans客户端配置文件名
+    -   与Call相同`grainclient.initialize()`它将查找已知的Orleans客户端配置文件名
 
 -   **`启动grainclient[-configfilepath]<string>[[-timeout]<timespan>]`**
 
@@ -93,7 +93,7 @@ PS> Import-Module OrleansPSUtils
 
 #### 获取Grains
 
-包装物`grainclient.grainfactory.getgrain<t>（）`以及它的超载。
+包装物`grainclient.grainfactory.getgrain<t>()`以及它的超载。
 
 强制参数是`-粒状`以及`-xxx键`对于Orleans支持的当前Grains密钥类型（`一串`，请`指导方针`我是说，`长的`）还有`-键扩展`可以用在有复合键的Grains上。
 

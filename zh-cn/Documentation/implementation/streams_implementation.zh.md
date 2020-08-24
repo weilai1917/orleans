@@ -21,7 +21,7 @@ title: Streams Implementation Details
 hostBuilder.AddPersistentStreams(StreamProviderName, GeneratorAdapterFactory.Create);
 ```
 
-当流生产者生成新的流项目并调用时`stream.OnNext（）`，Orleans Streaming Runtime在上调用适当的方法`IQueueAdapter`该流提供程序将条目直接排队到适当的队列中。
+当流生产者生成新的流项目并调用时`stream.OnNext()`，Orleans Streaming Runtime在上调用适当的方法`IQueueAdapter`该流提供程序将条目直接排队到适当的队列中。
 
 ### 牵引剂<a name="Pulling-Agents"></a>
 
@@ -51,7 +51,7 @@ hostBuilder
 
 每个silos都运行一组拉动代理，每个代理都从一个队列中拉出。拉动代理程序本身由内部运行时组件（称为**SystemTarget**。SystemTargets本质上是运行时粒度，受单线程并发性的影响，可以使用常规的粒度消息传递，并且轻巧。与Grains相反，SystemTarget不是虚拟的：它们是由运行时显式创建的，并且位置不透明。通过将拉动代理实现为SystemTargets，Orleans Streaming Runtime可以依赖于内置的Orleans功能并可以扩展到大量队列，因为创建新的拉动代理与创建新的Grains一样便宜。
 
-每个拉动代理都运行一个定期计时器，该定时从队列中拉出（通过调用[**`IQueueAdapterReceiver`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core/Streams/QueueAdapters/IQueueAdapterReceiver.cs)）`GetQueueMessagesAsync（）`方法。返回的消息放在内部的每个代理的数据结构中，称为`IQueueCache`。检查每个消息以找出其目标流。代理使用Pub Sub来查找订阅此流的流使用者列表。检索到使用者列表后，代理会将其存储在本地（在其pub-sub缓存中），因此无需在每条消息上都与Pub Sub进行协商。代理还订阅pub-sub，以接收有关订阅该流的任何新使用者的通知。代理与pub-sub保证之间的这种握手**强大的流订阅语义**：*消费者订阅了流之后，它将看到订阅后生成的所有事件*。另外，使用`StreamSequenceToken`允许其过去订阅。
+每个拉动代理都运行一个定期计时器，该定时从队列中拉出（通过调用[**`IQueueAdapterReceiver`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core/Streams/QueueAdapters/IQueueAdapterReceiver.cs)）`GetQueueMessagesAsync()`方法。返回的消息放在内部的每个代理的数据结构中，称为`IQueueCache`。检查每个消息以找出其目标流。代理使用Pub Sub来查找订阅此流的流使用者列表。检索到使用者列表后，代理会将其存储在本地（在其pub-sub缓存中），因此无需在每条消息上都与Pub Sub进行协商。代理还订阅pub-sub，以接收有关订阅该流的任何新使用者的通知。代理与pub-sub保证之间的这种握手**强大的流订阅语义**：*消费者订阅了流之后，它将看到订阅后生成的所有事件*。另外，使用`StreamSequenceToken`允许其过去订阅。
 
 ### 队列缓存<a name="Queue-Cache"></a>
 
@@ -65,6 +65,6 @@ hostBuilder
 
 Orleans流运行时中的背压在两个地方适用：**将流事件从队列带到代理**和**将事件从代理传递到流消费者**。
 
-后者由内置的Orleans消息传递机制提供。每个流事件都通过标准的OrleansGrains消息传递一次从代理传递到消费者。也就是说，代理将一个事件（或数量有限的事件）发送给每个单独的流使用者，并等待此呼叫。在解决或破坏上一个事件的任务之前，下一个事件将不会开始传递。这样一来，我们自然会将每次消费者的投放速度限制为一次只发送一条消息。
+后者由内置的Orleans消息传递机制提供。每个流事件都通过标准的OrleansGrains消息传递一次从代理传递到消费者。也就是说，代理将一个事件（或数量有限的事件）发送给每个单独的流使用者，并等待此访问。在解决或破坏上一个事件的任务之前，下一个事件将不会开始传递。这样一来，我们自然会将每次消费者的投放速度限制为一次只发送一条消息。
 
 关于将流事件从队列传递到代理，Orleans Streaming提供了一种新的特殊背压机制。由于代理将事件的出队从队列中解耦并传递给使用者，因此单个缓慢的使用者可能会落后很多，以至于`IQueueCache`将填满。阻止`IQueueCache`为了避免无限期增长，我们限制了它的大小（大小限制是可配置的）。但是，代理永远不会丢弃未交付的事件。相反，当缓存开始填满时，代理会减慢事件从队列中出队的速度。这样，我们可以通过调整从队列中消耗的速率（“背压”）来“摆脱”缓慢的交付周期，然后稍后恢复为快速的消耗速率。要检测“缓慢投放”的山谷`IQueueCache`使用高速缓存存储区的内部数据结构来跟踪将事件交付给各个流使用者的进度。这导致了一个非常敏感和自我调整的系统。

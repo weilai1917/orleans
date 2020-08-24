@@ -29,7 +29,7 @@ public interface IVersionUpgradeTestGrain : IGrainWithIntegerKey {}
 -   如果不存在激活，将创建兼容的激活
 -   如果激活存在：
     -   如果当前的不兼容，它将被停用并创建新的兼容的（请参阅[版本选择器策略](version_selector_strategy.zh.md))
-    -   如果当前版本兼容（请参见[相容grains](compatible_grains.zh.md))，呼叫将正常处理。
+    -   如果当前版本兼容（请参见[相容grains](compatible_grains.zh.md))，访问将正常处理。
 
 默认情况下：
 

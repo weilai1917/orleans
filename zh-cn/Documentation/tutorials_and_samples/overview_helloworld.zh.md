@@ -37,7 +37,7 @@ Orleans的主要概念包括silos，客户和一种或多种Grains。创建Orlea
 
 | 选项 | 用于 |
 | --- | --- |
-| `.UseLocalhostClustering（）` | 将客户端配置为连接到本地主机上的silos。 |
+| `.UseLocalhostClustering()` | 将客户端配置为连接到本地主机上的silos。 |
 | `集群选项` | ClusterId是Orleans群集的名称，对于silos和客户端，名称必须相同，以便彼此对话。ServiceId是用于应用程序的ID，并且在部署之间不得更改 |
 | `EndpointOptions` | 这告诉silos在哪里听。在此示例中，我们使用了`回送`。 |
 | `配置应用程序部件` | 将Grain类和接口程序集作为应用程序部分添加到您的orleans应用程序中。 |
@@ -71,7 +71,7 @@ Orleans的主要概念包括silos，客户和一种或多种Grains。创建Orlea
 
 | 选项 | 用于 |
 | --- | --- |
-| `.UseLocalhostClustering（）` | 与SiloHost相同 |
+| `.UseLocalhostClustering()` | 与SiloHost相同 |
 | `集群选项` | 与SiloHost相同 |
 
 可以找到有关配置客户端的更深入的指南[在配置指南的客户端配置部分中。](http://dotnet.github.io/orleans/Documentation/clusters_and_clients/configuration_guide/client_configuration.html)
@@ -114,7 +114,7 @@ namespace HelloWorld.Interfaces
 
 ## 零件如何协同工作
 
-建立此编程模型是我们分布式面向对象编程的核心概念的一部分。SiloHost首先启动。然后，启动OrleansClient程序。OrleansClient的Main方法调用启动客户端的方法，`StartClientWithRetries（）。`客户端被传递给`DoClientWork（）`方法。
+建立此编程模型是我们分布式面向对象编程的核心概念的一部分。SiloHost首先启动。然后，启动OrleansClient程序。OrleansClient的Main方法调用启动客户端的方法，`StartClientWithRetries()。`客户端被传递给`DoClientWork()`方法。
 
 ```csharp
         private static async Task DoClientWork(IClusterClient client)
@@ -126,7 +126,7 @@ namespace HelloWorld.Interfaces
         }
 ```
 
-此时，OrleansClient创建对IHellograins的引用，并通过其接口IHello调用其SayHello（）方法。此调用激活silos中的Grains。OrleansClient向激活的Grains发送问候语。Grains返回问候作为对OrleansClient的响应，OrleansClient在控制台上显示该问候。
+此时，OrleansClient创建对IHellograins的引用，并通过其接口IHello调用其SayHello()方法。此调用激活silos中的Grains。OrleansClient向激活的Grains发送问候语。Grains返回问候作为对OrleansClient的响应，OrleansClient在控制台上显示该问候。
 
 ## 运行示例应用
 

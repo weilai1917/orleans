@@ -122,7 +122,7 @@ protected Task UnregisterReminder(IOrleansReminder reminder)
 
 实例**IOrleansReminder公司**不能保证在激活的有效期之外有效。如果希望以持续的方式标识提醒，请使用包含提醒名称的字符串。
 
-如果您只有提醒的名称并需要相应的实例**IOrleansReminder公司**，呼叫**Grains.GetReminder**方法：
+如果您只有提醒的名称并需要相应的实例**IOrleansReminder公司**，访问**Grains.GetReminder**方法：
 
 ```csharp
 protected Task<IOrleansReminder> GetReminder(string reminderName)

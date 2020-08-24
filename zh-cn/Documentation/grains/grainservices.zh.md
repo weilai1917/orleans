@@ -91,12 +91,12 @@ public class MyNormalGrain: Grain<NormalGrainState>, INormalGrain {
 
 \###注1
 
-有一个扩展方法`ISiloHostBuilder：AddGrainService <SomeGrainService>（）`。类型约束是：`其中T：GrainService`。最终调用此位：**orleans / src / Orleans.Runtime / Services / GrainServicesSiloBuilderExtensions.cs**
+有一个扩展方法`ISiloHostBuilder：AddGrainService <SomeGrainService>()`。类型约束是：`其中T：GrainService`。最终调用此位：**orleans / src / Orleans.Runtime / Services / GrainServicesSiloBuilderExtensions.cs**
 
  `返回服务。AddSingleton <IGrainService>（sp => GrainServiceFactory（grainServiceType，sp））;`
 
 基本上，silos取`IGrain服务`启动时来自服务提供商的类型：**orleans / src / Orleans.Runtime / Silo / Silo.cs**
- `var grainServices = this.Services.GetServices <IGrainService>（）;`
+ `var grainServices = this.Services.GetServices <IGrainService>();`
 
 的`Microsoft.Orleans.OrleansRuntime`Nuget软件包应由Grainservice项目引用。
 

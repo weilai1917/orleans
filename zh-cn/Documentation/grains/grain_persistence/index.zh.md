@@ -28,7 +28,7 @@ Grains可以具有多个与之关联的命名持久数据对象。在激活Grain
 
 ## API
 
-Grains与它们的持久状态相互作用`IPersistentState <TState>`哪里`州`是可序列化状态类型：
+Grains与它们的持久状态相互作用`IPersistentState <TState>`哪里`State`是可序列化状态类型：
 
 ```csharp
 public interface IPersistentState<TState> where TState : new()
@@ -66,21 +66,21 @@ public class UserGrain : Grain, IUserGrain
 
 当激活grains时，将自动读取grains状态，但是grains负责在必要时显式触发任何更改的grains状态的写入。
 
-如果某个Grains希望从后备存储中明确重新读取该Grains的最新状态，则该Grains应调用`ReadStateAsync（）`方法。这将通过存储提供者从持久性存储中重新加载Grains状态，并且当数据库中的Grains状态的先前内存中副本将被覆盖并替换时，`ReadStateAsync（）` `任务`完成。
+如果某个Grains希望从后备存储中明确重新读取该Grains的最新状态，则该Grains应调用`ReadStateAsync()`方法。这将通过存储提供者从持久性存储中重新加载Grains状态，并且当数据库中的Grains状态的先前内存中副本将被覆盖并替换时，`ReadStateAsync()` `任务`完成。
 
-使用以下命令访问状态值`州`属性。例如，以下方法访问上面的代码中声明的配置文件状态：
+使用以下命令访问状态值`State`属性。例如，以下方法访问上面的代码中声明的配置文件状态：
 
 ```csharp
 public Task<string> GetNameAsync() => Task.FromResult(_profile.State.Name);
 ```
 
-无需致电`ReadStateAsync（）`在正常操作期间：在激活期间自动加载状态。然而，`ReadStateAsync（）`可以用来刷新外部修改的状态。
+无需致电`ReadStateAsync()`在正常操作期间：在激活期间自动加载状态。然而，`ReadStateAsync()`可以用来刷新外部修改的状态。
 
 见[失败模式](#FailureModes)以下部分提供了有关错误处理机制的详细信息。
 
 ### 写作状态
 
-状态可以通过`州`属性。修改后的状态不会自动保持。相反，开发人员通过调用`WriteStateAsync（）`方法。例如，以下方法更新一个属性`州`并保持更新状态：
+状态可以通过`State`属性。修改后的状态不会自动保持。相反，开发人员通过调用`WriteStateAsync()`方法。例如，以下方法更新一个属性`State`并保持更新状态：
 
 ```csharp
 public async Task SetNameAsync(string name)
@@ -94,9 +94,9 @@ public async Task SetNameAsync(string name)
 
 见[失败模式](#FailureModes)以下部分提供了有关错误处理机制的详细信息。
 
-### 清算国
+### 状态清理
 
-的`ClearStateAsync（）`方法清除存储中的Grains状态。根据提供者，此操作可以选择完全删除grains状态。
+`ClearStateAsync()`方法清除存储中的Grains状态。根据提供者，此操作可以选择完全删除grains状态。
 
 ## 入门
 
@@ -129,9 +129,9 @@ var host = new HostBuilder()
 持久状态可以通过两种主要方式添加到Grains中：
 
 1.  通过注射`IPersistentState <TState>`进入Grains的构造函数
-2.  通过继承`grains<TState>`
+2.  通过继承`Grain<TState>`
 
-推荐的增加Grains储藏量的方法是通过注入`IPersistentState <TState>`关联到Grains的构造函数`[PersistentState（“ stateName”，“ providerName”）]`属性。有关详细信息[`grains<TState>`， 见下文](#using-grainlttstategt-to-add-storage-to-a-grain)。仍支持此功能，但被认为是旧版。
+推荐的增加Grains储藏量的方法是通过注入`IPersistentState <TState>`关联到Grains的构造函数`[PersistentState("stateName"," providerName")]`属性。有关详细信息[`GrainsTState>`， 见下文](#使用Grain<TState>为Grains指定存储)。仍支持此功能，但被认为是旧版。
 
 声明一个类来保持我们的Grains状态：
 
@@ -183,19 +183,19 @@ public class UserGrain : Grain, IUserGrain
 }
 ```
 
-## 持久性操作的失败模式<a name="FailureModes"></a>
+## 持久性操作的失败模式 <a name="FailureModes"></a>
 
 ### 读取操作的失败模式
 
-在最初读取特定Grains的状态数据期间，存储提供者返回的故障将导致该Grains的激活操作失败；在这种情况下，*不*可以打电话给那个Grains的`OnActivateAsync（）`生命周期回调方法。对导致激活的那个Grains的原始请求将以与Grains激活过程中的其他任何失败相同的方式被发回给调用者。存储提供程序在读取特定Grains的状态数据时遇到失败，将导致`ReadStateAsync（）` `任务`被指责。Grains可以选择处理或忽略该故障`任务`，就像其他任何东西一样`任务`在Orleans。
+在最初读取特定Grains的状态数据期间，存储提供者返回的故障将导致该Grains的激活操作失败；在这种情况下，*不*可以打电话给那个Grains的`OnActivateAsync()`生命周期回调方法。对导致激活的那个Grains的原始请求将以与Grains激活过程中的其他任何失败相同的方式被发回给调用者。存储提供程序在读取特定Grains的状态数据时遇到失败，将导致`ReadStateAsync()` `任务`被指责。Grains可以选择处理或忽略该故障`任务`，就像其他任何东西一样`任务`在Orleans。
 
 由于缺少/错误的存储提供程序配置，任何在silos启动时无法加载消息的尝试都会返回永久错误`Orleans.BadProviderConfigException`。
 
 ### 写入操作的失败模式
 
-存储提供程序在写入特定Grains的状态数据时遇到失败，将导致`WriteStateAsync（）` `任务`被指责。通常，这将意味着只要将`WriteStateAsync（）` `任务`正确地链接到最终收益`任务`对于这种Grains方法。但是，某些高级方案可能会编写粒度代码来专门处理此类写错误，就像它们可以处理任何其他错误一样`任务`。
+存储提供程序在写入特定Grains的状态数据时遇到失败，将导致`WriteStateAsync()` `任务`被指责。通常，这将意味着只要将`WriteStateAsync()` `任务`正确地链接到最终收益`任务`对于这种Grains方法。但是，某些高级方案可能会编写粒度代码来专门处理此类写错误，就像它们可以处理任何其他错误一样`任务`。
 
-执行错误处理/恢复代码的Grains*必须*捕获异常/错误`WriteStateAsync（）` `任务`而不重新抛出以表示它们已成功处理了写入错误。
+执行错误处理/恢复代码的Grains*必须*捕获异常/错误`WriteStateAsync()` `任务`而不重新抛出以表示它们已成功处理了写入错误。
 
 ## 推荐建议
 
@@ -203,9 +203,9 @@ public class UserGrain : Grain, IUserGrain
 
 代码会随着时间的推移而发展，并且通常还包括存储类型。为了适应这些更改，应配置适当的串行器。对于大多数存储提供商而言，`杰森`选项或类似选项可用于将JSON用作序列化格式。确保在发展数据合同时，已经存储的数据仍然可以加载。
 
-## 使用Grains\<州>为Grains增加存储量
+## 使用Grain<TState>为Grains指定存储
 
-**注意：**使用`grains<T>`考虑增加Grains的储存量*遗产*功能：应使用以下方式添加Grains存储`IPersistentState <T>`如前所述。
+**注意：**使用`grains<T>`为Grainsz指定存储考虑为*遗留*功能：应使用以下方式添加Grains存储`IPersistentState <T>`如前所述。
 
 继承自的Grains类`grains<T>`（哪里`Ť`是需要保留的特定于应用程序的状态数据类型），将从指定存储中自动加载其状态。
 

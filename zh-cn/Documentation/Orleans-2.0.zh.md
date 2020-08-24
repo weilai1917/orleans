@@ -17,7 +17,7 @@ title: Orleans 2.0
 
 -   应用程序程序集的显式编程规范，它取代了Orleans运行时在silos或客户端初始化时自动扫描文件夹的功能。
 
-orleans仍然会在指定的程序集中自动查找相关类型，如grain接口和类、序列化程序等，但它不再尝试加载在文件夹中可以找到的每个程序集。为了向后兼容，提供了用于加载文件夹中所有程序集的可选助手方法：`iapplicationpartmanager.addfromapplicationbasedirectory（）`是的。
+orleans仍然会在指定的程序集中自动查找相关类型，如grain接口和类、序列化程序等，但它不再尝试加载在文件夹中可以找到的每个程序集。为了向后兼容，提供了用于加载文件夹中所有程序集的可选助手方法：`iapplicationpartmanager.addfromapplicationbasedirectory()`是的。
 
 见[配置](clusters_and_clients/configuration_guide/index.zh.md)和[迁移](resources/Migration/Migration1.5.zh.md)部分了解更多详细信息。
 

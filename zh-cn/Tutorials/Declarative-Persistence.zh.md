@@ -73,7 +73,7 @@ builder.AddAzureBlobGrainStorage(option => option.ConnectionString = your_connec
 
 这个`记忆库`provider相当无趣，因为它实际上不提供任何永久存储；它的目的是调试持久性grains，而不能访问持久性存储。在我们的例子中，这使得很难证明持久性，所以我们将依赖于一个真正的存储提供者。
 
-根据您是否已经设置（并希望使用）Azure存储帐户，还是希望依赖Azure存储仿真程序，您应该添加其他两行中的一行，但不能同时添加这两行。您可以使用`AddAzureTableStorage提供程序（）`函数或`AddAzureBlobStorageProvider（）`函数取决于您希望如何存储信息。
+根据您是否已经设置（并希望使用）Azure存储帐户，还是希望依赖Azure存储仿真程序，您应该添加其他两行中的一行，但不能同时添加这两行。您可以使用`AddAzureTableStorage提供程序()`函数或`AddAzureBlobStorageProvider()`函数取决于您希望如何存储信息。
 
 对于前者，您必须在安装最新版本的azuresdk之后启动Azure存储仿真器。对于后者，您必须创建一个Azure存储帐户，并在配置文件中输入名称和密钥。
 
@@ -128,7 +128,7 @@ public class Manager : Orleans.Grain<ManagerState>, IManager
 
 在声明显而易见的风险下，存储提供程序属性的名称应该与配置silos时使用的名称相匹配。这种间接性使您能够在部署之前延迟关于在哪里存储粒度状态的选择。
 
-考虑到这些声明性的更改，grain不应该再依赖私有字段来保持补偿级别和管理器。相反，grain基类让我们通过`州`可用于Grains的属性。
+考虑到这些声明性的更改，grain不应该再依赖私有字段来保持补偿级别和管理器。相反，grain基类让我们通过`State`可用于Grains的属性。
 
 例如：
 
@@ -148,7 +148,7 @@ Orleans设计人员可以做出的一个选择是在每次方法调用后都设�
 
 使用存储提供程序保存状态很容易通过调用`base.WriteStateAsync()`.
 
-因此，最终版本的`提升（）`和`设置管理器（）`方法如下：
+因此，最终版本的`提升()`和`设置管理器()`方法如下：
 
 ```csharp
 public Task Promote(int newLevel)
@@ -164,7 +164,7 @@ public Task SetManager(IManager manager)
 }
 ```
 
-在`经理`类，只有一个方法需要修改才能写出数据，`AddDirectReport（）`. 应该是这样的：
+在`经理`类，只有一个方法需要修改才能写出数据，`AddDirectReport()`. 应该是这样的：
 
 ```csharp
 public async Task AddDirectReport(IEmployee employee)
@@ -217,7 +217,7 @@ grains可能包含持久状态和瞬态状态的组合。任何瞬态都应该�
 
 ## 使用持久性处理故障
 
-一般来说，读写Grains的状态是一个很好的机制来处理失败和服务于它的初衷。由于不同的原因，grain调用可能会在方法的中间失败，最终导致状态更改一半。在这种情况下，从存储器中读取可以将状态返回到上一个正确的状态。或者，进入这种状态后，grain可以通过调用DeactivateOnIdle（）请求立即停用，这样它的下一个请求将触发grain的重新激活，这将重新读取持久状态并重建其在内存中的副本。停用是将grains重置为其最后已知良好状态的最干净的方法，但是如果要避免重新激活过程的成本，可以重置其状态并重新运行任何初始化逻辑（例如，通过调用`非激活异步`)而不是使Grains失活。
+一般来说，读写Grains的状态是一个很好的机制来处理失败和服务于它的初衷。由于不同的原因，grain调用可能会在方法的中间失败，最终导致状态更改一半。在这种情况下，从存储器中读取可以将状态返回到上一个正确的状态。或者，进入这种状态后，grain可以通过调用DeactivateOnIdle()请求立即停用，这样它的下一个请求将触发grain的重新激活，这将重新读取持久状态并重建其在内存中的副本。停用是将grains重置为其最后已知良好状态的最干净的方法，但是如果要避免重新激活过程的成本，可以重置其状态并重新运行任何初始化逻辑（例如，通过调用`非激活异步`)而不是使Grains失活。
 
 ## 下一个
 

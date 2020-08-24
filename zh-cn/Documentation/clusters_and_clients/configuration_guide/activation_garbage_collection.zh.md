@@ -11,7 +11,7 @@ title: Activation Garbage Collection
 
 ## 激活gc的工作原理
 
-激活gc的一般过程包括在silos中的orleans运行时定期扫描在配置的时间段（收集期限）内根本没有使用的Grains激活。一旦Grains激活闲置了那么长时间，它就会被停用。停用过程开始于运行时调用grain的`OnDeactivateAsync（）`方法，并通过从silos的所有数据结构中移除对Grain Activation对象的引用来完成，以便.NET GC回收内存。
+激活gc的一般过程包括在silos中的orleans运行时定期扫描在配置的时间段（收集期限）内根本没有使用的Grains激活。一旦Grains激活闲置了那么长时间，它就会被停用。停用过程开始于运行时调用grain的`OnDeactivateAsync()`方法，并通过从silos的所有数据结构中移除对Grain Activation对象的引用来完成，以便.NET GC回收内存。
 
 因此，在不给应用程序代码增加负担的情况下，只有最近使用的grains激活会保留在内存中，而不再使用的激活会被自动删除，它们使用的系统资源会被运行时回收。
 
@@ -23,7 +23,7 @@ title: Activation Garbage Collection
 
 **对于Grains活化收集而言，什么不算“活跃”**
 
--   执行呼叫（对另一个Grains或对一个Orleans客户）
+-   执行访问（对另一个Grains或对一个Orleans客户）
 -   定时器事件
 -   不涉及orleans框架的任意io操作或外部调用
 
@@ -35,7 +35,7 @@ title: Activation Garbage Collection
 
 ### 延迟激活gc
 
-Grains激活可以通过调用`this.delaydeactivation（）`方法：
+Grains激活可以通过调用`this.delaydeactivation()`方法：
 
 ```csharp
 protected void DelayDeactivation(TimeSpan timeSpan)
@@ -51,7 +51,7 @@ protected void DelayDeactivation(TimeSpan timeSpan)
 
 1）激活垃圾收集设置指定10分钟的期限，Grains正在调用`延迟停用（TimeSpan.FromMinutes（20））`，它将导致至少20分钟内无法收集此激活。
 
-2）激活垃圾收集设置指定10分钟的期限，Grains正在调用`延迟停用（TimeSpan.FromMinutes（5））`，如果没有额外呼叫，则激活将在10分钟后收集。
+2）激活垃圾收集设置指定10分钟的期限，Grains正在调用`延迟停用（TimeSpan.FromMinutes（5））`，如果没有额外访问，则激活将在10分钟后收集。
 
 3）激活垃圾收集设置指定10分钟的期限，Grains正在调用`延迟停用（TimeSpan.FromMinutes（5））`，7分钟后，如果没有额外的调用，则会在17分钟后从时间0开始收集激活。
 
@@ -61,7 +61,7 @@ protected void DelayDeactivation(TimeSpan timeSpan)
 
 ### 加速活化气相色谱
 
-Grains激活还可以通过调用`这个。停用空闲（）`方法：
+Grains激活还可以通过调用`这个。停用空闲()`方法：
 
 ```csharp
 protected void DeactivateOnIdle()

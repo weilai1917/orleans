@@ -10,7 +10,7 @@ Orleans支持针对持久Grains状态的分布式ACID交易。
 
 ## 建立
 
-Orleans选择加入交易。必须将silos配置为使用事务。如果不是，对Grains上的事务方法的任何调用都将收到一个`OrleansTransactionsDisabledException`。要在silos上启用交易，请致电`UseTransactions（）`在silos主机构建器上。
+Orleans选择加入交易。必须将silos配置为使用事务。如果不是，对Grains上的事务方法的任何调用都将收到一个`OrleansTransactionsDisabledException`。要在silos上启用交易，请致电`UseTransactions()`在silos主机构建器上。
 
 ```csharp
 var builder = new SiloHostBuilder().UseTransactions();
@@ -44,9 +44,9 @@ var builder = new SiloHostBuilder()
 -   `TransactionOption.CreateOrJoin`-通话具有交易性。如果在事务上下文中调用，它将使用该上下文，否则它将创建一个新的上下文。
 -   `TransactionOption.Suppress`-调用不是事务性的，但可以从事务中调用。如果在事务上下文中调用，则上下文将不会传递给调用。
 -   `TransactionOption.Supported`-通话不是交易性的，但支持交易。如果在事务上下文中调用，则上下文将传递给调用。
--   `TransactionOption.NotAllowed`-呼叫不是事务性的，不能从事务中进行呼叫。如果在交易环境中调用，它将抛出一个`NotSupportedException`。
+-   `TransactionOption.NotAllowed`-访问不是事务性的，不能从事务中进行访问。如果在交易环境中调用，它将抛出一个`NotSupportedException`。
 
-可以将呼叫标记为“创建”，这意味着呼叫将始终启动自己的事务。例如，下面的ATM中的“转帐”操作将始终启动一个涉及两个引用帐户的新交易。
+可以将访问标记为“创建”，这意味着访问将始终启动自己的事务。例如，下面的ATM中的“转帐”操作将始终启动一个涉及两个引用帐户的新交易。
 
 ```csharp
 public interface IATMGrain : IGrainWithIntegerKey
@@ -131,7 +131,7 @@ public class AccountGrain : Grain, IAccountGrain
 
 在上面的示例中，属性`交易状态`用于声明“ balance”构造函数参数应与名为“ balance”的交易状态相关联。通过此声明，Orleans将注入`ITransactionalState`从名为“ TransactionStore”的事务状态存储中加载状态的实例（请参阅安装程序）。可以通过以下方式修改状态`执行更新`或通过阅读`PerformRead`。交易基础架构将确保作为交易一部分进行的任何此类更改，即使是在分布于Orleans集群中的多个Grains之间，也将在创建交易的Grains调用完成后全部提交或全部撤消（`IATMGrain.Transfer`在上述示例中）。
 
-### 呼叫交易
+### 访问交易
 
 如同其他任何Grains调用一样，调用Grains接口上的事务方法。
 
@@ -144,6 +144,6 @@ public class AccountGrain : Grain, IAccountGrain
     uint toBalance = await client.GetGrain<IAccountGrain>(to).GetBalance();
 ```
 
-在上述呼叫中，使用ATMGrains将100个单位的货币从一个帐户转移到另一个帐户。转帐完成后，将查询两个帐户以获取其当前余额。货币转帐以及两个帐户查询均作为ACID事务执行。
+在上述访问中，使用ATMGrains将100个单位的货币从一个帐户转移到另一个帐户。转帐完成后，将查询两个帐户以获取其当前余额。货币转帐以及两个帐户查询均作为ACID事务执行。
 
 如上例所示，事务可以像其他grain调用一样返回任务中的值，但是在调用失败时，它们不会引发应用程序异常，而是`OrleansTransactionException`要么`TimeoutException`。如果应用程序在事务期间引发异常，并且该异常导致事务失败（与其他系统故障导致的失败相反），则应用程序异常将是事务的内部异常。`OrleansTransactionException`。如果抛出类型的交易异常`OrleansTransactionAbortedException`，交易失败，可以重试。引发的任何其他异常都表示事务以未知状态终止。由于事务是分布式操作，因此处于未知状态的事务可能已经成功，失败或仍在进行中。因此，建议设置通话超时时间（`SiloMessagingOptions.ResponseTimeout`）传递，以避免级联中止，然后再验证状态或重试操作。

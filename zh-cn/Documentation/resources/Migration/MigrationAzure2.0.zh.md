@@ -15,7 +15,7 @@ title: Migration from Orleans 1.5 to 2.0 when using Azure
     config.AddAzureTableStorageProvider("AzureStore", RoleEnvironment.GetConfigurationSettingValue("DataConnectionString"));
 ```
 
-的`AzureSilo`类公开了一个名为DefaultConfiguration（）的静态方法，该方法用于加载配置XML文件。不建议使用这种配置silos的方式，但仍通过[旧版支持包](https://www.nuget.org/packages/Microsoft.Orleans.Core.Legacy/)。
+的`AzureSilo`类公开了一个名为DefaultConfiguration()的静态方法，该方法用于加载配置XML文件。不建议使用这种配置silos的方式，但仍通过[旧版支持包](https://www.nuget.org/packages/Microsoft.Orleans.Core.Legacy/)。
 
 在Orleans2.0中，配置完全是编程的。新的配置API如下所示：
 

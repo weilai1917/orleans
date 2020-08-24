@@ -3,7 +3,7 @@ layout: page
 title: Grain Call Filters
 ---
 
-# Grains来电过滤器
+# Grains访问过滤器
 
 Grains调用过滤器提供了一种拦截Grains调用的方法。筛选器可以在Grains调用之前和之后执行代码。可以同时安装多个过滤器。过滤器是异步的，可以修改`RequestContext`，参数和被调用方法的返回值。过滤器还可以检查`方法信息`可以在Grain类上调用的方法，可用于引发或处理异常。
 
@@ -15,12 +15,12 @@ Grains调用过滤器提供了一种拦截Grains调用的方法。筛选器可�
 
 过滤器有两种口味：
 
--   来电过滤
+-   访问过滤
 -   呼出电话过滤器
 
 收到呼叫时，将执行传入呼叫过滤器。拨打电话时执行呼出电话过滤器。
 
-# 来电过滤
+# 访问过滤
 
 传入的粒度调用过滤器实现了`IIncomingGrainCallFilter`接口，它具有一种方法：
 
@@ -31,7 +31,7 @@ public interface IIncomingGrainCallFilter
 }
 ```
 
-的`IIncomingGrainCallContext`参数传递给`调用`方法具有以下形状：
+的`IIncomingGrainCallContext`参数传递给`Invoke`方法具有以下形状：
 
 ```csharp
 public interface IIncomingGrainCallContext
@@ -68,13 +68,13 @@ public interface IIncomingGrainCallContext
 }
 ```
 
-的`IIncomingGrainCallFilter.Invoke（IIncomingGrainCallContext）`方法必须等待或返回的结果`IIncomingGrainCallContext.Invoke（）`执行下一个配置的过滤器，最终执行grain方法本身。的`结果`可以在等待`调用（）`方法。的`实现方法`属性返回`方法信息`实现类。的`方法信息`可以使用`接口方法`属性。对于所有对Grains的方法调用，都会调用Grains调用过滤器，其中包括对Grains扩展的调用（`IGrain扩展`）安装在Grains中。例如，grains扩展用于实现流和取消令牌。因此，应该期望`实现方法`在Grains类本身中并不总是一种方法。
+的`IIncomingGrainCallFilter.Invoke（IIncomingGrainCallContext）`方法必须等待或返回的结果`IIncomingGrainCallContext.Invoke()`执行下一个配置的过滤器，最终执行grain方法本身。的`Result`可以在等待`Invoke()`方法。`ImplementationMethod`属性返回`MethodInfo`实现类。获取`MethodInfo`可以使用`InterfaceMethod`属性。对于所有对Grains的方法调用，都会调用Grains调用过滤器，其中包括对Grains扩展的调用（`IGrain扩展`）安装在Grains中。例如，grains扩展用于实现流和取消令牌。因此，应该期望`ImplementationMethod`在Grains类本身中并不总是一种方法。
 
-## 配置呼入呼叫过滤器
+## 配置传入呼叫过滤器
 
 的实现`IIncomingGrainCallFilter`可以通过Dependency Injection注册为silos级过滤器，也可以通过Grains实现将其注册为grains级过滤器`IIncomingGrainCallFilter`直。
 
-### silos范围内的所有来电过滤器
+### silos范围内的所有访问过滤器
 
 可以使用Dependency Injection将委托注册为silos级的粒度调用过滤器，如下所示：
 
@@ -210,7 +210,7 @@ Grains调用过滤器遵循定义的顺序：
 2.  Grains级过滤器（如果使用Grains）`IIncomingGrainCallFilter`。
 3.  grain方法实施或grain扩展方法实施。
 
-每次致电`IIncomingGrainCallContext.Invoke（）`封装下一个定义的过滤器，以便每个过滤器都有机会在链中下一个过滤器之前和之后执行代码，并最终执行grain方法本身。
+每次致电`IIncomingGrainCallContext.Invoke()`封装下一个定义的过滤器，以便每个过滤器都有机会在链中下一个过滤器之前和之后执行代码，并最终执行grain方法本身。
 
 # 呼出电话过滤器
 
@@ -225,7 +225,7 @@ public interface IOutgoingGrainCallFilter
 }
 ```
 
-的`IOutgoingGrainCallContext`参数传递给`调用`方法具有以下形状：
+的`IOutgoingGrainCallContext`参数传递给`Invoke`方法具有以下形状：
 
 ```csharp
 public interface IOutgoingGrainCallContext
@@ -257,7 +257,7 @@ public interface IOutgoingGrainCallContext
 }
 ```
 
-的`IOutgoingGrainCallFilter.Invoke（IOutgoingGrainCallContext）`方法必须等待或返回的结果`IOutgoingGrainCallContext.Invoke（）`执行下一个配置的过滤器，最终执行grain方法本身。的`结果`可以在等待`调用（）`方法。的`方法信息`可以使用`接口方法`属性。传出的Grains调用过滤器会针对所有对Grains的方法调用进行调用，其中包括对Orleans进行的系统方法的调用。
+的`IOutgoingGrainCallFilter.Invoke（IOutgoingGrainCallContext）`方法必须等待或返回的结果`IOutgoingGrainCallContext.Invoke()`执行下一个配置的过滤器，最终执行grain方法本身。的`结果`可以在等待`调用()`方法。的`方法信息`可以使用`接口方法`属性。传出的Grains调用过滤器会针对所有对Grains的方法调用进行调用，其中包括对Orleans进行的系统方法的调用。
 
 ## 配置去电呼叫过滤器
 

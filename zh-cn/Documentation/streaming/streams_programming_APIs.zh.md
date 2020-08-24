@@ -18,7 +18,7 @@ IAsyncStream<T> stream = streamProvider.GetStream<T>(Guid, "MyStreamNamespace");
 
 应用程序可以通过调用`GetStreamProvider`方法`Grains`类，或者调用`GrainClient.GetStreamProvider()`方法。
 
-[**`Orleans.Streams.IAsyncStream<T>`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core.Abstractions/Streams/Core/IAsyncStream.cs)是一个**虚拟流的逻辑强类型句柄**. 它在精神上类似于OrleansGrains参考。呼叫`GetStreamProvider`和`GetStream公司`完全是本地的。关于`GetStream公司`是一个GUID和一个额外的字符串，我们称之为流命名空间（可以为null）。GUID和名称空间字符串一起构成流标识（与`GrainFactory.GetGrain`). GUID和命名空间字符串的组合为确定流标识提供了额外的灵活性。就像Grains7可能存在于Grains类型中一样`播放器`而不同的grains7可能存在于该grains类型中`聊天室Grains`，流123可能与流命名空间一起存在`播放事件流`并且不同的流123可以存在于流命名空间中`聊天室消息流`.
+[**`Orleans.Streams.IAsyncStream<T>`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core.Abstractions/Streams/Core/IAsyncStream.cs)是一个**虚拟流的逻辑强类型句柄**. 它在精神上类似于OrleansGrains参考。访问`GetStreamProvider`和`GetStream公司`完全是本地的。关于`GetStream公司`是一个GUID和一个额外的字符串，我们称之为流命名空间（可以为null）。GUID和名称空间字符串一起构成流标识（与`GrainFactory.GetGrain`). GUID和命名空间字符串的组合为确定流标识提供了额外的灵活性。就像Grains7可能存在于Grains类型中一样`播放器`而不同的grains7可能存在于该grains类型中`聊天室Grains`，流123可能与流命名空间一起存在`播放事件流`并且不同的流123可以存在于流命名空间中`聊天室消息流`.
 
 ### 生产和消费<a name="Producing-and-Consuming"></a>
 
@@ -142,7 +142,7 @@ public async override Task OnActivateAsync()
 
 单个生产者和单个消费者之间的事件传递顺序取决于流提供者。
 
-对于SMS，生产者通过控制生产者发布事件的方式来显式地控制消费者看到的事件顺序。默认情况下（如果`火上浇油`SMS provider的选项设置为false），并且如果生产者等待`OnNextAsync公司`呼叫，事件按先进先出顺序到达。在SMS中，由制作者决定如何处理将由中断表示的传递失败`任务`由`OnNextAsync公司`打电话。
+对于SMS，生产者通过控制生产者发布事件的方式来显式地控制消费者看到的事件顺序。默认情况下（如果`火上浇油`SMS provider的选项设置为false），并且如果生产者等待`OnNextAsync公司`访问，事件按先进先出顺序到达。在SMS中，由制作者决定如何处理将由中断表示的传递失败`任务`由`OnNextAsync公司`打电话。
 
 Azure队列流不保证FIFO顺序，因为底层的Azure队列不保证故障情况下的顺序。（它们确实保证了无故障执行中的先进先出顺序。）当生产者将事件生成到Azure队列中时，如果排队操作失败，则由生产者尝试另一次排队，然后再处理潜在的重复消息。在传递端，Orleans流式处理运行时将事件从队列中取出，并尝试将其传递给消费者进行处理。Orleans流式处理运行时仅在成功处理后从队列中删除事件。如果传递或处理失败，则不会从队列中删除事件，稍后将自动重新出现在队列中。流式运行时将再次尝试传递它，因此可能会破坏FIFO顺序。上面的行为符合Azure队列的正常语义。
 

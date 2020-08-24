@@ -54,7 +54,7 @@ public class HelloGrain : Orleans.Grain, HelloWorldInterfaces.IHello
 }
 ```
 
-该类从基类继承`grain`，并实现之前定义的通信接口。由于没有什么需要等待的Grains，因此不会声明该方法`异步的`而是使用返回值`Task.FromResult（）`。
+该类从基类继承`grain`，并实现之前定义的通信接口。由于没有什么需要等待的Grains，因此不会声明该方法`异步的`而是使用返回值`Task.FromResult()`。
 
 编排Grains代码并在OrleansClient项目中找到的客户端如下所示：
 

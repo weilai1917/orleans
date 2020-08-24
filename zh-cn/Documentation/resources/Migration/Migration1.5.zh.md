@@ -117,7 +117,7 @@ siloBuilder.AddLogging(builder=>builder.SetMinimumLevel(LogLevel.Debug);
 
 有关日志筛选的详细信息，请参阅<https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging>;
 
-将TraceToConsole配置为`是的`，需要参考`Microsoft.Extensions.Logging.控制台`打包后使用`添加控制台（）`扩展方法`ILoggingBuilder`. 同样的`跟踪文件名`和`跟踪模式`，如果要将消息记录到文件中，则需要使用`AddFile（“文件名”）`方法`ILoggingBuilder`.
+将TraceToConsole配置为`是的`，需要参考`Microsoft.Extensions.Logging.控制台`打包后使用`添加控制台()`扩展方法`ILoggingBuilder`. 同样的`跟踪文件名`和`跟踪模式`，如果要将消息记录到文件中，则需要使用`AddFile（“文件名”）`方法`ILoggingBuilder`.
 
 如果您仍然想使用消息填充特性，您需要通过`ILoggingBuilder`也。消息填充功能存在于`Microsoft.Orleans.Logging.遗产`包裹。所以您需要首先添加对该包的依赖性。然后通过`ILoggingBuilder`. 下面是一个如何配置它的示例`ISiloHostBuilder`
 

@@ -84,7 +84,7 @@ title: What's new in Orleans
 -   不间断的错误修复
 
     -   修复程序化订阅错误（[＃4943](https://github.com/dotnet/orleans/pull/4943)--[＃3843](https://github.com/dotnet/orleans/pull/3843)）
-    -   将消息序列化错误传播给呼叫者（[＃4944](https://github.com/dotnet/orleans/pull/4944)--[＃4907](https://github.com/dotnet/orleans/pull/4907)）
+    -   将消息序列化错误传播给访问者（[＃4944](https://github.com/dotnet/orleans/pull/4944)--[＃4907](https://github.com/dotnet/orleans/pull/4907)）
 
 -   漏洞修复
     -   添加StreamSubscriptionHandleFactory以代表功能订阅（[＃4943](https://github.com/dotnet/orleans/pull/4943)--[＃3843](https://github.com/dotnet/orleans/pull/3843)）。从技术上来说，这虽然是一项重大突破，但它只会影响通过解决该问题（尝试与该方案一起用于SMS流）的程序化订阅功能的用户。[＃3843](https://github.com/dotnet/orleans/pull/3843)）。

@@ -90,7 +90,7 @@ public class ThermostatGrain : Grain, IThermostat, IThermostatControl
 
 Orleans运行时为应用程序运行时的主要组件是*silos*，负责寄存Grains。通常，一组silos作为集群运行，以实现可伸缩性和容错性。当作为集群运行时，silos相互协调以分配工作、检测并从故障中恢复。运行时使集群中托管的grains能够像在单个进程中一样相互通信。
 
-除了核心编程模型之外，silos还为grains提供了一组运行时服务，例如计时器、提醒（persistent timers）、持久性、事务、流等。见[特色部分](#features)下面是更多细节。
+除了核心编程模型之外，silos还为grains提供了一组运行时服务，例如计时器、提醒（persistent timers）、持久性、事务、流等。见[特色部分](#特征)下面是更多细节。
 
 Web前端和其他外部客户端使用客户端库调用集群中的grains，该库自动管理网络通信。为了简单起见，客户端也可以与silos在同一进程中共同托管。
 
@@ -136,7 +136,7 @@ Orleans运行任何支持.NETCore或.NETFramework的地方。这包括在Linux�
 
 ### Grains拦截器
 
-许多Grains的共同逻辑可以表示为[Grains拦截器](grains/interceptors.zh.md). Orleans支持呼入和呼出的过滤器。过滤器的一些常见用例有：授权、日志记录和遥测以及错误处理。
+许多Grains的共同逻辑可以表示为[Grains拦截器](grains/interceptors.zh.md). Orleans支持传入和呼出的过滤器。过滤器的一些常见用例有：授权、日志记录和遥测以及错误处理。
 
 ### 请求上下文
 
