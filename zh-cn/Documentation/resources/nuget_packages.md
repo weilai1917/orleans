@@ -15,7 +15,7 @@ title: Orleans NuGet Packages
 PM> Install-Package Microsoft.Orleans.Core.Abstractions
 ```
 
-包含Orleans.Core.Abstractions.dll，该文件定义开发应用程序代码（grains接口和类）所需的Orleans公共类型。任何Orleans项目都需要直接或间接引用此软件包。将其添加到定义grain接口和类的项目中。
+包含Orleans.Core.Abstractions.dll，该文件定义开发应用程序代码(grains接口和类)所需的Orleans公共类型。任何Orleans项目都需要直接或间接引用此软件包。将其添加到定义grain接口和类的项目中。
 
 ### Microsoft Orleans构建时代码生成
 
@@ -54,7 +54,7 @@ PM> Install-Package Microsoft.Orleans.Server
 PM> Install-Package Microsoft.Orleans.Client
 ```
 
-一个用于轻松构建和启动Orleans客户（前端）的元软件包。包括以下软件包：
+一个用于轻松构建和启动Orleans客户(前端)的元软件包。包括以下软件包：
 
 -   微软Orleans核心抽象
 -   微软Orleans核心
@@ -66,7 +66,7 @@ PM> Install-Package Microsoft.Orleans.Client
 PM> Install-Package Microsoft.Orleans.Core
 ```
 
-包含应用程序代码和Orleans客户（前端）使用的大多数Orleans公共类型的实现。引用它以构建使用Orleans类型但不处理托管或孤岛的库和客户端应用程序。包含在Microsoft.Orleans.Client和Microsoft.Orleans.Server元软件包中，并且大多数其他软件包直接或间接地对其进行引用。
+包含应用程序代码和Orleans客户(前端)使用的大多数Orleans公共类型的实现。引用它以构建使用Orleans类型但不处理托管或孤岛的库和客户端应用程序。包含在Microsoft.Orleans.Client和Microsoft.Orleans.Server元软件包中，并且大多数其他软件包直接或间接地对其进行引用。
 
 ## 代管
 
@@ -92,7 +92,7 @@ PM> Install-Package Microsoft.Orleans.Runtime.Abstractions
 PM> Install-Package Microsoft.Orleans.Hosting.AzureCloudServices
 ```
 
-包含用于将silos和Orleans客户端托管为Azure云服务的帮助程序类（工作人员角色和Web角色）。
+包含用于将silos和Orleans客户端托管为Azure云服务的帮助程序类(工作人员角色和Web角色)。
 
 ### [Microsoft Orleans Service Fabric托管支持](https://www.nuget.org/packages/Microsoft.Orleans.Hosting.ServiceFabric/)
 
@@ -344,7 +344,7 @@ PM> Install-Package Microsoft.Orleans.CounterControl
 PM> Install-Package Microsoft.Orleans.Transactions
 ```
 
-包括对跨Grains交易（测试版）的支持。
+包括对跨Grains交易(测试版)的支持。
 
 ### [Microsoft在Azure上进行Orleans交易](https://www.nuget.org/packages/Microsoft.Orleans.Transactions.AzureStorage/)
 
@@ -352,4 +352,4 @@ PM> Install-Package Microsoft.Orleans.Transactions
 PM> Install-Package Microsoft.Orleans.Transactions.AzureStorage
 ```
 
-包括用于在Azure表（beta）中持久保存事务日志的插件。
+包括用于在Azure表(beta)中持久保存事务日志的插件。

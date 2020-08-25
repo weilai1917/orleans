@@ -11,7 +11,7 @@ Orleans的某些行为非常复杂，因此需要有序地启动和关闭。为�
 
 ## [消息传递保证](messaging_delivery_guarantees.md)
 
-Orleans消息传递保证是**最多一次**， 默认。（可选）如果配置为在超时后重试，则Orleans提供至少一次交付。
+Orleans消息传递保证是**最多一次**， 默认。(可选)如果配置为在超时后重试，则Orleans提供至少一次交付。
 
 ## [排程器](scheduler.md)
 
@@ -19,7 +19,7 @@ Orleans Scheduler是Orleans运行时中的一个组件，负责执行应用程�
 
 ## [集群管理](cluster_management.md)
 
-Orleans通过内置的成员资格协议（有时称为“silos成员资格”）提供集群管理。该协议的目标是让所有孤岛（Orleans服务器）就当前活动的孤岛集达成共识，检测出故障的孤岛，并允许新的孤岛加入集群。
+Orleans通过内置的成员资格协议(有时称为“silos成员资格”)提供集群管理。该协议的目标是让所有孤岛(Orleans服务器)就当前活动的孤岛集达成共识，检测出故障的孤岛，并允许新的孤岛加入集群。
 
 ## [流实施](streams_implementation.md)
 

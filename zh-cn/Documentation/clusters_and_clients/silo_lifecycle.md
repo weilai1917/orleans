@@ -7,7 +7,7 @@ title: Silo Lifecycle
 
 # 概述
 
-Orleanssilos使用可观察的生命周期（参见[Orleans生命周期](../implementation/orleans_lifecycle.md)）用于Orleans系统和应用层组件的有序启动和关闭。
+Orleanssilos使用可观察的生命周期(参见[Orleans生命周期](../implementation/orleans_lifecycle.md))用于Orleans系统和应用层组件的有序启动和关闭。
 
 ## 阶段
 
@@ -70,7 +70,7 @@ public interface ILifecycleParticipant<TLifecycleObservable>
 }
 ```
 
-silos启动时，所有参与者（`循环参与人<Isilifecycle>`）在容器中，将有机会通过调用`参与（…）`行为。一旦所有人都有机会参与，silos的可观测生命周期将依次开始所有阶段。
+silos启动时，所有参与者(`循环参与人<Isilifecycle>`)在容器中，将有机会通过调用`参与(…)`行为。一旦所有人都有机会参与，silos的可观测生命周期将依次开始所有阶段。
 
 ## 例子
 
@@ -104,7 +104,7 @@ class StartupTask : ILifecycleParticipant<ISiloLifecycle>
 }
 ```
 
-从上面的实现中，我们可以看到在startuptask的`参与（…）`调用它订阅配置阶段的silos生命周期，传递应用程序回调，而不是它自己的初始化逻辑。
+从上面的实现中，我们可以看到在startuptask的`参与(…)`调用它订阅配置阶段的silos生命周期，传递应用程序回调，而不是它自己的初始化逻辑。
 
 需要在给定阶段初始化的组件将提供自己的回调，但模式是相同的。
 

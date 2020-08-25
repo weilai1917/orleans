@@ -68,7 +68,7 @@ public interface IIncomingGrainCallContext
 }
 ```
 
-的`IIncomingGrainCallFilter.Invoke（IIncomingGrainCallContext）`方法必须等待或返回的结果`IIncomingGrainCallContext.Invoke()`执行下一个配置的过滤器，最终执行grain方法本身。的`Result`可以在等待`Invoke()`方法。`ImplementationMethod`属性返回`MethodInfo`实现类。获取`MethodInfo`可以使用`InterfaceMethod`属性。对于所有对Grains的方法调用，都会调用Grains调用过滤器，其中包括对Grains扩展的调用（`IGrain扩展`）安装在Grains中。例如，grains扩展用于实现流和取消令牌。因此，应该期望`ImplementationMethod`在Grains类本身中并不总是一种方法。
+的`IIncomingGrainCallFilter.Invoke(IIncomingGrainCallContext)`方法必须等待或返回的结果`IIncomingGrainCallContext.Invoke()`执行下一个配置的过滤器，最终执行grain方法本身。的`Result`可以在等待`Invoke()`方法。`ImplementationMethod`属性返回`MethodInfo`实现类。获取`MethodInfo`可以使用`InterfaceMethod`属性。对于所有对Grains的方法调用，都会调用Grains调用过滤器，其中包括对Grains扩展的调用(`IGrain扩展`)安装在Grains中。例如，grains扩展用于实现流和取消令牌。因此，应该期望`ImplementationMethod`在Grains类本身中并不总是一种方法。
 
 ## 配置传入呼叫过滤器
 
@@ -206,15 +206,15 @@ public class MyAccessControlledGrain : Grain, IMyFilteredGrain, IIncomingGrainCa
 
 Grains调用过滤器遵循定义的顺序：
 
-1.  `IIncomingGrainCallFilter`在依赖项注入容器中配置的实现（按注册顺序）。
-2.  Grains级过滤器（如果使用Grains）`IIncomingGrainCallFilter`。
+1.  `IIncomingGrainCallFilter`在依赖项注入容器中配置的实现(按注册顺序)。
+2.  Grains级过滤器(如果使用Grains)`IIncomingGrainCallFilter`。
 3.  grain方法实施或grain扩展方法实施。
 
 每次致电`IIncomingGrainCallContext.Invoke()`封装下一个定义的过滤器，以便每个过滤器都有机会在链中下一个过滤器之前和之后执行代码，并最终执行grain方法本身。
 
 # 呼出电话过滤器
 
-传出Grains调用过滤器类似于传入Grains调用过滤器，主要区别在于它们是在调用者（客户端）而不是被调用者（grains）上调用的。
+传出Grains调用过滤器类似于传入Grains调用过滤器，主要区别在于它们是在调用者(客户端)而不是被调用者(grains)上调用的。
 
 传出呼叫过滤器实现了`IOutgoingGrainCallFilter`接口，它具有一种方法：
 
@@ -257,7 +257,7 @@ public interface IOutgoingGrainCallContext
 }
 ```
 
-的`IOutgoingGrainCallFilter.Invoke（IOutgoingGrainCallContext）`方法必须等待或返回的结果`IOutgoingGrainCallContext.Invoke()`执行下一个配置的过滤器，最终执行grain方法本身。的`结果`可以在等待`调用()`方法。的`方法信息`可以使用`接口方法`属性。传出的Grains调用过滤器会针对所有对Grains的方法调用进行调用，其中包括对Orleans进行的系统方法的调用。
+的`IOutgoingGrainCallFilter.Invoke(IOutgoingGrainCallContext)`方法必须等待或返回的结果`IOutgoingGrainCallContext.Invoke()`执行下一个配置的过滤器，最终执行grain方法本身。的`结果`可以在等待`调用()`方法。的`方法信息`可以使用`接口方法`属性。传出的Grains调用过滤器会针对所有对Grains的方法调用进行调用，其中包括对Orleans进行的系统方法的调用。
 
 ## 配置去电呼叫过滤器
 
@@ -348,7 +348,7 @@ builder.ConfigureServices(
 
 当从服务器引发的异常在客户端上反序列化时，有时可能会收到以下异常，而不是实际的异常：`TypeLoadException：找不到Whatever.dll。`
 
-如果包含异常的程序集对客户端不可用，则会发生这种情况。例如，假设您在grain实现中使用实体框架；那么有可能`EntityException`被抛出。另一方面，客户端不（也不应该）引用`EntityFramework.dll`因为它不了解基础数据访问层。
+如果包含异常的程序集对客户端不可用，则会发生这种情况。例如，假设您在grain实现中使用实体框架；那么有可能`EntityException`被抛出。另一方面，客户端不(也不应该)引用`EntityFramework.dll`因为它不了解基础数据访问层。
 
 当客户端尝试反序列化`EntityException`，它将因缺少DLL而失败；结果是`TypeLoadException类型加载异常`把原来的东西藏起来了`实体异常`.
 
@@ -356,7 +356,7 @@ builder.ConfigureServices(
 
 但是如果客户端希望至少记录异常呢？问题是原来的错误消息丢失了。解决此问题的一种方法是截获服务器端异常并用类型的纯异常替换它们`例外`如果异常类型可能在客户端未知。
 
-然而，有一件重要的事我们必须牢记：我们只想替换一个例外**如果调用者是Grains客户**. 如果调用者是另一个grain（或者正在进行grain调用的Orleans基础设施；例如`GrainBasedReminderTable`Grains）。
+然而，有一件重要的事我们必须牢记：我们只想替换一个例外**如果调用者是Grains客户**. 如果调用者是另一个grain(或者正在进行grain调用的Orleans基础设施；例如`GrainBasedReminderTable`Grains)。
 
 在服务器端，这可以通过silos级别的拦截器来实现：
 

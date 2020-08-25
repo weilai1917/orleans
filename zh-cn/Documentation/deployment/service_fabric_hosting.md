@@ -5,13 +5,13 @@ title: Service Fabric Hosting
 
 # 服务结构宿主
 
-Orleans可以使用`Microsoft.Orleans.hosting.ServiceFabric公司`包裹。silos应该作为未分区的无状态服务托管，因为Orleans使用细Grain的动态分布来管理Grains本身的分布。其他托管选项（分区的、有状态的）当前未经测试且不受支持。
+Orleans可以使用`Microsoft.Orleans.hosting.ServiceFabric公司`包裹。silos应该作为未分区的无状态服务托管，因为Orleans使用细Grain的动态分布来管理Grains本身的分布。其他托管选项(分区的、有状态的)当前未经测试且不受支持。
 
 一个演示在服务结构上托管的示例位于[示例/2.0/ServiceFabric](https://github.com/dotnet/orleans/tree/master/Samples/2.0/ServiceFabric)是的。
 
 托管支持在`Microsoft.Orleans.hosting.ServiceFabric公司`包裹。它允许Orleanssilos作为服务结构运行`图像通信侦听器`是的。silos生命周期遵循典型的通信侦听器生命周期：它通过`ICommunicationListener.OpenAsync`方法，并通过`ICommunicationListener.CloseAsync`方法或通过`ICommunication侦听器。中止`方法。
 
-`OrleansCommunication侦听器`提供`图像通信侦听器`实施。推荐的方法是使用`orleansServiceListener.createStateless（操作<statelessServiceContext，isiloHostBuilder>configure）`在`Orleans.Hosting.ServiceFabric`命名空间。
+`OrleansCommunication侦听器`提供`图像通信侦听器`实施。推荐的方法是使用`orleansServiceListener.createStateless(操作<statelessServiceContext，isiloHostBuilder>configure)`在`Orleans.Hosting.ServiceFabric`命名空间。
 
 每次打开通信侦听器时，`配置`委托传递给`创建无状态`调用以配置新silos。
 

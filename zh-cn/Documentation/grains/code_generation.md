@@ -20,7 +20,7 @@ orleans运行时使用生成的代码，以确保跨集群使用的类型的正�
 
     这些包中的一个应该安装到所有包含Grain、Grain接口、自定义序列化程序或在Grain之间发送的类型的项目中。安装包会将目标插入到项目中，该项目将在生成时生成代码。
 
-两个包（`Microsoft.Orleans.CodeGenerator.MSBuild`和`Microsoft.Orleans.OrleansCodeGenerator.Build公司`）只支持C项目。使用`Microsoft.Orleans.Orleanscodegenerator公司`下面描述的包，或者通过创建一个c项目，该项目可以作为用其他语言编写的程序集生成的代码的目标。
+两个包(`Microsoft.Orleans.CodeGenerator.MSBuild`和`Microsoft.Orleans.OrleansCodeGenerator.Build公司`)只支持C项目。使用`Microsoft.Orleans.Orleanscodegenerator公司`下面描述的包，或者通过创建一个c项目，该项目可以作为用其他语言编写的程序集生成的代码的目标。
 
 通过指定`奥尔兰斯科德格勒`在目标项目的*项目文件*文件。例如，`<orleanscodegenloglevel>跟踪</orleanscodegenloglevel>`是的。
 
@@ -54,9 +54,9 @@ builder.ConfigureApplicationParts(
 
 添加`[可序列化]`指示代码生成器为类型生成序列化程序。
 
-添加`[组件：GenerateSerializer（类型）]`指示代码生成器将该类型视为可序列化的，并且如果无法为该类型生成序列化程序（例如，因为该类型不可访问），则将导致错误。如果启用代码生成，此错误将停止生成。此属性还允许从另一个程序集为特定类型生成代码。
+添加`[组件：GenerateSerializer(类型)]`指示代码生成器将该类型视为可序列化的，并且如果无法为该类型生成序列化程序(例如，因为该类型不可访问)，则将导致错误。如果启用代码生成，此错误将停止生成。此属性还允许从另一个程序集为特定类型生成代码。
 
-`[程序集：knownype（type）]`还指示代码生成器包含特定类型（可能来自引用的程序集），但如果该类型不可访问，则不会导致异常。
+`[程序集：knownype(type)]`还指示代码生成器包含特定类型(可能来自引用的程序集)，但如果该类型不可访问，则不会导致异常。
 
 ### 为所有子类型生成序列化程序
 
@@ -71,7 +71,7 @@ builder.ConfigureApplicationParts(
 1.  创建一个C项目。
 2.  安装`Microsoft.Orleans.CodeGenerator.MSBuild`或者`Microsoft.Orleans.OrleansCodeGenerator.Build公司`包裹。
 3.  添加对目标程序集的引用。
-4.  添加`[程序集：knownAssembly（“otherAssembly”）]`在C文件的顶层。
+4.  添加`[程序集：knownAssembly(“otherAssembly”)]`在C文件的顶层。
 
 这个`知识装配`属性指示代码生成器检查指定的程序集并为其中的类型生成代码。该属性可以在项目中多次使用。
 

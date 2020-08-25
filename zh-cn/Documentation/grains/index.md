@@ -11,7 +11,7 @@ title: Developing a Grain
 
 # Grains界面和类
 
-grains相互交互，并通过调用声明为各个grains接口一部分的方法从外部调用。Grains类实现一个或多个先前声明的Grains接口。Grain接口的所有方法都必须返回`任务`（对于`虚空`方法），一个`任务<T>`或一个`ValueTask <T>`（对于返回类型为值的方法`Ť`）。
+grains相互交互，并通过调用声明为各个grains接口一部分的方法从外部调用。Grains类实现一个或多个先前声明的Grains接口。Grain接口的所有方法都必须返回`Task`（对于`虚空`方法），一个`Task<T>`或一个`ValueTask <T>`（对于返回类型为值的方法`Ť`）。
 
 以下是Orleans 1.5 Presence Service示例的摘录：
 
@@ -63,7 +63,7 @@ public class PlayerGrain : Grain, IPlayerGrain
 
 # Grains方法的返回值
 
-返回类型值的谷类方法`Ť`在谷粒接口中定义为返回a`任务<T>`。对于未标有`异步的`关键字，当返回值可用时，通常通过以下语句返回：
+返回类型值的谷类方法`Ť`在谷粒接口中定义为返回a`Task<T>`。对于未标有async关键字，当返回值可用时，通常通过以下语句返回：
 
 ```csharp
 public Task<SomeType> GrainMethod1()
@@ -73,7 +73,7 @@ public Task<SomeType> GrainMethod1()
 }
 ```
 
-没有返回值的grain方法（实际上是void方法）在grain接口中定义为返回a`任务`。返回的`任务`指示方法的异步执行和完成。对于未标有`异步的`关键字，当“无效”方法完成执行时，需要返回的特殊值`Task.CompletedTask`：
+没有返回值的grain方法（实际上是void方法）在grain接口中定义为返回a`Task`。返回的`Task`指示方法的异步执行和完成。对于未标有async关键字，当“无效”方法完成执行时，需要返回的特殊值`Task.CompletedTask`：
 
 ```csharp
 public Task GrainMethod2()
@@ -83,7 +83,7 @@ public Task GrainMethod2()
 }
 ```
 
-标记为`异步的`直接返回值：
+标记为async直接返回值：
 
 ```csharp
 public async Task<SomeType> GrainMethod3()
@@ -93,7 +93,7 @@ public async Task<SomeType> GrainMethod3()
 }
 ```
 
-一种“无效”的Grains方法标记为`异步的`不返回值的代码只是在执行结束时返回：
+一种“无效”的Grains方法标记为async不返回值的代码只是在执行结束时返回：
 
 ```csharp
 public async Task GrainMethod4()
@@ -103,7 +103,7 @@ public async Task GrainMethod4()
 }
 ```
 
-如果grain方法从另一个异步方法调用接收到的返回值（是否返回grain），并且不需要对该调用执行错误处理，则只需返回`任务`它从该异步调用接收作为其返回值：
+如果grain方法从另一个异步方法调用接收到的返回值（是否返回grain），并且不需要对该调用执行错误处理，则只需返回`Task`它从该异步调用接收作为其返回值：
 
 ```csharp
 public Task<SomeType> GrainMethod5()
@@ -114,7 +114,7 @@ public Task<SomeType> GrainMethod5()
 }
 ```
 
-同样，“无效”粒度方法可以返回`任务`通过另一个调用返回给它，而不是等待它。
+同样，“无效”粒度方法可以返回`Task`通过另一个调用返回给它，而不是等待它。
 
 ```csharp
 public Task GrainMethod6()
@@ -125,7 +125,7 @@ public Task GrainMethod6()
 }
 ```
 
-`ValueTask <T>`可以代替`任务<T>`
+`ValueTask <T>`可以代替`Task<T>`
 
 ### Grains参考
 
@@ -165,7 +165,7 @@ await joinGameTask;
 players.Add(playerId);
 ```
 
-可以加入两个或多个`任务`;联接操作创建一个新的`任务`当所有组成部分都解决时`任务`s完成。当Grains需要启动多个计算并等待所有计算完成后再继续操作时，这是一种有用的模式。例如，生成由许多部分组成的网页的前端纹理可能会进行多个后端调用，每个部分一个，并接收一个`任务`对于每个结果。然后Grains将等待所有这些的加入`任务`;当加入`任务`解决了，个人`任务`已完成，并且已收到格式化网页所需的所有数据。
+可以加入两个或多个`Task`;联接操作创建一个新的`Task`当所有组成部分都解决时`Task`s完成。当Grains需要启动多个计算并等待所有计算完成后再继续操作时，这是一种有用的模式。例如，生成由许多部分组成的网页的前端纹理可能会进行多个后端调用，每个部分一个，并接收一个`Task`对于每个结果。然后Grains将等待所有这些的加入`Task`;当加入`Task`解决了，个人`Task`已完成，并且已收到格式化网页所需的所有数据。
 
 例：
 

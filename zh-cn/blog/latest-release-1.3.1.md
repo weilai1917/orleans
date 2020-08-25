@@ -1,6 +1,6 @@
 # 最新版本-1.3.1
 
-[谢尔盖·拜科夫（Sergey Bykov）](https://github.com/sergeybykov)2016/12/1下午5:48:39
+[谢尔盖·拜科夫(Sergey Bykov)](https://github.com/sergeybykov)2016/12/1下午5:48:39
 
 * * *
 
@@ -15,6 +15,6 @@
 
 **注意：此版本中有一个微妙的重大更改，很容易错过。**
 
-*如果您正在使用`AzureSilo.Start（ClusterConfiguration配置，字符串DeploymentId）`在您的代码中，该重载已被删除，但是替换它的新重载具有相同的参数签名，但具有不同的第二个参数：`（ClusterConfiguration配置，字符串connectionString）`。现在必须将部署ID作为config参数的一部分传递：config.Globals.DeploymentId。这样就消除了传递两个不同的部署ID的不确定性，但是不幸的是，这需要付出破坏性的API更改的代价。*
+*如果您正在使用`AzureSilo.Start(ClusterConfiguration配置，字符串DeploymentId)`在您的代码中，该重载已被删除，但是替换它的新重载具有相同的参数签名，但具有不同的第二个参数：`(ClusterConfiguration配置，字符串connectionString)`。现在必须将部署ID作为config参数的一部分传递：config.Globals.DeploymentId。这样就消除了传递两个不同的部署ID的不确定性，但是不幸的是，这需要付出破坏性的API更改的代价。*
 
 1.3.0是一个相当大的版本，具有许多改进，错误修复以及地理分布的多集群的主要新功能。它的大部分内容都列在[1.3.0-beta2发行说明](https://github.com/dotnet/orleans/releases/tag/v1.3.0-beta2)。地理分布功能在[多集群支持部分](http://dotnet.github.io/orleans/Documentation/Multi-Cluster/Overview.html)文档。

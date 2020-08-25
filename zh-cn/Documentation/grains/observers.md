@@ -11,7 +11,7 @@ title: Observers
 
 要订阅通知，客户端必须首先创建一个实现观察者接口的本地c对象。然后调用观察者工厂上的静态方法，`创建对象引用()`，将c对象转换为一个grain引用，然后可以将其传递给通知grain上的订阅方法。
 
-这个模型也可以被其他Grains用来接收异步通知。与客户端订阅情况不同，订阅Grain只是将observer接口实现为一个方面，并将引用传递给自己（例如。`这个.asreference<imygrainobserver接口>`）中。
+这个模型也可以被其他Grains用来接收异步通知。与客户端订阅情况不同，订阅Grain只是将observer接口实现为一个方面，并将引用传递给自己(例如。`这个.asreference<imygrainobserver接口>`)中。
 
 ## 代码示例
 
@@ -40,7 +40,7 @@ public class Chat : IChat
 }
 ```
 
-现在在服务器上，我们应该有一个Grains发送这些聊天信息给客户端。grain还应该有一个机制，让客户端订阅和取消订阅自己以接收通知。对于订阅，grain可以使用utility类`observer订阅管理器`是的。这个班的学生`Orleans感觉`如果您尝试订阅已订阅的观察者（或取消订阅未订阅的观察者），那么使用`已订阅()`方法或通过处理`Orleans感觉`以下内容：
+现在在服务器上，我们应该有一个Grains发送这些聊天信息给客户端。grain还应该有一个机制，让客户端订阅和取消订阅自己以接收通知。对于订阅，grain可以使用utility类`observer订阅管理器`是的。这个班的学生`Orleans感觉`如果您尝试订阅已订阅的观察者(或取消订阅未订阅的观察者)，那么使用`已订阅()`方法或通过处理`Orleans感觉`以下内容：
 
 ```csharp
 class HelloGrain : Grain, IHello
@@ -76,7 +76,7 @@ class HelloGrain : Grain, IHello
 }
 ```
 
-将消息发送到客户端`通知`方法`observer订阅管理器<ichat>`可以使用实例。这种方法需要`动作<t>`方法或lambda表达式（其中`T型`属于类型`伊查特`在这里）。可以调用接口上的任何方法将其发送给客户端。我们只有一种方法`接收消息`我们在服务器上发送的代码如下所示：
+将消息发送到客户端`通知`方法`observer订阅管理器<ichat>`可以使用实例。这种方法需要`动作<t>`方法或lambda表达式(其中`T型`属于类型`伊查特`在这里)。可以调用接口上的任何方法将其发送给客户端。我们只有一种方法`接收消息`我们在服务器上发送的代码如下所示：
 
 ```csharp
 public Task SendUpdateMessage(string message)

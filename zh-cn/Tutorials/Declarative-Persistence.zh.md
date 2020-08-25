@@ -73,7 +73,7 @@ builder.AddAzureBlobGrainStorage(option => option.ConnectionString = your_connec
 
 这个`记忆库`provider相当无趣，因为它实际上不提供任何永久存储；它的目的是调试持久性grains，而不能访问持久性存储。在我们的例子中，这使得很难证明持久性，所以我们将依赖于一个真正的存储提供者。
 
-根据您是否已经设置（并希望使用）Azure存储帐户，还是希望依赖Azure存储仿真程序，您应该添加其他两行中的一行，但不能同时添加这两行。您可以使用`AddAzureTableStorage提供程序()`函数或`AddAzureBlobStorageProvider()`函数取决于您希望如何存储信息。
+根据您是否已经设置(并希望使用)Azure存储帐户，还是希望依赖Azure存储仿真程序，您应该添加其他两行中的一行，但不能同时添加这两行。您可以使用`AddAzureTableStorage提供程序()`函数或`AddAzureBlobStorageProvider()`函数取决于您希望如何存储信息。
 
 对于前者，您必须在安装最新版本的azuresdk之后启动Azure存储仿真器。对于后者，您必须创建一个Azure存储帐户，并在配置文件中输入名称和密钥。
 
@@ -110,7 +110,7 @@ public class ManagerState
 }
 ```
 
-然后，我们更改grain类声明以标识状态接口（例如，从`Orleans。Grains`到`Orleans。Grains<EmployeeState>`)并删除我们想要持久化的变量。确保移除`水平`，和`经理`从`雇员`类和`_报告`从`经理`班级。除此之外，我们还必须更新这些功能。
+然后，我们更改grain类声明以标识状态接口(例如，从`Orleans。Grains`到`Orleans。Grains<EmployeeState>`)并删除我们想要持久化的变量。确保移除`水平`，和`经理`从`雇员`类和`_报告`从`经理`班级。除此之外，我们还必须更新这些功能。
 
 我们还添加了一个属性来标识存储提供程序：
 
@@ -191,17 +191,17 @@ public async Task AddDirectReport(IEmployee employee)
 
 当我们第一次运行客户端代码并到达断点时，level字段应该是`0`以及newLevel参数`10`或`11`:
 
-!\[]（../Images/Persistence 2.PNG）
+!\[](../Images/Persistence 2.PNG)
 
-让应用程序完成（到达“点击回车…”提示符）并退出。再次运行它，并比较第二次查看状态时发生的情况：
+让应用程序完成(到达“点击回车…”提示符)并退出。再次运行它，并比较第二次查看状态时发生的情况：
 
-!\[]（../Images/Persistence 3.PNG）
+!\[](../Images/Persistence 3.PNG)
 
 ## 只是确保。。。
 
-值得检查一下Azure对数据的看法。使用存储资源管理器（如Azure存储资源管理器（ASE）或Visual Studio 2013中内置的服务器资源管理器），打开存储帐户（或模拟器的开发人员存储）并找到“OrleansGrainState”表。它应该是这样的（你必须在ASE中点击'Query'：
+值得检查一下Azure对数据的看法。使用存储资源管理器(如Azure存储资源管理器(ASE)或Visual Studio 2013中内置的服务器资源管理器)，打开存储帐户(或模拟器的开发人员存储)并找到“OrleansGrainState”表。它应该是这样的(你必须在ASE中点击'Query'：
 
-!\[]（../Images/Persistence 4.PNG）
+!\[](../Images/Persistence 4.PNG)
 
 如果一切正常，则纹理键应该出现在`分区键`列中，并且grains的限定类名应出现在`行键`列。
 
@@ -217,7 +217,7 @@ grains可能包含持久状态和瞬态状态的组合。任何瞬态都应该�
 
 ## 使用持久性处理故障
 
-一般来说，读写Grains的状态是一个很好的机制来处理失败和服务于它的初衷。由于不同的原因，grain调用可能会在方法的中间失败，最终导致状态更改一半。在这种情况下，从存储器中读取可以将状态返回到上一个正确的状态。或者，进入这种状态后，grain可以通过调用DeactivateOnIdle()请求立即停用，这样它的下一个请求将触发grain的重新激活，这将重新读取持久状态并重建其在内存中的副本。停用是将grains重置为其最后已知良好状态的最干净的方法，但是如果要避免重新激活过程的成本，可以重置其状态并重新运行任何初始化逻辑（例如，通过调用`非激活异步`)而不是使Grains失活。
+一般来说，读写Grains的状态是一个很好的机制来处理失败和服务于它的初衷。由于不同的原因，grain调用可能会在方法的中间失败，最终导致状态更改一半。在这种情况下，从存储器中读取可以将状态返回到上一个正确的状态。或者，进入这种状态后，grain可以通过调用DeactivateOnIdle()请求立即停用，这样它的下一个请求将触发grain的重新激活，这将重新读取持久状态并重建其在内存中的副本。停用是将grains重置为其最后已知良好状态的最干净的方法，但是如果要避免重新激活过程的成本，可以重置其状态并重新运行任何初始化逻辑(例如，通过调用`非激活异步`)而不是使Grains失活。
 
 ## 下一个
 

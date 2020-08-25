@@ -5,7 +5,7 @@ title: Multi-Cluster Silo Configuration
 
 ## Orleanssilos配置
 
-为了快速了解，我们在下面的XML语法中显示了所有相关的配置参数（包括可选参数）：
+为了快速了解，我们在下面的XML语法中显示了所有相关的配置参数(包括可选参数)：
 
 ```html
 <?xml version="1.0" encoding="utf-8"?>
@@ -67,4 +67,4 @@ var silo = new SiloHostBuilder()
 
 ## Orleans客户端配置
 
-Orleans客户端不需要额外配置。同一客户端可能无法连接到不同集群中的silos（silos在这种情况下拒绝连接）。
+Orleans客户端不需要额外配置。同一客户端可能无法连接到不同集群中的silos(silos在这种情况下拒绝连接)。

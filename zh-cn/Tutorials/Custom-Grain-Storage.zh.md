@@ -83,7 +83,7 @@ public class FileGrainStorageOptions
 }
 ```
 
-创建一个包含两个字段的构造函数，`storageName`指定使用此存储应该写入哪些纹理`[StorageProvider（ProviderName =“文件”）]`和`目录`这将是保存grains状态的目录。
+创建一个包含两个字段的构造函数，`storageName`指定使用此存储应该写入哪些纹理`[StorageProvider(ProviderName =“文件”)]`和`目录`这将是保存grains状态的目录。
 
 `IGrain工厂`，`ITypeResolver`将在下一部分中使用，我们将在其中初始化存储。
 
@@ -104,7 +104,7 @@ public void Participate(ISiloLifecycle lifecycle)
 }
 ```
 
-的`在里面`功能用于设置`_jsonSettings`将用于配置`杰森`序列化器。同时，我们创建文件夹来存储grains状态（如果尚不存在）。
+的`在里面`功能用于设置`_jsonSettings`将用于配置`杰森`序列化器。同时，我们创建文件夹来存储grains状态(如果尚不存在)。
 
 ```csharp
 private Task Init(CancellationToken ct)
@@ -235,7 +235,7 @@ public static class FileGrainStorageFactory
 }
 ```
 
-最后，要注册Grains储存库，我们在`ISiloHostBuilder`在内部使用以下方式将Grains存储注册为命名服务`.AddSingletonNamedService（...）`，由提供的扩展`Orleans`。
+最后，要注册Grains储存库，我们在`ISiloHostBuilder`在内部使用以下方式将Grains存储注册为命名服务`.AddSingletonNamedService(...)`，由提供的扩展`Orleans`。
 
 ```csharp
 public static class FileSiloBuilderExtensions
@@ -275,4 +275,4 @@ var silo = new SiloHostBuilder()
     .Build();
 ```
 
-现在，我们将可以与供应商一起装饰Grains`[StorageProvider（ProviderName =“文件”）]`它将以谷粒状态存储在选项中设置的根目录中。
+现在，我们将可以与供应商一起装饰Grains`[StorageProvider(ProviderName =“文件”)]`它将以谷粒状态存储在选项中设置的根目录中。

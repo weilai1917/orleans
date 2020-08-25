@@ -54,7 +54,7 @@ var silo = new SiloHostBuilder()
 这里我们做两件事：
 
 -   设置`棒状的`到`“我的第一个群集”`：这是Orleans集群的唯一ID。使用此ID的所有客户端和silos都可以直接相互通信。你可以选择使用不同的`棒状的`不过，对于不同的部署。
--   设置`服务ID`到`“aspnetsampleap”`：这是应用程序的唯一ID，某些提供程序（如持久性提供程序）将使用它。**此ID应保持稳定，并且在部署期间不会更改**是的。
+-   设置`服务ID`到`“aspnetsampleap”`：这是应用程序的唯一ID，某些提供程序(如持久性提供程序)将使用它。**此ID应保持稳定，并且在部署期间不会更改**是的。
 
 ## 群集提供程序
 
@@ -84,9 +84,9 @@ var silo = new SiloHostBuilder()
 Orleanssilos有两种典型的端点配置：
 
 -   silos到silos端点，用于同一集群中silos之间的通信
--   客户端到silos端点（或网关），用于在同一集群中的客户端和silos之间进行通信
+-   客户端到silos端点(或网关)，用于在同一集群中的客户端和silos之间进行通信
 
-在示例中，我们使用helper方法`.配置终结点（siloport:11111，gatewayport:30000）`它将用于silos到silos通信的端口设置为`11111个`和网关的端口`30000个`是的。此方法将检测要侦听的接口。
+在示例中，我们使用helper方法`.配置终结点(siloport:11111，gatewayport:30000)`它将用于silos到silos通信的端口设置为`11111个`和网关的端口`30000个`是的。此方法将检测要侦听的接口。
 
 这种方法在大多数情况下应该足够了，但是如果需要的话，可以进一步自定义它。下面是如何将外部IP地址与某些端口转发一起使用的示例：
 
@@ -120,19 +120,19 @@ Orleanssilos有两种典型的端点配置：
     [...];
 ```
 
-虽然技术上不需要此步骤（如果未配置，Orleans将扫描当前文件夹中的所有程序集），但鼓励开发人员对此进行配置。此步骤将帮助Orleans加载用户程序集和类型。这些组件称为应用程序部件。所有Grain、Grain接口和序列化器都是使用应用程序部件发现的。
+虽然技术上不需要此步骤(如果未配置，Orleans将扫描当前文件夹中的所有程序集)，但鼓励开发人员对此进行配置。此步骤将帮助Orleans加载用户程序集和类型。这些组件称为应用程序部件。所有Grain、Grain接口和序列化器都是使用应用程序部件发现的。
 
 应用程序部件的配置使用`IApplicationPartsManager应用程序部件管理器`，可以使用`配置应用程序部件`上的扩展方法`IClientBuilder公司`和`IsiloHostBuilder公司`是的。这个`配置应用程序部件`方法接受委托，`操作<iapplicationpartmanager>`是的。
 
 上的以下扩展方法`IApplicationPartManager`支持常见用途：
 
--   `addapplicationpart（程序集）`使用此扩展方法可以添加单个程序集。
+-   `addapplicationpart(程序集)`使用此扩展方法可以添加单个程序集。
 -   `AddFromAppdomain()`添加当前加载在`应用程序域`是的。
--   `AddFromApplicationBaseDirectory()`加载并添加当前基路径中的所有程序集（请参见`appdomain.basedirectory目录`）中。
+-   `AddFromApplicationBaseDirectory()`加载并添加当前基路径中的所有程序集(请参见`appdomain.basedirectory目录`)中。
 
 通过上述方法添加的程序集可以在其返回类型上使用以下扩展方法进行补充，`带程序集的IApplicationPartManager`：
 
 -   `引用()`从添加的零件添加所有引用的部件。这将立即加载任何可传递引用的程序集。忽略程序集加载错误。
 -   `使用代码生成()`为添加的部件生成支持代码并将其添加到部件管理器中。注意，这需要`Microsoft.Orleans.Orleanscodegenerator公司`要安装的包，通常称为运行时代码生成。
 
-类型发现要求提供的应用程序部分包含特定属性。添加生成时代码生成包（`Microsoft.Orleans.CodeGenerator.MSBuild`或`Microsoft.Orleans.OrleansCodeGenerator.Build公司`）对于包含Grain、Grain接口或序列化程序的每个项目，建议使用确保这些属性存在的方法。生成生成时代码只支持C。对于F、Visual Basic和其他.NET语言，可以在配置期间通过`使用代码生成()`上述方法。有关代码生成的更多信息，请参见[相应部分](../../grains/code_generation.md)是的。
+类型发现要求提供的应用程序部分包含特定属性。添加生成时代码生成包(`Microsoft.Orleans.CodeGenerator.MSBuild`或`Microsoft.Orleans.OrleansCodeGenerator.Build公司`)对于包含Grain、Grain接口或序列化程序的每个项目，建议使用确保这些属性存在的方法。生成生成时代码只支持C。对于F、Visual Basic和其他.NET语言，可以在配置期间通过`使用代码生成()`上述方法。有关代码生成的更多信息，请参见[相应部分](../../grains/code_generation.md)是的。

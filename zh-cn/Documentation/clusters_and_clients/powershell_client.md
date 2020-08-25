@@ -33,7 +33,7 @@ PS> Import-Module .\projectOutputDir\Orleans.psd1
 PS> Save-Module -Name OrleansPSUtils -Path <path>
 ```
 
--   在powershell模块路径上安装（**推荐的方法**），只需运行：
+-   在powershell模块路径上安装(**推荐的方法**)，只需运行：
 
 ```powershell
 PS> Install-Module -Name OrleansPSUtils
@@ -53,7 +53,7 @@ PS> Import-Module OrleansPSUtils
 
 **注意**：如果是从源代码生成，则必须使用`.psd1段`而不是使用模块名，因为它不在`$env:psmodulepath路径`powershell运行时变量。同样，强烈建议您改为从powershell库安装。
 
-导入模块（这意味着该模块已加载到powershell会话中）后，将有以下cmdlet可用：
+导入模块(这意味着该模块已加载到powershell会话中)后，将有以下cmdlet可用：
 
 -   `启动GrainClient`
 -   `停止GrainClient`
@@ -71,21 +71,21 @@ PS> Import-Module OrleansPSUtils
 
 -   **`启动grainclient[-configfilepath]<string>[[-timeout]<timespan>]`**
 
-    -   将使用提供的文件路径，如中所示`grainclient.initialize（文件路径）`
+    -   将使用提供的文件路径，如中所示`grainclient.initialize(文件路径)`
 
 -   **`启动grainclient[-configfile]<fileinfo>[[-timeout]<timespan>]`**
 
-    -   使用`系统文件信息`类表示配置文件，就像`grainclient.initialize（文件信息）`
+    -   使用`系统文件信息`类表示配置文件，就像`grainclient.initialize(文件信息)`
 
 -   **`启动grainclient[-config]<clientconfiguration>[[-timeout]<timeSPAN>]`**
 
-    -   使用`Orleans.runtime.configuration.clientconfiguration`就像在`grainclient.initialize（配置）`
+    -   使用`Orleans.runtime.configuration.clientconfiguration`就像在`grainclient.initialize(配置)`
 
 -   **`启动grainclient[-gatewayaddress]<ipendpoint>[[-overrideconfig]<bool>[[-timeout]<timespan>]`**
 
     -   采用Orleans群集网关地址终结点
 
-**注意**：的`超时`参数是可选的，如果它被告知并且大于`System.TimeSpan.Zero系统.TimeSpan.Zero`，它将调用`orleans.grainclient.setResponseTimeout（超时）`在内部。
+**注意**：的`超时`参数是可选的，如果它被告知并且大于`System.TimeSpan.Zero系统.TimeSpan.Zero`，它将调用`orleans.grainclient.setResponseTimeout(超时)`在内部。
 
 #### 停止GrainClient
 
@@ -95,7 +95,7 @@ PS> Import-Module OrleansPSUtils
 
 包装物`grainclient.grainfactory.getgrain<t>()`以及它的超载。
 
-强制参数是`-粒状`以及`-xxx键`对于Orleans支持的当前Grains密钥类型（`一串`，请`指导方针`我是说，`长的`）还有`-键扩展`可以用在有复合键的Grains上。
+强制参数是`-粒状`以及`-xxx键`对于Orleans支持的当前Grains密钥类型(`一串`，请`指导方针`我是说，`长的`)还有`-键扩展`可以用在有复合键的Grains上。
 
 此cmdlet返回作为上的参数传递的类型的Grain引用`-粒状`是的。
 
@@ -117,6 +117,6 @@ Hello Gutemberg!
 PS> Stop-GrainClient
 ```
 
-我们计划更新这个页面，因为我们在powershell上引入了更多的cmdlet，如useobservators、streams和其他orleans核心特性。我们希望这能帮助人们成为自动化的起点。一如既往，这是一项正在进行的工作，我们热爱贡献！：）
+我们计划更新这个页面，因为我们在powershell上引入了更多的cmdlet，如useobservators、streams和其他orleans核心特性。我们希望这能帮助人们成为自动化的起点。一如既往，这是一项正在进行的工作，我们热爱贡献！：)
 
 请注意，目的不是在powershell上重新实现整个客户端，而是给it和devops团队一种与grains交互的方式，而无需实现一个.net应用程序。

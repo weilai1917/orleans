@@ -39,7 +39,7 @@ namespace Tests
 }
 ```
 
-由于启动内存集群的开销，您可能希望创建一个`测试集群`并在多个测试案例中重复使用。例如，可以使用xUnit的类或集合夹具来完成此操作（请参见<https://xunit.github.io/docs/shared-context.html>更多细节）。
+由于启动内存集群的开销，您可能希望创建一个`测试集群`并在多个测试案例中重复使用。例如，可以使用xUnit的类或集合夹具来完成此操作(请参见<https://xunit.github.io/docs/shared-context.html>更多细节)。
 
 为了分享一个`测试集群`在多个测试用例之间，首先创建一个夹具类型：
 
@@ -137,7 +137,7 @@ public class TestSiloConfigurations : ISiloBuilderConfigurator {
 
 ## 使用嘲弄
 
-Orleans还使模拟系统的许多部分成为可能，并且在许多情况下，这是对grains进行单元测试的最简单方法。这种方法确实有局限性（例如，围绕调度重入和序列化），并且可能要求Grain包含仅由单元测试使用的代码。的[OrleansTestKit](https://github.com/OrleansContrib/OrleansTestKit)提供了一种替代方法，可以绕开许多这些限制。
+Orleans还使模拟系统的许多部分成为可能，并且在许多情况下，这是对grains进行单元测试的最简单方法。这种方法确实有局限性(例如，围绕调度重入和序列化)，并且可能要求Grain包含仅由单元测试使用的代码。的[OrleansTestKit](https://github.com/OrleansContrib/OrleansTestKit)提供了一种替代方法，可以绕开许多这些限制。
 
 例如，让我们想象一下我们正在测试的Grains与其他Grains相互作用。为了能够模拟其他Grains，我们还需要模拟`grain工厂`被测Grains的成员。默认`grain工厂`是正常的`受保护的`属性，但大多数模拟框架要求将属性设置为`上市`和`虚拟`才能嘲笑他们。所以我们要做的第一件事就是`grain工厂`都`上市`和`虚拟`属性：
 

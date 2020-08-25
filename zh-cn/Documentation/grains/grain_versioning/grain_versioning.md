@@ -28,12 +28,12 @@ public interface IVersionUpgradeTestGrain : IGrainWithIntegerKey {}
 
 -   如果不存在激活，将创建兼容的激活
 -   如果激活存在：
-    -   如果当前的不兼容，它将被停用并创建新的兼容的（请参阅[版本选择器策略](version_selector_strategy.md))
-    -   如果当前版本兼容（请参见[相容grains](compatible_grains.md))，访问将正常处理。
+    -   如果当前的不兼容，它将被停用并创建新的兼容的(请参阅[版本选择器策略](version_selector_strategy.md))
+    -   如果当前版本兼容(请参见[相容grains](compatible_grains.md))，访问将正常处理。
 
 默认情况下：
 
--   所有版本化的grains只能向后兼容（参见[向后兼容准则](backward_compatibility_guidelines.md)和[相容grains](compatible_grains.md)). 这意味着v1grains可以调用v2grains，但v2grains不能调用v1。
+-   所有版本化的grains只能向后兼容(参见[向后兼容准则](backward_compatibility_guidelines.md)和[相容grains](compatible_grains.md)). 这意味着v1grains可以调用v2grains，但v2grains不能调用v1。
 -   当集群中存在多个版本时，新的激活将随机存储在兼容的silos上。
 
 您可以通过选项更改此默认行为`GrainVersioning选项`:

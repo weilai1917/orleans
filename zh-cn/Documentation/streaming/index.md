@@ -9,7 +9,7 @@ Orleans v.1.0.0增加了对编程模型的流扩展的支持。流扩展提供�
 
 ## 我为什么要在乎？
 
-如果您已经知道所有[流处理](https://confluentinc.wordpress.com/2015/01/29/making-sense-of-stream-processing/)并且熟悉诸如[活动中心](http://azure.microsoft.com/en-us/services/event-hubs/)，[卡夫卡](http://kafka.apache.org/)，[Azure流分析](http://azure.microsoft.com/en-us/services/stream-analytics/)，[阿帕奇风暴](https://storm.apache.org/)，[Apache Spark流](https://spark.apache.org/streaming/)和[.NET中的反应性扩展（Rx）](https://msdn.microsoft.com/en-us/data/gg577609.aspx)，您可能会问为什么要关心。**为什么我们还需要另一个流处理系统，以及Actor与流之间的关系？** [“为什么OrleansStreams？”](streams_why.md)是要回答这个问题。
+如果您已经知道所有[流处理](https://confluentinc.wordpress.com/2015/01/29/making-sense-of-stream-processing/)并且熟悉诸如[活动中心](http://azure.microsoft.com/en-us/services/event-hubs/)，[卡夫卡](http://kafka.apache.org/)，[Azure流分析](http://azure.microsoft.com/en-us/services/stream-analytics/)，[阿帕奇风暴](https://storm.apache.org/)，[Apache Spark流](https://spark.apache.org/streaming/)和[.NET中的反应性扩展(Rx)](https://msdn.microsoft.com/en-us/data/gg577609.aspx)，您可能会问为什么要关心。**为什么我们还需要另一个流处理系统，以及Actor与流之间的关系？** [“为什么OrleansStreams？”](streams_why.md)是要回答这个问题。
 
 ## 程式设计模型
 
@@ -25,7 +25,7 @@ Orleans Streams编程模型背后有许多原则。
 
 ## 编程API
 
-应用程序通过与众所周知的API非常相似的API与流进行交互[.NET中的反应性扩展（Rx）](https://msdn.microsoft.com/en-us/data/gg577609.aspx)， 通过使用[`Orleans.Streams.IAsyncStream <T>`](https://github.com/dotnet/orleans/blob/master/src/Orleans/Streams/Core/IAsyncStream.cs)实现\
+应用程序通过与众所周知的API非常相似的API与流进行交互[.NET中的反应性扩展(Rx)](https://msdn.microsoft.com/en-us/data/gg577609.aspx)， 通过使用[`Orleans.Streams.IAsyncStream <T>`](https://github.com/dotnet/orleans/blob/master/src/Orleans/Streams/Core/IAsyncStream.cs)实现\
 [`Orleans.Streams.IAsyncObserver <T>`](https://github.com/dotnet/orleans/blob/master/src/Orleans/Streams/Core/IAsyncObserver.cs)和[`Orleans.Streams.IAsyncObservable <T>`](https://github.com/dotnet/orleans/blob/master/src/Orleans/Streams/Core/IAsyncObservable.cs)接口。
 
 在下面的典型示例中，设备生成一些数据，这些数据作为HTTP请求发送到云中运行的服务。在前端服务器中运行的Orleans客户端收到此HTTP调用，并将数据发布到匹配的设备流中：
@@ -40,7 +40,7 @@ public async Task OnHttpCall(DeviceEvent deviceEvent)
 }
 ```
 
-在下面的另一个示例中，聊天用户（实现为Orleans Grain）加入聊天室，获取该房间中所有其他用户生成的聊天消息流的句柄并进行订阅。请注意，聊天用户不需要了解聊天室的Grain本身（我们的系统中可能没有这种Grain）或该组中产生消息的其他用户。不用说，要生成聊天流，用户无需知道当前订阅了谁。这说明了如何将聊天用户在时间和空间上完全分离。
+在下面的另一个示例中，聊天用户(实现为Orleans Grain)加入聊天室，获取该房间中所有其他用户生成的聊天消息流的句柄并进行订阅。请注意，聊天用户不需要了解聊天室的Grain本身(我们的系统中可能没有这种Grain)或该组中产生消息的其他用户。不用说，要生成聊天流，用户无需知道当前订阅了谁。这说明了如何将聊天用户在时间和空间上完全分离。
 
 ```csharp
 public class ChatUser: Grain
@@ -70,9 +70,9 @@ public class ChatUser: Grain
 
 ## 流语义
 
-**流订阅语义**：Orleans Streams保证Stream Subscription操作的顺序一致性。具体来说，当消费者订阅流时，一旦`任务`如果代表订阅操作已成功解决，则使用者将看到订阅后生成的所有事件。此外，可倒带流允许通过使用以下内容从过去的任意时间点进行订阅`StreamSequenceToken`（可以找到更多详细信息[这里](stream_providers.md)）。
+**流订阅语义**：Orleans Streams保证Stream Subscription操作的顺序一致性。具体来说，当消费者订阅流时，一旦`Task`如果代表订阅操作已成功解决，则使用者将看到订阅后生成的所有事件。此外，可倒带流允许通过使用以下内容从过去的任意时间点进行订阅`StreamSequenceToken`(可以找到更多详细信息[这里](stream_providers.md))。
 
-**个人流事件交付保证**：单个事件传递的保证取决于单个流提供者。一些提供仅尽最大可能的一次传送（例如简单消息流（SMS）），而其他一些提供至少一次的传送（例如Azure队列流）。甚至可以构建一个将保证一次交付的流提供程序（我们还没有这样的提供程序，但是可以构建一个）。
+**个人流事件交付保证**：单个事件传递的保证取决于单个流提供者。一些提供仅尽最大可能的一次传送(例如简单消息流(SMS))，而其他一些提供至少一次的传送(例如Azure队列流)。甚至可以构建一个将保证一次交付的流提供程序(我们还没有这样的提供程序，但是可以构建一个)。
 
 **活动交付单**：事件顺序还取决于特定的流提供程序。在SMS流中，生产者通过控制其发布方式来显式控制消费者看到的事件的顺序。Azure队列流不保证FIFO顺序，因为基础Azure队列在故障情况下不保证顺序。应用程序还可以通过使用以下命令控制自己的流交付顺序`StreamSequenceToken`。
 

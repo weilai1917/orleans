@@ -13,15 +13,15 @@ title: Orleans Blog
 
 在针对我们的测试集群的压力/负载测试中，我们看到了严重的性能问题和大量事务失败。很大一部分事务一直暂停直到超时。
 
-## [德米特里·瓦库连科（Dmitry Vakulenko）](dmitry-vakulenko.md)
+## [德米特里·瓦库连科(Dmitry Vakulenko)](dmitry-vakulenko.md)
 
-[谢尔盖·拜科夫（Sergey Bykov）](https://github.com/sergeybykov)2018/11/19下午1:57:59
+[谢尔盖·拜科夫(Sergey Bykov)](https://github.com/sergeybykov)2018/11/19下午1:57:59
 
 * * *
 
 Dmitry Vakulenko三年前加入了Orleans开源社区，并开始提交侧重于提高Orleans代码库性能的请求。在核心团队的现任和前任成员之外，他成为了最多产的贡献者。
 
-德米特里（Dmitry）也做出了其他改进，但他的激情始终是表现。由于增量优化的复合性质，随着时间的流逝，这些改进加起来达到了惊人的总和。我们的保守估计是，德米特里的贡献使Orleans的表现提高了约2.6倍。
+德米特里(Dmitry)也做出了其他改进，但他的激情始终是表现。由于增量优化的复合性质，随着时间的流逝，这些改进加起来达到了惊人的总和。我们的保守估计是，德米特里的贡献使Orleans的表现提高了约2.6倍。
 
 ## [宣布Orleans2.1](announcing-orleans-2.1.md)
 

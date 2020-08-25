@@ -15,7 +15,7 @@ Orleans采用了对象，接口，async/await和try/catch等熟悉的概念，�
 
 ![A grain is composed of a stable identity, behavior, and state](../Images/grain_formulation.svg)
 
-任何Orleans应用程序的基本构建块都是*grain*. grains是由用户定义的身份、行为和状态组成的实体。grains标识是用户定义的键，使grains始终可供调用。Grains可以通过强类型通信接口（contract）被其他Grains或Web前端等外部客户端调用。每个grains都是实现一个或多个这些接口的类的一个实例。
+任何Orleans应用程序的基本构建块都是*grain*. grains是由用户定义的身份、行为和状态组成的实体。grains标识是用户定义的键，使grains始终可供调用。Grains可以通过强类型通信接口(contract)被其他Grains或Web前端等外部客户端调用。每个grains都是实现一个或多个这些接口的类的一个实例。
 
 Grains可以具有挥发性和/或持久性状态，可以存储在任何存储系统中。因此，grains隐式地划分应用程序状态，从而实现自动可伸缩性并简化故障恢复。当Grain处于活动状态时，Grain状态被保存在内存中，从而降低了延迟和数据存储的负载。
 
@@ -90,7 +90,7 @@ public class ThermostatGrain : Grain, IThermostat, IThermostatControl
 
 Orleans运行时为应用程序运行时的主要组件是*silos*，负责寄存Grains。通常，一组silos作为集群运行，以实现可伸缩性和容错性。当作为集群运行时，silos相互协调以分配工作、检测并从故障中恢复。运行时使集群中托管的grains能够像在单个进程中一样相互通信。
 
-除了核心编程模型之外，silos还为grains提供了一组运行时服务，例如计时器、提醒（persistent timers）、持久性、事务、流等。见[特色部分](#特征)下面是更多细节。
+除了核心编程模型之外，silos还为grains提供了一组运行时服务，例如计时器、提醒(persistent timers)、持久性、事务、流等。见[特色部分](#特征)下面是更多细节。
 
 Web前端和其他外部客户端使用客户端库调用集群中的grains，该库自动管理网络通信。为了简单起见，客户端也可以与silos在同一进程中共同托管。
 
@@ -104,11 +104,11 @@ Orleans提供了一个简单的持久性模型，确保在处理请求之前，�
 
 ### 分布式ACID事务
 
-除了上面描述的简单持久性模型之外，grains还可以*事务状态*. 多个grains可以参与[酸性](https://en.wikipedia.org/wiki/ACID)不管事务的状态最终存储在何处。Orleans的事务是分布式和分散的（没有中央事务管理器或事务协调器），并且[可串行隔离](https://en.wikipedia.org/wiki/Isolation_(database_systems)#Isolation_levels). 有关Orleans交易的更多信息，请参阅[文档](grains/transactions.md)以及[微软研究院技术报告](https://www.microsoft.com/en-us/research/publication/transactions-distributed-actors-cloud-2/).
+除了上面描述的简单持久性模型之外，grains还可以*事务状态*. 多个grains可以参与[酸性](https://en.wikipedia.org/wiki/ACID)不管事务的状态最终存储在何处。Orleans的事务是分布式和分散的(没有中央事务管理器或事务协调器)，并且[可串行隔离](https://en.wikipedia.org/wiki/Isolation_(database_systems)#Isolation_levels). 有关Orleans交易的更多信息，请参阅[文档](grains/transactions.md)以及[微软研究院技术报告](https://www.microsoft.com/en-us/research/publication/transactions-distributed-actors-cloud-2/).
 
 ### Streams
 
-流帮助开发人员以近乎实时的方式处理一系列数据项。Orleans的Streams*管理*：在粒度或客户端发布到流或订阅流之前，不需要创建或注册流。这使得流生产者和消费者之间以及与基础设施之间的更大程度的分离。流处理是可靠的：grains可以存储检查点（游标），并在激活期间或之后的任何时间重置为存储的检查点。Streams支持向使用者批量传递消息，以提高效率和恢复性能。流由排队服务支持，如Azure事件中心、Amazon Kinesis等。可以将任意数量的流多路复用到较小数量的队列上，并且处理这些队列的责任在集群中均衡。
+流帮助开发人员以近乎实时的方式处理一系列数据项。Orleans的Streams*管理*：在粒度或客户端发布到流或订阅流之前，不需要创建或注册流。这使得流生产者和消费者之间以及与基础设施之间的更大程度的分离。流处理是可靠的：grains可以存储检查点(游标)，并在激活期间或之后的任何时间重置为存储的检查点。Streams支持向使用者批量传递消息，以提高效率和恢复性能。流由排队服务支持，如Azure事件中心、Amazon Kinesis等。可以将任意数量的流多路复用到较小数量的队列上，并且处理这些队列的责任在集群中均衡。
 
 ### 计时器&提醒
 
@@ -116,7 +116,7 @@ Orleans提供了一个简单的持久性模型，确保在处理请求之前，�
 
 ### 灵活的Grains存储
 
-当一个Grains在Orleans被激活时，运行时决定在哪个服务器（silos）上激活该Grains。这就是所谓的Grains存储。Orleans的布局过程是完全可配置的：开发人员可以从一组现成的布局策略中进行选择，例如随机、首选本地和基于负载的，或者可以配置自定义逻辑。这样就可以充分灵活地决定在哪里产生grains。例如，可以将粒度存储在服务器上，靠近它们需要操作的资源或与之通信的其他粒度。
+当一个Grains在Orleans被激活时，运行时决定在哪个服务器(silos)上激活该Grains。这就是所谓的Grains存储。Orleans的布局过程是完全可配置的：开发人员可以从一组现成的布局策略中进行选择，例如随机、首选本地和基于负载的，或者可以配置自定义逻辑。这样就可以充分灵活地决定在哪里产生grains。例如，可以将粒度存储在服务器上，靠近它们需要操作的资源或与之通信的其他粒度。
 
 ### Grains版本化&异构集群
 
@@ -124,11 +124,11 @@ Orleans提供了一个简单的持久性模型，确保在处理请求之前，�
 
 ### 弹性伸缩性&容错
 
-Orleans的设计是弹性伸缩的。当silos加入集群时，它能够接受新的激活，当silos离开集群时（由于规模缩小或机器故障），在该silos上激活的Grains将根据需要在其余silos上重新激活。一个Orleans集群可以缩小到一个silos。支持弹性伸缩性的相同属性也支持容错：集群自动检测并从故障中快速恢复。
+Orleans的设计是弹性伸缩的。当silos加入集群时，它能够接受新的激活，当silos离开集群时(由于规模缩小或机器故障)，在该silos上激活的Grains将根据需要在其余silos上重新激活。一个Orleans集群可以缩小到一个silos。支持弹性伸缩性的相同属性也支持容错：集群自动检测并从故障中快速恢复。
 
 ### 运行在任何地方
 
-Orleans运行任何支持.NETCore或.NETFramework的地方。这包括在Linux、Windows和macOS上托管，并部署到Kubernetes、虚拟机或物理机、本地或云中，以及PaaS服务（如Azure云服务）。
+Orleans运行任何支持.NETCore或.NETFramework的地方。这包括在Linux、Windows和macOS上托管，并部署到Kubernetes、虚拟机或物理机、本地或云中，以及PaaS服务(如Azure云服务)。
 
 ### 无状态 Worker
 

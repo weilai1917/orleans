@@ -7,11 +7,11 @@ title: Activation Garbage Collection
 
 如核心概念部分所述，*grains活化*是一个grain类的内存实例，由orleans运行时根据需要自动创建，作为grain的临时物理实施例。
 
-激活垃圾收集（activation gc）是从内存中删除未使用的grains激活的过程。它在概念上类似于.net中的内存垃圾收集工作方式。然而，激活gc只考虑特定grains激活空闲的时间。内存使用率不是一个因素。
+激活垃圾收集(activation gc)是从内存中删除未使用的grains激活的过程。它在概念上类似于.net中的内存垃圾收集工作方式。然而，激活gc只考虑特定grains激活空闲的时间。内存使用率不是一个因素。
 
 ## 激活gc的工作原理
 
-激活gc的一般过程包括在silos中的orleans运行时定期扫描在配置的时间段（收集期限）内根本没有使用的Grains激活。一旦Grains激活闲置了那么长时间，它就会被停用。停用过程开始于运行时调用grain的`OnDeactivateAsync()`方法，并通过从silos的所有数据结构中移除对Grain Activation对象的引用来完成，以便.NET GC回收内存。
+激活gc的一般过程包括在silos中的orleans运行时定期扫描在配置的时间段(收集期限)内根本没有使用的Grains激活。一旦Grains激活闲置了那么长时间，它就会被停用。停用过程开始于运行时调用grain的`OnDeactivateAsync()`方法，并通过从silos的所有数据结构中移除对Grain Activation对象的引用来完成，以便.NET GC回收内存。
 
 因此，在不给应用程序代码增加负担的情况下，只有最近使用的grains激活会保留在内存中，而不再使用的激活会被自动删除，它们使用的系统资源会被运行时回收。
 
@@ -23,7 +23,7 @@ title: Activation Garbage Collection
 
 **对于Grains活化收集而言，什么不算“活跃”**
 
--   执行访问（对另一个Grains或对一个Orleans客户）
+-   执行访问(对另一个Grains或对一个Orleans客户)
 -   定时器事件
 -   不涉及orleans框架的任意io操作或外部调用
 
@@ -49,13 +49,13 @@ protected void DelayDeactivation(TimeSpan timeSpan)
 
 **情节：**
 
-1）激活垃圾收集设置指定10分钟的期限，Grains正在调用`延迟停用（TimeSpan.FromMinutes（20））`，它将导致至少20分钟内无法收集此激活。
+1)激活垃圾收集设置指定10分钟的期限，Grains正在调用`延迟停用(TimeSpan.FromMinutes(20))`，它将导致至少20分钟内无法收集此激活。
 
-2）激活垃圾收集设置指定10分钟的期限，Grains正在调用`延迟停用（TimeSpan.FromMinutes（5））`，如果没有额外访问，则激活将在10分钟后收集。
+2)激活垃圾收集设置指定10分钟的期限，Grains正在调用`延迟停用(TimeSpan.FromMinutes(5))`，如果没有额外访问，则激活将在10分钟后收集。
 
-3）激活垃圾收集设置指定10分钟的期限，Grains正在调用`延迟停用（TimeSpan.FromMinutes（5））`，7分钟后，如果没有额外的调用，则会在17分钟后从时间0开始收集激活。
+3)激活垃圾收集设置指定10分钟的期限，Grains正在调用`延迟停用(TimeSpan.FromMinutes(5))`，7分钟后，如果没有额外的调用，则会在17分钟后从时间0开始收集激活。
 
-4）激活垃圾收集设置指定10分钟的期限，Grains正在调用`延迟停用（TimeSpan.FromMinutes（20））`，7分钟后，此Grains上还有另一个调用，如果没有额外的调用，则将在从时间0开始的20分钟后收集激活。
+4)激活垃圾收集设置指定10分钟的期限，Grains正在调用`延迟停用(TimeSpan.FromMinutes(20))`，7分钟后，此Grains上还有另一个调用，如果没有额外的调用，则将在从时间0开始的20分钟后收集激活。
 
 请注意`延迟停用`无法100%保证在指定的时间段到期之前不会停用Grains激活。有些失效案例可能导致Grains过早失活。也就是说`延迟停用` **不能用作永久“固定”内存中的grains激活或固定到特定silos的方法**是的。`延迟停用`这仅仅是一种优化机制，可以帮助降低Grains随着时间的推移被停用和重新激活的总成本，如果这很重要的话。在大多数情况下，不需要使用`延迟停用`完全。
 

@@ -28,7 +28,7 @@ clientBuilder.AddSimpleMessageStreamProvider("SMSProvider");
 
 ## 生产活动
 
-为流生成事件相对容易。您应该首先访问在上述配置中定义的流提供程序（`短信提供商`），然后选择一个流并将数据推送到该流。
+为流生成事件相对容易。您应该首先访问在上述配置中定义的流提供程序(`短信提供商`)，然后选择一个流并将数据推送到该流。
 
 ```csharp
 //Pick a guid for a chat room grain and chat room stream
@@ -52,7 +52,7 @@ RegisterTimer(s =>
 
 ## 订阅和接收流数据
 
-为了接收数据，我们可以使用隐式/显式订阅，这在手册的其他页面中有完整介绍。在这里，我们使用隐式订阅，这更容易。当Grains类型想要隐式订阅流时，它使用属性`ImplicitStreamSubscription（命名空间）]`。
+为了接收数据，我们可以使用隐式/显式订阅，这在手册的其他页面中有完整介绍。在这里，我们使用隐式订阅，这更容易。当Grains类型想要隐式订阅流时，它使用属性`ImplicitStreamSubscription(命名空间)]`。
 
 对于我们的情况，我们将定义如下的ReceiverGrain：
 

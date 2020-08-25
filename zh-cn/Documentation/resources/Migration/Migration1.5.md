@@ -15,7 +15,7 @@ Orleans2.0.0建立在.NET标准2.0之上。因此，您需要升级开发工具�
 
 ## 群众或部队的集合
 
-### 配置和启动silos（使用新的SiloBuilder API和旧的ClusterConfiguration对象）
+### 配置和启动silos(使用新的SiloBuilder API和旧的ClusterConfiguration对象)
 
 Orleans 2.0中有许多新的选项类，它们为配置silos提供了一种新的方法。为了便于迁移到新的API，有一个可选的向后兼容包，`Microsoft.Orleans.Runtime.遗产`，它提供了从旧的1.x配置API到新的配置API的桥。
 
@@ -73,7 +73,7 @@ public class Program
 }
 ```
 
-### 配置和连接客户端（使用新的ClientBuilder API和旧的ClientConfiguration对象）
+### 配置和连接客户端(使用新的ClientBuilder API和旧的ClientConfiguration对象)
 
 orleans2.0中有许多新的选项类，它们为配置客户端提供了一种新的方法。为了便于迁移到新的API，有一个可选的向后兼容包，`Microsoft.Orleans.Core.遗产`，它提供了从旧的1.x配置API到新的配置API的桥。
 
@@ -117,7 +117,7 @@ siloBuilder.AddLogging(builder=>builder.SetMinimumLevel(LogLevel.Debug);
 
 有关日志筛选的详细信息，请参阅<https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging>;
 
-将TraceToConsole配置为`是的`，需要参考`Microsoft.Extensions.Logging.控制台`打包后使用`添加控制台()`扩展方法`ILoggingBuilder`. 同样的`跟踪文件名`和`跟踪模式`，如果要将消息记录到文件中，则需要使用`AddFile（“文件名”）`方法`ILoggingBuilder`.
+将TraceToConsole配置为`是的`，需要参考`Microsoft.Extensions.Logging.控制台`打包后使用`添加控制台()`扩展方法`ILoggingBuilder`. 同样的`跟踪文件名`和`跟踪模式`，如果要将消息记录到文件中，则需要使用`AddFile(“文件名”)`方法`ILoggingBuilder`.
 
 如果您仍然想使用消息填充特性，您需要通过`ILoggingBuilder`也。消息填充功能存在于`Microsoft.Orleans.Logging.遗产`包裹。所以您需要首先添加对该包的依赖性。然后通过`ILoggingBuilder`. 下面是一个如何配置它的示例`ISiloHostBuilder`
 
@@ -142,7 +142,7 @@ siloBuilder.AddLogging(builder=>builder.SetMinimumLevel(LogLevel.Debug);
 
 如果您投资于的自定义实现，则可以使用此功能`ILogConsumer公司`无法将它们转换为`iLogger提供程序`短期内。
 
-`Logger GetLogger（字符串loggerName）`方法`Grains`基类和`IProviderRuntime`，和`记录器日志{get；}`在2.0中，IStorageProvider上的方法仍作为不推荐使用的功能进行维护。您仍然可以在迁移Orleans遗留日志的过程中使用它。但我们建议你尽快离开它们。
+`Logger GetLogger(字符串loggerName)`方法`Grains`基类和`IProviderRuntime`，和`记录器日志{get；}`在2.0中，IStorageProvider上的方法仍作为不推荐使用的功能进行维护。您仍然可以在迁移Orleans遗留日志的过程中使用它。但我们建议你尽快离开它们。
 
 ## 提供程序配置
 
@@ -154,6 +154,6 @@ siloBuilder.AddLogging(builder=>builder.SetMinimumLevel(LogLevel.Debug);
 
 服务ID通常用作密钥的一部分，用于持久化需要在整个服务生命周期中保持连续性的数据。例如Grain状态、提醒和持久流的队列。另一方面，集群成员关系表中的数据只在其集群的范围内有意义，因此通常是从集群ID中键入的。
 
-在2.0之前，Orleans提供者的行为有时与使用服务ID和集群ID（以前也称为部署ID）不一致。由于这种统一性以及提供者配置API的整体变化，一些提供者写入存储器的数据可能会改变位置或密钥。对此更改敏感的提供程序示例是Azure队列流提供程序。
+在2.0之前，Orleans提供者的行为有时与使用服务ID和集群ID(以前也称为部署ID)不一致。由于这种统一性以及提供者配置API的整体变化，一些提供者写入存储器的数据可能会改变位置或密钥。对此更改敏感的提供程序示例是Azure队列流提供程序。
 
 如果您正在将现有服务从1.x迁移到2.0，并且需要保持与您在服务中使用的提供程序持久化的数据的位置或键相关的向后兼容性，请验证数据是否位于您的服务或提供商预期的位置。如果您的服务碰巧依赖于1.x提供程序对服务ID和Cluster ID的错误使用，则可以重写`俱乐部选项`通过调用`ISiloHostBuilder.AddProviderClusterOptions()`或`IClientBuilder.AddProviderClusterOptions()`并强制它从存储器中的1.x位置读/写数据

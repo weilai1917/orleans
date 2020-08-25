@@ -5,7 +5,7 @@ title: Running the Application
 
 ### Orleans应用
 
-典型的Orleans应用程序由一组服务器进程（silo）和一组客户端进程（通常是web服务器）组成，这些进程接收外部请求，将它们转换为grain方法调用，并返回结果。因此，运行Orleans应用程序首先需要启动一个silos集群。出于测试目的，集群可以由单个silos组成。对于可靠的生产部署，我们显然希望集群中有多个silos用于容错和扩展。
+典型的Orleans应用程序由一组服务器进程(silo)和一组客户端进程(通常是web服务器)组成，这些进程接收外部请求，将它们转换为grain方法调用，并返回结果。因此，运行Orleans应用程序首先需要启动一个silos集群。出于测试目的，集群可以由单个silos组成。对于可靠的生产部署，我们显然希望集群中有多个silos用于容错和扩展。
 
 集群运行后，我们可以启动一个或多个客户端进程，这些进程连接到集群并可以向grains发送请求。客户端连接到silos-gateway上的特殊tcp端点。默认情况下，群集中的每个silos都启用了客户端网关。因此，客户可以同时连接到所有silos，以获得更好的性能和弹性。
 
@@ -58,4 +58,4 @@ await client.Connect();
 
 ### 生产配置
 
-我们在这里使用的配置示例用于测试与`本地服务器`是的。在生产环境中，silos和客户端通常运行在不同的服务器上，并使用可靠的群集配置选项之一进行配置。您可以在《配置指南》]（../clusters\\u and\\u clients/configuration\\u guide/index.md）和[群集管理](../implementation/cluster_management.md)是的。
+我们在这里使用的配置示例用于测试与`本地服务器`是的。在生产环境中，silos和客户端通常运行在不同的服务器上，并使用可靠的群集配置选项之一进行配置。您可以在《配置指南》](../clusters\\u and\\u clients/configuration\\u guide/index.md)和[群集管理](../implementation/cluster_management.md)是的。

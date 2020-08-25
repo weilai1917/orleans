@@ -142,7 +142,7 @@ public interface IMyGrain : IGrainWithIntegerKey
 }
 ```
 
-2.  当您确定没有进行V1调用时（实际上V1不再部署在正在运行的集群中），则在部署V3时删除V1方法
+2.  当您确定没有进行V1调用时(实际上V1不再部署在正在运行的集群中)，则在部署V3时删除V1方法
     ```cs
     [Version(3)]
     public interface IMyGrain : IGrainWithIntegerKey

@@ -30,10 +30,10 @@ title: Tutorial One
 
 注意：您可以在c＃中为这些项目中的每个项目使用默认项目类型。您将在下面为每个项目提供的代码替换默认代码。您可能还需要添加`使用`陈述。
 
-1.  首先在新解决方案中创建一个控制台应用程序（.NET Core）项目。调用项目部分`silos`并命名解决方案`Orleans世界`。
-2.  添加另一个控制台应用程序（.NET Core）项目并将其命名`客户`。
-3.  添加一个类库（.NET标准）并命名`grains接口`。
-4.  添加另一个类库（.NET标准）并命名`Grains`。
+1.  首先在新解决方案中创建一个控制台应用程序(.NET Core)项目。调用项目部分`silos`并命名解决方案`Orleans世界`。
+2.  添加另一个控制台应用程序(.NET Core)项目并将其命名`客户`。
+3.  添加一个类库(.NET标准)并命名`grains接口`。
+4.  添加另一个类库(.NET标准)并命名`Grains`。
 
 #### 删除默认源文件
 
@@ -169,7 +169,7 @@ namespace OrleansBasics
 
 ### 创建客户端– Program.cs
 
-最后，我们需要配置一个客户端与我们的Grains进行通信，将其连接到集群（其中有一个silos），然后调用Grains。请注意，群集配置必须与我们用于silos的配置匹配。有关客户端的更多信息，请参见[集群和客户](http://dotnet.github.io/orleans/Documentation/clusters_and_clients/index.html)Orleans文档中的部分。
+最后，我们需要配置一个客户端与我们的Grains进行通信，将其连接到集群(其中有一个silos)，然后调用Grains。请注意，群集配置必须与我们用于silos的配置匹配。有关客户端的更多信息，请参见[集群和客户](http://dotnet.github.io/orleans/Documentation/clusters_and_clients/index.html)Orleans文档中的部分。
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -240,7 +240,7 @@ namespace OrleansBasics
 
 ## 运行应用程序
 
-构建解决方案并运行silos。在收到确认信息后，表示正在运行silos（“按Enter键以终止...”），然后运行客户端。成功看起来像这样：
+构建解决方案并运行silos。在收到确认信息后，表示正在运行silos(“按Enter键以终止...”)，然后运行客户端。成功看起来像这样：
 
 ![](../images/orleansbasics_success.png)
 

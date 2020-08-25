@@ -21,7 +21,7 @@ title: Links
 
 #### 介绍Orleans
 
-[Microsoft Orleans v2.0-面向初学者和专家的综合指南（PowerPoint）](https://github.com/lmagyar/Presentations/#microsoft-orleans-v20)
+[Microsoft Orleans v2.0-面向初学者和专家的综合指南(PowerPoint)](https://github.com/lmagyar/Presentations/#microsoft-orleans-v20)
 
 [Orleans计划初探](http://convective.wordpress.com/2014/04/20/a-first-look-at-project-orleans/)
 

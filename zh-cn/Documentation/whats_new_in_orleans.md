@@ -25,7 +25,7 @@ title: What's new in Orleans
 
 ## [v2.3.0-rc2版](https://github.com/dotnet/orleans/releases/tag/v2.3.0-rc2)2019年3月13日
 
-`重构流批处理行为以支持批处理消费。`（5425）是唯一的变化。虽然从技术上讲，由于批处理流API的更改，它正在崩溃，但它不应该破坏任何正在工作的应用程序代码，因为批处理功能以前没有完全连接。在有线协议或持久性方面没有突破性的变化。此版本与2.x版本向后兼容。
+`重构流批处理行为以支持批处理消费。`(5425)是唯一的变化。虽然从技术上讲，由于批处理流API的更改，它正在崩溃，但它不应该破坏任何正在工作的应用程序代码，因为批处理功能以前没有完全连接。在有线协议或持久性方面没有突破性的变化。此版本与2.x版本向后兼容。
 
 ## [v2.3.0-rc1版](https://github.com/dotnet/orleans/releases/tag/v2.3.0-rc1)2019年3月5日
 
@@ -41,8 +41,8 @@ title: What's new in Orleans
 从v2.x后移植的两个修复程序
 
 -   不间断的错误修复
-    -   修复了多群集支持（#3974）
-    -   添加GSI缓存维护和测试（#5184）
+    -   修复了多群集支持(#3974)
+    -   添加GSI缓存维护和测试(#5184)
 
 ## [2.2.0版](https://github.com/dotnet/orleans/releases/tag/v2.2.0)2018年12月13日
 
@@ -57,7 +57,7 @@ title: What's new in Orleans
     -   托管客户端([#3362个](https://github.com/dotnet/orleans/pull/3362))
     -   分布式事务管理器([#3820个](https://github.com/dotnet/orleans/pull/3820), [#4502个](https://github.com/dotnet/orleans/pull/4502), [#4538个](https://github.com/dotnet/orleans/pull/4538), [#4566个](https://github.com/dotnet/orleans/pull/4566), [#4568](https://github.com/dotnet/orleans/pull/4568), [#4591](https://github.com/dotnet/orleans/pull/4591), [#4599](https://github.com/dotnet/orleans/pull/4599), [#4613](https://github.com/dotnet/orleans/pull/4613), [#4609](https://github.com/dotnet/orleans/pull/4609), [#4616](https://github.com/dotnet/orleans/pull/4616), [#4608](https://github.com/dotnet/orleans/pull/4608), [#4628](https://github.com/dotnet/orleans/pull/4628), [#4638](https://github.com/dotnet/orleans/pull/4638), [#4685](https://github.com/dotnet/orleans/pull/4685), [#4714](https://github.com/dotnet/orleans/pull/4714), [#4739](https://github.com/dotnet/orleans/pull/4739), [#4768](https://github.com/dotnet/orleans/pull/4768), [#4799](https://github.com/dotnet/orleans/pull/4799), [#4781](https://github.com/dotnet/orleans/pull/4781), [#4810个](https://github.com/dotnet/orleans/pull/4810), [#4820个](https://github.com/dotnet/orleans/pull/4820), [#4838个](https://github.com/dotnet/orleans/pull/4838), [#4831个](https://github.com/dotnet/orleans/pull/4831), [#4871个](https://github.com/dotnet/orleans/pull/4871), [#4887个](https://github.com/dotnet/orleans/pull/4887))
     -   新代码生成器([#4934个](https://github.com/dotnet/orleans/pull/4934), [#5010号](https://github.com/dotnet/orleans/pull/5010), [#5011号](https://github.com/dotnet/orleans/pull/5011))
-    -   支持交易中的协调转移([#4860个](https://github.com/dotnet/orleans/pull/4860), [#4894个](https://github.com/dotnet/orleans/pull/4894), [#4949个](https://github.com/dotnet/orleans/pull/4949), [#5026个](https://github.com/dotnet/orleans/pull/5026), [＃5024](https://github.com/dotnet/orleans/pull/5024)）
+    -   支持交易中的协调转移([#4860个](https://github.com/dotnet/orleans/pull/4860), [#4894个](https://github.com/dotnet/orleans/pull/4894), [#4949个](https://github.com/dotnet/orleans/pull/4949), [#5026个](https://github.com/dotnet/orleans/pull/5026), [＃5024](https://github.com/dotnet/orleans/pull/5024))
 
 ## [v1.5.6](https://github.com/dotnet/orleans/releases/tag/v1.5.6)2018年9月27日
 
@@ -69,13 +69,13 @@ title: What's new in Orleans
 ## [v2.1.0-rc2](https://github.com/dotnet/orleans/releases/tag/v2.1.0-rc2)2018年9月21日
 
 -   主要变化
-    -   新代码生成器（[＃4934](https://github.com/dotnet/orleans/pull/4934)，[＃5010](https://github.com/dotnet/orleans/pull/5010)，[＃5011](https://github.com/dotnet/orleans/pull/5011)）。
+    -   新代码生成器([＃4934](https://github.com/dotnet/orleans/pull/4934)，[＃5010](https://github.com/dotnet/orleans/pull/5010)，[＃5011](https://github.com/dotnet/orleans/pull/5011))。
 
 ## [v2.1.0-rc1](https://github.com/dotnet/orleans/releases/tag/v2.1.0-rc1)2018年9月14日
 
 -   主要变化
-    -   交易（beta2）（[＃4851](https://github.com/dotnet/orleans/pull/4851)，[＃4923](https://github.com/dotnet/orleans/pull/4923)，[＃4951](https://github.com/dotnet/orleans/pull/4951)，[＃4950](https://github.com/dotnet/orleans/pull/4950)，[＃4953](https://github.com/dotnet/orleans/pull/4953)）
-    -   支持交易中的协调转移（[＃4860](https://github.com/dotnet/orleans/pull/4860)，[＃4894](https://github.com/dotnet/orleans/pull/4894)，[＃4949](https://github.com/dotnet/orleans/pull/4949)）
+    -   交易(beta2)([＃4851](https://github.com/dotnet/orleans/pull/4851)，[＃4923](https://github.com/dotnet/orleans/pull/4923)，[＃4951](https://github.com/dotnet/orleans/pull/4951)，[＃4950](https://github.com/dotnet/orleans/pull/4950)，[＃4953](https://github.com/dotnet/orleans/pull/4953))
+    -   支持交易中的协调转移([＃4860](https://github.com/dotnet/orleans/pull/4860)，[＃4894](https://github.com/dotnet/orleans/pull/4894)，[＃4949](https://github.com/dotnet/orleans/pull/4949))
 
 ## [v1.5.5](https://github.com/dotnet/orleans/releases/tag/v1.5.5)2018年9月7日
 
@@ -83,31 +83,31 @@ title: What's new in Orleans
 
 -   不间断的错误修复
 
-    -   修复程序化订阅错误（[＃4943](https://github.com/dotnet/orleans/pull/4943)--[＃3843](https://github.com/dotnet/orleans/pull/3843)）
-    -   将消息序列化错误传播给访问者（[＃4944](https://github.com/dotnet/orleans/pull/4944)--[＃4907](https://github.com/dotnet/orleans/pull/4907)）
+    -   修复程序化订阅错误([＃4943](https://github.com/dotnet/orleans/pull/4943)--[＃3843](https://github.com/dotnet/orleans/pull/3843))
+    -   将消息序列化错误传播给访问者([＃4944](https://github.com/dotnet/orleans/pull/4944)--[＃4907](https://github.com/dotnet/orleans/pull/4907))
 
 -   漏洞修复
-    -   添加StreamSubscriptionHandleFactory以代表功能订阅（[＃4943](https://github.com/dotnet/orleans/pull/4943)--[＃3843](https://github.com/dotnet/orleans/pull/3843)）。从技术上来说，这虽然是一项重大突破，但它只会影响通过解决该问题（尝试与该方案一起用于SMS流）的程序化订阅功能的用户。[＃3843](https://github.com/dotnet/orleans/pull/3843)）。
+    -   添加StreamSubscriptionHandleFactory以代表功能订阅([＃4943](https://github.com/dotnet/orleans/pull/4943)--[＃3843](https://github.com/dotnet/orleans/pull/3843))。从技术上来说，这虽然是一项重大突破，但它只会影响通过解决该问题(尝试与该方案一起用于SMS流)的程序化订阅功能的用户。[＃3843](https://github.com/dotnet/orleans/pull/3843))。
 
 ## [v2.0.4](https://github.com/dotnet/orleans/releases/tag/v2.0.4)2018年8月7日
 
 -   不间断的错误修复
-    -   如果使用dotnet核心msbuild但以完整的.net为目标，则将netcoreapp2.0用于msbuild目标dll。[＃4895](https://github.com/dotnet/orleans/pull/4895)）
+    -   如果使用dotnet核心msbuild但以完整的.net为目标，则将netcoreapp2.0用于msbuild目标dll。[＃4895](https://github.com/dotnet/orleans/pull/4895))
 
 ## [v2.1.0](https://github.com/dotnet/orleans/releases/tag/v2.1.0)2018年8月28日
 
 -   主要变化
-    -   新的调度程序（[＃3792](https://github.com/dotnet/orleans/pull/3792)）
-    -   托管客户端（[＃3362](https://github.com/dotnet/orleans/pull/3362)）
-    -   分布式事务管理器（测试版）（[＃3820](https://github.com/dotnet/orleans/pull/3820)，[＃4502](https://github.com/dotnet/orleans/pull/4502)，[＃4538](https://github.com/dotnet/orleans/pull/4538)，[＃4566](https://github.com/dotnet/orleans/pull/4566)，[＃4568](https://github.com/dotnet/orleans/pull/4568)，[＃4591](https://github.com/dotnet/orleans/pull/4591)，[＃4599](https://github.com/dotnet/orleans/pull/4599)，[＃4613](https://github.com/dotnet/orleans/pull/4613)，[＃4609](https://github.com/dotnet/orleans/pull/4609)，[＃4616](https://github.com/dotnet/orleans/pull/4616)，[＃4608](https://github.com/dotnet/orleans/pull/4608)，[＃4628](https://github.com/dotnet/orleans/pull/4628)，[＃4638](https://github.com/dotnet/orleans/pull/4638)，[＃4685](https://github.com/dotnet/orleans/pull/4685)，[＃4714](https://github.com/dotnet/orleans/pull/4714)，[＃4739](https://github.com/dotnet/orleans/pull/4739)，[＃4768](https://github.com/dotnet/orleans/pull/4768)，[＃4799](https://github.com/dotnet/orleans/pull/4799)，[＃4781](https://github.com/dotnet/orleans/pull/4781)，[＃4810](https://github.com/dotnet/orleans/pull/4810)，[＃4820](https://github.com/dotnet/orleans/pull/4820)，[＃4838](https://github.com/dotnet/orleans/pull/4838)，[＃4831](https://github.com/dotnet/orleans/pull/4831)，[＃4871](https://github.com/dotnet/orleans/pull/4871)，[＃4887](https://github.com/dotnet/orleans/pull/4887)）
+    -   新的调度程序([＃3792](https://github.com/dotnet/orleans/pull/3792))
+    -   托管客户端([＃3362](https://github.com/dotnet/orleans/pull/3362))
+    -   分布式事务管理器(测试版)([＃3820](https://github.com/dotnet/orleans/pull/3820)，[＃4502](https://github.com/dotnet/orleans/pull/4502)，[＃4538](https://github.com/dotnet/orleans/pull/4538)，[＃4566](https://github.com/dotnet/orleans/pull/4566)，[＃4568](https://github.com/dotnet/orleans/pull/4568)，[＃4591](https://github.com/dotnet/orleans/pull/4591)，[＃4599](https://github.com/dotnet/orleans/pull/4599)，[＃4613](https://github.com/dotnet/orleans/pull/4613)，[＃4609](https://github.com/dotnet/orleans/pull/4609)，[＃4616](https://github.com/dotnet/orleans/pull/4616)，[＃4608](https://github.com/dotnet/orleans/pull/4608)，[＃4628](https://github.com/dotnet/orleans/pull/4628)，[＃4638](https://github.com/dotnet/orleans/pull/4638)，[＃4685](https://github.com/dotnet/orleans/pull/4685)，[＃4714](https://github.com/dotnet/orleans/pull/4714)，[＃4739](https://github.com/dotnet/orleans/pull/4739)，[＃4768](https://github.com/dotnet/orleans/pull/4768)，[＃4799](https://github.com/dotnet/orleans/pull/4799)，[＃4781](https://github.com/dotnet/orleans/pull/4781)，[＃4810](https://github.com/dotnet/orleans/pull/4810)，[＃4820](https://github.com/dotnet/orleans/pull/4820)，[＃4838](https://github.com/dotnet/orleans/pull/4838)，[＃4831](https://github.com/dotnet/orleans/pull/4831)，[＃4871](https://github.com/dotnet/orleans/pull/4871)，[＃4887](https://github.com/dotnet/orleans/pull/4887))
 
 ## [v2.0.4](https://github.com/dotnet/orleans/releases/tag/v2.0.4)2018年8月7日
 
 自2.0.3以来的改进和错误修复。
 
 -   不间断的错误修复
-    -   在.NET Core上运行时CoreFx /＃30781的解决方法（[＃4736](https://github.com/dotnet/orleans/pull/4736)）
-    -   修复.NET Core 2.1构建时代码生成（[＃4673](https://github.com/dotnet/orleans/pull/4673)）
+    -   在.NET Core上运行时CoreFx /＃30781的解决方法([＃4736](https://github.com/dotnet/orleans/pull/4736))
+    -   修复.NET Core 2.1构建时代码生成([＃4673](https://github.com/dotnet/orleans/pull/4673))
 
 ## [v1.5.4](https://github.com/dotnet/orleans/releases/tag/v1.5.4)2018年6月13日
 
@@ -128,18 +128,18 @@ title: What's new in Orleans
 
 ## [v2.0.0](https://github.com/dotnet/orleans/releases/tag/v2.0.0)2018年3月28日
 
--   主要更改（自2.0.0-rc2开始）
-    -   所有包含的提供程序都从全局ClusterOptions获得ServiceId和ClusterId，并且在其自己的选项类上没有那些属性（＃4235，＃4277、4290）
-    -   使用字符串作为ServiceId而不是Guid（＃4262）
+-   主要更改(自2.0.0-rc2开始)
+    -   所有包含的提供程序都从全局ClusterOptions获得ServiceId和ClusterId，并且在其自己的选项类上没有那些属性(＃4235，＃4277、4290)
+    -   使用字符串作为ServiceId而不是Guid(＃4262)
 
 ## [v2.0.0-rc2](https://github.com/dotnet/orleans/releases/tag/v2.0.0-rc2)2018年3月12日
 
--   主要更改（自2.0.0-rc1开始）
+-   主要更改(自2.0.0-rc1开始)
     -   新的“外观” API可简化流提供者各个方面的配置：持久流配置器
 
 ## [v2.0.0-rc1](https://github.com/dotnet/orleans/releases/tag/v2.0.0-rc1)2018年2月27日
 
--   重大更改（自2.0.0-beta3开始）
+-   重大更改(自2.0.0-beta3开始)
     -   新的提供者生命周期模型将取代旧的模型
     -   构建器模式和基于选项的组件和扩展配置
 
@@ -156,7 +156,7 @@ title: What's new in Orleans
 ## [v2.0.0-beta1](https://github.com/dotnet/orleans/releases/tag/v2.0.0-beta1)2017年10月26日
 
 -   主要新功能
-    -   现在，大多数软件包都针对.NET Standard 2.0（这意味着它们可以在.NET Framework或.NET Core 2.0中使用）以及在非Windows平台上使用。
+    -   现在，大多数软件包都针对.NET Standard 2.0(这意味着它们可以在.NET Framework或.NET Core 2.0中使用)以及在非Windows平台上使用。
 
 ## [v1.5.2](https://github.com/dotnet/orleans/releases/tag/v1.5.2)2017年10月17日
 
@@ -176,7 +176,7 @@ title: What's new in Orleans
 
 ## 社区虚拟聚会＃14
 
-[OrleansFSM](https://youtu.be/XmsVYLfNHjI)与[约翰·阿扎里亚（John Azariah）](https://github.com/johnazariah)2017年3月22日
+[OrleansFSM](https://youtu.be/XmsVYLfNHjI)与[约翰·阿扎里亚(John Azariah)](https://github.com/johnazariah)2017年3月22日
 
 ## [v1.4.0](https://github.com/dotnet/orleans/releases/tag/v1.4.0)2017年2月21日
 
@@ -188,7 +188,7 @@ title: What's new in Orleans
 
 ## 社区虚拟聚会＃13
 
-[升级Orleans应用程序](https://youtu.be/_5hWNVccKeQ)与[谢尔盖·拜科夫（Sergey Bykov）](https://github.com/sergeybykov)和团队2017年2月8日[介绍](https://github.com/dotnet/orleans/raw/gh-pages/Presentations/VM-13%20-%20Orleans%20%26%20versioning.pptx)
+[升级Orleans应用程序](https://youtu.be/_5hWNVccKeQ)与[谢尔盖·拜科夫(Sergey Bykov)](https://github.com/sergeybykov)和团队2017年2月8日[介绍](https://github.com/dotnet/orleans/raw/gh-pages/Presentations/VM-13%20-%20Orleans%20%26%20versioning.pptx)
 
 ## [v1.4.0-beta](https://github.com/dotnet/orleans/releases/tag/v1.4.0-beta)2017年2月1日
 
@@ -200,7 +200,7 @@ title: What's new in Orleans
 
 ## 社区虚拟聚会＃12
 
-[部署Orleans](https://youtu.be/JrmHfbZH11M)与[雅库布·科内基（Jakub Konecki）](https://github.com/jkonecki)2016年12月8日[介绍](https://github.com/dotnet/orleans/raw/gh-pages/Presentations/VM-12%20Orleans-YAMS.pdf)
+[部署Orleans](https://youtu.be/JrmHfbZH11M)与[雅库布·科内基(Jakub Konecki)](https://github.com/jkonecki)2016年12月8日[介绍](https://github.com/dotnet/orleans/raw/gh-pages/Presentations/VM-12%20Orleans-YAMS.pdf)
 
 ## [v1.3.1](https://github.com/dotnet/orleans/releases/tag/v1.3.1)2016年11月15日
 
@@ -237,7 +237,7 @@ title: What's new in Orleans
     -   根据Halo 5中使用的相同代码添加了EventHub流提供程序。
     -   [根据情况，吞吐量提高了5％至26％。](https://github.com/dotnet/orleans/pull/1586)
     -   将30个功能测试以外的所有功能迁移到GitHub。
-    -   Grains状态不必扩展`Grains状态`不再（标记为`[过时]`），并且可以是简单的POCO类。
+    -   Grains状态不必扩展`Grains状态`不再(标记为`[过时]`)，并且可以是简单的POCO类。
     -   [增加了对每类的支持](https://github.com/dotnet/orleans/pull/963)和[全局服务器端拦截器。](https://github.com/dotnet/orleans/pull/965)
     -   [添加了对将Consul 0.6.0用作成员资格提供程序的支持。](https://github.com/dotnet/orleans/pull/1267)
     -   [支持C＃6。](https://github.com/dotnet/orleans/pull/1479)
@@ -247,7 +247,7 @@ title: What's new in Orleans
 
 ## 社区虚拟聚会＃9
 
-[内姆·比拉（Nehme Bilal）](https://github.com/nehmebilal)和[鲁本·邦德](https://github.com/ReubenBond) [谈论部署Orleans](https://youtu.be/w__D7gnqeZ0)与[山药](https://github.com/Microsoft/Yams)和[服务面料](https://azure.microsoft.com/en-gb/documentation/articles/service-fabric-overview/)2016年2月26日
+[内姆·比拉(Nehme Bilal)](https://github.com/nehmebilal)和[鲁本·邦德](https://github.com/ReubenBond) [谈论部署Orleans](https://youtu.be/w__D7gnqeZ0)与[山药](https://github.com/Microsoft/Yams)和[服务面料](https://azure.microsoft.com/en-gb/documentation/articles/service-fabric-overview/)2016年2月26日
 
 ## 社区虚拟聚会＃8.5
 
@@ -263,7 +263,7 @@ title: What's new in Orleans
 
 ## [社区虚拟聚会＃7](https://www.youtube.com/watch?v=FKL-PS8Q9ac)
 
-圣诞特辑-[叶文·鲍勃罗夫（Yevhen Bobrov）](https://github.com/yevhen)上[Orleans卡](https://github.com/yevhen/Orleankka)2015年12月17日
+圣诞特辑-[叶文·鲍勃罗夫(Yevhen Bobrov)](https://github.com/yevhen)上[Orleans卡](https://github.com/yevhen/Orleankka)2015年12月17日
 
 ## [v1.1.0](https://github.com/dotnet/orleans/releases/tag/v1.1.0)2015年12月14日
 
@@ -279,7 +279,7 @@ title: What's new in Orleans
 
 ## [社区虚拟聚会＃5](https://www.youtube.com/watch?v=eSepBlfY554)
 
-[加布里埃尔·克利奥特（Gabriel Kliot）](https://github.com/gabikliot)于新OrleansStreaming API上发表2015年5月22日
+[加布里埃尔·克利奥特(Gabriel Kliot)](https://github.com/gabikliot)于新OrleansStreaming API上发表2015年5月22日
 
 ## [v1.0.7](https://github.com/dotnet/orleans/releases/tag/v1.0.7)2015年5月15日
 
@@ -291,14 +291,14 @@ title: What's new in Orleans
 
 ## [社区虚拟聚会＃3](https://www.youtube.com/watch?v=07Up88bpl20)
 
-[叶文·鲍勃罗夫（Yevhen Bobrov）](https://github.com/yevhen)于Orleans的Uniform API上使用2015年3月6日
+[叶文·鲍勃罗夫(Yevhen Bobrov)](https://github.com/yevhen)于Orleans的Uniform API上使用2015年3月6日
 
 ## [社区虚拟聚会＃2](https://www.youtube.com/watch?v=D4kJKSFfNjI)
 
 Orleans团队现场问答和路线图2015年1月12日
 
-## Orleans开源v1.0更新（2015年1月）
+## Orleans开源v1.0更新(2015年1月)
 
 ## [社区虚拟聚会＃1](http://www.youtube.com/watch?v=6COQ8XzloPg)
 
-[雅库布·科内基（Jakub Konecki）](https://github.com/jkonecki)关于事件来源的Grains2014年12月18日
+[雅库布·科内基(Jakub Konecki)](https://github.com/jkonecki)关于事件来源的Grains2014年12月18日

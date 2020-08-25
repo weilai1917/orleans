@@ -27,7 +27,7 @@ public class MyLocalGrain : Orleans.Grain, IMyGrain {
 
 #### 全局单实例Grain协议
 
-当访问全局单实例（GSI）grains，并且不知道存在激活时，在激活新实例之前执行特殊GSI激活协议。特别地，请求被发送到当前[多群集配置](MultiClusterConfiguration.md)检查他们是否已经激活了这种Grains。如果所有响应均为负，则在此群集中创建新激活。否则，将使用远程激活（并在本地目录中缓存对它的引用）。
+当访问全局单实例(GSI)grains，并且不知道存在激活时，在激活新实例之前执行特殊GSI激活协议。特别地，请求被发送到当前[多群集配置](MultiClusterConfiguration.md)检查他们是否已经激活了这种Grains。如果所有响应均为负，则在此群集中创建新激活。否则，将使用远程激活(并在本地目录中缓存对它的引用)。
 
 #### 每个集群Grain一个实例的协议
 
@@ -35,6 +35,6 @@ public class MyLocalGrain : Orleans.Grain, IMyGrain {
 
 #### 可疑激活
 
-如果GSI协议在3次重试（或配置参数指定的任何数目）后没有从所有集群接收到结论性响应`GlobalSingleInstanceNumberEntries全局`，它乐观地创建了一个新的本地“可疑”激活，支持可用性而不是一致性。
+如果GSI协议在3次重试(或配置参数指定的任何数目)后没有从所有集群接收到结论性响应`GlobalSingleInstanceNumberEntries全局`，它乐观地创建了一个新的本地“可疑”激活，支持可用性而不是一致性。
 
-可疑的激活可能是重复的（因为某些在GSI协议激活期间没有响应的远程集群可能仍然激活了此grains）。因此，每隔30秒（或配置参数指定的任何间隔）定期`GlobalSingleInstanceRetryInterval`）对于所有可疑的激活，再次运行gsi协议。这确保一旦恢复集群之间的通信，就可以检测并删除重复的激活。
+可疑的激活可能是重复的(因为某些在GSI协议激活期间没有响应的远程集群可能仍然激活了此grains)。因此，每隔30秒(或配置参数指定的任何间隔)定期`GlobalSingleInstanceRetryInterval`)对于所有可疑的激活，再次运行gsi协议。这确保一旦恢复集群之间的通信，就可以检测并删除重复的激活。

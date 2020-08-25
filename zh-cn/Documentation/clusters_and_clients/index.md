@@ -5,7 +5,7 @@ title: What is a grain client
 
 ### 什么是Grains客户？
 
-术语“客户端”或有时“Grains客户端”用于与Grains交互的应用程序代码，但它本身不是Grains逻辑的一部分。客户端代码在Orleans服务器集群（称为silos）之外运行，这些服务器集群承载Grains。因此，客户端充当到集群和应用程序所有Grain的连接器或管道。
+术语“客户端”或有时“Grains客户端”用于与Grains交互的应用程序代码，但它本身不是Grains逻辑的一部分。客户端代码在Orleans服务器集群(称为silos)之外运行，这些服务器集群承载Grains。因此，客户端充当到集群和应用程序所有Grain的连接器或管道。
 
 ![](.\images\frontend_cluster.png)
 
@@ -43,7 +43,7 @@ var client = new ClientBuilder()
     .Build();
 ```
 
-最后，我们需要打电话`连接()`方法，使其连接到Orleans群集。它是一个异步方法，返回`任务`是的。所以我们需要等待它的完成`等待`或`.等等()`是的。
+最后，我们需要打电话`连接()`方法，使其连接到Orleans群集。它是一个异步方法，返回`Task`是的。所以我们需要等待它的完成await或`.等等()`是的。
 
 ```csharp
 await client.Connect();
@@ -51,7 +51,7 @@ await client.Connect();
 
 ### 打电话给Grains
 
-从客户那里打电话给grain和[在grain代码中进行这样的调用](../grains/index.md)是的。相同的`getgrain<t>（键）`方法，其中`T`是目标grains接口，在两种情况下都使用[获取Grains参考](../grains/index.md#grain-reference)是的。细微的区别在于我们调用的工厂对象`获取grains`是的。在客户端代码中，我们通过连接的客户端对象来实现这一点。
+从客户那里打电话给grain和[在grain代码中进行这样的调用](../grains/index.md)是的。相同的`getgrain<t>(键)`方法，其中`T`是目标grains接口，在两种情况下都使用[获取Grains参考](../grains/index.md#grain-reference)是的。细微的区别在于我们调用的工厂对象`获取grains`是的。在客户端代码中，我们通过连接的客户端对象来实现这一点。
 
 ```csharp
 IPlayerGrain player = client.GetGrain<IPlayerGrain>(playerId);
@@ -59,9 +59,9 @@ Task t = player.JoinGame(game)
 await t;
 ```
 
-对grain方法的调用返回`任务`或者`任务<t>`根据[grains接口规则](../grains/index.md)是的。客户可以使用`等待`关键字异步等待返回的`任务`没有阻塞线程，或者在某些情况下`等待()`方法来阻止当前执行线程。
+对grain方法的调用返回`Task`或者`Task<t>`根据[grains接口规则](../grains/index.md)是的。客户可以使用await关键字异步等待返回的`Task`没有阻塞线程，或者在某些情况下`等待()`方法来阻止当前执行线程。
 
-从客户端代码和从另一个Grain内部调用grains的主要区别在于grains的单线程执行模型。Grains被orleans运行时限制为单线程，而客户端可能是多线程的。Orleans没有在客户端提供任何这样的保证，因此客户端需要使用适合其环境的任何同步构造来管理自己的并发性—锁、事件，`任务`等等。
+从客户端代码和从另一个Grain内部调用grains的主要区别在于grains的单线程执行模型。Grains被orleans运行时限制为单线程，而客户端可能是多线程的。Orleans没有在客户端提供任何这样的保证，因此客户端需要使用适合其环境的任何同步构造来管理自己的并发性—锁、事件，`Task`等等。
 
 ### 接收通知
 

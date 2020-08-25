@@ -17,7 +17,7 @@ title: 排除部署故障
 
 -   在部署到azure时使用本地连接字符串-网站将无法连接
 
--   为silos和前端（web和worker角色）使用不同的连接字符串-网站将无法初始化客户端，因为它无法连接到silos
+-   为silos和前端(web和worker角色)使用不同的连接字符串-网站将无法初始化客户端，因为它无法连接到silos
 
 可以在azure门户中检查连接字符串配置。如果连接字符串设置不正确，日志可能无法正确显示。
 
@@ -69,9 +69,9 @@ Wadlogstable是查看日志的良好起点。
 
 ## 与asp.net的兼容性
 
-包含在asp.net中的razor视图引擎使用与orleans相同的代码生成程序集（`Microsoft.code分析`和`微软代码分析.csharp`）中。这可能会在运行时出现版本兼容性问题。
+包含在asp.net中的razor视图引擎使用与orleans相同的代码生成程序集(`Microsoft.code分析`和`微软代码分析.csharp`)中。这可能会在运行时出现版本兼容性问题。
 
-若要解决此问题，请尝试升级`Microsoft.codedom.providers.dotnetCompilerPlatform公司`（这是ASP.NET用于包含上述程序集的NuGet包）到最新版本，并设置绑定重定向，如下所示：
+若要解决此问题，请尝试升级`Microsoft.codedom.providers.dotnetCompilerPlatform公司`(这是ASP.NET用于包含上述程序集的NuGet包)到最新版本，并设置绑定重定向，如下所示：
 
 ```xml
 <dependentAssembly>

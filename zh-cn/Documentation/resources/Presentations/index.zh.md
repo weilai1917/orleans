@@ -5,9 +5,9 @@ title: Orleans Presentations
 
 -   [Orleans最佳实践](http://research.microsoft.com/apps/pubs/default.aspx?id=244727)一系列技巧和窍门，可帮助设计，构建和运行基于Orleans的应用程序。
 
--   [第28届国际分布式计算研讨会（2014年DISC）上的Orleans演讲](http://research.microsoft.com/en-US/people/philbe/disckeyotephilbefinal.pdf)
+-   [第28届国际分布式计算研讨会(2014年DISC)上的Orleans演讲](http://research.microsoft.com/en-US/people/philbe/disckeyotephilbefinal.pdf)
 
--   [Orleans在第15届高性能交易系统国际研讨会上的演讲（HPTS 2013）](http://www.hpts.ws/papers/2013/Bykov.pdf)
+-   [Orleans在第15届高性能交易系统国际研讨会上的演讲(HPTS 2013)](http://www.hpts.ws/papers/2013/Bykov.pdf)
 
 -   [Orleans的平衡技术](http://dotnet.github.io/orleans/Presentations/Balancing%20Techniques%20in%20Orleans.pptx)
 

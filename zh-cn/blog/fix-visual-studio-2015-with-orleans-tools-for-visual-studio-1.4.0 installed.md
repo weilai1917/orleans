@@ -1,6 +1,6 @@
 # 使用适用于Visual Studio 1.4.0的Orleans工具修复Visual Studio 2015
 
-[阿提拉·哈伊德里克（Attila Hajdrik）](https://github.com/attilah)2017/3/10上午10:06:17
+[阿提拉·哈伊德里克(Attila Hajdrik)](https://github.com/attilah)2017/3/10上午10:06:17
 
 * * *
 
@@ -10,13 +10,13 @@
 
 在研究解决方案时，我们未发布有问题的版本，并发布了该扩展的较旧版本，该扩展不适用于Visual Studio 2017，但都不会使Visual Studio 2015无法使用。如果您被此问题所困扰，请按照以下步骤进行修复：
 
-1）退出所有Visual Studio实例。
+1)退出所有Visual Studio实例。
 
-2）打开管理员Visual Studio开发人员命令提示符。
+2)打开管理员Visual Studio开发人员命令提示符。
 
-3）cd / D“％USERPROFILE％\\本地设置，本地配置\\微软\\视觉工作室\\14.0\\扩展程序”
+3)cd / D“％USERPROFILE％\\本地设置，本地配置\\微软\\视觉工作室\\14.0\\扩展程序”
 
-4）dir OrleansVSTools.dll / s
+4)dir OrleansVSTools.dll / s
 
 您将得到如下结果：
 
@@ -26,15 +26,15 @@
 
 1个文件18,608字节
 
-5）将完整目录路径复制到剪贴板。
+5)将完整目录路径复制到剪贴板。
 
-6）rmdir“” / q / s
+6)rmdir“” / q / s
 
 确保您仍在Extensions目录中。
 
-7）删除\*.cache
+7)删除\*.cache
 
-8）devenv /设置
+8)devenv /设置
 
 这可能会持续几分钟...请耐心等待。
 

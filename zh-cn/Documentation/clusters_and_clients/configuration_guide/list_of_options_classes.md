@@ -14,7 +14,7 @@ title: List of Options Classes
 | `离合器选项` | 设置`棒状的`以及`服务ID` |
 | `网络选项` | 为套接字和打开的连接设置超时值 |
 | `序列化提供程序选项` | 设置序列化提供程序 |
-| `类型管理选项` | 设置类型映射的刷新周期（请参阅异构silos和版本控制） |
+| `类型管理选项` | 设置类型映射的刷新周期(请参阅异构silos和版本控制) |
 
 ## iclientbuilder特定选项
 
@@ -34,9 +34,9 @@ title: List of Options Classes
 | `端点选项` | 设置silos终结点选项 |
 | `GrainCollection选项` | Grains垃圾收集选项 |
 | `grains转化选项` | 管理异构部署中的Grain实现选择 |
-| `加载选项` | 减载配置设置。必须有`ihostenvironmentstatistics公司`例如通过`builder.UsePerfCounterEnvironmentStatistics()`（仅限Windows）用于`减载`发挥作用。 |
+| `加载选项` | 减载配置设置。必须有`ihostenvironmentstatistics公司`例如通过`builder.UsePerfCounterEnvironmentStatistics()`(仅限Windows)用于`减载`发挥作用。 |
 | `多色光` | 配置多群集支持的选项 |
-| `性能调整选项` | 性能调整选项（网络、线程数） |
+| `性能调整选项` | 性能调整选项(网络、线程数) |
 | `进程Exthand选项` | 在进程出口配置silos行为 |
 | `计划选项` | 配置计划程序行为 |
 | `Silomessagingoptions公司` | 配置与silos相关的全局消息传递选项。 |

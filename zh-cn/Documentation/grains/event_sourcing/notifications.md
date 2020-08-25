@@ -13,7 +13,7 @@ protected override void OnStateChanged()
 }
 ```
 
-`状态已更改`每当确认的状态更新（即版本号增加）时调用。这可能发生在
+`状态已更改`每当确认的状态更新(即版本号增加)时调用。这可能发生在
 
 1.  已从存储中加载状态的新版本。
 2.  此实例引发的事件已成功写入存储。
@@ -32,4 +32,4 @@ protected override void OnTentativeStateChanged()
 }
 ```
 
-`ontentativestatechanged公司`当暂定状态改变时调用，即如果组合序列（confirmedEvents+confirmedEvents）改变。特别是，回调`ontentativestatechanged()`总是发生在`葡萄干`.
+`ontentativestatechanged公司`当暂定状态改变时调用，即如果组合序列(confirmedEvents+confirmedEvents)改变。特别是，回调`ontentativestatechanged()`总是发生在`葡萄干`.

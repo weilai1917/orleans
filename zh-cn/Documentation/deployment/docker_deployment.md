@@ -13,28 +13,28 @@ title: Docker Deployment
 
 考虑到Docker Orchestrator和集群堆栈的设计方式，将Orleans部署到Docker可能会很棘手。最复杂的是要理解*覆盖网络*来自Docker Swarm和Kubernets的网络模型。
 
-Docker容器和网络模型的设计主要是运行无状态和不可变的容器。因此，启动运行node.js或nginx应用程序的集群非常容易。但是，如果您尝试使用更精细的东西，比如真正的集群或分布式应用程序（比如基于Orleans的应用程序），那么您最终将无法设置它。这是可能的，但不像基于web的应用程序那么简单。
+Docker容器和网络模型的设计主要是运行无状态和不可变的容器。因此，启动运行node.js或nginx应用程序的集群非常容易。但是，如果您尝试使用更精细的东西，比如真正的集群或分布式应用程序(比如基于Orleans的应用程序)，那么您最终将无法设置它。这是可能的，但不像基于web的应用程序那么简单。
 
-Docker集群包括将多个主机组合成一个资源池，使用*容器编排器*是的。*Docker公司*提供**蜂群**作为容器编排的选项*谷歌*有**库伯内特斯**（又名**K8S型**）中。还有其他的编曲者像**直流/操作系统**，**介子**，等等，但在本文中，我们将讨论swarm和k8s，因为它们使用得更广泛。
+Docker集群包括将多个主机组合成一个资源池，使用*容器编排器*是的。*Docker公司*提供**蜂群**作为容器编排的选项*谷歌*有**库伯内特斯**(又名**K8S型**)中。还有其他的编曲者像**直流/操作系统**，**介子**，等等，但在本文中，我们将讨论swarm和k8s，因为它们使用得更广泛。
 
 同样的grain接口和实现在Orleans的任何地方都已经得到支持，也将在docker容器上运行，因此不需要特别考虑就可以在docker容器中运行您的应用程序。
 
 这个[Orleans码头工人](https://github.com/dotnet/orleans/tree/master/Samples/Orleans-Docker)示例提供了如何运行两个控制台应用程序的工作示例。一个作为Orleans客户端，另一个作为silos，详细信息如下所述。
 
-这里讨论的概念既可以用于.NET Core，也可以用于.NET 4.6.1版本的Orleans，但是为了说明Docker和.NET Core的跨平台特性，考虑到您正在使用.NET Core，我们将重点讨论这个示例。本文将提供特定于平台（windows/linux/osx）的详细信息。
+这里讨论的概念既可以用于.NET Core，也可以用于.NET 4.6.1版本的Orleans，但是为了说明Docker和.NET Core的跨平台特性，考虑到您正在使用.NET Core，我们将重点讨论这个示例。本文将提供特定于平台(windows/linux/osx)的详细信息。
 
 ## 预备知识
 
 本文假设您安装了以下先决条件：
 
 -   [码头工人](https://www.docker.com/community-edition#/download)-Docker4x为主要支持的平台提供了易于使用的安装程序。它包含Docker引擎和Docker Swarm。
--   [库伯内特斯（K8S）](https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/)-谷歌提供的容器编排。它包含安装指南*迷你库贝*（K8S的本地部署）和*库贝克特*以及它所有的依赖关系。
+-   [库伯内特斯(K8S)](https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/)-谷歌提供的容器编排。它包含安装指南*迷你库贝*(K8S的本地部署)和*库贝克特*以及它所有的依赖关系。
 -   [.NET核心](https://dot.net)-.net的跨平台风格
--   [Visual Studio代码（VScode）](https://code.visualstudio.com/)-你想用什么就用什么。vscode是跨平台的，所以我们使用它来确保它可以在所有平台上工作。安装vscode后，请安装[C扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)是的。
+-   [Visual Studio代码(VScode)](https://code.visualstudio.com/)-你想用什么就用什么。vscode是跨平台的，所以我们使用它来确保它可以在所有平台上工作。安装vscode后，请安装[C扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)是的。
 
 > **注意**：如果您不打算使用kubernetes，则不需要安装它。Docker4x安装程序已经包含Swarm，因此无需额外安装即可使用。
 >
-> **Windows用户注意事项**：在Windows上，Docker安装程序将在安装过程中启用Hyper-V。由于本文及其示例使用的是.NET Core，因此使用的容器映像基于**Windows服务器NanoServer**是的。如果您不打算使用.net core并将目标锁定为.net 4.6.1full framework，则使用的映像应该是**Windows服务器核心**以及Orleans的1.4+版本（仅支持.NET完整框架）。
+> **Windows用户注意事项**：在Windows上，Docker安装程序将在安装过程中启用Hyper-V。由于本文及其示例使用的是.NET Core，因此使用的容器映像基于**Windows服务器NanoServer**是的。如果您不打算使用.net core并将目标锁定为.net 4.6.1full framework，则使用的映像应该是**Windows服务器核心**以及Orleans的1.4+版本(仅支持.NET完整框架)。
 
 ## 创建Orleans解决方案
 
@@ -66,7 +66,7 @@ dotnet add src/OrleansSilo/OrleansSilo.csproj reference src/OrleansGrains/Orlean
 
 到目前为止，我们所做的只是创建解决方案结构、项目和在项目之间添加引用的样板代码。没有什么不同于常规的Orleans项目。
 
-在撰写本文时，Orleans 2.0（这是唯一支持.NET Core和跨平台的版本）已经进入了技术预览版，因此它的nuget托管在myget feed中，而不是发布到nuget.org官方feed。为了安装preview nuget，我们将使用`点网`cli强制myget提供源提要和版本：
+在撰写本文时，Orleans 2.0(这是唯一支持.NET Core和跨平台的版本)已经进入了技术预览版，因此它的nuget托管在myget feed中，而不是发布到nuget.org官方feed。为了安装preview nuget，我们将使用`点网`cli强制myget提供源提要和版本：
 
 ```bash
 dotnet add src/OrleansClient/OrleansClient.csproj package Microsoft.Orleans.Core -s https://dotnet.myget.org/F/orleans-prerelease/api/v3/index.json -v 2.0.0-preview2-201705020000
@@ -197,7 +197,7 @@ namespace OrleansSilo
 }
 ```
 
-`程序.cs`（silos）：
+`程序.cs`(silos)：
 
 ```csharp
 using System;
@@ -252,7 +252,7 @@ namespace OrleansSilo
 }
 ```
 
-`程序.cs`（客户）：
+`程序.cs`(客户)：
 
 ```csharp
 using System;
@@ -349,15 +349,15 @@ COPY . /app
 
 # Docker合成
 
-这个`docker-compose.yml文件`文件，本质上定义（在项目内）一组服务及其在服务级别上的依赖关系。每个服务包含给定容器的一个或多个实例，该实例基于您在DockerFile上选择的图像。更多关于`Docker合成`可以在上找到[Docker编写文档](https://docs.docker.com/compose/)是的。
+这个`docker-compose.yml文件`文件，本质上定义(在项目内)一组服务及其在服务级别上的依赖关系。每个服务包含给定容器的一个或多个实例，该实例基于您在DockerFile上选择的图像。更多关于`Docker合成`可以在上找到[Docker编写文档](https://docs.docker.com/compose/)是的。
 
 对于Orleans部署，一个常见的用例是`docker-compose.yml文件`其中包含两个服务。一个给Orleanssilos，另一个给Orleans客户。客户端将依赖于silos，这意味着，它只能在silos服务启动后启动。另一种情况是添加一个存储/数据库服务/容器，例如sql server，它应该首先在客户端和silos之前启动，因此两个服务都应该依赖于它。
 
-> **注意**：在你进一步阅读（并最终疯狂阅读）之前，请注意*凹痕* **事项**在里面`Docker合成`文件夹。所以如果你有什么问题就要注意了。
+> **注意**：在你进一步阅读(并最终疯狂阅读)之前，请注意*凹痕* **事项**在里面`Docker合成`文件夹。所以如果你有什么问题就要注意了。
 
 以下是我们将如何描述我们为本文提供的服务：
 
-`docker-compose.override.yml文件`（调试）：
+`docker-compose.override.yml文件`(调试)：
 
 ```yml
 version: '3.1'
@@ -383,7 +383,7 @@ services:
       - ~/.nuget/packages:/root/.nuget/packages:ro
 ```
 
-`docker-compose.yml文件`（生产）：
+`docker-compose.yml文件`(生产)：
 
 ```yml
 version: '3.1'
@@ -401,7 +401,7 @@ services:
 
 # 把所有的东西放在一起
 
-现在我们有了运行您的Orleans应用程序所需的所有移动部件，我们将把它们放在一起，以便在Docker中运行我们的Orleans解决方案（最后！）是的。
+现在我们有了运行您的Orleans应用程序所需的所有移动部件，我们将把它们放在一起，以便在Docker中运行我们的Orleans解决方案(最后！)是的。
 
 > **注意**：应在解决方案目录中执行以下命令。
 
@@ -514,17 +514,17 @@ orleansdocker_orleans-silo_9     tail -f /dev/null   Up
 
 Docker集群堆栈被调用**蜂群**你可以通过阅读它找到更多[此处为文档](https://docs.docker.com/engine/swarm/)是的。
 
-在`蜂群`群集，你没有任何额外的工作。当你跑的时候`Docker组合-D`在一个`蜂群`节点，它将根据配置的规则调度容器。这同样适用于其他基于swarm的服务，如[Docker数据中心](https://www.docker.com/enterprise-edition)，[天青ACS](https://azure.microsoft.com/en-us/services/container-service/)（在群模式下）[AWS ECS集装箱服务](https://aws.amazon.com/ecs/)等等。你要做的就是部署你的`蜂群`在部署之前群集**停靠**Orleans申请。
+在`蜂群`群集，你没有任何额外的工作。当你跑的时候`Docker组合-D`在一个`蜂群`节点，它将根据配置的规则调度容器。这同样适用于其他基于swarm的服务，如[Docker数据中心](https://www.docker.com/enterprise-edition)，[天青ACS](https://azure.microsoft.com/en-us/services/container-service/)(在群模式下)[AWS ECS集装箱服务](https://aws.amazon.com/ecs/)等等。你要做的就是部署你的`蜂群`在部署之前群集**停靠**Orleans申请。
 
-> **注意**：如果您使用的Docker引擎具有Swarm模式，并且已经支持`堆栈`，`部署`和`组成`v3，部署解决方案的更好方法是`docker stack deploy-c docker-compose.yml<name>`. 请记住，它需要在Docker引擎上提供V3组合文件支持，而大多数托管服务（如Azure和AWS）仍然使用V2和更旧的引擎。
+> **注意**：如果您使用的Docker引擎具有Swarm模式，并且已经支持`堆栈`，`部署`和`组成`v3，部署解决方案的更好方法是`docker stack deploy-c docker-compose.yml<name>`. 请记住，它需要在Docker引擎上提供V3组合文件支持，而大多数托管服务(如Azure和AWS)仍然使用V2和更旧的引擎。
 
-# 谷歌Kubernetes（K8S）
+# 谷歌Kubernetes(K8S)
 
 如果你打算使用[库伯内特斯](https://kubernetes.io/)要托管Orleans，可以在[OrleansContrib\\Orleans.Clustering.Kubernetes](https://github.com/OrleansContrib/Orleans.Clustering.Kubernetes)在那里，您可以找到关于如何使用提供者无缝地在Kubernetes托管Orleans的文档和示例。
 
 # [奖励主题]在容器中调试Orleans
 
-好吧，既然你知道如何从头开始在一个容器中运行Orleans，那么利用Docker中最重要的原则之一就很好了。容器是不可变的。而且它们在开发中应该（几乎）具有与生产中相同的映像、依赖项和运行时。这确保了良好的旧声明*“它在我的机器上工作！”*再也不会发生了。要做到这一点，你需要有一种发展的方式*里面*容器和其中包含一个调试器，该调试器附加到容器内的应用程序。
+好吧，既然你知道如何从头开始在一个容器中运行Orleans，那么利用Docker中最重要的原则之一就很好了。容器是不可变的。而且它们在开发中应该(几乎)具有与生产中相同的映像、依赖项和运行时。这确保了良好的旧声明*“它在我的机器上工作！”*再也不会发生了。要做到这一点，你需要有一种发展的方式*里面*容器和其中包含一个调试器，该调试器附加到容器内的应用程序。
 
 有多种方法可以使用多种工具实现这一点。在评估了几个之后，在撰写本文时，我最终选择了一个看起来更简单、在应用程序中侵入性更小的。
 
@@ -603,4 +603,4 @@ Docker集群堆栈被调用**蜂群**你可以通过阅读它找到更多[此处
 }
 ```
 
-现在你可以从`甚小码`（将发布）并启动silos和客户端。它将发送一个`Docker执行官`运行命令`Docker合成`服务实例/容器来启动应用程序的调试器。将调试器附加到容器，并将其用作本地运行的Orleans应用程序。现在的区别是它在容器中，完成后，只需将容器发布到注册表并在生产中的Docker主机上拉取它。
+现在你可以从`甚小码`(将发布)并启动silos和客户端。它将发送一个`Docker执行官`运行命令`Docker合成`服务实例/容器来启动应用程序的调试器。将调试器附加到容器，并将其用作本地运行的Orleans应用程序。现在的区别是它在容器中，完成后，只需将容器发布到注册表并在生产中的Docker主机上拉取它。

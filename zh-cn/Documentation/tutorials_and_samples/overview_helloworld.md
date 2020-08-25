@@ -99,7 +99,7 @@ namespace HelloWorld.Grains
 }
 ```
 
-您可以阅读，grain类实现一个或多个grain接口[在这里，在Grains部分。](http://dotnet.github.io/orleans/Documentation/grains/index.html)）
+您可以阅读，grain类实现一个或多个grain接口[在这里，在Grains部分。](http://dotnet.github.io/orleans/Documentation/grains/index.html))
 
 ```csharp
 [...]

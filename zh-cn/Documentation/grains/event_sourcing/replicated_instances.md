@@ -7,13 +7,13 @@ title: Replicated Grains
 
 有时，同一Grain的多个实例可能处于活动状态，例如在操作多集群时，使用`[OneInstancePerCluster]`属性。journaledgrain旨在以最小的摩擦支持复制实例。它依赖于*日志一致性提供程序*运行必要的协议以确保所有实例同意相同的事件序列。特别要注意以下几个方面：
 
--   **一致的版本**：Grains状态的所有版本（临时版本除外）都基于相同的全局事件序列。特别是，如果两个实例看到相同的版本号，则它们看到相同的状态。
+-   **一致的版本**：Grains状态的所有版本(临时版本除外)都基于相同的全局事件序列。特别是，如果两个实例看到相同的版本号，则它们看到相同的状态。
 
 -   **比赛项目**：多个实例可以同时引发事件。一致性提供程序解决了这个竞争，并确保每个人都同意相同的顺序。
 
 -   **通知/反应性**：在一个Grains实例上引发事件后，一致性提供程序不仅更新存储，还通知所有其他Grains实例。
 
-有关一致性模型的一般讨论，请参见[技术报告](https://www.microsoft.com/en-us/research/publication/geo-distribution-actor-based-services/)以及[普惠制纸张](https://www.microsoft.com/en-us/research/publication/global-sequence-protocol-a-robust-abstraction-for-replicated-shared-state-extended-version/)（全局序列协议）。
+有关一致性模型的一般讨论，请参见[技术报告](https://www.microsoft.com/en-us/research/publication/geo-distribution-actor-based-services/)以及[普惠制纸张](https://www.microsoft.com/en-us/research/publication/global-sequence-protocol-a-robust-abstraction-for-replicated-shared-state-extended-version/)(全局序列协议)。
 
 ## 条件事件
 
@@ -39,4 +39,4 @@ bool success = await RaiseConditionalEvent(new WithdrawalEvent()  { ... });
 await RefreshNow();
 ```
 
-其中（1）确认所有未确认事件，和（2）从存储中加载最新版本。
+其中(1)确认所有未确认事件，和(2)从存储中加载最新版本。

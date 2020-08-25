@@ -17,7 +17,7 @@ title: Student Projects
 
 2.  **为基于Orleans的云服务自动生成前端**. 这个项目将Orleans actor模型无缝地扩展到HTTP世界中。项目的升级部分包括根据参与者的.NET接口和元数据动态生成HTTP端点。主要部分包括自动生成前端以支持web套接字和双向数据流，这需要复杂的代码生成和优化以获得高性能。它还需要注意容错，在服务器重新启动、客户端重新连接和迁移过程中保持流式会话的高可用性，这是一个重大的研究挑战。
 
-3.  **实体框架的存储提供程序**. 这个项目包括使Orleans对象能够将它们的状态存储在数据库中，并随后对其进行查询。这可能包括使用EntityFramework（EF）在SQLAzure数据库上添加对Orleans对象持久性的支持，EF是Microsoft针对.NET的开源对象关系映射器，并通过LINQ查询公开这些数据。可以使用标准数据库基准和/或定制的Orleans应用程序来评估和调整实现。
+3.  **实体框架的存储提供程序**. 这个项目包括使Orleans对象能够将它们的状态存储在数据库中，并随后对其进行查询。这可能包括使用EntityFramework(EF)在SQLAzure数据库上添加对Orleans对象持久性的支持，EF是Microsoft针对.NET的开源对象关系映射器，并通过LINQ查询公开这些数据。可以使用标准数据库基准和/或定制的Orleans应用程序来评估和调整实现。
 
 4.  **分布式系统基准测试**. 定义一个适用于像Orleans这样的分布式系统的基准测试列表。基准应用程序在精神上可能类似于[TPC数据库基准](http://www.tpc.org/information/benchmarks.asp)或[UCB“平行矮星”](https://paralleldwarfs.codeplex.com/)实施[在这里](http://view.eecs.berkeley.edu/wiki/Dwarfs)可以用来描述分布式框架的性能和可伸缩性。例如，考虑为Orleans开发一个新的基准，以比较存储供应商的性能。
 
@@ -37,7 +37,7 @@ title: Student Projects
 
 3.  **基于Orleans的Faceboook类社交应用**. 每个用户可以由一个Orleans演员代表，其中包括一个朋友列表和朋友可以在上面写字的墙。
 
-4.  **简单存储提供程序**. 为存储系统（如键值存储或数据库系统）添加存储提供程序。一个简单的人可以用[Orleans序列化程序](https://github.com/dotnet/orleans/tree/master/src/Orleans/Serialization)，如现有的[Azure表存储提供程序](https://github.com/dotnet/orleans/blob/master/src/OrleansProviders/Storage/AzureTableStorage.cs). 更复杂的方法是将Orleans类的状态变量映射到存储系统的细Grain结构。复杂的是上面提到的实体框架存储提供程序*研究项目*. 比较不同类型和大小的参与者状态的不同存储提供程序的性能。
+4.  **简单存储提供程序**. 为存储系统(如键值存储或数据库系统)添加存储提供程序。一个简单的人可以用[Orleans序列化程序](https://github.com/dotnet/orleans/tree/master/src/Orleans/Serialization)，如现有的[Azure表存储提供程序](https://github.com/dotnet/orleans/blob/master/src/OrleansProviders/Storage/AzureTableStorage.cs). 更复杂的方法是将Orleans类的状态变量映射到存储系统的细Grain结构。复杂的是上面提到的实体框架存储提供程序*研究项目*. 比较不同类型和大小的参与者状态的不同存储提供程序的性能。
 
 5.  **与其他分布式应用框架的比较**. 以为另一个应用程序框架编写的示例应用程序为例，例如[谷歌应用引擎](https://cloud.google.com/appengine/docs)或[阿克卡](http://akka.io/)把它翻译成Orleans。通过比较应用程序，总结每个框架的相对优势和劣势。
 

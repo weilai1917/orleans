@@ -5,7 +5,7 @@ title: Local development configuration
 
 # 本地开发配置
 
-有关针对Orleans 2.0的工作示例应用程序，请参见：[https://github.com/dotnet/orleans/tree/master/samples/2.0/helloworld网站](https://github.com/dotnet/orleans/tree/master/Samples/2.0/HelloWorld)此示例托管了在不同平台上工作的.NET Core控制台应用程序中的客户端和silos，但对于.NET Framework 4.6.1+控制台应用程序（仅在Windows上工作）也可以这样做。
+有关针对Orleans 2.0的工作示例应用程序，请参见：[https://github.com/dotnet/orleans/tree/master/samples/2.0/helloworld网站](https://github.com/dotnet/orleans/tree/master/Samples/2.0/HelloWorld)此示例托管了在不同平台上工作的.NET Core控制台应用程序中的客户端和silos，但对于.NET Framework 4.6.1+控制台应用程序(仅在Windows上工作)也可以这样做。
 
 ## silos配置
 
