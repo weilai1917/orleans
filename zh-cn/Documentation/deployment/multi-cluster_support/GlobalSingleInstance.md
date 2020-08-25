@@ -25,13 +25,13 @@ public class MyLocalGrain : Orleans.Grain, IMyGrain {
 
 如果grain类没有指定这些属性中的任何一个，则默认为`[OneInstancePerCluster]`或`[全球照明]`如果配置参数`默认为UseGlobalSingleInstances`设置为true。
 
-#### 全局单实例粒度协议
+#### 全局单实例Grain协议
 
 当访问全局单实例（GSI）grains，并且不知道存在激活时，在激活新实例之前执行特殊GSI激活协议。特别地，请求被发送到当前[多群集配置](MultiClusterConfiguration.md)检查他们是否已经激活了这种Grains。如果所有响应均为负，则在此群集中创建新激活。否则，将使用远程激活（并在本地目录中缓存对它的引用）。
 
-#### 每个集群粒度一个实例的协议
+#### 每个集群Grain一个实例的协议
 
-对于每个集群粒度的一个实例，没有集群间通信。它们只需在每个集群中独立使用标准的orleans机制。在orleans框架本身中，以下grain类用`[OneInstancePerCluster]`属性：`管理grain`，请`grains数据库成员表`，和`粒状`是的。
+对于每个集群Grain的一个实例，没有集群间通信。它们只需在每个集群中独立使用标准的orleans机制。在orleans框架本身中，以下grain类用`[OneInstancePerCluster]`属性：`管理grain`，请`grains数据库成员表`，和`粒状`是的。
 
 #### 可疑激活
 

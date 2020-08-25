@@ -79,7 +79,7 @@ builder.AddAzureBlobGrainStorage(option => option.ConnectionString = your_connec
 
 启用其中一个，我们就可以处理grain代码了。
 
-> 注意：在Orleans 2.0中，许多功能被拆分成更小的包，以允许更细粒度的配置和部署。这包括Azure存储提供程序。请安装[Orleans持久性](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AzureStorage/)如果要将Azure用作存储提供程序，请打包。您可以通过[寻找Orleans。坚持](https://www.nuget.org/packages?q=Microsoft.Orleans.Persistence).
+> 注意：在Orleans 2.0中，许多功能被拆分成更小的包，以允许更细Grain的配置和部署。这包括Azure存储提供程序。请安装[Orleans持久性](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AzureStorage/)如果要将Azure用作存储提供程序，请打包。您可以通过[寻找Orleans。坚持](https://www.nuget.org/packages?q=Microsoft.Orleans.Persistence).
 
 ## 申报国
 
@@ -126,7 +126,7 @@ public class Employee : Orleans.Grain<EmployeeState>, Interfaces.IEmployee
 public class Manager : Orleans.Grain<ManagerState>, IManager
 ```
 
-在声明显而易见的风险下，存储提供程序属性的名称应该与配置silos时使用的名称相匹配。这种间接性使您能够在部署之前延迟关于在哪里存储粒度状态的选择。
+在声明显而易见的风险下，存储提供程序属性的名称应该与配置silos时使用的名称相匹配。这种间接性使您能够在部署之前延迟关于在哪里存储Grain状态的选择。
 
 考虑到这些声明性的更改，grain不应该再依赖私有字段来保持补偿级别和管理器。相反，grain基类让我们通过`State`可用于Grains的属性。
 

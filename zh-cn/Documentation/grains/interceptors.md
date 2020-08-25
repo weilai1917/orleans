@@ -7,7 +7,7 @@ title: Grain Call Filters
 
 Grains调用过滤器提供了一种拦截Grains调用的方法。筛选器可以在Grains调用之前和之后执行代码。可以同时安装多个过滤器。过滤器是异步的，可以修改`RequestContext`，参数和被调用方法的返回值。过滤器还可以检查`方法信息`可以在Grain类上调用的方法，可用于引发或处理异常。
 
-粒度调用过滤器的一些示例用法是：
+Grain调用过滤器的一些示例用法是：
 
 -   授权：过滤器可以检查正在调用的方法以及其中的参数或某些授权信息`RequestContext`确定是否允许呼叫继续进行。
 -   记录/遥测：过滤器可以记录信息并捕获计时数据和有关方法调用的其他统计信息。
@@ -22,7 +22,7 @@ Grains调用过滤器提供了一种拦截Grains调用的方法。筛选器可�
 
 # 访问过滤
 
-传入的粒度调用过滤器实现了`IIncomingGrainCallFilter`接口，它具有一种方法：
+传入的Grain调用过滤器实现了`IIncomingGrainCallFilter`接口，它具有一种方法：
 
 ```csharp
 public interface IIncomingGrainCallFilter
@@ -76,7 +76,7 @@ public interface IIncomingGrainCallContext
 
 ### silos范围内的所有访问过滤器
 
-可以使用Dependency Injection将委托注册为silos级的粒度调用过滤器，如下所示：
+可以使用Dependency Injection将委托注册为silos级的Grain调用过滤器，如下所示：
 
 ```csharp
 siloHostBuilder.AddIncomingGrainCallFilter(async context =>
@@ -284,7 +284,7 @@ builder.AddOutgoingGrainCallFilter(async context =>
 
 在上面的代码中，`建造者`可能是`ISiloHostBuilder`要么`IClientBuilder`。
 
-同样，可以将一个类注册为传出的粒度调用过滤器。这是一个grain调用过滤器的示例，它记录每个grain方法的结果：
+同样，可以将一个类注册为传出的Grain调用过滤器。这是一个grain调用过滤器的示例，它记录每个grain方法的结果：
 
 ```csharp
 public class LoggingCallFilter : IOutgoingGrainCallFilter

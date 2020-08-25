@@ -25,7 +25,7 @@ hostBuilder.AddPersistentStreams(StreamProviderName, GeneratorAdapterFactory.Cre
 
 ### 牵引剂<a name="Pulling-Agents"></a>
 
-持久流提供者的核心是拉动代理。拉动代理程序从一组持久队列中拉出事件，然后将事件以消耗它们的方式传递给应用程序代码。可以将拉动代理视为一种分布式“微服务”，即一种分区的，高度可用的弹性分布式组件。拉动代理在托管应用程序粒度的相同silos中运行，并由Orleans Streaming Runtime完全管理。
+持久流提供者的核心是拉动代理。拉动代理程序从一组持久队列中拉出事件，然后将事件以消耗它们的方式传递给应用程序代码。可以将拉动代理视为一种分布式“微服务”，即一种分区的，高度可用的弹性分布式组件。拉动代理在托管应用程序Grain的相同silos中运行，并由Orleans Streaming Runtime完全管理。
 
 ### StreamQueueMapper和StreamQueueBalancer<a name="StreamQueueMapper-and-StreamQueueBalancer"></a>
 
@@ -49,7 +49,7 @@ hostBuilder
 
 ### 拉协议<a name="Pulling-Protocol"></a>
 
-每个silos都运行一组拉动代理，每个代理都从一个队列中拉出。拉动代理程序本身由内部运行时组件（称为**SystemTarget**。SystemTargets本质上是运行时粒度，受单线程并发性的影响，可以使用常规的粒度消息传递，并且轻巧。与Grains相反，SystemTarget不是虚拟的：它们是由运行时显式创建的，并且位置不透明。通过将拉动代理实现为SystemTargets，Orleans Streaming Runtime可以依赖于内置的Orleans功能并可以扩展到大量队列，因为创建新的拉动代理与创建新的Grains一样便宜。
+每个silos都运行一组拉动代理，每个代理都从一个队列中拉出。拉动代理程序本身由内部运行时组件（称为**SystemTarget**。SystemTargets本质上是运行时Grain，受单线程并发性的影响，可以使用常规的Grain消息传递，并且轻巧。与Grains相反，SystemTarget不是虚拟的：它们是由运行时显式创建的，并且位置不透明。通过将拉动代理实现为SystemTargets，Orleans Streaming Runtime可以依赖于内置的Orleans功能并可以扩展到大量队列，因为创建新的拉动代理与创建新的Grains一样便宜。
 
 每个拉动代理都运行一个定期计时器，该定时从队列中拉出（通过调用[**`IQueueAdapterReceiver`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core/Streams/QueueAdapters/IQueueAdapterReceiver.cs)）`GetQueueMessagesAsync()`方法。返回的消息放在内部的每个代理的数据结构中，称为`IQueueCache`。检查每个消息以找出其目标流。代理使用Pub Sub来查找订阅此流的流使用者列表。检索到使用者列表后，代理会将其存储在本地（在其pub-sub缓存中），因此无需在每条消息上都与Pub Sub进行协商。代理还订阅pub-sub，以接收有关订阅该流的任何新使用者的通知。代理与pub-sub保证之间的这种握手**强大的流订阅语义**：*消费者订阅了流之后，它将看到订阅后生成的所有事件*。另外，使用`StreamSequenceToken`允许其过去订阅。
 

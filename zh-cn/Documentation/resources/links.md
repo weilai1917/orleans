@@ -53,7 +53,7 @@ title: Links
 
 [Grains，Grains和更多Grains](http://encloudify.blogspot.nl/2014/05/grains-grains-and-more-grains.html)
 
-[在物联网世界中细粒度的OrleansGrains](http://encloudify.blogspot.nl/2014/05/fine-graining-your-orleans-grains.html)
+[在物联网世界中细Grain的OrleansGrains](http://encloudify.blogspot.nl/2014/05/fine-graining-your-orleans-grains.html)
 
 [可监控的Grains](http://encloudify.blogspot.nl/2014/05/monitorable-grains.html)
 

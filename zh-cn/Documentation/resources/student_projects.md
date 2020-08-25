@@ -23,7 +23,7 @@ title: Student Projects
 
 5.  **流上的声明性数据流语言**. 定义并构建[三叉戟风暴](https://storm.apache.org/documentation/Trident-tutorial.html)就像OrleansStreams上的陈述性语言。开发一个优化程序来配置流处理以最小化总体成本。
 
-6.  **客户端设备的编程模型**. 将Orleans扩展到客户端设备，如传感器、电话、平板电脑和台式机。启用粒度逻辑在客户端上执行。潜在地支持层分割，也就是说，动态地决定哪些部分的代码在设备上执行，哪些部分被卸载到云上。
+6.  **客户端设备的编程模型**. 将Orleans扩展到客户端设备，如传感器、电话、平板电脑和台式机。启用Grain逻辑在客户端上执行。潜在地支持层分割，也就是说，动态地决定哪些部分的代码在设备上执行，哪些部分被卸载到云上。
 
 7.  **对grain/actor类、二级索引的查询**. 建立一个分布式的、可扩展的、可靠的Grains指数。这包括正式定义查询模型和实现分布式索引。索引本身可以实现为OrleansGrains和/或存储在数据库中。
 
@@ -37,7 +37,7 @@ title: Student Projects
 
 3.  **基于Orleans的Faceboook类社交应用**. 每个用户可以由一个Orleans演员代表，其中包括一个朋友列表和朋友可以在上面写字的墙。
 
-4.  **简单存储提供程序**. 为存储系统（如键值存储或数据库系统）添加存储提供程序。一个简单的人可以用[Orleans序列化程序](https://github.com/dotnet/orleans/tree/master/src/Orleans/Serialization)，如现有的[Azure表存储提供程序](https://github.com/dotnet/orleans/blob/master/src/OrleansProviders/Storage/AzureTableStorage.cs). 更复杂的方法是将Orleans类的状态变量映射到存储系统的细粒度结构。复杂的是上面提到的实体框架存储提供程序*研究项目*. 比较不同类型和大小的参与者状态的不同存储提供程序的性能。
+4.  **简单存储提供程序**. 为存储系统（如键值存储或数据库系统）添加存储提供程序。一个简单的人可以用[Orleans序列化程序](https://github.com/dotnet/orleans/tree/master/src/Orleans/Serialization)，如现有的[Azure表存储提供程序](https://github.com/dotnet/orleans/blob/master/src/OrleansProviders/Storage/AzureTableStorage.cs). 更复杂的方法是将Orleans类的状态变量映射到存储系统的细Grain结构。复杂的是上面提到的实体框架存储提供程序*研究项目*. 比较不同类型和大小的参与者状态的不同存储提供程序的性能。
 
 5.  **与其他分布式应用框架的比较**. 以为另一个应用程序框架编写的示例应用程序为例，例如[谷歌应用引擎](https://cloud.google.com/appengine/docs)或[阿克卡](http://akka.io/)把它翻译成Orleans。通过比较应用程序，总结每个框架的相对优势和劣势。
 

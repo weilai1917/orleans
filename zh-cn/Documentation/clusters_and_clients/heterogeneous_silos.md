@@ -49,5 +49,5 @@ public class C: Grain, IMyGrainInterface, IMyOtherGrainInterface
 
 ## 限制
 
--   如果受支持的粒度类型集发生更改，则不会通知已连接的客户端。在前面的示例中：*如果silo 4离开集群，客户端仍将尝试调用类型为grain的`E类`是的。它将在运行时失败，并带有orleansexception。*如果客户端是在silos4加入群集之前连接到群集的，则客户端将无法调用类型为`E类`是的。它会失败的
+-   如果受支持的Grain类型集发生更改，则不会通知已连接的客户端。在前面的示例中：*如果silo 4离开集群，客户端仍将尝试调用类型为grain的`E类`是的。它将在运行时失败，并带有orleansexception。*如果客户端是在silos4加入群集之前连接到群集的，则客户端将无法调用类型为`E类`是的。它会失败的
 -   不支持无状态grains：集群中的所有silos必须支持同一组无状态grains。

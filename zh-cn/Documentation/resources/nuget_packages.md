@@ -184,7 +184,7 @@ PM> Install-Package Microsoft.Orleans.Reminders.DynamoDB
 PM> Install-Package Microsoft.Orleans.Persistence.AzureStorage
 ```
 
-包括用于使用Azure表或Azure Blob存储粒度状态的插件。
+包括用于使用Azure表或Azure Blob存储Grain状态的插件。
 
 ### [Microsoft Orleans Persistence ADO.NET提供程序](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AdoNet/)
 
@@ -200,7 +200,7 @@ PM> Install-Package Microsoft.Orleans.Persistence.AdoNet
 PM> Install-Package Microsoft.Orleans.Persistence.DynamoDB
 ```
 
-包括用于使用AWS DynamoDB存储粒度状态的插件。
+包括用于使用AWS DynamoDB存储Grain状态的插件。
 
 ## 流提供者
 

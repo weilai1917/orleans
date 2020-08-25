@@ -18,7 +18,7 @@ orleans运行时使用生成的代码，以确保跨集群使用的类型的正�
 -   [Microsoft.Orleans.OrleansCodeGenerator.Build公司](https://www.nuget.org/packages/Microsoft.Orleans.OrleansCodeGenerator.Build/)是的。使用Roslyn生成代码并使用.NET反射进行分析的包。
 -   [Microsoft.Orleans.CodeGenerator.MSBuild](https://www.nuget.org/packages/Microsoft.Orleans.CodeGenerator.MSBuild/)是的。一个新的代码生成包，它利用roslyn进行代码生成和代码分析。它不加载应用程序二进制文件，因此避免了由相互冲突的依赖项版本和不同的目标框架引起的问题。新的代码生成器还改进了对增量构建的支持，这将缩短构建时间。
 
-    这些包中的一个应该安装到所有包含粒度、粒度接口、自定义序列化程序或在粒度之间发送的类型的项目中。安装包会将目标插入到项目中，该项目将在生成时生成代码。
+    这些包中的一个应该安装到所有包含Grain、Grain接口、自定义序列化程序或在Grain之间发送的类型的项目中。安装包会将目标插入到项目中，该项目将在生成时生成代码。
 
 两个包（`Microsoft.Orleans.CodeGenerator.MSBuild`和`Microsoft.Orleans.OrleansCodeGenerator.Build公司`）只支持C项目。使用`Microsoft.Orleans.Orleanscodegenerator公司`下面描述的包，或者通过创建一个c项目，该项目可以作为用其他语言编写的程序集生成的代码的目标。
 

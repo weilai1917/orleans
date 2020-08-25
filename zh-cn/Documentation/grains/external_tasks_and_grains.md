@@ -62,7 +62,7 @@ title: External Tasks and Grains
    }
 ```
 
-### 高级示例-从运行在线程池上的代码进行粒度调用
+### 高级示例-从运行在线程池上的代码进行Grain调用
 
 甚至更高级的方案是一段Grains代码，需要“突破”Orleans任务调度模型并在线程池（或其他非Orleans上下文）上运行，但仍需要调用另一个Grains。如果您尝试进行一次Grains调用但不在Orleans上下文中，则会收到一个异常，指出您正在“尝试从silos而不是从Grains内部而不是系统目标内部发送消息（RuntimeContext不是
 

@@ -63,7 +63,7 @@ var silo = new SiloHostBuilder()
 
 可选参数`默认多群集`在[多群集配置](MultiClusterConfiguration.md)是的。
 
-可选参数`默认为UseGlobalSingleInstances`，请`GlobalSingleInstanceRetryInterval`和`GlobalSingleInstanceNumberEntries全局`在[全局单实例粒度](GlobalSingleInstance.md)是的。
+可选参数`默认为UseGlobalSingleInstances`，请`GlobalSingleInstanceRetryInterval`和`GlobalSingleInstanceNumberEntries全局`在[全局单实例Grain](GlobalSingleInstance.md)是的。
 
 ## Orleans客户端配置
 

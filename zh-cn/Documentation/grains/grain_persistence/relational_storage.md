@@ -13,7 +13,7 @@ Orleans的关系存储后端代码是基于泛型ADO.NET公司功能，因此与
 2.  配置ADO.NET公司不变通孔`不变量`属性。
 3.  数据库需要存在并与代码兼容。这是通过运行特定于供应商的数据库创建脚本来完成的。有关详细信息，请参阅[ADO.NET公司配置](../../clusters_and_clients/configuration_guide/adonet_configuration.md).
 
-NET粒度存储提供程序允许您在关系数据库中存储粒度状态。当前支持以下数据库：
+NETGrain存储提供程序允许您在关系数据库中存储Grain状态。当前支持以下数据库：
 
 -   SQL服务器
 -   MySQL/MariaDB

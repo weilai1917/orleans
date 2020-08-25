@@ -35,6 +35,6 @@ grain代码很可能只需要引用这些抽象，而silo主机和客户端将�
 
 -   迁移了要使用的日志基础结构`Microsoft.Extensions.Logging`（与ASP.NET Core 2.0相同的摘要）。
 
--   2.0包含了对acid分布式跨粒度事务的测试版支持。
+-   2.0包含了对acid分布式跨Grain事务的测试版支持。
 
 该功能将为原型设计和开发做好准备，并将在2.0版本发布后的某个时间毕业用于生产。见[交易](grains/transactions.md)更多细节。

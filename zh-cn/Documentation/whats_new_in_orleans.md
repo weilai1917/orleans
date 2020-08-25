@@ -46,7 +46,7 @@ title: What's new in Orleans
 
 ## [2.2.0版](https://github.com/dotnet/orleans/releases/tag/v2.2.0)2018年12月13日
 
-这个版本主要是为了支持ACID跨粒度事务，以达到生产就绪的质量。
+这个版本主要是为了支持ACID跨Grain事务，以达到生产就绪的质量。
 
 此版本不包含任何重大更改，并且与2.0.\*版本向后兼容，允许对正在运行的群集进行就地升级。
 
@@ -217,7 +217,7 @@ title: What's new in Orleans
 -   显着的新功能
     -   支持地理分布的多集群部署[＃1108](https://github.com/dotnet/orleans/pull/1108/) [＃1109](https://github.com/dotnet/orleans/pull/1109/) [＃1800](https://github.com/dotnet/orleans/pull/1800/)
     -   添加了新的Amazon AWS基本Orleans提供程序[＃2006](https://github.com/dotnet/orleans/issues/2006)
-    -   支持粒度方法中的分布式取消令牌[＃1599](https://github.com/dotnet/orleans/pull/1599/)
+    -   支持Grain方法中的分布式取消令牌[＃1599](https://github.com/dotnet/orleans/pull/1599/)
 
 ## 社区虚拟聚会＃10
 

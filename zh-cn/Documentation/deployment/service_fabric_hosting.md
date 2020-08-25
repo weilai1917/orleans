@@ -5,7 +5,7 @@ title: Service Fabric Hosting
 
 # 服务结构宿主
 
-Orleans可以使用`Microsoft.Orleans.hosting.ServiceFabric公司`包裹。silos应该作为未分区的无状态服务托管，因为Orleans使用细粒度的动态分布来管理Grains本身的分布。其他托管选项（分区的、有状态的）当前未经测试且不受支持。
+Orleans可以使用`Microsoft.Orleans.hosting.ServiceFabric公司`包裹。silos应该作为未分区的无状态服务托管，因为Orleans使用细Grain的动态分布来管理Grains本身的分布。其他托管选项（分区的、有状态的）当前未经测试且不受支持。
 
 一个演示在服务结构上托管的示例位于[示例/2.0/ServiceFabric](https://github.com/dotnet/orleans/tree/master/Samples/2.0/ServiceFabric)是的。
 

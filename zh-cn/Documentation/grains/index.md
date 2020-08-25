@@ -9,7 +9,7 @@ title: Developing a Grain
 
 有关更详尽的说明，请参见[项目设置](../tutorials_and_samples/tutorial_1.md#project-setup)的部分[教程一–Orleans基础](../tutorials_and_samples/tutorial_1.md)。
 
-# grains界面和类
+# Grains界面和类
 
 grains相互交互，并通过调用声明为各个grains接口一部分的方法从外部调用。Grains类实现一个或多个先前声明的Grains接口。Grain接口的所有方法都必须返回`任务`（对于`虚空`方法），一个`任务<T>`或一个`ValueTask <T>`（对于返回类型为值的方法`Ť`）。
 

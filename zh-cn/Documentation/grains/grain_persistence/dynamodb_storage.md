@@ -3,7 +3,7 @@ layout: page
 title: Amazon DynamoDB Grain Persistence
 ---
 
-# Amazon DynamoDB粒度持久性
+# Amazon DynamoDBGrain持久性
 
 ## 安装
 

@@ -5,7 +5,7 @@ title: Persistence
 
 # 持久化
 
-Grains可以具有多个与之关联的命名持久数据对象。在激活Grains期间会从存储中加载此状态，以便在请求期间可以使用它们。粒度持久性使用可扩展的插件模型，因此可以使用任何数据库的存储提供程序。此持久性模型仅出于简化目的而设计，并不旨在涵盖所有数据访问模式。Grains还可以直接访问数据库，而无需使用Grains持久性模型。
+Grains可以具有多个与之关联的命名持久数据对象。在激活Grains期间会从存储中加载此状态，以便在请求期间可以使用它们。Grain持久性使用可扩展的插件模型，因此可以使用任何数据库的存储提供程序。此持久性模型仅出于简化目的而设计，并不旨在涵盖所有数据访问模式。Grains还可以直接访问数据库，而无需使用Grains持久性模型。
 
 ![A grain can have multiple persisted data objects each stored in a different storage system](../../images/grain_state_1.png)
 
@@ -22,9 +22,9 @@ Grains可以具有多个与之关联的命名持久数据对象。在激活Grain
 
 可以在以下位置找到OrleansGrains存储提供商[NuGet](https://www.nuget.org/packages?q=Orleans+Persistence)。官方维护的软件包包括：
 
--   [Microsoft.Orleans.Persistence.AdoNet](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AdoNet)适用于ADO.NET支持的SQL数据库和其他存储系统。有关更多信息，请参见[ADO.NET粒度持久性](relational_storage.md)。
--   [Microsoft.Orleans.Persistence.AzureStorage](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AzureStorage)通过Azure Table Storage API访问Azure存储，包括Azure Blob存储，Azure表存储和Azure CosmosDB。有关更多信息，请参见[Azure存储粒度持久性](azure_storage.md)。
--   [Microsoft.Orleans.Persistence.DynamoDB](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.DynamoDB)适用于Amazon DynamoDB。有关更多信息，请参见[Amazon DynamoDB粒度持久性](dynamodb_storage.md)。
+-   [Microsoft.Orleans.Persistence.AdoNet](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AdoNet)适用于ADO.NET支持的SQL数据库和其他存储系统。有关更多信息，请参见[ADO.NETGrain持久性](relational_storage.md)。
+-   [Microsoft.Orleans.Persistence.AzureStorage](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AzureStorage)通过Azure Table Storage API访问Azure存储，包括Azure Blob存储，Azure表存储和Azure CosmosDB。有关更多信息，请参见[Azure存储Grain持久性](azure_storage.md)。
+-   [Microsoft.Orleans.Persistence.DynamoDB](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.DynamoDB)适用于Amazon DynamoDB。有关更多信息，请参见[Amazon DynamoDBGrain持久性](dynamodb_storage.md)。
 
 ## API
 
@@ -60,7 +60,7 @@ public class UserGrain : Grain, IUserGrain
 }
 ```
 
-即使它们是同一类型，不同的粒度类型也可以使用不同的已配置存储提供程序：例如，两个不同的Azure Table Storage提供程序实例连接到不同的Azure存储帐户。
+即使它们是同一类型，不同的Grain类型也可以使用不同的已配置存储提供程序：例如，两个不同的Azure Table Storage提供程序实例连接到不同的Azure存储帐户。
 
 ### 阅读状态
 
@@ -193,7 +193,7 @@ public class UserGrain : Grain, IUserGrain
 
 ### 写入操作的失败模式
 
-存储提供程序在写入特定Grains的状态数据时遇到失败，将导致`WriteStateAsync()` `任务`被指责。通常，这将意味着只要将`WriteStateAsync()` `任务`正确地链接到最终收益`任务`对于这种Grains方法。但是，某些高级方案可能会编写粒度代码来专门处理此类写错误，就像它们可以处理任何其他错误一样`任务`。
+存储提供程序在写入特定Grains的状态数据时遇到失败，将导致`WriteStateAsync()` `任务`被指责。通常，这将意味着只要将`WriteStateAsync()` `任务`正确地链接到最终收益`任务`对于这种Grains方法。但是，某些高级方案可能会编写Grain代码来专门处理此类写错误，就像它们可以处理任何其他错误一样`任务`。
 
 执行错误处理/恢复代码的Grains*必须*捕获异常/错误`WriteStateAsync()` `任务`而不重新抛出以表示它们已成功处理了写入错误。
 

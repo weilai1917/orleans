@@ -7,7 +7,7 @@ title: Tutorial 1 Hello World
 
 此概述与可用的Hello World示例应用程序相关联[这里](https://github.com/dotnet/orleans/tree/master/Samples/2.0/HelloWorld)。
 
-Orleans的主要概念包括silos，客户和一种或多种Grains。创建Orleans应用程序涉及配置silos，配置客户端和编写粒度。
+Orleans的主要概念包括silos，客户和一种或多种Grains。创建Orleans应用程序涉及配置silos，配置客户端和编写Grain。
 
 ## 配置silos
 

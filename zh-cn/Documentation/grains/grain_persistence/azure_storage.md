@@ -3,9 +3,9 @@ layout: page
 title: Azure Storage Grain Persistence
 ---
 
-# Azure存储粒度持久性
+# Azure存储Grain持久性
 
-Azure存储粒度持久性提供程序同时支持[Azure Blob存储](https://azure.microsoft.com/en-us/services/storage/blobs/)和[Azure表存储](https://azure.microsoft.com/en-us/services/storage/tables/)。
+Azure存储Grain持久性提供程序同时支持[Azure Blob存储](https://azure.microsoft.com/en-us/services/storage/blobs/)和[Azure表存储](https://azure.microsoft.com/en-us/services/storage/tables/)。
 
 ## 安装
 
@@ -17,7 +17,7 @@ Azure存储粒度持久性提供程序同时支持[Azure Blob存储](https://azu
 
 Azure表存储提供程序将状态存储在表行中，如果超出单个列的限制，则将状态分为多个列。每行的最大长度为一兆字节，例如[由Azure表存储强加](https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets#azure-table-storage-scale-targets)。
 
-使用以下命令配置Azure表存储粒度持久性提供程序`ISiloBuilder.AddAzureTableGrainStorage`扩展方法。
+使用以下命令配置Azure表存储Grain持久性提供程序`ISiloBuilder.AddAzureTableGrainStorage`扩展方法。
 
 ```csharp
 siloBuilder.AddAzureTableGrainStorage(
@@ -33,7 +33,7 @@ siloBuilder.AddAzureTableGrainStorage(
 
 Azure Blob存储提供程序将状态存储在Blob中。
 
-使用以下命令配置Azure Blob存储粒度持久性提供程序`ISiloBuilder.AddAzureBlobGrainStorage`扩展方法。
+使用以下命令配置Azure Blob存储Grain持久性提供程序`ISiloBuilder.AddAzureBlobGrainStorage`扩展方法。
 
 ```csharp
 siloBuilder.AddAzureBlobGrainStorage(

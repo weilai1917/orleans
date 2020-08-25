@@ -5,11 +5,11 @@ title: Introduction
 
 ### Orleans是一个用于构建健壮、可伸缩的分布式应用程序的跨平台框架
 
-Orleans建立在.NET开发人员生产力的基础上，并将其引入分布式应用程序的世界，如云服务。Orleans从单一的本地服务器扩展到云中的全球分布、高可用性应用程序。
+Orleans建立在.NET开发人员生产力的基础上，并将其带入了分布式应用程序的世界，例如云服务。 Orleans可从单个本地服务器扩展到云中全局分布的高可用性应用程序。
 
-Orleans采用了熟悉的概念，如对象、接口、异步/等待和try/catch，并将它们扩展到多服务器环境。因此，它可以帮助有单服务器应用经验的开发人员过渡到构建弹性、可伸缩的云服务和其他分布式应用程序。因此，Orleans经常被称为“分布式.NET”。
+Orleans采用了对象，接口，async/await和try/catch等熟悉的概念，并将其扩展到多服务器环境。这样，它可以帮助具有单服务器应用程序经验的开发人员过渡到构建弹性，可扩展的云服务和其他分布式应用程序。因此，Orleans通常被称为“分布式.NET”。
 
-它是由[微软研究院](http://research.microsoft.com/projects/orleans/)并介绍了[Virtual Actor Model](http://research.microsoft.com/apps/pubs/default.aspx?id=210931)作为为云时代构建新一代分布式系统的新方法。Orleans的核心贡献是它的编程模型，它在不限制功能或对开发人员施加繁重约束的情况下，缓和了高度并行分布式系统固有的复杂性。
+它是由[Microsoft Research](http://research.microsoft.com/projects/orleans/) 创建的，并介绍了[Virtual Actor Model](http://research.microsoft.com/apps/pubs/default.aspx?id=210931)作为一种新方法来构建面向云时代的新一代分布式系统。 Orleans的核心贡献是它的编程模型，它在不限制功能，以及对开发人员施加繁重约束的情况下，降低了高度并行分布式系统固有的复杂性。
 
 ## Grains
 
@@ -40,7 +40,7 @@ public interface IThermostat : IGrainWithStringKey
 }
 ```
 
-从Web前端从恒温器到达的事件可以通过调用`更新函数`方法，它可以选择将命令返回给设备。
+从Web前端从恒温器到达的事件可以通过调用`OnUpdate`方法，它可以选择将命令返回给设备。
 
 ```C#
 var thermostat = client.GetGrain<IThermostat>(id);
@@ -58,7 +58,7 @@ public interface IThermostatControl : IGrainWithStringKey
 }
 ```
 
-这两个接口(`恒温箱`和`ITH恒温控制`)由单个实现类实现：
+这两个接口(`IThermostat`和`IThermostatControl`)由单个实现类实现：
 
 ```C#
 public class ThermostatGrain : Grain, IThermostat, IThermostatControl

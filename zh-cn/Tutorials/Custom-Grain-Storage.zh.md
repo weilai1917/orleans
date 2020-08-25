@@ -120,7 +120,7 @@ private Task Init(CancellationToken ct)
 }
 ```
 
-我们还提供了一个通用函数来构造文件名，以确保每个服务，粒度ID和粒度类型的唯一性。
+我们还提供了一个通用函数来构造文件名，以确保每个服务，GrainID和Grain类型的唯一性。
 
 ```csharp
 private string GetKeyString(string grainType, GrainReference grainReference)

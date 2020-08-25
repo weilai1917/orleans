@@ -53,7 +53,7 @@ public override Task OnActivateAsync()
 var grain = grainFactory.GetGrain<IExample>(1);
 ```
 
-检索主键形式的粒度代码：
+检索主键形式的Grain代码：
 
 ```csharp
 public override Task OnActivateAsync()
@@ -73,7 +73,7 @@ public override Task OnActivateAsync()
 var grain = grainFactory.GetGrain<IExample>("myGrainKey");
 ```
 
-检索主键形式的粒度代码：
+检索主键形式的Grain代码：
 
 ```csharp
 public override Task OnActivateAsync()

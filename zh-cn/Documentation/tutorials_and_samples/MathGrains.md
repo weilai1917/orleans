@@ -5,4 +5,4 @@ title: MathGrains
 
 # MathGrains
 
-将功能封装到专用粒度中的计算器。
+将功能封装到专用Grain中的计算器。
