@@ -51,7 +51,7 @@ await client.Connect();
 
 ### 打电话给Grains
 
-从客户那里打电话给grain和[在grain代码中进行这样的调用](../grains/index.md)是的。相同的`getgrain<t>（键）`方法，其中`T`是目标grains界面，在两种情况下都使用[获取Grains参考](../grains/index.md#grain-reference)是的。细微的区别在于我们调用的工厂对象`获取grains`是的。在客户端代码中，我们通过连接的客户端对象来实现这一点。
+从客户那里打电话给grain和[在grain代码中进行这样的调用](../grains/index.md)是的。相同的`getgrain<t>（键）`方法，其中`T`是目标grains接口，在两种情况下都使用[获取Grains参考](../grains/index.md#grain-reference)是的。细微的区别在于我们调用的工厂对象`获取grains`是的。在客户端代码中，我们通过连接的客户端对象来实现这一点。
 
 ```csharp
 IPlayerGrain player = client.GetGrain<IPlayerGrain>(playerId);
@@ -59,7 +59,7 @@ Task t = player.JoinGame(game)
 await t;
 ```
 
-对grain方法的调用返回`任务`或者`任务<t>`根据[grains界面规则](../grains/index.md)是的。客户可以使用`等待`关键字异步等待返回的`任务`没有阻塞线程，或者在某些情况下`等待()`方法来阻止当前执行线程。
+对grain方法的调用返回`任务`或者`任务<t>`根据[grains接口规则](../grains/index.md)是的。客户可以使用`等待`关键字异步等待返回的`任务`没有阻塞线程，或者在某些情况下`等待()`方法来阻止当前执行线程。
 
 从客户端代码和从另一个Grain内部调用grains的主要区别在于grains的单线程执行模型。Grains被orleans运行时限制为单线程，而客户端可能是多线程的。Orleans没有在客户端提供任何这样的保证，因此客户端需要使用适合其环境的任何同步构造来管理自己的并发性—锁、事件，`任务`等等。
 

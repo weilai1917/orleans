@@ -32,7 +32,7 @@ title: Tutorial One
 
 1.  首先在新解决方案中创建一个控制台应用程序（.NET Core）项目。调用项目部分`silos`并命名解决方案`Orleans世界`。
 2.  添加另一个控制台应用程序（.NET Core）项目并将其命名`客户`。
-3.  添加一个类库（.NET标准）并命名`grains界面`。
+3.  添加一个类库（.NET标准）并命名`grains接口`。
 4.  添加另一个类库（.NET标准）并命名`Grains`。
 
 #### 删除默认源文件
@@ -42,9 +42,9 @@ title: Tutorial One
 
 ### 添加参考
 
-1.  `Grains`参考资料`grains界面`。
-2.  `silos`参考资料`grains界面`和`Grains`。
-3.  `客户`参考资料`grains界面`。
+1.  `Grains`参考资料`grains接口`。
+2.  `silos`参考资料`grains接口`和`Grains`。
+3.  `客户`参考资料`grains接口`。
 
 ## 添加OrleansNuGet软件包
 
@@ -58,9 +58,9 @@ title: Tutorial One
 
 `微软Orleans核心抽象`在任何地方都需要。两者都包含`微软Orleans服务器`和`微软Orleans客户`。
 
-`Microsoft.Orleans.CodeGenerator.MSBuild`自动生成调用Grains通过机器边界所需的代码。所以两者都需要`grains界面`和`Grains`项目。
+`Microsoft.Orleans.CodeGenerator.MSBuild`自动生成调用Grains通过机器边界所需的代码。所以两者都需要`grains接口`和`Grains`项目。
 
-## 定义grains界面
+## 定义grains接口
 
 在GrainInterfaces项目中，添加一个`IHello.cs`代码文件，并在其中定义以下IHello接口：
 

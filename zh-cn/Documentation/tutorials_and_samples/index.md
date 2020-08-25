@@ -27,4 +27,4 @@ title: Samples Overview
 
 ## [冒险](Adventure.md)
 
-在没有图形用户界面之前，在游戏机和大型多人游戏时代之前，有VT100终端，并且有[巨大的洞穴冒险](http://en.wikipedia.org/wiki/Colossal_Cave_Adventure)。按照今天的标准，这可能是la脚的，那时候是一个神奇的世界，里面有怪物、,叫的鸟以及可以捡到的东西。这是此示例的灵感。
+在没有图形用户接口之前，在游戏机和大型多人游戏时代之前，有VT100终端，并且有[巨大的洞穴冒险](http://en.wikipedia.org/wiki/Colossal_Cave_Adventure)。按照今天的标准，这可能是la脚的，那时候是一个神奇的世界，里面有怪物、,叫的鸟以及可以捡到的东西。这是此示例的灵感。

@@ -62,7 +62,7 @@ IDisposable Subscribe<TObserver>(this ILifecycleObservable observable, int stage
 
 ### 生命周期参与
 
-一些可扩展性点需要一种方法来识别哪些组件对参与生命周期感兴趣。为此，引入了生命周期参与者标记界面。探索silos和Grains的生命周期时，将详细介绍如何使用它。
+一些可扩展性点需要一种方法来识别哪些组件对参与生命周期感兴趣。为此，引入了生命周期参与者标记接口。探索silos和Grains的生命周期时，将详细介绍如何使用它。
 
 ```csharp
     public interface ILifecycleParticipant<TLifecycleObservable>

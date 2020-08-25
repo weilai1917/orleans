@@ -14,7 +14,7 @@ title: Grain Identity
 Grains的调用者决定应使用哪种方案。选项包括：
 
 -   长
--   图形用户界面
+-   图形用户接口
 -   串
 -   GUID +字串
 -   长+字符串

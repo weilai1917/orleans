@@ -56,7 +56,7 @@ Task Bar()
 
 ## 交错法
 
-grains界面法`[总是在屋檐下]`无论grains是否可重入，都将被交错。考虑以下示例：
+grains接口法`[总是在屋檐下]`无论grains是否可重入，都将被交错。考虑以下示例：
 
 ```csharp
 public interface ISlowpokeGrain : IGrainWithIntegerKey

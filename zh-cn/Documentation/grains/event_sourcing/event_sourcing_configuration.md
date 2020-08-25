@@ -7,7 +7,7 @@ title: Configuration
 
 ## 配置项目引用
 
-### grains界面
+### grains接口
 
 和以前一样，接口只依赖于`微软.orleans.core`包，因为grain接口独立于实现。
 

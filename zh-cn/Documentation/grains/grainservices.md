@@ -9,7 +9,7 @@ GrainService是一种特殊的Grains。一个没有身份的，并且从启动�
 
 ## 创建一个GrainService
 
-**第1步。**创建界面。GrainService的接口是使用与构建其他任何grain的接口完全相同的原理构建的。
+**第1步。**创建接口。GrainService的接口是使用与构建其他任何grain的接口完全相同的原理构建的。
 
 ```csharp
 public interface IDataService : IGrainService {

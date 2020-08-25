@@ -17,7 +17,7 @@ title: Observers
 
 假设我们有一个周期性地向客户发送消息的Grain。为了简单起见，我们的示例中的消息将是一个字符串。我们首先在客户端上定义将接收消息的接口。
 
-界面将如下所示
+接口将如下所示
 
 ```csharp
 public interface IChat : IGrainObserver

@@ -1,4 +1,4 @@
-# grains界面版本控制
+# grains接口版本控制
 
 > [!警告]本页介绍如何使用Grain接口版本控制。Grain状态的版本控制超出范围。
 
@@ -20,7 +20,7 @@
 public interface IVersionUpgradeTestGrain : IGrainWithIntegerKey {}
 ```
 
-在哪里？`十`是grains界面的版本号，通常单调递增。
+在哪里？`十`是grains接口的版本号，通常单调递增。
 
 ## grains版本兼容性和存储
 

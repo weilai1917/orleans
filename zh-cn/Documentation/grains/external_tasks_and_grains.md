@@ -17,7 +17,7 @@ title: External Tasks and Grains
 
 3）`configureAwait（false）`是用于逃避当前任务计划程序的显式API。这将导致在等待的任务之后在`TaskScheduler.Default`调度程序，它是.NET线程池，因此将中断Orleans grain的单线程执行。你一般应该**永远不要使用`ConfigureAwait（false）`直接在Grains代码中。**
 
-4）带签名的方法`异步无效`不应与Grains一起使用。它们旨在用于图形用户界面事件处理程序。
+4）带签名的方法`异步无效`不应与Grains一起使用。它们旨在用于图形用户接口事件处理程序。
 
 #### Task.Factory.StartNew和异步委托
 
@@ -109,7 +109,7 @@ title: External Tasks and Grains
 | 你想做什么？ | 怎么做 |
 | ------ | --- |
 | 在.NET线程池线程上运行后台工作。不允许使用任何Grains代码或Grains调用。 | `任务运行` |
-| grains界面调用 | 方法返回类型=`任务`要么`任务<T>` |
+| grains接口调用 | 方法返回类型=`任务`要么`任务<T>` |
 | 使用基于Orleans回合的并发保证（[往上看](#Task.Factory.StartNew和异步委托)）。 | `Task.Factory.StartNew（WorkerAsync）.Unwrap()` |
 | 使用基于Orleans回合的并发保证，可以从Grains代码运行同步工作者任务。 | `Task.Factory.StartNew（WorkerSync）` |
 | 执行工作项的超时 | `任务延迟`+`Task.WhenAny` |

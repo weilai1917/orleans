@@ -8,7 +8,7 @@
 
 当我们刚开始Orleans项目时，我们会定期与Midori人会面和交谈。这是很自然的，不仅是因为问题空间有一些明显的重叠，而且因为孕育Orleans的吉姆·拉鲁斯是[奇点](https://www.microsoft.com/en-us/research/project/singularity/)米多里的起点。我们立即借用了Midori的promises库，因为我们想使用基于promise的并发来安全执行和高效的RPC。我们没有费心尝试集成代码，只是简单地获取了二进制文件并将它们签入到我们的源代码树中。我们处于早期原型阶段，还不必担心长期性。
 
-当时，grains界面是这样的：
+当时，grains接口是这样的：
 
 ```csharp
 [Eventual]

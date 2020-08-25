@@ -35,7 +35,7 @@ var builder = new SiloHostBuilder()
 
 ## 程式设计模型
 
-### grains界面
+### grains接口
 
 为了使Grains支持交易，必须使用“交易”属性将Grains接口上的交易方法标记为交易的一部分。该属性需求通过下面的事务选项指示在调用环境中grain调用的行为：
 
