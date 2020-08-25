@@ -21,10 +21,10 @@ jobs:
     - uses: nikeee/docfx-action@v1.0.0
       name: Build Documentation
       with:
-        args: /zh-cn/docfx.json
+        args: zh-cn/docfx.json
 
     # Publish generated site using GitHub Pages
-    - uses:  sheng-jie/orleans@gh-pages
+    - uses:  maxheld83/ghpages@master
       name: Publish Documentation on GitHub Pages
       env:
         BUILD_DIR: ../../_output # docfx's default output directory is _site
