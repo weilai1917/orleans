@@ -9,7 +9,7 @@ Orleans建立在.NET开发人员生产力的基础上，并将其引入分布式
 
 Orleans采用了熟悉的概念，如对象、接口、异步/等待和try/catch，并将它们扩展到多服务器环境。因此，它可以帮助有单服务器应用经验的开发人员过渡到构建弹性、可伸缩的云服务和其他分布式应用程序。因此，Orleans经常被称为“分布式.NET”。
 
-它是由[微软研究院](http://research.microsoft.com/projects/orleans/)并介绍了[虚拟演员模型](http://research.microsoft.com/apps/pubs/default.aspx?id=210931)作为为云时代构建新一代分布式系统的新方法。Orleans的核心贡献是它的编程模型，它在不限制功能或对开发人员施加繁重约束的情况下，缓和了高度并行分布式系统固有的复杂性。
+它是由[微软研究院](http://research.microsoft.com/projects/orleans/)并介绍了[Virtual Actor Model](http://research.microsoft.com/apps/pubs/default.aspx?id=210931)作为为云时代构建新一代分布式系统的新方法。Orleans的核心贡献是它的编程模型，它在不限制功能或对开发人员施加繁重约束的情况下，缓和了高度并行分布式系统固有的复杂性。
 
 ## Grains
 
