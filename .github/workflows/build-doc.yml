@@ -6,9 +6,11 @@ name: Build doc
 # events but only for the master branch
 on:
   push:
-    branches: [ docs ]
+    branches:
+      - docs
   pull_request:
-    branches: [ docs ]
+    branches:
+      - docs
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -21,8 +23,7 @@ jobs:
     - uses: nikeee/docfx-action@v1.0.0
       name: Build Documentation
       with:
-        ref: docs
-        args: https://github.com/sheng-jie/orleans/blob/docs/zh-cn/docfx.json
+        args: ./zh-cn/docfx.json
 
     # Publish generated site using GitHub Pages
     - uses:  maxheld83/ghpages@master
