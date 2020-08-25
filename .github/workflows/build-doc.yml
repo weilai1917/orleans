@@ -22,7 +22,7 @@ jobs:
       name: Build Documentation
       with:
         ref: docs
-        args: ./zh-cn/docfx.json
+        args: https://github.com/sheng-jie/orleans/blob/docs/zh-cn/docfx.json
 
     # Publish generated site using GitHub Pages
     - uses:  maxheld83/ghpages@master
