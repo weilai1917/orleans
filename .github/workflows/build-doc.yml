@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Build doc
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -24,8 +24,8 @@ jobs:
         args: ./zh-cn/docfx.json
 
     # Publish generated site using GitHub Pages
-    - uses: shengjie/orleans@gh-pages
-      name: Publish to gh-pages branch
+    - uses: maxheld83/ghpages@master
+      name: Publish Documentation on GitHub Pages
       env:
         BUILD_DIR: ../../_output # docfx's default output directory is _site
         GH_PAT: ${{ secrets.GH_PAT }} # See https://github.com/maxheld83/ghpages
