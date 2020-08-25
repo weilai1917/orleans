@@ -21,7 +21,8 @@ jobs:
     - uses: nikeee/docfx-action@v1.0.0
       name: Build Documentation
       with:
-        args: zh-cn/docfx.json
+        ref: docs
+        args: ./zh-cn/docfx.json
 
     # Publish generated site using GitHub Pages
     - uses:  maxheld83/ghpages@master
