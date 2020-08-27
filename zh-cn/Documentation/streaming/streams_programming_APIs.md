@@ -18,7 +18,7 @@ IAsyncStream<T> stream = streamProvider.GetStream<T>(Guid, "MyStreamNamespace");
 
 应用程序可以通过调用`GetStreamProvider`方法`Grains`类，或者调用`GrainClient.GetStreamProvider()`方法。
 
-[**`Orleans.Streams.IAsyncStream<T>`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core.Abstractions/Streams/Core/IAsyncStream.cs)是一个**虚拟流的逻辑强类型句柄**. 它在精神上类似于OrleansGrains参考。访问`GetStreamProvider`和`GetStream公司`完全是本地的。关于`GetStream公司`是一个GUID和一个额外的字符串，我们称之为流命名空间(可以为null)。GUID和名称空间字符串一起构成流标识(与`GrainFactory.GetGrain`). GUID和命名空间字符串的组合为确定流标识提供了额外的灵活性。就像Grains7可能存在于Grains类型中一样`播放器`而不同的grains7可能存在于该grains类型中`聊天室Grains`，流123可能与流命名空间一起存在`播放事件流`并且不同的流123可以存在于流命名空间中`聊天室消息流`.
+[**`Orleans.Streams.IAsyncStream<T>`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core.Abstractions/Streams/Core/IAsyncStream.cs)是一个**虚拟流的逻辑强类型句柄**. 它在精神上类似于OrleansGrains引用。访问`GetStreamProvider`和`GetStream公司`完全是本地的。关于`GetStream公司`是一个GUID和一个额外的字符串，我们称之为流命名空间(可以为null)。GUID和名称空间字符串一起构成流标识(与`GrainFactory.GetGrain`). GUID和命名空间字符串的组合为确定流标识提供了额外的灵活性。就像Grains7可能存在于Grains类型中一样`播放器`而不同的grains7可能存在于该grains类型中`聊天室Grains`，流123可能与流命名空间一起存在`播放事件流`并且不同的流123可以存在于流命名空间中`聊天室消息流`.
 
 ### 生产和消费<a name="Producing-and-Consuming"></a>
 
@@ -174,7 +174,7 @@ OrleansStreams**在Grains和Orleans的客户中都是一致的**. 也就是说�
 
 为了跟踪流订阅，Orleans使用一个名为**流媒体酒吧**作为流消费者和流生产者的交汇点。Pub-Sub跟踪所有流订阅，持久化它们，并将流消费者与流生产者匹配。
 
-应用程序可以选择发布订阅数据的存储位置和存储方式。Pub-Sub组件本身被实现为grains(称为`公共地下室`)，它使用Orleans声明性持久性。`公共地下室`使用名为的存储提供程序`PubSubStore酒店`. 与任何Grain一样，您可以为存储提供程序指定实现。对于流式发布订阅，您可以更改`PubSubStore酒店`在silos构建时，使用思洛主机生成器：
+应用程序可以选择发布订阅数据的存储位置和存储方式。Pub-Sub组件本身被实现为grains(称为`公共地下室`)，它使用Orleans声明性持久化。`公共地下室`使用名为的存储提供程序`PubSubStore酒店`. 与任何Grain一样，您可以为存储提供程序指定实现。对于流式发布订阅，您可以更改`PubSubStore酒店`在silos构建时，使用思洛主机生成器：
 
 下面将Pub-Sub配置为将其状态存储在Azure表中。
 

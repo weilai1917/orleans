@@ -3,7 +3,7 @@ layout: page
 title: ADO.NET Grain Persistence
 ---
 
-# ADO.NET公司Grains持久性
+# ADO.NET公司Grains持久化
 
 Orleans的关系存储后端代码是基于泛型ADO.NET公司功能，因此与数据库供应商无关。Orleans数据存储布局已经在运行时表中解释过了。按照中的说明设置连接字符串[Orleans配置指南](../../clusters_and_clients/configuration_guide/index.md).
 
@@ -95,9 +95,9 @@ public class AdoNetGrainStorageOptions
 
 这个ADO.NET公司persistence具有版本数据和使用任意应用程序规则和流定义任意(反)序列化程序的功能，但目前还没有将它们公开给应用程序代码的方法。
 
-## ADO.NET公司持久性原理
+## ADO.NET公司持久化原理
 
-原则ADO.NET公司支持的持久性存储包括：
+原则ADO.NET公司支持的持久化存储包括：
 
 1.  在数据、数据格式和代码不断发展的同时，保持业务关键数据的安全性。
 2.  利用特定于供应商和存储的功能。
@@ -182,7 +182,7 @@ TExpected queryResult = SpecificQuery12InOrleans<TExpected>(query, Param1, Param
 
 ## 应用定制脚本的几点思考
 
-1.  在中更改脚本`Orleans斯库里`Grains的持久性`如果还有`以便使用默认值保存某些状态`插入`例如，一些Grains国家使用，[内存优化表](https://docs.microsoft.com/en-us/sql/relational-databases/in-memory-oltp/memory-optimized-tables). 这个`选择`查询需要相应地修改。
+1.  在中更改脚本`Orleans斯库里`Grains的持久化`如果还有`以便使用默认值保存某些状态`插入`例如，一些Grains国家使用，[内存优化表](https://docs.microsoft.com/en-us/sql/relational-databases/in-memory-oltp/memory-optimized-tables). 这个`选择`查询需要相应地修改。
 2.  这个想法`1`可用于利用其他部署或特定于供应商的方面。例如在`固态硬盘`或`硬盘驱动器`，将一些数据放在加密的表上，或者通过sqlserver将统计数据插入Hadoop，甚至[链接服务器](https://docs.microsoft.com/en-us/sql/relational-databases/linked-servers/linked-servers-database-engine).
 
 修改后的脚本可以通过运行Orleans测试套件或直接在数据库中测试，例如，[SQL Server单元测试项目](https://msdn.microsoft.com/en-us/library/jj851212.aspx).

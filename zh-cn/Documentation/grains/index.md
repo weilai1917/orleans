@@ -3,15 +3,15 @@ layout: page
 title: Developing a Grain
 ---
 
-# 建立
+# 准备
 
-在编写代码以实现Grains类之前，请创建一个针对.NET Standard（首选）或.NET Framework 4.6.1或更高版本的新类库项目（如果由于依赖性而无法使用.NET Standard）。可以在同一个“类库”项目中或在两个不同的项目中定义grains接口和grains类，以更好地将接口与实现分开。无论哪种情况，项目都需要参考`微软Orleans核心抽象`和`Microsoft.Orleans.CodeGenerator.MSBuild`NuGet软件包。
+在编写代码以实现Grains类之前，请创建一个针对.NET Standard（首选）或.NET Framework 4.6.1或更高版本的新类库项目（如果由于依赖性而无法使用.NET Standard）。可以在同一个“类库”项目中或在两个不同的项目中定义grains接口和grains类，以更好地将接口与实现分开。无论哪种情况，项目都需要参考`Microsoft.Orleans.Core.Abstractions`和`Microsoft.Orleans.CodeGenerator.MSBuild`NuGet软件包。
 
 有关更详尽的说明，请参见[项目设置](../tutorials_and_samples/tutorial_1.md#project-setup)的部分[教程一–Orleans基础](../tutorials_and_samples/tutorial_1.md)。
 
-# Grains界面和类
+# Grains接口和类
 
-grains相互交互，并通过调用声明为各个grains接口一部分的方法从外部调用。Grains类实现一个或多个先前声明的Grains接口。Grain接口的所有方法都必须返回`Task`（对于`虚空`方法），一个`Task<T>`或一个`ValueTask <T>`（对于返回类型为值的方法`Ť`）。
+Grains通过从外部调用各个Grains接口申明的方法进行相互交互。Grains类实现一个或多个先前声明的Grains接口。Grain接口的所有方法都必须返回`Task`（对于`virtual`方法），一个`Task<T>`或一个`ValueTask <T>`（对于返回类型为值的方法`T`）。
 
 以下是Orleans 1.5 Presence Service示例的摘录：
 
@@ -63,7 +63,7 @@ public class PlayerGrain : Grain, IPlayerGrain
 
 # Grains方法的返回值
 
-返回类型值的谷类方法`Ť`在谷粒接口中定义为返回a`Task<T>`。对于未标有async关键字，当返回值可用时，通常通过以下语句返回：
+返回`T`类型值的grain方法在grain接口中定义为返回`Task<T>`。对于未标有async关键字，当返回值可用时，通常通过以下语句返回：
 
 ```csharp
 public Task<SomeType> GrainMethod1()
@@ -73,7 +73,7 @@ public Task<SomeType> GrainMethod1()
 }
 ```
 
-没有返回值的grain方法（实际上是void方法）在grain接口中定义为返回a`Task`。返回的`Task`指示方法的异步执行和完成。对于未标有async关键字，当“无效”方法完成执行时，需要返回的特殊值`Task.CompletedTask`：
+没有返回值的grain方法（实际上是void方法）在grain接口中定义为返回`Task`。返回的`Task`指示方法的异步执行和完成。对于未标有async关键字，当`void`方法完成执行时，需要返回的特殊值`Task.CompletedTask`：
 
 ```csharp
 public Task GrainMethod2()
@@ -93,7 +93,7 @@ public async Task<SomeType> GrainMethod3()
 }
 ```
 
-一种“无效”的Grains方法标记为async不返回值的代码只是在执行结束时返回：
+一种`void`的Grains方法标记为async不返回值的代码只是在执行结束时返回：
 
 ```csharp
 public async Task GrainMethod4()
@@ -114,7 +114,7 @@ public Task<SomeType> GrainMethod5()
 }
 ```
 
-同样，“无效”粒度方法可以返回`Task`通过另一个调用返回给它，而不是等待它。
+同样，`void`Grain方法可以返回`Task`通过另一个调用返回给它，而不是等待它。
 
 ```csharp
 public Task GrainMethod6()
@@ -127,13 +127,13 @@ public Task GrainMethod6()
 
 `ValueTask <T>`可以代替`Task<T>`
 
-### Grains参考
+### Grains引用
 
-Grains引用是实现与相应Grains类相同的Grains接口的代理对象。它封装了目标粒度的逻辑标识（类型和唯一键）。Grains参考是用于调用目标Grains的工具。每个Grains参考都针对单个Grains（Grains类的单个实例），但是可以为同一个Grains创建多个独立的引用。
+Grains引用是实现与相应Grains类相同的Grains接口的代理对象。它封装了目标Grain的逻辑标识（类型和唯一键）。Grains引用是用于调用目标Grains的工具。每个Grains引用都针对单个Grains（Grains类的单个实例），但是可以为同一个Grains创建多个独立的引用。
 
-由于Grains参考代表目标Grains的逻辑标识，因此它与Grains的物理位置无关，即使在系统完全重启后也仍然有效。开发人员可以像其他任何.NET对象一样使用Grains引用。它可以传递给方法，用作方法的返回值等，甚至可以保存到持久性存储中。
+由于Grains引用代表目标Grains的逻辑标识，因此它与Grains的物理位置无关，即使在系统完全重启后也仍然有效。开发人员可以像其他任何.NET对象一样使用Grains引用。它可以传递给方法，用作方法的返回值等，甚至可以保存到持久化存储中。
 
-可以通过将Grains的身份传递给`GrainFactory.GetGrain <T>（键）`方法，在哪里`Ť`是Grains界面，`键`是该类型中纹理的唯一键。
+可以通过将Grains的身份传递给`GrainFactory.GetGrain <T>(key)`方法，在哪里`T`是Grains接口，`key`是该类型中纹理的唯一键。
 
 以下是如何获取`IPlayerGrain`上面定义的接口。
 
@@ -150,7 +150,7 @@ Grains引用是实现与相应Grains类相同的Grains接口的代理对象。�
     IPlayerGrain player = client.GetGrain<IPlayerGrain>(playerId);
 ```
 
-### 粒度方法调用
+### Grain方法调用
 
 Orleans编程模型基于[异步编程](https://docs.microsoft.com/en-us/dotnet/csharp/async)。
 
@@ -187,4 +187,4 @@ await joinedTask;
 
 ### 虚方法
 
-Grains类可以选择覆盖`OnActivateAsync`和`OnDeactivateAsync`在激活和停用类的每个粒度时，由Orleans运行时调用的虚拟方法。这使Grains代码有机会执行其他初始化和清理操作。引发的异常`OnActivateAsync`无法激活过程。而`OnActivateAsync`，如果被覆盖，则始终被称为Grains激活过程的一部分，`OnDeactivateAsync`不能保证在所有情况下（例如在服务器故障或其他异常事件的情况下）都会被调用。因此，应用程序不应依赖`OnDeactivateAsync`用于执行关键操作，例如状态变化的持久性。他们应仅将其用于尽力而为的操作。
+Grains类可以选择覆盖`OnActivateAsync`和`OnDeactivateAsync`在激活和停用类的每个Grain时，由Orleans运行时调用的虚拟方法。这使Grains代码有机会执行其他初始化和清理操作。引发的异常`OnActivateAsync`无法激活过程。而`OnActivateAsync`，如果被覆盖，则始终被称为Grains激活过程的一部分，`OnDeactivateAsync`不能保证在所有情况下（例如在服务器故障或其他异常事件的情况下）都会被调用。因此，应用程序不应依赖`OnDeactivateAsync`用于执行关键操作，例如状态变化的持久化。他们应仅将其用于尽力而为的操作。

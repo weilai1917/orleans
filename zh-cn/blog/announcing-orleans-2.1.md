@@ -16,7 +16,7 @@ Orleans起源于Microsoft Research，我们将继续与MSR和产品团队合作�
 
 ## 直接客户
 
-Orleans2.1引入了一种与Grains进行交互并与ASP.NET或gRPC等框架进行互操作的新方法。该功能称为*直接客户*并且它允许以一种方式共同托管客户端和孤岛，从而使客户端不仅可以与其连接的孤岛，而且可以与整个集群进行更有效的通信。启用直接客户端后，`ICluster客户端`和`IGrain工厂`可以从silos容器中解析出来，并用于创建可以调用的Grains参考。这些调用使用本地silos对群集和grains位置的了解来避免不必要的复制，序列化和网络跃点。另外，由于此功能与silos本身具有相同的内部结构，因此在线程间传递Grains引用时，它提供了无缝的体验。在Orleans2.1中，我们将直接客户作为选择加入的功能。通过调用启用它`ISiloHostBuilder.EnableDirectClient()`在silos配置期间。
+Orleans2.1引入了一种与Grains进行交互并与ASP.NET或gRPC等框架进行互操作的新方法。该功能称为*直接客户*并且它允许以一种方式共同托管客户端和孤岛，从而使客户端不仅可以与其连接的孤岛，而且可以与整个集群进行更有效的通信。启用直接客户端后，`ICluster客户端`和`IGrain工厂`可以从silos容器中解析出来，并用于创建可以调用的Grains引用。这些调用使用本地silos对群集和grains位置的了解来避免不必要的复制，序列化和网络跃点。另外，由于此功能与silos本身具有相同的内部结构，因此在线程间传递Grains引用时，它提供了无缝的体验。在Orleans2.1中，我们将直接客户作为选择加入的功能。通过调用启用它`ISiloHostBuilder.EnableDirectClient()`在silos配置期间。
 
 ## 新代码生成器
 

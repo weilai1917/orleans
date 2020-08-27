@@ -50,13 +50,13 @@ title: Tutorial One
 
 1.  在silos项目中，添加`微软Orleans服务器`NuGet软件包。
 2.  在客户端项目中，添加`微软Orleans客户`NuGet软件包。
-3.  在GrainInterfaces和Grains项目中，添加`微软Orleans核心抽象`和`Microsoft.Orleans.CodeGenerator.MSBuild`包。
+3.  在GrainInterfaces和Grains项目中，添加`Microsoft.Orleans.Core.Abstractions`和`Microsoft.Orleans.CodeGenerator.MSBuild`包。
 4.  在“Grains”项目中，添加`Microsoft.Extensions.Logging.Abstractions`用于记录的软件包。
 5.  在客户和silos项目中，添加`Microsoft.Extensions.Logging.Console`，以便他们可以在控制台窗口中打印日志。
 
 `微软Orleans服务器`和`微软Orleans客户`是元软件包，它们带来了在silos和客户端最可能需要的依赖关系。
 
-`微软Orleans核心抽象`在任何地方都需要。两者都包含`微软Orleans服务器`和`微软Orleans客户`。
+`Microsoft.Orleans.Core.Abstractions`在任何地方都需要。两者都包含`微软Orleans服务器`和`微软Orleans客户`。
 
 `Microsoft.Orleans.CodeGenerator.MSBuild`自动生成调用Grains通过机器边界所需的代码。所以两者都需要`grains接口`和`Grains`项目。
 

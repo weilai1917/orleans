@@ -78,7 +78,7 @@ Orleans的主要概念包括silos，客户和一种或多种Grains。创建Orlea
 
 ## 写一粒
 
-Grains是Orleans编程模型的关键原语。Grains是Orleans应用程序的基础，它们是隔离，分布和持久性的原子单位。Grains是代表应用程序实体的对象。就像经典的面向对象编程一样，grain封装了实体的状态，并在代码逻辑中对其行为进行了编码。Grains可以相互保持引用，并可以通过调用彼此通过接口公开的方法进行交互。
+Grains是Orleans编程模型的关键原语。Grains是Orleans应用程序的基础，它们是隔离，分布和持久化的原子单位。Grains是代表应用程序实体的对象。就像经典的面向对象编程一样，grain封装了实体的状态，并在代码逻辑中对其行为进行了编码。Grains可以相互保持引用，并可以通过调用彼此通过接口公开的方法进行交互。
 
 您可以在[Orleans文档的“核心概念”部分。](http://dotnet.github.io/orleans/Documentation/core_concepts/index.html)
 

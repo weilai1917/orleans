@@ -3,13 +3,13 @@ layout: page
 title: Declarative Persistence
 ---
 
-# 声明性持久性
+# 声明性持久化
 
 在第二个教程中，我们看到了grain state是如何在客户端被关闭的情况下幸存下来的，这为许多类似缓存的场景打开了大门，在这种场景中，Orleans被视为一种“带有行为的缓存”，一种面向对象的缓存，如果你愿意的话。这已经是非常有价值的了，并且通过一个简单、熟悉的编程模型和内置的单线程执行保证来实现服务器端的可伸缩性。
 
 但是，有时，您正在累积的某些状态属于某种形式的永久存储，因此它可以在silos关闭或从一个silos迁移到另一个silos以实现负载平衡或服务完全重新启动/关机后继续存在。我们迄今所看到的情况将不支持这种情况。
 
-幸运的是，Orleans提供了一个简单的声明性模型，用于标识需要存储在永久位置的状态，同时将何时保存和恢复状态的决定权交给编程控制。您不需要使用声明性持久性机制，并且仍然可以直接从grain代码访问存储，但这是一种很好的方法，可以为您节省一些样板代码，并构建可跨各种存储服务移植的应用程序。
+幸运的是，Orleans提供了一个简单的声明性模型，用于标识需要存储在永久位置的状态，同时将何时保存和恢复状态的决定权交给编程控制。您不需要使用声明性持久化机制，并且仍然可以直接从grain代码访问存储，但这是一种很好的方法，可以为您节省一些样板代码，并构建可跨各种存储服务移植的应用程序。
 
 ## 入门
 
@@ -71,7 +71,7 @@ builder.AddAzureTableGrainStorage(option => option.ConnectionString = your_conne
 builder.AddAzureBlobGrainStorage(option => option.ConnectionString = your_connection_string);
 ```
 
-这个`记忆库`provider相当无趣，因为它实际上不提供任何永久存储；它的目的是调试持久性grains，而不能访问持久性存储。在我们的例子中，这使得很难证明持久性，所以我们将依赖于一个真正的存储提供者。
+这个`记忆库`provider相当无趣，因为它实际上不提供任何永久存储；它的目的是调试持久化grains，而不能访问持久化存储。在我们的例子中，这使得很难证明持久化，所以我们将依赖于一个真正的存储提供者。
 
 根据您是否已经设置(并希望使用)Azure存储帐户，还是希望依赖Azure存储仿真程序，您应该添加其他两行中的一行，但不能同时添加这两行。您可以使用`AddAzureTableStorage提供程序()`函数或`AddAzureBlobStorageProvider()`函数取决于您希望如何存储信息。
 
@@ -79,7 +79,7 @@ builder.AddAzureBlobGrainStorage(option => option.ConnectionString = your_connec
 
 启用其中一个，我们就可以处理grain代码了。
 
-> 注意：在Orleans 2.0中，许多功能被拆分成更小的包，以允许更细Grain的配置和部署。这包括Azure存储提供程序。请安装[Orleans持久性](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AzureStorage/)如果要将Azure用作存储提供程序，请打包。您可以通过[寻找Orleans。坚持](https://www.nuget.org/packages?q=Microsoft.Orleans.Persistence).
+> 注意：在Orleans 2.0中，许多功能被拆分成更小的包，以允许更细Grain的配置和部署。这包括Azure存储提供程序。请安装[Orleans持久化](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AzureStorage/)如果要将Azure用作存储提供程序，请打包。您可以通过[寻找Orleans。坚持](https://www.nuget.org/packages?q=Microsoft.Orleans.Persistence).
 
 ## 申报国
 
@@ -215,7 +215,7 @@ grains可能包含持久状态和瞬态状态的组合。任何瞬态都应该�
 
 如果Grains类型具有状态，则在激活时该状态将从存储中加载，然后`非激活异步`调用，以便您可以确保在初始化Grains时加载了状态。这是Orleans唯一打电话来的案子`读状态异步`自动地。如果你想写州或在其他地方读，你应该自己写。通常你不需要打电话`读状态异步`你自己，除非你正在做一些关于处理损坏状态或其他事情的具体事情。
 
-## 使用持久性处理故障
+## 使用持久化处理故障
 
 一般来说，读写Grains的状态是一个很好的机制来处理失败和服务于它的初衷。由于不同的原因，grain调用可能会在方法的中间失败，最终导致状态更改一半。在这种情况下，从存储器中读取可以将状态返回到上一个正确的状态。或者，进入这种状态后，grain可以通过调用DeactivateOnIdle()请求立即停用，这样它的下一个请求将触发grain的重新激活，这将重新读取持久状态并重建其在内存中的副本。停用是将grains重置为其最后已知良好状态的最干净的方法，但是如果要避免重新激活过程的成本，可以重置其状态并重新运行任何初始化逻辑(例如，通过调用`非激活异步`)而不是使Grains失活。
 

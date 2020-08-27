@@ -17,8 +17,8 @@
 | --- | --- | ------ | ---------- |
 | SQL Server | [sqlserver-persistence.sql数据库](https://github.com/dotnet/orleans/blob/master/src/AdoNet/Orleans.Persistence.AdoNet/SQLServer-Persistence.sql) | [system.data.sqlclient系统](https://www.nuget.org/packages/System.Data.SqlClient/) | system.data.sqlclient系统 |
 | MySQL/马里亚行 | [mysql-persistence.sql文件](https://github.com/dotnet/orleans/blob/master/src/AdoNet/Orleans.Persistence.AdoNet/MySQL-Persistence.sql) | [mysql.数据](https://www.nuget.org/packages/MySql.Data/) | MySql.Data.MySqlClient |
-| PostgreSQL公司 | [PostgreSQL-持久性.sql](https://github.com/dotnet/orleans/blob/master/src/AdoNet/Orleans.Persistence.AdoNet/PostgreSQL-Persistence.sql) | [NPGSQL公司](https://www.nuget.org/packages/Npgsql/) | NPGSQL公司 |
-| 甲骨文公司 | [Oracle持久性.sql](https://github.com/dotnet/orleans/blob/master/src/AdoNet/Orleans.Persistence.AdoNet/Oracle-Persistence.sql) | [网](https://www.nuget.org/packages/Oracle.ManagedDataAccess/) | oracle.dataaccess.client文件 |
+| PostgreSQL公司 | [PostgreSQL-持久化.sql](https://github.com/dotnet/orleans/blob/master/src/AdoNet/Orleans.Persistence.AdoNet/PostgreSQL-Persistence.sql) | [NPGSQL公司](https://www.nuget.org/packages/Npgsql/) | NPGSQL公司 |
+| 甲骨文公司 | [Oracle持久化.sql](https://github.com/dotnet/orleans/blob/master/src/AdoNet/Orleans.Persistence.AdoNet/Oracle-Persistence.sql) | [网](https://www.nuget.org/packages/Oracle.ManagedDataAccess/) | oracle.dataaccess.client文件 |
 
 ## 提醒
 

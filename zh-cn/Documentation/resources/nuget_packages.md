@@ -194,7 +194,7 @@ PM> Install-Package Microsoft.Orleans.Persistence.AdoNet
 
 包括用于使用ADO.NET在支持的数据库之一中存储grains状态的插件。
 
-### [MicrosoftOrleans持久性DynamoDB](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.DynamoDB/)
+### [MicrosoftOrleans持久化DynamoDB](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.DynamoDB/)
 
 ```powershell
 PM> Install-Package Microsoft.Orleans.Persistence.DynamoDB
@@ -264,7 +264,7 @@ PM> Install-Package Microsoft.Orleans.EventSourcing
 PM> Install-Package Microsoft.Orleans.OrleansProviders
 ```
 
-包含一组将数据保留在内存中的持久性和流提供程序。用于测试。通常，不建议将其用于生产，除非可以接受数据丢失以防止孤岛故障。
+包含一组将数据保留在内存中的持久化和流提供程序。用于测试。通常，不建议将其用于生产，除非可以接受数据丢失以防止孤岛故障。
 
 ### [Microsoft Orleans测试主机库](https://www.nuget.org/packages/Microsoft.Orleans.TestingHost/)
 

@@ -5,7 +5,7 @@ title: Persistence
 
 # 持久化
 
-Grains可以具有多个与之关联的命名持久数据对象。在激活Grains期间会从存储中加载此状态，以便在请求期间可以使用它们。Grain持久性使用可扩展的插件模型，因此可以使用任何数据库的存储提供程序。此持久性模型仅出于简化目的而设计，并不旨在涵盖所有数据访问模式。Grains还可以直接访问数据库，而无需使用Grains持久性模型。
+Grains可以具有多个与之关联的命名持久数据对象。在激活Grains期间会从存储中加载此状态，以便在请求期间可以使用它们。Grain持久化使用可扩展的插件模型，因此可以使用任何数据库的存储提供程序。此持久化模型仅出于简化目的而设计，并不旨在涵盖所有数据访问模式。Grains还可以直接访问数据库，而无需使用Grains持久化模型。
 
 ![A grain can have multiple persisted data objects each stored in a different storage system](../../images/grain_state_1.png)
 
@@ -16,15 +16,15 @@ Grains可以具有多个与之关联的命名持久数据对象。在激活Grain
 1.  每个Grains有多个命名的持久数据对象。
 2.  多个配置的存储提供程序，每个存储提供程序可以具有不同的配置并由不同的存储系统支持。
 3.  存储提供商可以由社区开发和发布。
-4.  存储提供者可以完全控制他们如何在持久性后备存储中存储Grains状态数据。结论：Orleans没有提供全面的ORM存储解决方案，但允许自定义存储提供商在需要时支持特定的ORM要求。
+4.  存储提供者可以完全控制他们如何在持久化后备存储中存储Grains状态数据。结论：Orleans没有提供全面的ORM存储解决方案，但允许自定义存储提供商在需要时支持特定的ORM要求。
 
 ## 配套
 
 可以在以下位置找到OrleansGrains存储提供商[NuGet](https://www.nuget.org/packages?q=Orleans+Persistence)。官方维护的软件包包括：
 
--   [Microsoft.Orleans.Persistence.AdoNet](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AdoNet)适用于ADO.NET支持的SQL数据库和其他存储系统。有关更多信息，请参见[ADO.NETGrain持久性](relational_storage.md)。
--   [Microsoft.Orleans.Persistence.AzureStorage](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AzureStorage)通过Azure Table Storage API访问Azure存储，包括Azure Blob存储，Azure表存储和Azure CosmosDB。有关更多信息，请参见[Azure存储Grain持久性](azure_storage.md)。
--   [Microsoft.Orleans.Persistence.DynamoDB](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.DynamoDB)适用于Amazon DynamoDB。有关更多信息，请参见[Amazon DynamoDBGrain持久性](dynamodb_storage.md)。
+-   [Microsoft.Orleans.Persistence.AdoNet](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AdoNet)适用于ADO.NET支持的SQL数据库和其他存储系统。有关更多信息，请参见[ADO.NETGrain持久化](relational_storage.md)。
+-   [Microsoft.Orleans.Persistence.AzureStorage](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.AzureStorage)通过Azure Table Storage API访问Azure存储，包括Azure Blob存储，Azure表存储和Azure CosmosDB。有关更多信息，请参见[Azure存储Grain持久化](azure_storage.md)。
+-   [Microsoft.Orleans.Persistence.DynamoDB](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.DynamoDB)适用于Amazon DynamoDB。有关更多信息，请参见[Amazon DynamoDBGrain持久化](dynamodb_storage.md)。
 
 ## API
 
@@ -66,7 +66,7 @@ public class UserGrain : Grain, IUserGrain
 
 当激活grains时，将自动读取grains状态，但是grains负责在必要时显式触发任何更改的grains状态的写入。
 
-如果某个Grains希望从后备存储中明确重新读取该Grains的最新状态，则该Grains应调用`ReadStateAsync()`方法。这将通过存储提供者从持久性存储中重新加载Grains状态，并且当数据库中的Grains状态的先前内存中副本将被覆盖并替换时，`ReadStateAsync()` `Task`完成。
+如果某个Grains希望从后备存储中明确重新读取该Grains的最新状态，则该Grains应调用`ReadStateAsync()`方法。这将通过存储提供者从持久化存储中重新加载Grains状态，并且当数据库中的Grains状态的先前内存中副本将被覆盖并替换时，`ReadStateAsync()` `Task`完成。
 
 使用以下命令访问状态值`State`属性。例如，以下方法访问上面的代码中声明的配置文件状态：
 
@@ -100,7 +100,7 @@ public async Task SetNameAsync(string name)
 
 ## 入门
 
-在Grains可以使用持久性之前，必须在silos上配置存储提供程序。
+在Grains可以使用持久化之前，必须在silos上配置存储提供程序。
 
 首先，配置存储提供程序：
 
@@ -183,7 +183,7 @@ public class UserGrain : Grain, IUserGrain
 }
 ```
 
-## 持久性操作的失败模式 <a name="FailureModes"></a>
+## 持久化操作的失败模式 <a name="FailureModes"></a>
 
 ### 读取操作的失败模式
 
@@ -207,7 +207,7 @@ public class UserGrain : Grain, IUserGrain
 
 **注意：**使用`grains<T>`为Grainsz指定存储考虑为*遗留*功能：应使用以下方式添加Grains存储`IPersistentState <T>`如前所述。
 
-继承自的Grains类`grains<T>`(哪里`Ť`是需要保留的特定于应用程序的状态数据类型)，将从指定存储中自动加载其状态。
+继承自的Grains类`grains<T>`(哪里`T`是需要保留的特定于应用程序的状态数据类型)，将从指定存储中自动加载其状态。
 
 此类Grains标有`[StorageProvider]`该属性指定一个存储提供程序的命名实例，该实例用于读取/写入此Grains的状态数据。
 
@@ -231,7 +231,7 @@ protected virtual Task ClearStateAsync() { /*...*/ }
 
 ## 创建存储提供者
 
-状态持久性API有两部分：通过`IPersistentState <T>`要么`grains<T>`，以及存储提供商API(以`IGrain存储`—存储提供程序必须实现的接口：
+状态持久化API有两部分：通过`IPersistentState <T>`要么`grains<T>`，以及存储提供商API(以`IGrain存储`—存储提供程序必须实现的接口：
 
 ```csharp
 /// <summary>
@@ -296,7 +296,7 @@ public class InconsistentStateException : OrleansException
 }
 ```
 
-存储操作中的任何其他故障情况*必须*导致退货`Task`会被打破，并指出底层存储问题。在许多情况下，此异常可能会返回给调用方，后者通过在Grains上调用方法来触发存储操作。重要的是要考虑调用者是否可以反序列化此异常。例如，客户端可能尚未加载包含异常类型的特定持久性库。因此，建议将异常转换为可以传播回调用方的异常。
+存储操作中的任何其他故障情况*必须*导致退货`Task`会被打破，并指出底层存储问题。在许多情况下，此异常可能会返回给调用方，后者通过在Grains上调用方法来触发存储操作。重要的是要考虑调用者是否可以反序列化此异常。例如，客户端可能尚未加载包含异常类型的特定持久化库。因此，建议将异常转换为可以传播回调用方的异常。
 
 ### 数据映射
 

@@ -51,7 +51,7 @@ await client.Connect();
 
 ### 打电话给Grains
 
-从客户那里打电话给grain和[在grain代码中进行这样的调用](../grains/index.md)是的。相同的`getgrain<t>(键)`方法，其中`T`是目标grains接口，在两种情况下都使用[获取Grains参考](../grains/index.md#grain-reference)是的。细微的区别在于我们调用的工厂对象`获取grains`是的。在客户端代码中，我们通过连接的客户端对象来实现这一点。
+从客户那里打电话给grain和[在grain代码中进行这样的调用](../grains/index.md)是的。相同的`getgrain<t>(键)`方法，其中`T`是目标grains接口，在两种情况下都使用[获取Grains引用](../grains/index.md#grain-reference)是的。细微的区别在于我们调用的工厂对象`获取grains`是的。在客户端代码中，我们通过连接的客户端对象来实现这一点。
 
 ```csharp
 IPlayerGrain player = client.GetGrain<IPlayerGrain>(playerId);

@@ -9,7 +9,7 @@ Orleans建立在.NET开发人员生产力的基础上，并将其带入了分布
 
 Orleans采用了对象，接口，async/await和try/catch等熟悉的概念，并将其扩展到多服务器环境。这样，它可以帮助具有单服务器应用程序经验的开发人员过渡到构建弹性，可扩展的云服务和其他分布式应用程序。因此，Orleans通常被称为“分布式.NET”。
 
-它是由[Microsoft Research](http://research.microsoft.com/projects/orleans/) 创建的，并介绍了[Virtual Actor Model](http://research.microsoft.com/apps/pubs/default.aspx?id=210931)作为一种新方法来构建面向云时代的新一代分布式系统。 Orleans的核心贡献是它的编程模型，它在不限制功能，以及对开发人员施加繁重约束的情况下，降低了高度并行分布式系统固有的复杂性。
+它是由[Microsoft Research](http://research.microsoft.com/projects/orleans/) 创建的，并介绍了[Virtual Actor Model](http://research.microsoft.com/apps/pubs/default.aspx?id=210931)作为一种新方法来构建面向云时代的新一代分布式系统。 Orleans的核心贡献是它的编程模型，它在不限制功能，以及对开发人员施加繁重约束的情况下，降低了高并发分布式系统固有的复杂性。
 
 ## Grains
 
@@ -17,7 +17,7 @@ Orleans采用了对象，接口，async/await和try/catch等熟悉的概念，�
 
 任何Orleans应用程序的基本构建块都是*grain*. grains是由用户定义的身份、行为和状态组成的实体。grains标识是用户定义的键，使grains始终可供调用。Grains可以通过强类型通信接口(contract)被其他Grains或Web前端等外部客户端调用。每个grains都是实现一个或多个这些接口的类的一个实例。
 
-Grains可以具有挥发性和/或持久性状态，可以存储在任何存储系统中。因此，grains隐式地划分应用程序状态，从而实现自动可伸缩性并简化故障恢复。当Grain处于活动状态时，Grain状态被保存在内存中，从而降低了延迟和数据存储的负载。
+Grains可以具有挥发性和/或持久化状态，可以存储在任何存储系统中。因此，grains隐式地划分应用程序状态，从而实现自动可伸缩性并简化故障恢复。当Grain处于活动状态时，Grain状态被保存在内存中，从而降低了延迟和数据存储的负载。
 
 <p align="center">
   ![](../Images/managed_lifecycle.svg)
@@ -84,13 +84,13 @@ public class ThermostatGrain : Grain, IThermostat, IThermostatControl
 }
 ```
 
-上面的Grains类不会保持其状态。[文档](grains/grain_persistence/index.md)中提供了演示状态持久性的更彻底的示例。
+上面的Grains类不会保持其状态。[文档](grains/grain_persistence/index.md)中提供了演示状态持久化的更彻底的示例。
 
 ## Orleans运行时
 
 Orleans运行时为应用程序运行时的主要组件是*silos*，负责寄存Grains。通常，一组silos作为集群运行，以实现可伸缩性和容错性。当作为集群运行时，silos相互协调以分配工作、检测并从故障中恢复。运行时使集群中托管的grains能够像在单个进程中一样相互通信。
 
-除了核心编程模型之外，silos还为grains提供了一组运行时服务，例如计时器、提醒(persistent timers)、持久性、事务、流等。见[特色部分](#特征)下面是更多细节。
+除了核心编程模型之外，silos还为grains提供了一组运行时服务，例如计时器、提醒(persistent timers)、持久化、事务、流等。见[特色部分](#特征)下面是更多细节。
 
 Web前端和其他外部客户端使用客户端库调用集群中的grains，该库自动管理网络通信。为了简单起见，客户端也可以与silos在同一进程中共同托管。
 
@@ -100,23 +100,23 @@ Orleans与.NET Standard 2.0及更高版本兼容，运行在Windows、Linux和ma
 
 ### 持久化
 
-Orleans提供了一个简单的持久性模型，确保在处理请求之前，状态对grain是可用的，并且保持一致性。Grains可以有多个命名的持久性数据对象，例如，一个名为“profile”的用户概要文件，一个名为“inventory”的存储。此状态可以存储在任何存储系统中。例如，配置文件数据可以存储在一个数据库中，而库存存储在另一个数据库中。当一个grain正在运行时，这个状态被保存在内存中，这样就可以在不访问存储器的情况下处理读请求。当grains更新其状态时`state.WriteStateAsync()`call确保备份存储的持久性和一致性得到更新。有关详细信息，请参见[Grains持久性](grains/grain_persistence/index.md)文档。
+Orleans提供了一个简单的持久化模型，确保在处理请求之前，状态对grain是可用的，并且保持一致性。Grains可以有多个命名的持久化数据对象，例如，一个名为“profile”的用户概要文件，一个名为“inventory”的存储。此状态可以存储在任何存储系统中。例如，配置文件数据可以存储在一个数据库中，而库存存储在另一个数据库中。当一个grain正在运行时，这个状态被保存在内存中，这样就可以在不访问存储器的情况下处理读请求。当grains更新其状态时`state.WriteStateAsync()`call确保备份存储的持久化和一致性得到更新。有关详细信息，请参见[Grains持久化](grains/grain_persistence/index.md)文档。
 
 ### 分布式ACID事务
 
-除了上面描述的简单持久性模型之外，grains还可以*事务状态*. 多个grains可以参与[酸性](https://en.wikipedia.org/wiki/ACID)不管事务的状态最终存储在何处。Orleans的事务是分布式和分散的(没有中央事务管理器或事务协调器)，并且[可串行隔离](https://en.wikipedia.org/wiki/Isolation_(database_systems)#Isolation_levels). 有关Orleans交易的更多信息，请参阅[文档](grains/transactions.md)以及[微软研究院技术报告](https://www.microsoft.com/en-us/research/publication/transactions-distributed-actors-cloud-2/).
+除了上面描述的简单持久化模型之外，grains还可以*事务状态*. 多个grains可以参与[酸性](https://en.wikipedia.org/wiki/ACID)不管事务的状态最终存储在何处。Orleans的事务是分布式和分散的(没有中央事务管理器或事务协调器)，并且[可串行隔离](https://en.wikipedia.org/wiki/Isolation_(database_systems)#Isolation_levels). 有关Orleans交易的更多信息，请参阅[文档](grains/transactions.md)以及[微软研究院技术报告](https://www.microsoft.com/en-us/research/publication/transactions-distributed-actors-cloud-2/).
 
 ### Streams
 
-流帮助开发人员以近乎实时的方式处理一系列数据项。Orleans的Streams*管理*：在粒度或客户端发布到流或订阅流之前，不需要创建或注册流。这使得流生产者和消费者之间以及与基础设施之间的更大程度的分离。流处理是可靠的：grains可以存储检查点(游标)，并在激活期间或之后的任何时间重置为存储的检查点。Streams支持向使用者批量传递消息，以提高效率和恢复性能。流由排队服务支持，如Azure事件中心、Amazon Kinesis等。可以将任意数量的流多路复用到较小数量的队列上，并且处理这些队列的责任在集群中均衡。
+流帮助开发人员以近乎实时的方式处理一系列数据项。Orleans的Streams*管理*：在Grain或客户端发布到流或订阅流之前，不需要创建或注册流。这使得流生产者和消费者之间以及与基础设施之间的更大程度的分离。流处理是可靠的：grains可以存储检查点(游标)，并在激活期间或之后的任何时间重置为存储的检查点。Streams支持向使用者批量传递消息，以提高效率和恢复性能。流由排队服务支持，如Azure事件中心、Amazon Kinesis等。可以将任意数量的流多路复用到较小数量的队列上，并且处理这些队列的责任在集群中均衡。
 
 ### 计时器&提醒
 
-提醒是一种持久的Grains调度机制。它们可用于确保在将来某个时间点完成某些操作，即使此时grains当前未激活。计时器是非持久性的提醒物，可用于不需要可靠性的高频事件。有关详细信息，请参见[计时器和提醒](grains/timers_and_reminders.md)文档。
+提醒是一种持久的Grains调度机制。它们可用于确保在将来某个时间点完成某些操作，即使此时grains当前未激活。计时器是非持久化的提醒物，可用于不需要可靠性的高频事件。有关详细信息，请参见[计时器和提醒](grains/timers_and_reminders.md)文档。
 
 ### 灵活的Grains存储
 
-当一个Grains在Orleans被激活时，运行时决定在哪个服务器(silos)上激活该Grains。这就是所谓的Grains存储。Orleans的布局过程是完全可配置的：开发人员可以从一组现成的布局策略中进行选择，例如随机、首选本地和基于负载的，或者可以配置自定义逻辑。这样就可以充分灵活地决定在哪里产生grains。例如，可以将粒度存储在服务器上，靠近它们需要操作的资源或与之通信的其他粒度。
+当一个Grains在Orleans被激活时，运行时决定在哪个服务器(silos)上激活该Grains。这就是所谓的Grains存储。Orleans的布局过程是完全可配置的：开发人员可以从一组现成的布局策略中进行选择，例如随机、首选本地和基于负载的，或者可以配置自定义逻辑。这样就可以充分灵活地决定在哪里产生grains。例如，可以将Grain存储在服务器上，靠近它们需要操作的资源或与之通信的其他Grain。
 
 ### Grains版本化&异构集群
 
