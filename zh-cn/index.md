@@ -13,5 +13,14 @@ Orleans采用了对象，接口，async/await和try/catch等熟悉的概念，�
 
 它是由[Microsoft Research](http://research.microsoft.com/projects/orleans/) 创建的，并介绍了[Virtual Actor Model](http://research.microsoft.com/apps/pubs/default.aspx?id=210931)作为一种新方法来构建面向云时代的新一代分布式系统。 Orleans的核心贡献是它的编程模型，它在不限制功能，以及对开发人员施加繁重约束的情况下，降低了高并发分布式系统固有的复杂性。
 
-文档位于[此处](Documentation/index.md)
+文档位于[此处](Documentation/index.md)。
+
+
+>文档说明：
+>1. Orleans中文文档，是通过机器翻译，加上人工校对而成，因为个人精力有限，校对工作目前只做了一部分，但会继续利用闲暇时间做下去，也欢迎各位读者积极参与进来。
+>2. 中文文档目前位于个人仓库[sheng-jie/orleans docs分支的zh-cn目录下](https://github.com/sheng-jie/orleans/tree/docs/zh-cn)下，其中1.5下的文件夹未翻译。
+>3. 计划是在维护一段时间后，文档翻译通顺后再提PR合并到Orlans官方仓库下。
+>4. 如果需要加入Orleans中国社区交流群，可以扫码加我微信，我邀请您进群。
+
+![](./images/weixin.jpg)
 

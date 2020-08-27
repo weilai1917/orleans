@@ -59,13 +59,13 @@
         ]
       }
     ],
-    "dest": "_output",
+    "dest": "../../_output",
     "template": [
       "default", "template"
     ],
     "noLangKeyword": false,
     "globalMetadata": {
-      "_appTitle": "Microsoft Orleans Documentation",
+      "_appTitle": "Microsoft Orleans 中文文档",
       "_enableSearch": true,
       "_gitContribute": {
         "repo": "https://github.com/sheng-jie/orleans",
