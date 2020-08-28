@@ -43,15 +43,15 @@ var client = new ClientBuilder()
     .Build();
 ```
 
-最后，我们需要打电话`连接()`方法，使其连接到Orleans群集。它是一个异步方法，返回`Task`是的。所以我们需要等待它的完成await或`.等等()`是的。
+最后，我们需要调用`Connect()`方法，使其连接到Orleans群集。它是一个异步方法，返回`Task`是的。所以我们需要等待它的完成await或`.等等()`是的。
 
 ```csharp
 await client.Connect();
 ```
 
-### 打电话给Grains
+### 调用给Grains
 
-从客户那里打电话给grain和[在grain代码中进行这样的调用](../grains/index.md)是的。相同的`getgrain<t>(键)`方法，其中`T`是目标grains接口，在两种情况下都使用[获取Grains引用](../grains/index.md#grain-reference)是的。细微的区别在于我们调用的工厂对象`获取grains`是的。在客户端代码中，我们通过连接的客户端对象来实现这一点。
+从客户那里调用给grain和[在grain代码中进行这样的调用](../grains/index.md)是的。相同的`getgrain<t>(key)`方法，其中`T`是目标grains接口，在两种情况下都使用[获取Grains引用](../grains/index.md#grain-reference)是的。细微的区别在于我们调用的工厂对象`获取grains`是的。在客户端代码中，我们通过连接的客户端对象来实现这一点。
 
 ```csharp
 IPlayerGrain player = client.GetGrain<IPlayerGrain>(playerId);
@@ -67,7 +67,7 @@ await t;
 
 在某些情况下，简单的请求-响应模式是不够的，客户端需要接收异步通知。例如，当某个用户发布了她正在跟踪的新消息时，该用户可能希望收到通知。
 
-[观察员](../grains/observers.md)是一种这样的机制，它允许将客户端对象公开为类似于grains的目标，以供grains调用。对观察者的访问并没有提供任何成功或失败的迹象，因为它们是作为单向尽力信息发送的。因此，应用程序代码有责任在必要时在观察者之上构建更高级别的可靠性机制。
+[观察者](../grains/observers.md)是一种这样的机制，它允许将客户端对象公开为类似于grains的目标，以供grains调用。对观察者的访问并没有提供任何成功或失败的迹象，因为它们是作为单向尽力信息发送的。因此，应用程序代码有责任在必要时在观察者之上构建更高级别的可靠性机制。
 
 另一种可用于向客户端传递异步消息的机制是[Streams](../streaming/index.md)是的。流暴露了单个消息传递成功或失败的迹象，因此能够与客户端进行可靠的通信。
 

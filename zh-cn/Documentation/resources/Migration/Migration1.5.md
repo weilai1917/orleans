@@ -21,7 +21,7 @@ Orleans 2.0中有许多新的选项类，它们为配置silos提供了一种新�
 
 如果你加上`Microsoft.Orleans.Runtime.遗产`包，silos仍然可以通过传统的`群集配置`对象，然后可以传递给`SiloHostBuilder`建造和启动silos。
 
-您仍然需要通过`配置应用程序部件`打电话。
+您仍然需要通过`配置应用程序部件`调用。
 
 以下是如何以传统方式配置本地silos的示例：
 
@@ -79,7 +79,7 @@ orleans2.0中有许多新的选项类，它们为配置客户端提供了一种�
 
 如果你添加了`Microsoft.Orleans.Core.遗产`包，客户端仍然可以通过旧版本以编程方式配置`客户端配置`对象，然后可以传递给`客户端生成器`来构建和连接客户端。
 
-您仍然需要通过`配置应用程序部件`打电话。
+您仍然需要通过`配置应用程序部件`调用。
 
 下面是一个示例，说明客户端如何使用传统配置连接到本地silos：
 
@@ -129,7 +129,7 @@ siloBuilder.AddLogging(builder=>builder.SetMinimumLevel(LogLevel.Debug);
 
 由于我们将在将来最终弃用并删除LogConsumer特性支持，我们强烈建议您尽快迁移掉这个特性。有两种方法你可以采取迁移。一个选择是保持你自己的`iLogger提供程序`，这就创造了`窃听器`谁登录到所有现有的日志使用者。这和我们正在做的非常相似`Microsoft.Orleans.Logging.遗产`包裹。你可以看看`LegacyOrleanSlogger提供程序`从中借用逻辑。另一个选择是替换`ILogConsumer公司`现有的`iLogger提供程序`在nuget上，它提供相同或相似的功能，或者实现您自己的功能`iLogger提供程序`符合您特定的日志记录要求。并配置它们`iLogger提供程序`与`ILoggingBuilder`.
 
-但如果您不能在短期内迁移非日志使用者，您仍然可以使用它。支持`ILogConsumer公司`生活在`Microsoft.Orleans.Logging.遗产`包裹。所以您需要首先添加对该包的依赖，然后通过扩展方法配置日志使用者`添加LegacyOrleansLogging`在`ILoggingBuilder`. 有本地人`添加日志记录`方法`IServiceCollection公司`提供单位ASP.NET供您配置[`ILoggingBuilder`](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.loggingservicecollectionextensions.addlogging?view=aspnetcore-2.0#Microsoft_Extensions_DependencyInjection_LoggingServiceCollectionExtensions_AddLogging_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_Extensions_Logging_ILoggingBuilder). 我们还将该方法包装在`ISiloHostBuilder`和`IClientBuilder`. 所以你可以打电话`添加日志记录`方法来配置silo builder和client builder`ILoggingBuilder`.  下面是一个例子：
+但如果您不能在短期内迁移非日志使用者，您仍然可以使用它。支持`ILogConsumer公司`生活在`Microsoft.Orleans.Logging.遗产`包裹。所以您需要首先添加对该包的依赖，然后通过扩展方法配置日志使用者`添加LegacyOrleansLogging`在`ILoggingBuilder`. 有本地人`添加日志记录`方法`IServiceCollection公司`提供单位ASP.NET供您配置[`ILoggingBuilder`](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.loggingservicecollectionextensions.addlogging?view=aspnetcore-2.0#Microsoft_Extensions_DependencyInjection_LoggingServiceCollectionExtensions_AddLogging_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_Extensions_Logging_ILoggingBuilder). 我们还将该方法包装在`ISiloHostBuilder`和`IClientBuilder`. 所以你可以调用`添加日志记录`方法来配置silo builder和client builder`ILoggingBuilder`.  下面是一个例子：
 
 ```
             var severityOverrides = new OrleansLoggerSeverityOverrides();

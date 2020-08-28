@@ -10,7 +10,7 @@ Orleans支持针对持久Grains状态的分布式ACID交易。
 
 ## 建立
 
-Orleans选择加入交易。必须将silos配置为使用事务。如果不是，对Grains上的事务方法的任何调用都将收到一个`OrleansTransactionsDisabledException`。要在silos上启用交易，请致电`UseTransactions()`在silos主机构建器上。
+Orleans选择加入交易。必须将silos配置为使用事务。如果不是，对Grains上的事务方法的任何调用都将收到一个`OrleansTransactionsDisabledException`。要在silos上启用交易，请调用`UseTransactions()`在silos主机构建器上。
 
 ```csharp
 var builder = new SiloHostBuilder().UseTransactions();

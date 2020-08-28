@@ -74,7 +74,7 @@ public class UserGrain : Grain, IUserGrain
 public Task<string> GetNameAsync() => Task.FromResult(_profile.State.Name);
 ```
 
-无需致电`ReadStateAsync()`在正常操作期间：在激活期间自动加载状态。然而，`ReadStateAsync()`可以用来刷新外部修改的状态。
+无需调用`ReadStateAsync()`在正常操作期间：在激活期间自动加载状态。然而，`ReadStateAsync()`可以用来刷新外部修改的状态。
 
 见[失败模式](#FailureModes)以下部分提供了有关错误处理机制的详细信息。
 
@@ -187,7 +187,7 @@ public class UserGrain : Grain, IUserGrain
 
 ### 读取操作的失败模式
 
-在最初读取特定Grains的状态数据期间，存储提供者返回的故障将导致该Grains的激活操作失败；在这种情况下，*不*可以打电话给那个Grains的`OnActivateAsync()`生命周期回调方法。对导致激活的那个Grains的原始请求将以与Grains激活过程中的其他任何失败相同的方式被发回给调用者。存储提供程序在读取特定Grains的状态数据时遇到失败，将导致`ReadStateAsync()` `Task`被指责。Grains可以选择处理或忽略该故障`Task`，就像其他任何东西一样`Task`在Orleans。
+在最初读取特定Grains的状态数据期间，存储提供者返回的故障将导致该Grains的激活操作失败；在这种情况下，*不*可以调用给那个Grains的`OnActivateAsync()`生命周期回调方法。对导致激活的那个Grains的原始请求将以与Grains激活过程中的其他任何失败相同的方式被发回给调用者。存储提供程序在读取特定Grains的状态数据时遇到失败，将导致`ReadStateAsync()` `Task`被指责。Grains可以选择处理或忽略该故障`Task`，就像其他任何东西一样`Task`在Orleans。
 
 由于缺少/错误的存储提供程序配置，任何在silos启动时无法加载消息的尝试都会返回永久错误`Orleans.BadProviderConfigException`。
 

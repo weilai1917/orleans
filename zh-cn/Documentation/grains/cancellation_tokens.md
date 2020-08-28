@@ -39,13 +39,13 @@ orleans运行时提供了一种称为grain cancellation token的机制，使开�
         }
 ```
 
--   打电话给`GrainCancellationTokenSource.Cancel`方法启动取消。
+-   调用给`GrainCancellationTokenSource.Cancel`方法启动取消。
 
 ```csharp
         await tcs.Cancel();
 ```
 
--   打电话给`处置`方法完成**GrainCancellationTokenSource**反对。
+-   调用给`处置`方法完成**GrainCancellationTokenSource**反对。
 
 ```csharp
         tcs.Dispose();

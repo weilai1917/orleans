@@ -88,7 +88,7 @@ IList<StreamSubscriptionHandle<T>> allMyHandles = await IAsyncStream<T>.GetAllSu
 
 消费者现在可以恢复所有这些服务，如果愿意，也可以取消订阅。
 
-**评论：**如果消费Grains实施`IAsyncObserver服务器`直接接口(`公共类MyGrain<T>：Grain，IAsyncObserver<T>`)，理论上不应要求重新附加`IAsyncObserver服务器`因此不需要打电话`恢复异步`. 流式运行时应该能够自动发现grain已经实现了`IAsyncObserver服务器`只会调用那些`IAsyncObserver服务器`方法。但是，流式运行时当前不支持此功能，并且grain代码仍然需要显式调用`恢复异步`即使Grains工具`IAsyncObserver服务器`直接。支持这一点是我们的待办事项。
+**评论：**如果消费Grains实施`IAsyncObserver服务器`直接接口(`公共类MyGrain<T>：Grain，IAsyncObserver<T>`)，理论上不应要求重新附加`IAsyncObserver服务器`因此不需要调用`恢复异步`. 流式运行时应该能够自动发现grain已经实现了`IAsyncObserver服务器`只会调用那些`IAsyncObserver服务器`方法。但是，流式运行时当前不支持此功能，并且grain代码仍然需要显式调用`恢复异步`即使Grains工具`IAsyncObserver服务器`直接。支持这一点是我们的待办事项。
 
 ### 显式和隐式订阅<a name="Explicit-and-Implicit-Subscriptions"></a>
 
@@ -98,7 +98,7 @@ IList<StreamSubscriptionHandle<T>> allMyHandles = await IAsyncStream<T>.GetAllSu
 
 类型的Grains实现类`我的grains类型`可以声明属性`[隐式itstreamsubscription(“MyStreamNamespace”)]`. 这将告诉流式运行时，当在标识为GUID XXX和`“MyStreamNamespace”`命名空间，则应将其传递到标识为XXX类型的grains`我的grains类型`. 也就是说，运行时映射流`<XXX，MyStreamNamespace>`消费grain`<XXX，我的grains类型>`.
 
-存在`隐式itstreamsubscription`使流式处理执行阶段自动将此grains订阅到流，并将流事件传递给它。但是，grain代码仍然需要告诉运行时它希望如何处理事件。本质上，它需要附加`IAsyncObserver服务器`. 因此，当Grains被激活时，里面的Grains代码`非激活异步`需要打电话：
+存在`隐式itstreamsubscription`使流式处理执行阶段自动将此grains订阅到流，并将流事件传递给它。但是，grain代码仍然需要告诉运行时它希望如何处理事件。本质上，它需要附加`IAsyncObserver服务器`. 因此，当Grains被激活时，里面的Grains代码`非激活异步`需要调用：
 
 ```csharp
 IStreamProvider streamProvider = base.GetStreamProvider("SimpleStreamProvider");
@@ -142,17 +142,17 @@ public async override Task OnActivateAsync()
 
 单个生产者和单个消费者之间的事件传递顺序取决于流提供者。
 
-对于SMS，生产者通过控制生产者发布事件的方式来显式地控制消费者看到的事件顺序。默认情况下(如果`火上浇油`SMS provider的选项设置为false)，并且如果生产者等待`OnNextAsync公司`访问，事件按先进先出顺序到达。在SMS中，由制作者决定如何处理将由中断表示的传递失败`Task`由`OnNextAsync公司`打电话。
+对于SMS，生产者通过控制生产者发布事件的方式来显式地控制消费者看到的事件顺序。默认情况下(如果`火上浇油`SMS provider的选项设置为false)，并且如果生产者等待`OnNextAsync公司`访问，事件按先进先出顺序到达。在SMS中，由制作者决定如何处理将由中断表示的传递失败`Task`由`OnNextAsync公司`调用。
 
 Azure队列流不保证FIFO顺序，因为底层的Azure队列不保证故障情况下的顺序。(它们确实保证了无故障执行中的先进先出顺序。)当生产者将事件生成到Azure队列中时，如果排队操作失败，则由生产者尝试另一次排队，然后再处理潜在的重复消息。在传递端，Orleans流式处理运行时将事件从队列中取出，并尝试将其传递给消费者进行处理。Orleans流式处理运行时仅在成功处理后从队列中删除事件。如果传递或处理失败，则不会从队列中删除事件，稍后将自动重新出现在队列中。流式运行时将再次尝试传递它，因此可能会破坏FIFO顺序。上面的行为符合Azure队列的正常语义。
 
-**应用程序定义的顺序**：要处理上述排序问题，应用程序可以选择指定自己的排序。这是通过[**`StreamSequenceToken`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core.Abstractions/Streams/Core/StreamSubscriptionHandle.cs)，它是不透明的`i可比较`对象，可用于对事件排序。制作者可以通过一个可选的`StreamSequenceToken`致`OnNext公司`打电话。这个`StreamSequenceToken`将一直传递给消费者，并与活动一起交付。这样，应用程序就可以独立于流式运行时推理和重建其顺序。
+**应用程序定义的顺序**：要处理上述排序问题，应用程序可以选择指定自己的排序。这是通过[**`StreamSequenceToken`**](https://github.com/dotnet/orleans/blob/master/src/Orleans.Core.Abstractions/Streams/Core/StreamSubscriptionHandle.cs)，它是不透明的`i可比较`对象，可用于对事件排序。制作者可以通过一个可选的`StreamSequenceToken`致`OnNext公司`调用。这个`StreamSequenceToken`将一直传递给消费者，并与活动一起交付。这样，应用程序就可以独立于流式运行时推理和重建其顺序。
 
 ### 可倒流<a name="Rewindable-Streams"></a>
 
 有些流只允许应用程序从最新的时间点开始订阅它们，而其他流则允许“返回时间”。后一种功能取决于底层队列技术和特定的流提供程序。例如，Azure队列只允许使用最新的排队事件，而EventHub允许从任意时间点(直到某个过期时间)重放事件。支持时间倒流的流称为**可倒流**.
 
-可倒带流的使用者可以传递`StreamSequenceToken`致`订阅同步`打电话。运行时将从这个开始向它传递事件`StreamSequenceToken`. 空令牌表示消费者希望接收从最新开始的事件。
+可倒带流的使用者可以传递`StreamSequenceToken`致`订阅同步`调用。运行时将从这个开始向它传递事件`StreamSequenceToken`. 空令牌表示消费者希望接收从最新开始的事件。
 
 回放流的能力在恢复场景中非常有用。例如，考虑订阅流并定期检查其状态和最新序列标记的Grain。当从失败中恢复时，grain可以从最新的检查点序列令牌重新订阅同一个流，从而恢复而不会丢失自上一个检查点以来生成的任何事件。
 

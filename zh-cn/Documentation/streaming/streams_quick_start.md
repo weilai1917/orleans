@@ -63,7 +63,7 @@ public class ReceiverGrain : Grain, IRandomReceiver
 
 现在，每当像计时器中一样将某些数据推送到名称空间RANDOMDATA的流中时，`接收器grain`具有相同GUID的流将接收到该消息。即使当前不存在任何激活的Grains，运行时也会自动创建一个新的Grains并将消息发送给它。
 
-为了使其正常工作，我们需要通过设置我们的订阅来完成订阅过程`OnNext`接收数据的方法。所以我们`接收器grain`应该打电话给它`OnActivateAsync`像这样的东西
+为了使其正常工作，我们需要通过设置我们的订阅来完成订阅过程`OnNext`接收数据的方法。所以我们`接收器grain`应该调用给它`OnActivateAsync`像这样的东西
 
 ```csharp
 //Create a GUID based on our GUID as a grain

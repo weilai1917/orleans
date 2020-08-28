@@ -26,7 +26,7 @@
 -   Orleans代码生成
     -   仅当使用Visual Studio 2017或最新的dotnet CLI在Windows上进行构建时，构建时间代码源(Microsoft.Orleans.OrleansCodeGenerator.Build nuget程序包)才有效。
     -   但是，运行时代码生成是跨平台工作的可行替代方法(通过引用Silo宿主和客户端项目中的Microsoft.Orleans.OrleansCodeGenerator程序包)。
--   .NET Standard中尚不提供BinaryFormatter(内置的.NET序列化)，它已在Orleans中用作默认的后备序列化器(通常在序列化异常时使用)。现在，我们有了一个自定义的基于IL的后备序列化器，该序列化器应快速而强大，但如果您现有的代码依赖于它，则其行为可能会有所不同`[可序列化]`。
+-   .NET Standard中尚不提供BinaryFormatter(内置的.NET序列化)，它已在Orleans中用作默认的后备序列化器(通常在序列化异常时使用)。现在，我们有了一个自定义的基于IL的后备序列化器，该序列化器应快速而强大，但如果您现有的代码依赖于它，则其行为可能会有所不同`[Serializable]`。
 -   .NET标准中不支持System.Diagnostic.Trace.CorrelationManager.ActivityId。如果您依赖于此来关联Grains调用，请考虑改用Orleans.Runtime.RequestContext.ActivityId。
 
 ### Orleans2.0 TP2的生产准备就绪了吗？

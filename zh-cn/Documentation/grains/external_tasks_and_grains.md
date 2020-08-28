@@ -102,7 +102,7 @@ title: External Tasks and Grains
 
 与图书馆打交道`您的代码正在使用的某些外部库可能正在使用`ConfigureAwait(false)内部。`实际上，在.NET中使用它是一种正确的好习惯` [ConfigureAwait(false)](https://msdn.microsoft.com/en-us/magazine/jj991977.aspx)在实现通用库时。在Orleans，这不是问题。`只要调用库方法的grain中的代码正在等待常规的库调用`等待，粒码正确。`结果将完全符合要求-库代码将在Default Scheduler上继续运行(碰巧是`ThreadPoolTask​​Scheduler
 
-但这不能保证继续操作一定会在ThreadPool线程上运行，因为继续操作通常在上一个线程中内联)，而grain代码将在Orleans调度程序上运行。`另一个经常问到的问题是，是否需要使用Task.Run`-也就是说，是否需要将库代码显式卸载到ThreadPool(用于Grains代码)`Task.Run(()=> myLibrary.FooAsync()))。答案是否定的。除了库代码进行阻塞同步调用的情况外，无需将任何代码卸载到ThreadPool。通常，任何编写正确且正确的.NET异步库(返回的方法`Task`并以`异步`后缀)请勿拨打电话。因此，除非您怀疑异步库有故障或故意使用同步阻塞库，否则无需将任何内容卸载到ThreadPool。
+但这不能保证继续操作一定会在ThreadPool线程上运行，因为继续操作通常在上一个线程中内联)，而grain代码将在Orleans调度程序上运行。`另一个经常问到的问题是，是否需要使用Task.Run`-也就是说，是否需要将库代码显式卸载到ThreadPool(用于Grains代码)`Task.Run(()=> myLibrary.FooAsync()))。答案是否定的。除了库代码进行阻塞同步调用的情况外，无需将任何代码卸载到ThreadPool。通常，任何编写正确且正确的.NET异步库(返回的方法`Task`并以`异步`后缀)请勿拨调用。因此，除非您怀疑异步库有故障或故意使用同步阻塞库，否则无需将任何内容卸载到ThreadPool。
 
 ## 摘要
 
@@ -115,4 +115,4 @@ title: External Tasks and Grains
 | 执行工作项的超时 | `Task.Delay`+`Task.WhenAny` |
 | 用于async/await | 普通的.NET Task-Async编程模型。支持和推荐 |
 | `ConfigureAwait(false)` | 请勿使用内部Grains代码。仅在库内部允许。 |
-| 调用异步库 | await图书馆电话 |
+| 调用异步库 | await图书馆调用 |

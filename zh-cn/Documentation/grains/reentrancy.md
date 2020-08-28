@@ -7,20 +7,20 @@ title: Reentrancy
 
 Grain激活是单线程的，默认情况下，在下一个请求可以开始处理之前，从头到尾处理每个请求。在某些情况下，当一个请求等待异步操作完成时，可能需要激活来处理其他请求。由于这个和其他原因，Orleans给了开发人员一些控制请求交错行为的权限。在以下情况下，多个请求可能被交错：
 
--   Grains等级标记为`[可重入]`
--   接口方法标记为`[总是在屋檐下]`
+-   Grains等级标记为`[Reentrant]`
+-   接口方法标记为`[AlwaysInterleave]`
 -   同一调用链中的请求
--   Grains的*五月交错*谓词返回`是的`
+-   Grains的*MayInterleave*谓词返回`true`
 
 以下各节将讨论这些情况。
 
 ## 重入grains
 
-`Grains`实现类可以用`[可重入]`属性指示不同的请求可以自由交错。
+`Grains`实现类可以用`[Reentrant]`属性指示不同的请求可以自由交错。
 
 换言之，可重入激活可能在前一个请求尚未完成处理时开始执行另一个请求。执行仍然局限于单个线程，因此激活仍然一次执行一个回合，并且每个回合只代表激活的一个请求执行。
 
-可重入Grain代码永远不会并行运行多个Grain代码(Grain代码的执行将始终是单线程的)，但可重入Grain代码**可以**请参阅不同请求交错执行代码。也就是说，不同请求的续转可以交错。
+可重入Grain代码永远不会并行运行多个Grain代码(Grain代码的执行将始终是单线程的)，但可重入Grain代码**可能**看见不同请求交错执行的代码。也就是说，不同请求的续转可以交错。
 
 例如，使用下面的伪代码，当Foo和Bar是同一grain类的2个方法时：
 
@@ -38,7 +38,7 @@ Task Bar()
 }
 ```
 
-如果这个grains有标记`[可重入]`，Foo和Bar的执行可以交错执行。
+如果这个grains有标记`[Reentrant]`，Foo和Bar的执行可以交错执行。
 
 例如，可以按以下顺序执行：
 
@@ -54,9 +54,9 @@ Task Bar()
 
 最终答案将取决于具体的应用程序。
 
-## 交错法
+## 交错方法
 
-grains接口法`[总是在屋檐下]`无论grains是否可重入，都将被交错。考虑以下示例：
+grains接口被标记为`[AlwaysInterleave]`无论grains是否可重入，都将被交错执行。考虑以下示例：
 
 ```csharp
 public interface ISlowpokeGrain : IGrainWithIntegerKey
@@ -93,11 +93,11 @@ await Task.WhenAll(slowpoke.GoSlow(), slowpoke.GoSlow());
 await Task.WhenAll(slowpoke.GoFast(), slowpoke.GoFast(), slowpoke.GoFast());
 ```
 
-访问`戈斯洛`不会交错，所以执行两个`戈斯洛()`打电话大约需要20秒。另一方面，因为`戈法斯特`有标记`[总是在屋檐下]`，对它的三个调用将同时执行，并将在大约10秒内完成，而不是至少需要30秒才能完成。
+访问`GoSlow`不会交错，所以执行两个`GoSlow()`调用大约需要20秒。另一方面，因为`GoFast`有标记`[AlwaysInterleave]`，对它的三个调用将同时执行，并将在大约10秒内完成，而不是至少需要30秒才能完成。
 
 ## 访问链中的可重入性
 
-为了避免死锁，调度器允许在给定的调用链中进行重入。考虑以下两个grains的例子，它们具有相互递归的方法，`伊文`和`IsOdd公司`:
+为了避免死锁，调度器允许在给定的调用链中进行重入。考虑以下两个grains的例子，它们具有相互递归的方法，`IsEven`和`IsOdd`:
 
 ```csharp
 public interface IEvenGrain : IGrainWithIntegerKey
@@ -131,16 +131,16 @@ public class OddGrain : Grain, IOddGrain
 }
 ```
 
-现在考虑由以下客户端请求启动的调用流：
+现在考虑由以下客户端请求启动的调用：
 
 ```csharp
 var evenGrain = client.GetGrain<IEvenGrain>(0);
 await evenGrain.IsEven(2);
 ```
 
-上面的代码调用`伊文格伦(二)`，调用`IOddGrain.IsOdd(一)`，调用`伊文格伦(0)`，返回`是的`将访问链备份到客户端。如果没有调用链可重入，上述代码将在以下情况下导致死锁`碘酒`电话`伊文格伦(0)`. 然而，对于调用链可重入，调用被认为是开发人员的意图，因此允许继续进行。
+上面的代码调用`IEvenGrain.IsEven(2)`，调用`IOddGrain.IsOdd(1)`，调用`IEvenGrain.IsEven(0)`，返回`true`将访问链备份到客户端。如果没有调用链可重入，上述代码将在以下情况下导致死锁当`IOddGrain`调用`IEvenGrain.IsEven(0)`. 然而，对于调用链可重入，调用被认为是开发人员的意图，因此允许继续进行。
 
-可以通过设置来禁用此行为`SchedulingOptions.AllowCallChainEntrancy`到`假`. 例如：
+可以通过设置来禁用此行为`SchedulingOptions.AllowCallChainEntrancy`为`false`. 例如：
 
 ```csharp
 siloHostBuilder.Configure<SchedulingOptions>(
@@ -149,9 +149,9 @@ siloHostBuilder.Configure<SchedulingOptions>(
 
 ## 使用谓词的可重入性
 
-Grain类可以指定一个谓词，用于通过检查请求逐个调用确定交错。这个`[MayInterleave(字符串方法名)]`属性提供此功能。属性的参数是grain类中接受`调用方法请求`对象并返回`布尔`指示是否应交错请求。
+Grain类可以指定一个谓词，用于通过检查请求逐个调用确定交错。这个`[MayInterleave(string methodName)]`属性提供此功能。属性的参数是grain类中接受`InvokeMethodRequest`对象并返回`bool`指示是否应交错请求。
 
-下面是一个示例，如果请求参数类型具有`[交错]`属性：
+下面是一个示例，如果请求参数类型具有 `[Interleave]`属性：
 
 ```csharp
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct)]

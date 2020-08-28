@@ -17,7 +17,7 @@ Orleans运行时提供了两种机制，称为计时器和提醒，使开发人�
 
 ## 计时器使用
 
-要启动计时器，请使用**Grain.RegisterTimer**方法，该方法返回一个**一次性**参考：
+要启动计时器，请使用**Grain.RegisterTimer**方法，该方法返回一个**IDisposable**参考：
 
 ```csharp
 public IDisposable RegisterTimer(
@@ -92,7 +92,7 @@ var silo = new SiloHostBuilder()
 
 ## 提醒用法
 
-使用提醒的grain必须实现**IRemindable.Receiveve提醒**方法。
+使用提醒的grain必须实现**IRemindable.RecieveReminder**方法。
 
 ```csharp
 Task IRemindable.ReceiveReminder(string reminderName, TickStatus status)
@@ -102,7 +102,7 @@ Task IRemindable.ReceiveReminder(string reminderName, TickStatus status)
 }
 ```
 
-要启动提醒，请使用**Grain.RegisterOrUpdateReminder**方法，该方法返回一个**Orleans提醒**目的：
+要启动提醒，请使用**Grain.RegisterOrUpdateReminder**方法，该方法返回一个**IOrleansReminder**目的：
 
 ```csharp
 protected Task<IOrleansReminder> RegisterOrUpdateReminder(string reminderName, TimeSpan dueTime, TimeSpan period)
@@ -112,17 +112,17 @@ protected Task<IOrleansReminder> RegisterOrUpdateReminder(string reminderName, T
 -   dueTime指定发出第一个计时器刻度之前要等待的时间。
 -   period指定计时器的时间。
 
-由于提醒在任何一次激活的生命周期中都可以保留，因此必须将其明确取消(而不是处置)。您通过致电取消提醒**取消注册提醒**：
+由于提醒在任何一次激活的生命周期中都可以保留，因此必须将其明确取消(而不是处置)。您通过调用取消提醒**Grain.UnregisterReminder**：
 
 ```csharp
 protected Task UnregisterReminder(IOrleansReminder reminder)
 ```
 
-提醒是返回的句柄对象**Grains登记册**.
+提醒是返回的句柄对象**Grains.RegisterOrUpdateReminder**.
 
-实例**IOrleansReminder公司**不能保证在激活的有效期之外有效。如果希望以持续的方式标识提醒，请使用包含提醒名称的字符串。
+实例**IOrleansReminder**不能保证在激活的有效期之外有效。如果希望以持续的方式标识提醒，请使用包含提醒名称的字符串。
 
-如果您只有提醒的名称并需要相应的实例**IOrleansReminder公司**，访问**Grains.GetReminder**方法：
+如果您只有提醒的名称并需要相应的实例**IOrleansReminder**，访问**Grains.GetReminder**方法：
 
 ```csharp
 protected Task<IOrleansReminder> GetReminder(string reminderName)

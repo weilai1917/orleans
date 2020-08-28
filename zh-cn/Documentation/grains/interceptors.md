@@ -16,9 +16,9 @@ Grain调用过滤器的一些示例用法是：
 过滤器有两种口味：
 
 -   访问过滤
--   呼出电话过滤器
+-   呼出调用过滤器
 
-收到呼叫时，将执行传入呼叫过滤器。拨打电话时执行呼出电话过滤器。
+收到呼叫时，将执行传入呼叫过滤器。拨调用时执行呼出调用过滤器。
 
 # 访问过滤
 
@@ -151,7 +151,7 @@ siloHostBuilder.ConfigureServices(
     services => services.AddSingleton<IIncomingGrainCallFilter, LoggingCallFilter>());
 ```
 
-### 每粒Grains电话过滤器
+### 每粒Grains调用过滤器
 
 Grains类可以将自己注册为Grains调用过滤器，并可以通过实现对它的所有调用进行过滤`IIncomingGrainCallFilter`像这样：
 
@@ -210,9 +210,9 @@ Grains调用过滤器遵循定义的顺序：
 2.  Grains级过滤器(如果使用Grains)`IIncomingGrainCallFilter`。
 3.  grain方法实施或grain扩展方法实施。
 
-每次致电`IIncomingGrainCallContext.Invoke()`封装下一个定义的过滤器，以便每个过滤器都有机会在链中下一个过滤器之前和之后执行代码，并最终执行grain方法本身。
+每次调用`IIncomingGrainCallContext.Invoke()`封装下一个定义的过滤器，以便每个过滤器都有机会在链中下一个过滤器之前和之后执行代码，并最终执行grain方法本身。
 
-# 呼出电话过滤器
+# 呼出调用过滤器
 
 传出Grains调用过滤器类似于传入Grains调用过滤器，主要区别在于它们是在调用者(客户端)而不是被调用者(grains)上调用的。
 
