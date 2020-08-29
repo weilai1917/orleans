@@ -17,10 +17,11 @@ Orleans采用了对象，接口，async/await和try/catch等熟悉的概念，�
 
 
 >文档说明：
->1. Orleans中文文档，是通过机器翻译，加上人工校对而成，因为个人精力有限，校对工作目前只做了一部分，但会继续利用闲暇时间做下去，也欢迎各位读者积极参与进来。
->2. 中文文档目前位于个人仓库[sheng-jie/orleans docs分支的zh-cn目录下](https://github.com/sheng-jie/orleans/tree/docs/zh-cn)下，其中1.5下的文件夹未翻译。
->3. 计划是在维护一段时间后，文档翻译通顺后再提PR合并到Orlans官方仓库下。
->4. 如果需要加入Orleans中国社区交流群，可以扫码加我微信，我邀请您进群。
+>* Orleans中文文档，是通过机器翻译，加上人工校对而成，因为个人精力有限，校对工作目前只做了一部分，但会继续利用闲暇时间做下去，也欢迎各位读者积极参与进来。
+>* 中文文档目前位于个人仓库[sheng-jie/orleans docs分支的zh-cn目录下](https://github.com/sheng-jie/orleans/tree/docs/zh-cn)，其中1.5下的文件夹未翻译。
+>* 一些专业术语因无合适翻译予以保留，例如：Orleans，Silo，Grain，Actor 等等。
+>* 计划是在维护一段时间后，文档翻译通顺后再提PR合并到Orlans官方仓库下。[[doc] Multiple language support](https://github.com/dotnet/orleans/issues/6075)。
+>* 如有兴趣加入Orleans中国社区交流群，可以扫码加我微信，我邀请您进群。
 
 ![](./images/weixin.jpg)
 
