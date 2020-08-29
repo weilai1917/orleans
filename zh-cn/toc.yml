@@ -1,2 +1,4 @@
-- name: 文档
+- name: 中文文档
   href: Documentation/index.md
+- name: 英文文档
+  href: https://dotnet.github.io/orleans/
