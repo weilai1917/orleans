@@ -71,7 +71,7 @@ Wadlogstable是查看日志的良好起点。
 
 包含在asp.net中的razor视图引擎使用与orleans相同的代码生成程序集(`Microsoft.code分析`和`微软代码分析.csharp`)中。这可能会在运行时出现版本兼容性问题。
 
-若要解决此问题，请尝试升级`Microsoft.codedom.providers.dotnetCompilerPlatform公司`(这是ASP.NET用于包含上述程序集的NuGet包)到最新版本，并设置绑定重定向，如下所示：
+若要解决此问题，请尝试升级`Microsoft.codedom.providers.dotnetCompilerPlatform`(这是ASP.NET用于包含上述程序集的NuGet包)到最新版本，并设置绑定重定向，如下所示：
 
 ```xml
 <dependentAssembly>

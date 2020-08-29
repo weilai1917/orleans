@@ -13,11 +13,11 @@ title: Configuration
 
 ### Grains实现
 
-日志需要从`行程<s，e>`或`日志记录<s>`，定义见`Microsoft.Orleans.EventSourcing公司`包裹。
+日志需要从`行程<s，e>`或`日志记录<s>`，定义见`Microsoft.Orleans.EventSourcing`包裹。
 
 ### 日志一致性提供程序
 
-我们目前包括三个日志一致性提供程序(用于状态存储、日志存储和自定义存储)。这三个都包含在`Microsoft.Orleans.EventSourcing公司`包装也一样。因此，所有被记录的Grains都已经可以获得这些。有关这些提供程序的功能和区别的说明，请参见[包括日志一致性提供程序](log_consistency_providers.md).
+我们目前包括三个日志一致性提供程序(用于状态存储、日志存储和自定义存储)。这三个都包含在`Microsoft.Orleans.EventSourcing`包装也一样。因此，所有被记录的Grains都已经可以获得这些。有关这些提供程序的功能和区别的说明，请参见[包括日志一致性提供程序](log_consistency_providers.md).
 
 ## 群集配置
 

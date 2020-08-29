@@ -95,9 +95,9 @@ PS> Import-Module OrleansPSUtils
 
 包装物`grainclient.grainfactory.getgrain<t>()`以及它的超载。
 
-强制参数是`-粒状`以及`-xxx键`对于Orleans支持的当前Grains密钥类型(`一串`，请`指导方针`我是说，`长的`)还有`-键扩展`可以用在有复合键的Grains上。
+强制参数是`-Grain`以及`-xxx键`对于Orleans支持的当前Grains密钥类型(`一串`，请`指导方针`我是说，`长的`)还有`-键扩展`可以用在有复合键的Grains上。
 
-此cmdlet返回作为上的参数传递的类型的Grain引用`-粒状`是的。
+此cmdlet返回作为上的参数传递的类型的Grain引用`-Grain`是的。
 
 ## 例子：
 

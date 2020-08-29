@@ -27,4 +27,4 @@ Orleans V.1.3.0增加了对将多个Orleans集群联合到松散连接的*多簇
 
 [**全局单实例Grain**](GlobalSingleInstance.md). 开发人员可以指示集群应该在何时以及如何根据特定的grain类协调其grain目录。这个`[全球照明]`属性意味着我们需要与在单个全局集群中运行orleans时相同的行为：即将所有调用路由到一个单一的grain激活。相反地，`[OneInstancePerCluster]`属性指示每个群集可以有自己的独立激活。如果集群之间的通信是不需要的，这是合适的。
 
-**原木视图grains**  *(不在V.1.3.0中)*. 一种特殊类型的Grain，使用与事件源类似的新api来同步或持久化Grain状态。它可以用来自动和有效地同步集群之间和存储grain的状态。因为它的同步算法可以安全地与可重入的grains一起使用，并且优化为使用批处理和复制，所以当一个grains在多个集群中频繁访问和/或当它被频繁写入存储器时，它可以比标准grains执行得更好。对日志视图Grain的支持还不是主分支的一部分。我们有一个预发行版，包括示例和一些文档[地理Orleans分行](https://github.com/sebastianburckhardt/orleans/tree/geo-samples). 它目前正由一个早期采用者在生产中进行评估。
+**原木视图grains**  *(不在V.1.3.0中)*. 一种特殊类型的Grain，使用与事件源类似的新api来同步或持久化Grain状态。它可以用来自动和有效地同步集群之间和存储grain的状态。因为它的同步算法可以安全地与Reentrant的grains一起使用，并且优化为使用批处理和复制，所以当一个grains在多个集群中频繁访问和/或当它被频繁写入存储器时，它可以比标准grains执行得更好。对日志视图Grain的支持还不是主分支的一部分。我们有一个预发行版，包括示例和一些文档[地理Orleans分行](https://github.com/sebastianburckhardt/orleans/tree/geo-samples). 它目前正由一个早期采用者在生产中进行评估。

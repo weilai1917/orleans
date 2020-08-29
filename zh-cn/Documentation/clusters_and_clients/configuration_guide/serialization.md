@@ -28,19 +28,19 @@ Orleans使用以下规则来决定要生成哪些序列化程序。规则是：
 
 # 序列化提供程序
 
-Orleans支持使用提供程序模型与第三方序列化程序集成。这需要实现`IExternalSerializer公司`在此文档的自定义序列化部分中描述的类型。一些常见序列化程序的集成与Orleans一起维护，例如：
+Orleans支持使用提供程序模型与第三方序列化程序集成。这需要实现`IExternalSerializer`在此文档的自定义序列化部分中描述的类型。一些常见序列化程序的集成与Orleans一起维护，例如：
 
 -   [协议缓冲区](https://developers.google.com/protocol-buffers/)以下内容：`Orleans.Serialization.ProtobufSerializer`从[Microsoft.Orleans.OrleansGoogle实用程序](https://www.nuget.org/packages/Microsoft.Orleans.OrleansGoogleUtils/)Nuget包。
--   [债券](https://github.com/microsoft/bond/)以下内容：`orleans.serialization.bondsserializer`从[Microsoft.Orleans.Serialization.bond公司](https://www.nuget.org/packages/Microsoft.Orleans.Serialization.Bond/)Nuget包。
+-   [债券](https://github.com/microsoft/bond/)以下内容：`orleans.serialization.bondsserializer`从[Microsoft.Orleans.Serialization.bond](https://www.nuget.org/packages/Microsoft.Orleans.Serialization.Bond/)Nuget包。
 -   [newtonsoft.json又名json.net](http://www.newtonsoft.com/json)以下内容：`orleans.serialization.orleansjsson序列化程序`从Orleans核心图书馆。
 
-自定义实现`IExternalSerializer公司`在下面的编写自定义序列化程序部分中进行了描述。
+自定义实现`IExternalSerializer`在下面的编写自定义序列化程序部分中进行了描述。
 
 ### 配置
 
 确保序列化配置在所有客户端和silos上都是相同的，这一点很重要。如果配置不一致，则可能发生序列化错误。
 
-序列化提供程序，它实现`IExternalSerializer公司`，可以使用`序列化提供程序`财产`客户端配置`和`全球配置`代码中：
+序列化提供程序，它实现`IExternalSerializer`，可以使用`序列化提供程序`属性`客户端配置`和`全球配置`代码中：
 
 ```csharp
 var cfg = new ClientConfiguration();
@@ -52,7 +52,7 @@ var cfg = new GlobalConfiguration();
 cfg.SerializationProviders.Add(typeof(FantasticSerializer).GetTypeInfo());
 ```
 
-或者，可以在`<serializationproviders/>`财产`<信息>`以下内容：
+或者，可以在`<serializationproviders/>`属性`<信息>`以下内容：
 
 ```xml
 <Messaging>
@@ -72,7 +72,7 @@ cfg.SerializationProviders.Add(typeof(FantasticSerializer).GetTypeInfo());
 
 1.  向类型中添加序列化方法并用适当的属性标记它们(`复印机`，`序列化方法`，`反序列化方法`)中。对于应用程序拥有的类型(即可以向其添加新方法的类型)，此方法更可取。
 
-2.  实施`IExternalSerializer公司`并在配置期间注册它。此方法对于集成外部序列化库非常有用。
+2.  实施`IExternalSerializer`并在配置期间注册它。此方法对于集成外部序列化库非常有用。
 
 3.  编写一个单独的静态类，用`[序列化程序(typeof(yourtype))]`其中包含3个序列化方法和与上面相同的属性。此方法对于应用程序不拥有的类型非常有用，例如，在应用程序无法控制的其他库中定义的类型。
 
@@ -166,7 +166,7 @@ SerializationManager.SerializeInner(foo, context, typeof(FooType));
 
 如果foo没有特定的预期类型，那么可以为预期类型传递null。
 
-这个`二进制令牌流编写器`类提供了多种将数据写入字节流的方法。类的实例可以通过`上下文.streamwriter`财产。有关文档，请参见类。
+这个`二进制令牌流编写器`类提供了多种将数据写入字节流的方法。类的实例可以通过`上下文.streamwriter`属性。有关文档，请参见类。
 
 ### 反序列化程序
 
@@ -196,13 +196,13 @@ var foo = SerializationManager.DeserializeInner<FooType>(context);
 
 如果foo没有特定的预期类型，请使用非泛型`反序列化内部`变型并通过`无效的`对于所需的类型。
 
-这个`二进制令牌流读取器`类提供了从字节流读取数据的各种方法。类的实例可以通过`上下文.streamreader`财产。有关文档，请参见类。
+这个`二进制令牌流读取器`类提供了从字节流读取数据的各种方法。类的实例可以通过`上下文.streamreader`属性。有关文档，请参见类。
 
 ## 方法2:编写序列化程序提供程序
 
 在这个方法中，您可以实现`Orleans.serialization.iexternalserializer`并将其添加到`序列化提供程序`两者的属性`客户端配置`在客户和`全球配置`在silos里。配置在上面的序列化提供程序部分有详细说明。
 
-实施`IExternalSerializer公司`遵循以下为序列化方法描述的模式`方法1`上面添加了`初始化`方法和`发布支持类型`Orleans用来确定序列化程序是否支持给定类型的方法。这是接口定义：
+实施`IExternalSerializer`遵循以下为序列化方法描述的模式`方法1`上面添加了`初始化`方法和`发布支持类型`Orleans用来确定序列化程序是否支持给定类型的方法。这是接口定义：
 
 ```csharp
 public interface IExternalSerializer
@@ -332,7 +332,7 @@ internal class UserSerializer
 Orleans支持在运行时传输任意类型，因此内置代码生成器无法确定将提前传输的整个类型集。此外，某些类型不能为其生成序列化程序，因为它们不可访问(例如，`私有的`)或者有不可访问的字段(例如，`只读`)中。因此，需要对意外或无法提前生成序列化程序的类型进行及时序列化。负责这些类型的序列化程序称为*回退序列化程序*是的。Orleans提供了两个回退序列化程序：
 
 -   `Orleans.Serialization.BinaryFormatterSerializer`使用.net的[二进制格式](https://msdn.microsoft.com/en-us/library/system.runtime.serialization.formatters.binary.binaryformatter)；和
--   `Orleans.Serialization.ILBasedSerializer`发出[CIL公司](https://en.wikipedia.org/wiki/Common_Intermediate_Language)在运行时创建序列化程序的指令，该序列化程序利用Orleans的序列化框架对每个字段进行序列化。这意味着如果一个不可访问的类型`我的私掠型`包含字段`我的类型`它有一个自定义序列化程序，该自定义序列化程序将用于序列化它。
+-   `Orleans.Serialization.ILBasedSerializer`发出[CIL](https://en.wikipedia.org/wiki/Common_Intermediate_Language)在运行时创建序列化程序的指令，该序列化程序利用Orleans的序列化框架对每个字段进行序列化。这意味着如果一个不可访问的类型`我的私掠型`包含字段`我的类型`它有一个自定义序列化程序，该自定义序列化程序将用于序列化它。
 
 可以使用`FallbackSerializationProvider`两者的属性`客户端配置`在客户和`全球配置`在silos里。
 

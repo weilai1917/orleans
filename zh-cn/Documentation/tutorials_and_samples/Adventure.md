@@ -9,7 +9,7 @@ title: Adventure
 
 ### 说明书
 
-1.  打开OrleansAdventure.sln公司在Visual Studio中。找到了[在这里。](https://github.com/dotnet/orleans/tree/master/Samples/2.0/Adventure)
+1.  打开OrleansAdventure.sln在Visual Studio中。找到了[在这里。](https://github.com/dotnet/orleans/tree/master/Samples/2.0/Adventure)
 2.  启动“AdventureSetup”项目。
 3.  一旦AdventureSetup运行，启动“AdventureClient”项目。
 4.  然后系统会提示您在命令行中输入您的姓名。进入并开始游戏。

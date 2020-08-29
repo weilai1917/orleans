@@ -35,7 +35,7 @@ public IDisposable RegisterTimer(
 
 -   启用激活收集后，计时器回调的执行不会将激活状态从空闲更改为使用中。这意味着无法使用计时器来推迟其他情况下空闲激活的取消激活。
 -   期间过去了**Grain.RegisterTimer**是从任务返回的那一刻起经过的时间**asyncCallback**解决到下一次调用**asyncCallback**应该发生。这不仅使得无法连续调用**asyncCallback**重叠但也使时间长**asyncCallback**完成需要影响的频率**asyncCallback**被调用。这与**System.Threading.Timer**。
--   每次调用**asyncCallback**将在单独的回合上传递给激活，并且永远不会与同一激活中的其他回合同时运行。请注意，**asyncCallback**调用不作为消息传递，因此不受消息交织语义的约束。这意味着**asyncCallback**相对于传递给该Grains的其他消息，应被视为表现为在可重入Grains上运行。
+-   每次调用**asyncCallback**将在单独的回合上传递给激活，并且永远不会与同一激活中的其他回合同时运行。请注意，**asyncCallback**调用不作为消息传递，因此不受消息交织语义的约束。这意味着**asyncCallback**相对于传递给该Grains的其他消息，应被视为表现为在ReentrantGrains上运行。
 
 # 提醒事项
 

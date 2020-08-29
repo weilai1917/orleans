@@ -7,7 +7,7 @@ title: Amazon DynamoDB Grain Persistence
 
 ## 安装
 
-安装[`Microsoft.Orleans.Persistence.DynamoDB`](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.DynamoDB)NuGet的软件包。
+安装[Microsoft.Orleans.Persistence.DynamoDB](https://www.nuget.org/packages/Microsoft.Orleans.Persistence.DynamoDB)NuGet的软件包。
 
 ## 组态
 

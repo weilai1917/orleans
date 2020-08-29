@@ -17,7 +17,7 @@ public interface IDataService : IGrainService {
 }
 ```
 
-**第2步。**创建DataService本身。如果可能，使GrainService可重入以获得更好的性能。注意必要的基本构造函数调用。很高兴知道您也可以注入`IGrain工厂`因此您可以从GrainService进行Grains调用。
+**第2步。**创建DataService本身。如果可能，使GrainServiceReentrant以获得更好的性能。注意必要的基本构造函数调用。很高兴知道您也可以注入`IGrainFactory`因此您可以从GrainService进行Grains调用。
 
 关于流的说明：GrainService无法在Orleans流中写入，因为它在Grain Task Scheduler中不起作用。如果您需要GrainService为您写入流，则必须将对象发送到另一种Grains以写入流。
 
@@ -81,7 +81,7 @@ public class MyNormalGrain: Grain<NormalGrainState>, INormalGrain {
 }
 ```
 
-**第六步**将grain服务注入料仓本身。您需要执行此操作，以便silos将启动GrainService。
+**第六步**将grain服务注入Silo本身。您需要执行此操作，以便silos将启动GrainService。
 
 ```csharp
 (ISiloHostBuilder builder) => builder .ConfigureServices(services => { services.AddSingleton<IDataService, DataService>(); });

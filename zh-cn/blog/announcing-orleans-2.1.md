@@ -27,7 +27,7 @@ Orleans2.1引入了一种与Grains进行交互并与ASP.NET或gRPC等框架进�
 -   [Grains方法可以返回`ValueTask <T>`](https://github.com/dotnet/orleans/pull/4562)- 谢谢[@kutensky](https://twitter.com/kutensky)
 -   [删除了每次访问计时器分配](https://github.com/dotnet/orleans/pull/4399)，减少.NET Timer队列争用
 -   [修正](https://github.com/dotnet/orleans/pull/4853)
-    [对于](https://github.com/dotnet/orleans/pull/4883)料仓关闭行为-谢谢[@yevhen](https://twitter.com/yevhen)用于报告和[调查中](https://github.com/dotnet/orleans/issues/4757)
+    [对于](https://github.com/dotnet/orleans/pull/4883)Silo关闭行为-谢谢[@yevhen](https://twitter.com/yevhen)用于报告和[调查中](https://github.com/dotnet/orleans/issues/4757)
 -   [配置Grains收集](https://github.com/dotnet/orleans/pull/4890)空闲时间使用`[CollectionAgeLimit(分钟= x)]`- 谢谢[@aRajeshKumar](https://github.com/arajeshkumar)
 
 ## .NET Core 2.1的已知问题

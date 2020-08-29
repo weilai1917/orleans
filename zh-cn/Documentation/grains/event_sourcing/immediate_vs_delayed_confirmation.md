@@ -7,11 +7,11 @@ title: Immediate vs. Delayed Confirmation
 
 对于许多应用程序，我们希望确保事件立即得到确认，以便持久化的版本不会落后于内存中的当前版本，并且我们不会冒丢失最新状态的风险(如果grain失败)。我们可以通过以下规则来保证：
 
-1.  全部确认`葡萄干`访问使用`证实人`在grain方法返回之前。
+1.  在Grain方法返回之前，使用`ConfirmEvents`确认所有`RaiseEvent`调用。
 
-2.  确保任务由返回`葡萄干条件通风口`在grain方法返回之前完成。
+2.  在Grain方法返回之前确保由`RaiseConditionalEvent`返回的任务已完成。
 
-3.  避免`[可重入]`或`[永远在屋檐下]`属性，因此一次只能处理一个grain调用。
+3.  避免`[Reentrant]`或`[AlwaysInterleave]`属性，因此一次只能处理一个grain调用。
 
 如果我们遵循这些规则，则意味着在引发事件之后，在将事件写入存储器之前，不能执行其他Grain代码。因此，不可能观察到内存中的版本和存储中的版本之间的不一致。虽然这通常正是我们想要的，但它也有一些潜在的缺点。
 
@@ -37,7 +37,7 @@ title: Immediate vs. Delayed Confirmation
 IEnumerable<EventType> UnconfirmedEvents { get; }
 ```
 
-而且，由于`国家`属性不包括未确认事件的影响，有一个可选属性
+而且，由于`State`属性不包括未确认事件的影响，有一个可选属性
 
 ```csharp
 StateType TentativeState { get; }
@@ -47,11 +47,11 @@ StateType TentativeState { get; }
 
 # 并发保证
 
-请注意，即使在使用可重入性或延迟确认的情况下，基于orleans turn的调度(协作并发)保证也始终适用。这意味着，即使有几个方法在进行中，也只有一个方法可以主动执行——所有其他的方法都处于等待状态，因此从来没有任何真正的竞争是由并行线程引起的。
+请注意，即使在使用Reentrant性或延迟确认的情况下，基于orleans turn的调度(协作并发)保证也始终适用。这意味着，即使有几个方法在进行中，也只有一个方法可以主动执行——所有其他的方法都处于等待状态，因此从来没有任何真正的竞争是由并行线程引起的。
 
 尤其要注意：
 
--   财产`国家`，`权势`，`版本`，和`未证实事件`可以在方法执行期间更改。
+-   `State`, `TentativeState`, `Version`, 和 `UnconfirmedEvents` 属性可以在方法执行期间更改。
 
 -   但这种变化只能在等待的时候发生。
 

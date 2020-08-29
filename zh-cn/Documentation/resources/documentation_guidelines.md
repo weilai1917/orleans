@@ -76,7 +76,7 @@ public class MyGrain<IMyGrainState> ...
 
 -   *奥尔勒ansRuntimeInterfaces.dll*
 -   *C： \\二进制文件*
--   *../src公司/Grains.cs*
+-   *../src/Grains.cs*
 
 ## 桌子
 

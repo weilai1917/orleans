@@ -32,4 +32,4 @@ protected override void OnTentativeStateChanged()
 }
 ```
 
-`ontentativestatechanged公司`当暂定状态改变时调用，即如果组合序列(confirmedEvents+confirmedEvents)改变。特别是，回调`ontentativestatechanged()`总是发生在`葡萄干`.
+`ontentativestatechanged`当暂定状态改变时调用，即如果组合序列(confirmedEvents+confirmedEvents)改变。特别是，回调`ontentativestatechanged()`总是发生在`葡萄干`.

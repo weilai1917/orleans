@@ -13,7 +13,7 @@ title: Running the Application
 
 silos通过`群集配置`反对。它可以直接实例化和填充，从文件中加载设置，或者使用多个适用于不同部署环境的可用帮助器方法创建。对于本地测试，最简单的方法是使用`clusterconfiguration.localhostprimarysilo()`助手方法。然后将配置对象传递给`silos`类，可以在该类之后初始化和启动。
 
-您可以创建一个空的控制台应用程序项目，目标是.NETFramework4.6.1或更高版本，用于托管silos。添加`Microsoft.Orleans.Server公司`项目的nuget元包。
+您可以创建一个空的控制台应用程序项目，目标是.NETFramework4.6.1或更高版本，用于托管silos。添加`Microsoft.Orleans.Server`项目的nuget元包。
 
 ```
 PM> Install-Package Microsoft.Orleans.Server
@@ -39,9 +39,9 @@ silo.ShutdownOrleansSilo();
 
 通过一个`客户端配置`对象和`客户端生成器`是的。`客户端配置`对象可以直接实例化和填充，从文件加载设置，或者使用多个适用于不同部署环境的可用帮助器方法创建。对于本地测试，最简单的方法是使用`clientconfiguration.localhostsilo()`助手方法。然后将配置对象传递给`客户端生成器`上课。
 
-`客户端生成器`公开配置其他客户端功能的更多方法。之后`建立`方法`客户端生成器`调用对象以获取`IClusterClient公司`接口。最后，我们调用`连接()`方法连接到群集。
+`客户端生成器`公开配置其他客户端功能的更多方法。之后`建立`方法`客户端生成器`调用对象以获取`IClusterClient`接口。最后，我们调用`连接()`方法连接到群集。
 
-您可以创建一个空的控制台应用程序项目，目标是.net framework 4.6.1或更高版本以运行客户端，或者重用为托管silos而创建的控制台应用程序项目。添加`Microsoft.Orleans.client公司`项目的nuget元包。
+您可以创建一个空的控制台应用程序项目，目标是.net framework 4.6.1或更高版本以运行客户端，或者重用为托管silos而创建的控制台应用程序项目。添加`Microsoft.Orleans.client`项目的nuget元包。
 
 ```
 PM> Install-Package Microsoft.Orleans.Client

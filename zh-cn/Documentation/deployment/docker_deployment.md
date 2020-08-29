@@ -15,7 +15,7 @@ title: Docker Deployment
 
 Docker容器和网络模型的设计主要是运行无状态和不可变的容器。因此，启动运行node.js或nginx应用程序的集群非常容易。但是，如果您尝试使用更精细的东西，比如真正的集群或分布式应用程序(比如基于Orleans的应用程序)，那么您最终将无法设置它。这是可能的，但不像基于web的应用程序那么简单。
 
-Docker集群包括将多个主机组合成一个资源池，使用*容器编排器*是的。*Docker公司*提供**蜂群**作为容器编排的选项*谷歌*有**库伯内特斯**(又名**K8S型**)中。还有其他的编曲者像**直流/操作系统**，**介子**，等等，但在本文中，我们将讨论swarm和k8s，因为它们使用得更广泛。
+Docker集群包括将多个主机组合成一个资源池，使用*容器编排器*是的。*Docker*提供**蜂群**作为容器编排的选项*谷歌*有**库伯内特斯**(又名**K8S型**)中。还有其他的编曲者像**直流/操作系统**，**介子**，等等，但在本文中，我们将讨论swarm和k8s，因为它们使用得更广泛。
 
 同样的grain接口和实现在Orleans的任何地方都已经得到支持，也将在docker容器上运行，因此不需要特别考虑就可以在docker容器中运行您的应用程序。
 
@@ -89,7 +89,7 @@ dotnet restore
 
 我们还添加了`程序.cs`，`Orleans鞋类包装`，`冰谷`和`迎宾粮`分别指向接口和Grain项目的文件，以下是这些文件的代码：
 
-`igreetinggrain.cs公司`以下内容：
+`igreetinggrain.cs`以下内容：
 
 ```csharp
 using System;
@@ -105,7 +105,7 @@ namespace OrleansGrainInterfaces
 }
 ```
 
-`GreetingGrain.cs公司`以下内容：
+`GreetingGrain.cs`以下内容：
 
 ```csharp
 using System;
@@ -124,7 +124,7 @@ namespace OrleansGrains
 }
 ```
 
-`OrleanshostWrapper.cs公司`以下内容：
+`OrleanshostWrapper.cs`以下内容：
 
 ```csharp
 using System;

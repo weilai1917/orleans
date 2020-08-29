@@ -99,11 +99,11 @@ await client.Connect();
 
 ## 登录中
 
-Orleans 2.0使用与ASP.NET核心2.0。您可以在中找到大多数Orleans日志记录功能的替代品ASP.NET岩芯测井。Orleans特定的日志记录功能，例如`ILogConsumer公司`和消息膨胀，仍然保持在`Microsoft.Orleans.Logging.遗产`包，这样你仍然可以选择使用它们。但是如何在2.0中使用Orleans配置日志记录发生了变化。让我来给你介绍一下迁移的过程。
+Orleans 2.0使用与ASP.NET核心2.0。您可以在中找到大多数Orleans日志记录功能的替代品ASP.NET岩芯测井。Orleans特定的日志记录功能，例如`ILogConsumer`和消息膨胀，仍然保持在`Microsoft.Orleans.Logging.遗产`包，这样你仍然可以选择使用它们。但是如何在2.0中使用Orleans配置日志记录发生了变化。让我来给你介绍一下迁移的过程。
 
-在1.5中，日志配置是通过`客户端配置`和`节点配置`. 您可以配置`默认跟踪级别`, `跟踪文件名`, `跟踪模式`, `TraceLevelOverrides公司`, `跟踪控制台`, `批量消息限制`, `木材消费者`等等。在2.0中，日志记录配置与ASP.NETcore2.0日志记录，这意味着大部分配置都是通过`Microsoft.Extensions.Logging.ILoggingBuilder`. 
+在1.5中，日志配置是通过`客户端配置`和`节点配置`. 您可以配置`默认跟踪级别`, `跟踪文件名`, `跟踪模式`, `TraceLevelOverrides`, `跟踪控制台`, `批量消息限制`, `木材消费者`等等。在2.0中，日志记录配置与ASP.NETcore2.0日志记录，这意味着大部分配置都是通过`Microsoft.Extensions.Logging.ILoggingBuilder`. 
 
-配置`默认跟踪级别`和`TraceLevelOverrides公司`，你需要申请[日志过滤](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging)到`ILoggingBuilder`. 例如，要在orleans运行时中将跟踪级别设置为“Debug”，可以使用下面的示例，
+配置`默认跟踪级别`和`TraceLevelOverrides`，你需要申请[日志过滤](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging)到`ILoggingBuilder`. 例如，要在orleans运行时中将跟踪级别设置为“Debug”，可以使用下面的示例，
 
 ```
 siloBuilder.AddLogging(builder=>builder.AddFilter("Orleans", LogLevel.Debug));
@@ -127,9 +127,9 @@ siloBuilder.AddLogging(builder=>builder.SetMinimumLevel(LogLevel.Debug);
 
 此方法将对`FileLoggerProvider`，使用默认的填充配置。
 
-由于我们将在将来最终弃用并删除LogConsumer特性支持，我们强烈建议您尽快迁移掉这个特性。有两种方法你可以采取迁移。一个选择是保持你自己的`iLogger提供程序`，这就创造了`窃听器`谁登录到所有现有的日志使用者。这和我们正在做的非常相似`Microsoft.Orleans.Logging.遗产`包裹。你可以看看`LegacyOrleanSlogger提供程序`从中借用逻辑。另一个选择是替换`ILogConsumer公司`现有的`iLogger提供程序`在nuget上，它提供相同或相似的功能，或者实现您自己的功能`iLogger提供程序`符合您特定的日志记录要求。并配置它们`iLogger提供程序`与`ILoggingBuilder`.
+由于我们将在将来最终弃用并删除LogConsumer特性支持，我们强烈建议您尽快迁移掉这个特性。有两种方法你可以采取迁移。一个选择是保持你自己的`iLogger提供程序`，这就创造了`窃听器`谁登录到所有现有的日志使用者。这和我们正在做的非常相似`Microsoft.Orleans.Logging.遗产`包裹。你可以看看`LegacyOrleanSlogger提供程序`从中借用逻辑。另一个选择是替换`ILogConsumer`现有的`iLogger提供程序`在nuget上，它提供相同或相似的功能，或者实现您自己的功能`iLogger提供程序`符合您特定的日志记录要求。并配置它们`iLogger提供程序`与`ILoggingBuilder`.
 
-但如果您不能在短期内迁移非日志使用者，您仍然可以使用它。支持`ILogConsumer公司`生活在`Microsoft.Orleans.Logging.遗产`包裹。所以您需要首先添加对该包的依赖，然后通过扩展方法配置日志使用者`添加LegacyOrleansLogging`在`ILoggingBuilder`. 有本地人`添加日志记录`方法`IServiceCollection公司`提供单位ASP.NET供您配置[`ILoggingBuilder`](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.loggingservicecollectionextensions.addlogging?view=aspnetcore-2.0#Microsoft_Extensions_DependencyInjection_LoggingServiceCollectionExtensions_AddLogging_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_Extensions_Logging_ILoggingBuilder). 我们还将该方法包装在`ISiloHostBuilder`和`IClientBuilder`. 所以你可以调用`添加日志记录`方法来配置silo builder和client builder`ILoggingBuilder`.  下面是一个例子：
+但如果您不能在短期内迁移非日志使用者，您仍然可以使用它。支持`ILogConsumer`生活在`Microsoft.Orleans.Logging.遗产`包裹。所以您需要首先添加对该包的依赖，然后通过扩展方法配置日志使用者`添加LegacyOrleansLogging`在`ILoggingBuilder`. 有本地人`添加日志记录`方法`IServiceCollection`提供单位ASP.NET供您配置[`ILoggingBuilder`](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.loggingservicecollectionextensions.addlogging?view=aspnetcore-2.0#Microsoft_Extensions_DependencyInjection_LoggingServiceCollectionExtensions_AddLogging_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_Extensions_Logging_ILoggingBuilder). 我们还将该方法包装在`ISiloHostBuilder`和`IClientBuilder`. 所以你可以调用`添加日志记录`方法来配置silo builder和client builder`ILoggingBuilder`.  下面是一个例子：
 
 ```
             var severityOverrides = new OrleansLoggerSeverityOverrides();
@@ -140,7 +140,7 @@ siloBuilder.AddLogging(builder=>builder.SetMinimumLevel(LogLevel.Debug);
             }, severityOverrides));
 ```
 
-如果您投资于的自定义实现，则可以使用此功能`ILogConsumer公司`无法将它们转换为`iLogger提供程序`短期内。
+如果您投资于的自定义实现，则可以使用此功能`ILogConsumer`无法将它们转换为`iLogger提供程序`短期内。
 
 `Logger GetLogger(字符串loggerName)`方法`Grains`基类和`IProviderRuntime`，和`记录器日志{get；}`在2.0中，IStorageProvider上的方法仍作为不推荐使用的功能进行维护。您仍然可以在迁移Orleans遗留日志的过程中使用它。但我们建议你尽快离开它们。
 

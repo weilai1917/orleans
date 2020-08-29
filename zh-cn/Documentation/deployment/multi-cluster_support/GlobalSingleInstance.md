@@ -31,7 +31,7 @@ public class MyLocalGrain : Orleans.Grain, IMyGrain {
 
 #### 每个集群Grain一个实例的协议
 
-对于每个集群Grain的一个实例，没有集群间通信。它们只需在每个集群中独立使用标准的orleans机制。在orleans框架本身中，以下grain类用`[OneInstancePerCluster]`属性：`管理grain`，请`grains数据库成员表`，和`粒状`是的。
+对于每个集群Grain的一个实例，没有集群间通信。它们只需在每个集群中独立使用标准的orleans机制。在orleans框架本身中，以下grain类用`[OneInstancePerCluster]`属性：`管理grain`，请`grains数据库成员表`，和`Grain`是的。
 
 #### 可疑激活
 

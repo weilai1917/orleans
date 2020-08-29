@@ -25,7 +25,7 @@ public interface ISimpleGrain : IEventual
 }
 ```
 
-`PVoid公司`和`针脚32`在道德上等同于[任务和任务\\\<int>在第三方物流](https://msdn.microsoft.com/en-us/library/dd537609(v=vs.110).aspx). 与Tasks不同，它们有许多静态方法，其中一个更简单的重载使用两个lambda：一个用于成功案例，另一个用于处理抛出的异常：
+`PVoid`和`针脚32`在道德上等同于[任务和任务\\\<int>在第三方物流](https://msdn.microsoft.com/en-us/library/dd537609(v=vs.110).aspx). 与Tasks不同，它们有许多静态方法，其中一个更简单的重载使用两个lambda：一个用于成功案例，另一个用于处理抛出的异常：
 
 ```csharp
 public static PVoid When(PVoid target, Action fn, Action<Exception> catchFn);

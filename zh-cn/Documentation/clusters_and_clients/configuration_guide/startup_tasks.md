@@ -18,7 +18,7 @@ title: Startup Tasks
 
 ## 配置启动任务
 
-启动任务可以使用`IsiloHostBuilder公司`通过注册要在启动期间调用的委托，或通过注册`伊斯塔普塔斯克`是的。
+启动任务可以使用`IsiloHostBuilder`通过注册要在启动期间调用的委托，或通过注册`伊斯塔普塔斯克`是的。
 
 ### 示例：注册委托
 
@@ -57,7 +57,7 @@ public class CallGrainStartupTask : IStartupTask
 }
 ```
 
-然后必须在`IsiloHostBuilder公司`以下内容：
+然后必须在`IsiloHostBuilder`以下内容：
 
 ```csharp
 siloHostBuilder.AddStartupTask<CallGrainStartupTask>();

@@ -21,7 +21,7 @@ title: What's new in Orleans
     -   EventHub流提供程序已升级到EvenHub 2.2.1，并与3.0.0兼容。
     -   集群成员关系表中的旧死条目现在会自动清理，这对于托管使用新IP端点来重新启动silos的环境很有帮助。
     -   默认情况下，允许在思洛进程中有效托管前端代码的托管客户端。
-    -   支持`IHostEnvironmentStatistics公司`在Linux上，它支持CPU和内存指标以及负载削减。感谢@martinothamar！
+    -   支持`IHostEnvironmentStatistics`在Linux上，它支持CPU和内存指标以及负载削减。感谢@martinothamar！
 
 ## [v2.3.0-rc2版](https://github.com/dotnet/orleans/releases/tag/v2.3.0-rc2)2019年3月13日
 

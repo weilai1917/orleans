@@ -103,7 +103,7 @@ Orleans通过一个内置的成员协议提供集群管理，我们有时将其�
 
 4.  [IO领事](https://www.consul.io)-我们用过[执政官的钥匙/价值商店](https://www.consul.io/intro/getting-started/kv.html)推动membershop表。参考[执政官部署](../deployment/consul_deployment.md)更多细节。
 
-5.  [AWS发电机B](https://aws.amazon.com/dynamodb/)-在这个实现中，我们使用集群部署ID作为分区键和silos标识(`ip端口生成`)作为使记录统一的RangeKey。乐观并发由`ETag公司`属性通过在DynamoDB上进行条件写入来实现。实现逻辑与Azure表存储非常相似。我们只实现了基本成员协议(而不是扩展协议)。
+5.  [AWS发电机B](https://aws.amazon.com/dynamodb/)-在这个实现中，我们使用集群部署ID作为分区键和silos标识(`ip端口生成`)作为使记录统一的RangeKey。乐观并发由`ETag`属性通过在DynamoDB上进行条件写入来实现。实现逻辑与Azure表存储非常相似。我们只实现了基本成员协议(而不是扩展协议)。
 
 6.  内存模拟开发设置。我们使用一种特殊的系统grains，叫做`成员资格表`，以便实现。这些Grains存放在指定的主silos中，该silos仅用于**开发设置**. 在任何实际生产使用情况下，主silos**不是必需的**.
 

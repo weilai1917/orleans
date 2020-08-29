@@ -15,7 +15,7 @@ Azure存储Grain持久化提供程序同时支持[Azure Blob存储](https://azur
 
 ### Azure表存储
 
-Azure表存储提供程序将状态存储在表行中，如果超出单个列的限制，则将状态分为多个列。每行的最大长度为一兆字节，例如[由Azure表存储强加](https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets#azure-table-storage-scale-targets)。
+Azure表存储提供程序将状态存储在表行中，如果超出单个列的限制，则将状态分为多个列。每行的最大长度为一兆字节，例如[扩展Azure表存储](https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets#azure-table-storage-scale-targets)。
 
 使用以下命令配置Azure表存储Grain持久化提供程序`ISiloBuilder.AddAzureTableGrainStorage`扩展方法。
 

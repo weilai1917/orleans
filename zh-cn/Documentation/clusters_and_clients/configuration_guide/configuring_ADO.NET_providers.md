@@ -53,4 +53,4 @@ siloHostBuilder.UseAdoNetClustering(options =>
 
 为了使用ado.net提供程序进行持久化、提醒或集群，有用于创建数据库工件的脚本，所有将托管Orleanssilos的服务器都需要访问这些脚本。缺乏对目标数据库的访问是我们看到的开发人员所犯的一个典型错误。
 
-在ADONET扩展名NUGETS上安装或执行NUGET还原后，脚本将复制到项目目录或leansADONETcontent，其中每个受支持的ADO.NET扩展名都有自己的目录。我们将adonet nuget分为每个功能nuget：`Microsoft.Orleans.Clustering.adonet公司`对于集群，`Microsoft.Orleans.Persistence.adonet公司`为了坚持和`Microsoft.Orleans.Reminders.adonet公司`作为提醒。
+在ADONET扩展名NUGETS上安装或执行NUGET还原后，脚本将复制到项目目录或leansADONETcontent，其中每个受支持的ADO.NET扩展名都有自己的目录。我们将adonet nuget分为每个功能nuget：`Microsoft.Orleans.Clustering.adonet`对于集群，`Microsoft.Orleans.Persistence.adonet`为了坚持和`Microsoft.Orleans.Reminders.adonet`作为提醒。

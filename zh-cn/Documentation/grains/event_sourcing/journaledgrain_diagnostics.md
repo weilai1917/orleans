@@ -22,9 +22,9 @@ protected override void OnConnectionIssueResolved(ConnectionIssue issue)
 }
 ```
 
-`连接问题`是一个抽象类，有几个公共字段描述该问题，包括自上次成功连接以来已观察到此问题的次数。连接问题的实际类型由子类定义。连接问题分为以下几种类型：`PrimaryOperationFailed`要么`通知失败`，有时还有多余的键(例如`远程集群`)，进一步缩小了类别。
+`ConnectionIssue`是一个抽象类，有几个公共字段描述该问题，包括自上次成功连接以来已观察到此问题的次数。连接问题的实际类型由子类定义。连接问题分为以下几种类型：`PrimaryOperationFailed`要么`NotificationFailed`，有时还有多余的键(例如`RemoteCluster`)，进一步缩小了类别。
 
-如果同一类别的问题多次发生(例如，我们不断收到`通知失败`目标相同`远程集群`)，每次由`OnConnection问题`。解决此类问题后(例如，我们终于可以成功向此发送通知`远程集群`)， 然后`OnConnectionIssueResolved`被调用一次，与`问题`上次报告的对象`OnConnection问题`。独立类别的连接问题及其解决方案将独立报告。
+如果同一类别的问题多次发生(例如，我们不断收到以相同的`RemoteCluster`为目标的`NotificationFailed`)，每次由`OnConnectionIssue`。解决此类问题后(例如，我们终于可以成功向此发送通知`RemoteCluster`)， 然后`OnConnectionIssueResolved`被调用一次，与`问题`上次报告的对象`OnConnectionIssue`。独立类别的连接问题及其解决方案将独立报告。
 
 ## 简单统计
 

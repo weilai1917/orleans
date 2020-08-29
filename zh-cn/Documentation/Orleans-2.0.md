@@ -25,7 +25,7 @@ orleans仍然会在指定的程序集中自动查找相关类型，如grain接�
 
 虽然代码生成对开发人员来说基本上是不可见的，但是在处理各种可能类型的序列化时，代码生成变得更加健壮。F组件需要特殊处理。见[代码生成](resources/Migration/Codegen.md)部分了解更多详细信息。
 
--   创建了`Microsoft.Orleans.core.abstractions公司`nuget包并将几个类型移动/重构到其中。
+-   创建了`Microsoft.Orleans.Core.Abstractions`nuget包并将几个类型移动/重构到其中。
 
 grain代码很可能只需要引用这些抽象，而silo主机和客户端将引用更多的orleans包。我们计划不经常更新这个包。
 

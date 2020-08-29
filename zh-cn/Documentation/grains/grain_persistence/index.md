@@ -9,7 +9,7 @@ Grains可以具有多个与之关联的命名持久数据对象。在激活Grain
 
 ![A grain can have multiple persisted data objects each stored in a different storage system](../../images/grain_state_1.png)
 
-在上图中，UserGrain有一个*个人资料*状态和*大车*状态，每个状态都存储在单独的存储系统中。
+在上图中，UserGrain有一个*Profile*状态和*Cart*状态，每个状态都存储在单独的存储系统中。
 
 ## 目标
 
@@ -29,6 +29,7 @@ Grains可以具有多个与之关联的命名持久数据对象。在激活Grain
 ## API
 
 Grains与它们的持久状态相互作用`IPersistentState <TState>`哪里`State`是可序列化状态类型：
+Grains通过`IPersistentState<TState>`（其中`<TState>`为其可序列化状态类型）与它们的持久化状态交互。
 
 ```csharp
 public interface IPersistentState<TState> where TState : new()
@@ -41,7 +42,7 @@ public interface IPersistentState<TState> where TState : new()
 }
 ```
 
-的实例`IPersistentState <TState>`作为构造函数参数注入到Grains中。这些参数可以用`[PersistentState(stateName，storageName)]`属性以标识要注入的状态的名称以及提供状态的存储提供程序的名称。以下示例通过将两个命名状态注入到`UserGrain`构造函数：
+`IPersistentState <TState>`的实例作为构造函数参数注入到Grains中。这些参数可以用`[PersistentState(stateName，storageName)]`属性来标识要注入的状态的名称以及提供状态存储提供程序的名称。以下示例通过将两个命名状态注入到`UserGrain`构造函数：
 
 ```csharp
 public class UserGrain : Grain, IUserGrain
@@ -60,13 +61,14 @@ public class UserGrain : Grain, IUserGrain
 }
 ```
 
-即使它们是同一类型，不同的Grain类型也可以使用不同的已配置存储提供程序：例如，两个不同的Azure Table Storage提供程序实例连接到不同的Azure存储帐户。
+即使它们是同一类型，不同的Grain类型也可以使用不同的配置存储提供程序：例如，两个不同的Azure Table Storage提供程序实例连接到不同的Azure存储帐户。
 
-### 阅读状态
+### 读取状态
 
 当激活grains时，将自动读取grains状态，但是grains负责在必要时显式触发任何更改的grains状态的写入。
 
-如果某个Grains希望从后备存储中明确重新读取该Grains的最新状态，则该Grains应调用`ReadStateAsync()`方法。这将通过存储提供者从持久化存储中重新加载Grains状态，并且当数据库中的Grains状态的先前内存中副本将被覆盖并替换时，`ReadStateAsync()` `Task`完成。
+如果某个Grains希望从后备存储中明确重新读取该Grains的最新状态，则该Grains应调用`ReadStateAsync()`方法。
+这将通过存储提供程序从持久存储重新加载Grain状态，并且当`ReadStateAsync()`任务完成时，将覆盖和替换之前的内存状态副本。
 
 使用以下命令访问状态值`State`属性。例如，以下方法访问上面的代码中声明的配置文件状态：
 
@@ -78,7 +80,7 @@ public Task<string> GetNameAsync() => Task.FromResult(_profile.State.Name);
 
 见[失败模式](#FailureModes)以下部分提供了有关错误处理机制的详细信息。
 
-### 写作状态
+### 写入状态
 
 状态可以通过`State`属性。修改后的状态不会自动保持。相反，开发人员通过调用`WriteStateAsync()`方法。例如，以下方法更新一个属性`State`并保持更新状态：
 
@@ -128,10 +130,10 @@ var host = new HostBuilder()
 
 持久状态可以通过两种主要方式添加到Grains中：
 
-1.  通过注射`IPersistentState <TState>`进入Grains的构造函数
+1.  通过注入`IPersistentState <TState>`进入Grains的构造函数
 2.  通过继承`Grain<TState>`
 
-推荐的增加Grains储藏量的方法是通过注入`IPersistentState <TState>`关联到Grains的构造函数`[PersistentState("stateName"," providerName")]`属性。有关详细信息[`GrainsTState>`， 见下文](#使用Grain<TState>为Grains指定存储)。仍支持此功能，但被认为是旧版。
+推荐的添加Grains存储方式的方法是通过注入`IPersistentState<TState>`并关联`[PersistentState("stateName"," providerName")]`属性到Grains的构造函数。有关详细信息[`GrainsTState>`， 见下文](#使用Grain<TState>为Grains指定存储)。仍支持此功能，但被认为是旧版。
 
 声明一个类来保持我们的Grains状态：
 
@@ -159,7 +161,7 @@ public class UserGrain : Grain, IUserGrain
 }
 ```
 
-注意：配置文件状态在注入到构造函数中时不会被加载，因此那时访问它是无效的。该状态将在`OnActivateAsync`叫做。
+注意：配置文件状态在注入到构造函数中时不会被加载，因此那时访问它是无效的。该状态将在`OnActivateAsync`调用。
 
 现在，grain具有持久状态，我们可以添加读取和写入状态的方法：
 
@@ -187,21 +189,24 @@ public class UserGrain : Grain, IUserGrain
 
 ### 读取操作的失败模式
 
-在最初读取特定Grains的状态数据期间，存储提供者返回的故障将导致该Grains的激活操作失败；在这种情况下，*不*可以调用给那个Grains的`OnActivateAsync()`生命周期回调方法。对导致激活的那个Grains的原始请求将以与Grains激活过程中的其他任何失败相同的方式被发回给调用者。存储提供程序在读取特定Grains的状态数据时遇到失败，将导致`ReadStateAsync()` `Task`被指责。Grains可以选择处理或忽略该故障`Task`，就像其他任何东西一样`Task`在Orleans。
+存储提供程序在初始读取该特定Grain的状态数据期间返回的故障将导致Grain的激活操作失败;在这种情况下，将不调用该Grain的`OnActivateAsync()`生命周期回调方法。
+导致激活该Grain的失败的原始请求将像在Grain激活期间任何其他故障一样返回给调用方。
+
+存储提供程序在读取特定Grains的状态数据时遇到失败，将导致`ReadStateAsync()` 任务失败。Grains可以选择处理或忽略该故障`Task`，就像其他任何东西一样`Task`在Orleans。
 
 由于缺少/错误的存储提供程序配置，任何在silos启动时无法加载消息的尝试都会返回永久错误`Orleans.BadProviderConfigException`。
 
 ### 写入操作的失败模式
 
-存储提供程序在写入特定Grains的状态数据时遇到失败，将导致`WriteStateAsync()` `Task`被指责。通常，这将意味着只要将`WriteStateAsync()` `Task`正确地链接到最终收益`Task`对于这种Grains方法。但是，某些高级方案可能会编写Grain代码来专门处理此类写错误，就像它们可以处理任何其他错误一样`Task`。
+存储提供程序在写入特定Grains的状态数据时遇到失败，将导致`WriteStateAsync()` 任务失败。通常，这将意味着Grain调用将把错误返回给客户端调用者，前提是`WriteStateAsync()`任务被正确地链接到这个Grain方法最终返回的`Task`中。但是，某些高级方案可能会编写Grain代码来专门处理此类错误，就像它们可以处理任何其他错误一样`Task`。
 
-执行错误处理/恢复代码的Grains*必须*捕获异常/错误`WriteStateAsync()` `Task`而不重新抛出以表示它们已成功处理了写入错误。
+执行错误处理/恢复代码的Grains*必须*捕获`WriteStateAsync()`任务的异常/错误，而不重新抛出以表示它们已成功处理了写入错误。
 
 ## 推荐建议
 
-### 使用JSON序列化或其他允许版本的序列化格式
+### 使用JSON序列化或其他版本容忍的序列化格式
 
-代码会随着时间的推移而发展，并且通常还包括存储类型。为了适应这些更改，应配置适当的串行器。对于大多数存储提供商而言，`杰森`选项或类似选项可用于将JSON用作序列化格式。确保在发展数据合同时，已经存储的数据仍然可以加载。
+代码会随着时间的推移而发展，并且通常还包括存储类型。为了适应这些更改，应配置适当的序列化方式。对于大多数存储提供商而言，`Json`选项或类似选项可用于将JSON用作序列化格式。确保在发展数据合同时，已经存储的数据仍然可以加载。
 
 ## 使用Grain<TState>为Grains指定存储
 
@@ -229,9 +234,10 @@ protected virtual Task ClearStateAsync() { /*...*/ }
 
 这些方法的行为对应于`IPersistentState <TState>`较早定义。
 
-## 创建存储提供者
+## 创建存储提供程序
 
-状态持久化API有两部分：通过`IPersistentState <T>`要么`grains<T>`，以及存储提供商API(以`IGrain存储`—存储提供程序必须实现的接口：
+状态持久化API有两部分：通过`IPersistentState <T>`要么`grains<T>`，
+以及以`IGrainStorage`为中心的存储提供程序API——存储提供程序必须实现的接口。
 
 ```csharp
 /// <summary>
@@ -266,9 +272,9 @@ public interface IGrainStorage
 
 ### 存储提供程序语义
 
-特定于不透明的提供者`埃塔格`值(`串`)*可能*由存储提供者设置为读取状态时填充的Grains状态元数据的一部分。一些提供商可能选择将此保留为`空值`如果他们不使用`埃塔格`s。
+特定于不透明的提供者`Etag`值(`string`)*可能*由存储提供者设置为读取状态时填充的Grains状态元数据的一部分。一些提供商可能选择将此保留为`null`如果他们不使用`Etag`。
 
-当存储提供程序检测到一个写操作时，任何尝试执行写操作的尝试`埃塔格`约束违反*应该*引起写`Task`被短暂的错误所误导`Orleans.InconsistentStateException`并包装基础存储异常。
+当存储提供程序检测到`Etag`约束违反_should_时，任何执行写操作的尝试都会导致写`Task`出现故障，并出现瞬时抛出`Orleans.InconsistentStateException`异常并并包装基础存储异常。
 
 ```csharp
 public class InconsistentStateException : OrleansException
@@ -295,8 +301,7 @@ public class InconsistentStateException : OrleansException
   public string CurrentEtag { get; private set; }
 }
 ```
-
-存储操作中的任何其他故障情况*必须*导致退货`Task`会被打破，并指出底层存储问题。在许多情况下，此异常可能会返回给调用方，后者通过在Grains上调用方法来触发存储操作。重要的是要考虑调用者是否可以反序列化此异常。例如，客户端可能尚未加载包含异常类型的特定持久化库。因此，建议将异常转换为可以传播回调用方的异常。
+来自存储操作的任何其他失败条件都会导致返回的`Task`被中断，并出现一个异常，指示底层存储问题。在许多情况下，此异常可能会返回给调用方，后者通过在Grains上调用方法来触发存储操作。重要的是要考虑调用者是否可以反序列化此异常。例如，客户端可能尚未加载包含异常类型的特定持久化库。因此，建议将异常转换为可以传播回调用方的异常。
 
 ### 数据映射
 
@@ -304,6 +309,6 @@ public class InconsistentStateException : OrleansException
 
 ### 注册存储提供商
 
-Orleans运行时将从服务提供商那里解析存储提供商(`IServiceProvider`)创建纹理时。运行时将解析一个实例`IGrain存储`。如果存储提供者已命名，例如通过`[PersistentState(stateName，storageName)]`属性，然后是的命名实例`IGrain存储`将得到解决。
+Orleans运行时将从服务提供商那里解析存储提供商(`IServiceProvider`)创建Grain时。运行时将解析一个实例`IGrainStorage`。如果存储提供者已命名，例如通过`[PersistentState(stateName，storageName)]`属性，然后是的命名实例`IGrainStorage`将得到解决。
 
-注册的命名实例`IGrain存储`， 使用`IServiceCollection.AddSingletonNamedService`扩展方法，以[AzureTableGrainStorage提供程序在这里](https://github.com/dotnet/orleans/blob/af974d37864f85bfde5dc02f2f60bba997f2162d/src/Azure/Orleans.Persistence.AzureStorage/Hosting/AzureTableSiloBuilderExtensions.cs#L78)。
+注册的命名实例`IGrainStorage`， 使用`IServiceCollection.AddSingletonNamedService`扩展方法，可以参考以下[AzureTableGrainStorage提供程序](https://github.com/dotnet/orleans/blob/af974d37864f85bfde5dc02f2f60bba997f2162d/src/Azure/Orleans.Persistence.AzureStorage/Hosting/AzureTableSiloBuilderExtensions.cs#L78)。

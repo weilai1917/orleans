@@ -30,6 +30,6 @@ PerfView使问题的原因显而易见。
 
 .NET Core 3.0用户可能从未见过这样的争用，因为.NET Core进行了大量工作以进行改进`计时器`和`Task.Delay`性能。看到[＃14527](https://github.com/dotnet/coreclr/pull/14527)和[＃20302](https://github.com/dotnet/coreclr/pull/20302)。
 
-我们如何解决这一争执？在确认这里的修复程序实际上可以解决该问题(成功！)之后，我着手实施一个有希望的简单替代品`Task.Delay`。结果是[在这个公关](https://github.com/dotnet/orleans/pull/5201)。其工作原理的要点是它使用单个`计时器`实例以服务线程本地计时器集合。计时器的点火不需要精确，因此在这些用途中不必担心延迟点火。通过使用线程局部数据结构可很大程度上避免锁争用，但通过使用轻量级可重入器可保留安全性`互锁比较交换`锁。看到[公关](https://github.com/dotnet/orleans/pull/5201)更多细节。
+我们如何解决这一争执？在确认这里的修复程序实际上可以解决该问题(成功！)之后，我着手实施一个有希望的简单替代品`Task.Delay`。结果是[在这个公关](https://github.com/dotnet/orleans/pull/5201)。其工作原理的要点是它使用单个`计时器`实例以服务线程本地计时器集合。计时器的点火不需要精确，因此在这些用途中不必担心延迟点火。通过使用线程局部数据结构可很大程度上避免锁争用，但通过使用轻量级Reentrant器可保留安全性`互锁比较交换`锁。看到[公关](https://github.com/dotnet/orleans/pull/5201)更多细节。
 
 该实施基于之前的工作[@dVakulen](https://github.com/dVakulen)在[＃2060年](https://github.com/dotnet/orleans/pull/2060/files#diff-a694ce799337a9585c6bb404e7ca2339)并导致吞吐量提高约4倍，而故障率降至零。谜团已揭开。

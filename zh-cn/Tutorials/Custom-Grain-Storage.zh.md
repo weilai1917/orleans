@@ -104,7 +104,7 @@ public void Participate(ISiloLifecycle lifecycle)
 }
 ```
 
-的`在里面`功能用于设置`_jsonSettings`将用于配置`杰森`序列化器。同时，我们创建文件夹来存储grains状态(如果尚不存在)。
+的`在里面`功能用于设置`_jsonSettings`将用于配置`Json`序列化器。同时，我们创建文件夹来存储grains状态(如果尚不存在)。
 
 ```csharp
 private Task Init(CancellationToken ct)
@@ -275,4 +275,4 @@ var silo = new SiloHostBuilder()
     .Build();
 ```
 
-现在，我们将可以与供应商一起装饰Grains`[StorageProvider(ProviderName =“文件”)]`它将以谷粒状态存储在选项中设置的根目录中。
+现在，我们将可以与供应商一起装饰Grains`[StorageProvider(ProviderName =“文件”)]`它将以谷Grain态存储在选项中设置的根目录中。

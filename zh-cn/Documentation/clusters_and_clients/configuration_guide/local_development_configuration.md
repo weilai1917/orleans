@@ -11,7 +11,7 @@ title: Local development configuration
 
 对于本地开发，请参阅下面的示例，了解如何为这种情况配置silos。它配置并启动一个silos，分别作为silos和网关端口监听“环回”地址和11111和30000。
 
-添加`Microsoft.Orleans.Server公司`项目的nuget元包。在您熟悉了api之后，可以选择包含在`Microsoft.Orleans.Server公司`你真的需要，并参考他们。
+添加`Microsoft.Orleans.Server`项目的nuget元包。在您熟悉了api之后，可以选择包含在`Microsoft.Orleans.Server`你真的需要，并参考他们。
 
 ```PowerShell
 PM> Install-Package Microsoft.Orleans.Server
@@ -75,7 +75,7 @@ public class Program
 
 对于本地开发，请参阅下面的示例，了解如何为这种情况配置客户端。它配置将连接到`回送`silos。
 
-添加`Microsoft.Orleans.client公司`项目的nuget元包。在您熟悉了api之后，可以选择包含在`Microsoft.Orleans.client公司`你真的需要，并参考他们。
+添加`Microsoft.Orleans.client`项目的nuget元包。在您熟悉了api之后，可以选择包含在`Microsoft.Orleans.client`你真的需要，并参考他们。
 
 ```PowerShell
 PM> Install-Package Microsoft.Orleans.Client
